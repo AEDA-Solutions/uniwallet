@@ -1,20 +1,8 @@
-Depois de instalado o Mysql, digite os seguintes comandos no terminal:
+# Script de criação do banco de dados.
 
-mysql -uroot -p
+CREATE DATABASE Uniwallet;
 
-Digite o password colocado no momento da instalação.
-
-Agora, dentro do mysql, digite um comando por vez, conforme abaixo:
-
-1)
-
- CREATE DATABASE Uniwallet;
-
-2)
-
- USE Uniwallet;
-
-3)
+USE Uniwallet;
 
 CREATE TABLE Users (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -24,16 +12,12 @@ email VARCHAR(50) NOT NULL,
 login VARCHAR(10) NOT NULL,
 password VARCHAR(20) NOT NULL,
 ddd INT(2), 
-number INT(9), 
+cellphone INT(9), 
 address VARCHAR(100), 
 city VARCHAR(20),
 state VARCHAR(20),
 neighborhhood VARCHAR(20),
 cpf INT(11)
 );
-
-Para confirmar se tudo está correto, digite:
-
-SHOW COLUMNS FROM Users;
 
 
