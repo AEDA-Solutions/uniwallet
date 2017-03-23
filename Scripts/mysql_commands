@@ -1,0 +1,17 @@
+# Para entrar no mysql 
+
+Digite no terminal:
+
+mysql -uroot -p
+
+Digite o password colocado no momento da instalação Mysql. 
+
+# Para confirmar se as tabelas foram criadas 
+
+Digite dentro do mysql:
+
+USE Uniwallet;
+
+SHOW COLUMNS FROM Users;
+
+
