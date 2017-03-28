@@ -11,8 +11,11 @@ A project to get rich.
 
  * Open the terminal and go into uniwallet root directory.
  * Then type this:
- '''
+ ```
 python3 ./main.py
- '''
+ ```
  * If nothing goes wrong the server will be available through the browser.
- * Just access the url http://localhost:8000
+ * Just access the url 
+ ```
+ http://localhost:8000
+ ```
