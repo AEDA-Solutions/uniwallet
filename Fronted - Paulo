@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+	
+	<title>UniversityWallet - A carteira do futuro</title>
+	
+	<link   rel="stylesheet" href="css/materialize.min.css">
+	<link   rel="stylesheet" href="css/google-fonts.css">
+	<link 	rel="stylesheet" href="css/style.css">
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/materialize.min.js"></script>
+
+</head>
+<body background="img/ecom.png" >
+
+
+
+</body>
+	<header class="navbar">
+		<nav class="blue darken-1">
+			<div class="nav-wrapper">
+				<ul>
+					<li>
+						<a href="javascript:void(0)" id="header-logo">UniWallet
+						</a>
+					</li>	
+				</ul>
+				
+				<ul class="right">
+				
+					<li>
+						<a href="javascript:void(0)">
+							<i class="material-icons left">account_balance_wallet</i>
+							<span>Cadastre-se</span>
+
+						</a>
+					</li>
+				
+					<li>
+						<a href="javascript:void(0)">
+							<i class="material-icons left">group</i>
+							<span>Quem Somos?</span>
+
+						</a>
+					</li>
+				
+					<li>
+						<a href="javascript:void(0)">
+							<i class="material-icons left">phone</i>
+							<span>Fale Conosco</span>
+							
+						</a>
+					</li>
+				
+					<li>
+						<a href="javascript:void(0)">
+							<i class="material-icons left">account_circle</i>
+							<span>Acesso</span>
+						</a>
+					</li>
+			
+				</ul>		
+			</div>		
+		</nav>
+
+	</header>
+<main>
+<!--PARALLAX-->
+	   
+    <div class="parallax-container">
+      <div class="parallax"><img src="img/ecom.jpg"></div>
+    </div>
+ <!--Artigos-->
+ <div class = "container">
+ 	<br>
+ 	<!--<h5>Mais recentes </h5>-->
+ 			
+ 			<div class="row">
+ 				<div class="col l4 m8 s12">
+ 					<div class="card small">
+ 						<div class="card-image waves-effect ">
+ 							<img src="img/business.jpg" alt="">
+ 						</div>
+ 						<div class="card-content">
+ 							<span class="card-title truncate">Já pensou em ganhar dinheiro pela internet?</span>
+ 						</div>
+ 				</div>
+ 			</div>
+ 			
+ 			
+ 			<div class="row">
+ 			<div class="col l4 m8 s12">
+ 				<div class="card small">
+ 					<div class="card-image waves-effect ">
+ 							<img src="img/St.jpg" alt="">
+ 						</div>
+ 						<div class="card-content">
+ 							<span class="card-title truncate">Conheça a carteira!</span>
+ 						</div>
+ 				</div>
+ 			</div>
+ 			
+
+ 			<div class="row">
+ 			<div class="col l4 m8 s12">
+ 				<div class="card small">
+ 					<div class="card-image waves-effect ">
+ 							<img src="img/bc.jpg" alt="">
+ 						</div>
+ 						<div class="card-content">
+ 							<span class="card-title truncate">O que é Blockchain?</span>
+ 						</div>
+ 				</div>
+ 			</div>
+ 		</div>		
+ 	</div>
+             
+</main>
+
+</body>
+</html>
+  
