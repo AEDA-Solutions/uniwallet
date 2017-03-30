@@ -26,7 +26,7 @@ The route function returns a Response object.
 def route(request):
 	if request.ok and hasattr(controllers, request.resource):
 		ctrl = getattr(getattr(controllers, request.resource), request.resource)()
-		return ctrl.action(request.action)
+		return ctrl.action(request.action, request)
 	else:
 		return bad_route(request)
 

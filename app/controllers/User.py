@@ -5,4 +5,4 @@ class User(default.Controller):
 		pass
 
 	def sample(self, variables = None):
-		return "hello bitch"
+		return "hello bitch: {}".format(repr(variables.POST))
