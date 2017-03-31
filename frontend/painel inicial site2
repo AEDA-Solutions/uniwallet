@@ -16,59 +16,26 @@
 	 		<nav class="blue lighten-4">
 	 			<!--Colocar todo o conteúdo do painel da nav-bar-->
 	 			<div class="nav-wrapper">
-
-
 	 			<!--Logo-->
 	 			<a href="#" class="brand-logo"><img src="img/UW.png" class="circle left mini-logo"></img> UniWallet </a>
 
 	 				 <!--Para esconder o conteúdo da direita-->
- 			<style>
-	 				 
       				   <ul id="nav-mobile" class="right hide-on-med-and-down">
         			   <li><a href="badges.html">Sobre</a></li>
        				   <li><a href="collapsible.html">Login</a></li>
       				  </ul>
 	 			</div>
 	 		</nav>
-   
-		
-		.box {
-			width: 330px;
-			height: auto;
-			float: left;
-		}
-		
-		div#a-b {
-			width: 1050px;
-			height: auto;
-			margin: auto;
-		}
-		
-		div#a-b h4 {
-		text-align: left;
-		display: inline;
-
-		}
-		
-		.left {
-			margin-left: 20px;
-		}
-
-	</style>
-
 	 	</header>
+
 	 <!--Painel de cadastro-->
   <div class="containerlogin">
-        <img src="img/UW.png" class="circle">
+        <img src="img/UW.png" class="circle">	
+	 		   
+	           <h4>Bem vindo ao UniWallet</h4>
+        	   <h6> O University Wallet é o lugar onde você reserva suas compras de alimentos e muito mais, sem enfrentar filas. </h6>
 
-      <div id="a-b">
-        <div class="box">
-       		 <h4>Bem vindo ao UniWallet</h4>
-        	 <h6> O University Wallet é o lugar onde você reserva suas compras de alimentos e muito mais, sem 		enfrentar filas. </h6>
-		</div>
-
-        <div class="box left">
-      	  <form>
+      	 <form>
          	 <div class="form-input">
           		  <input type="text" name="Email" placeholder="E-mail">
           	 </div>
@@ -78,14 +45,14 @@
               </div>
 
            <input type="submit" name="submit" value="Continuar" class="btn-continuar">
-
-            <b href="#">ou</b>
+           		<h6>ou</h6>
+            <!--<b href="#">ou</b>-->
             <input type="submit" name="submit" value="Continuar com Facebook" class="btn-conFace">
          
              <b href="#">Ao criar uma conta, você concorda com os Termos de serviço do University Wallet.</b>
         </fomr>
-      </div>
-     </div>
+        	
+    
   </div>
 	 <!--Jquery-->
 	 <script src="https://code.jquery.com/jquery-3.2.0.min.js"> </script>
@@ -95,8 +62,6 @@
 	 </body>
 </html>
 
-<!--Código CSS-->
-
 .mini-logo{
 	width: 52px;
 	margin-top: 6px;
@@ -104,6 +69,7 @@
 	margin-left: 60px;
 }
 
+/* painel de cadastro*/
 body{
   margin: 0 auto;
   background-image: url("../img/desktop8.jpg");
@@ -111,52 +77,6 @@ body{
   background-size: cover  720px;
 }
 
-div#a-b{
-	display:inline;
-}
-#a {
-float: left;
-margin-top: 1px;
-margin-left: 30px;
-}
-#b {
-float: left;
-margin-top: -60px;
-margin-left: 30px;
-}
- 
- div#a-b h4 {
-	text-align: left;
-	margin-left: 30px;
-	margin-right: 500px;
-}
-
-h4{
-	margin-left: 20px;
-	margin-right: 400px;
-	font-weight: 500;
-	color: white;
-	font-family: sans-serif;
-	margin-top: 30px;
-}
-
-div#a-b h6 {
-text-align: center;
-margin-left: 30px;
-margin-right: 500px;
-}
-
-}
-h6{
-	margin-left: 15px;
-	margin-right: 400px;
-	font-weight: 500;
-	color: #fff;
-	font-family: sans-serif;
-	margin-top: 80px;
-}
-
-div#a-b
 .containerlogin{
   width:900px;
   height: 400px;
@@ -174,24 +94,36 @@ div#a-b
 
 }
 
+		h4{
+			margin-left: 20px;
+			margin-right: 400px;
+			font-weight: 500px;
+			color: white;
+			font-family: sans-serif;
+			margin-top: 30px;
+		   }
+
+		h6{
+			margin-left: 15px;
+			margin-right: 400px;
+			font-weight: 500px;
+			color: white;
+			font-family: sans-serif;
+			margin-top: 80px;
+		   }
+
 input[type="text"],input[type="password"]{
   height: 45px;
   width: 300px;
   font-size: 18px;
   border: none;
   border-radius: 4px;
-  margin-bottom: 13px;
+  margin-bottom: 20px;
   margin-top: 17px;
   background-color: #fff;
   margin-left: 500px;
 }
-.form-input::before{
-  position: absolute;
-  font-family: "FontAwesome";
-  padding-left: 5px;
-  padding-top: 20px;
-  font-size: 35px;
-}
+
 
 .btn-continuar{
   padding: 15px 30px;
@@ -222,3 +154,4 @@ b{
   font-weight: 100px;
   margin-left: 500px;
 }
+
