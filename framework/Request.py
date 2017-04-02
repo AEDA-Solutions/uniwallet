@@ -1,4 +1,5 @@
 from cgi import parse_qs, escape
+from framework.helpers import translator as translator
 
 class Request:
 	def __init__(self, env):
@@ -7,16 +8,33 @@ class Request:
 		self.urn_list = self.urn.strip('/').split('/')
 		self.ok = len(self.urn_list) == 2
 		if self.ok:
-			self.resource = self.urn_list[0]
-			self.action = self.urn_list[1]
-		self.POST = self.get_POST(env)
+			self.resource, self.action = self.urn_list[0], self.urn_list[1]
+		self.body = self.translate_content()
 
-	def get_POST(self, env):
-		request_body_size = 0
+	def get_body_size(self):
+		"""
+		get_body_size(): It returns the size of the message received through the request
+		"""
 		try:
-			request_body_size = int(env.get('CONTENT_LENGTH', 0))
+			request_body_size = int(self.env.get('CONTENT_LENGTH', 0))
 		except (ValueError):
 			request_body_size = 0
+		return request_body_size
 
-		request_body = env['wsgi.input'].read(request_body_size)
-		return parse_qs(request_body)
+	def get_POST(self):
+		"""
+		get_POST(): This function reads the raw post content from the HTTP request
+		"""
+		request_body = self.env['wsgi.input'].read(self.get_body_size())
+		return request_body.decode("utf-8")
+
+
+	def translate_content(self):
+		"""
+		translate_content(): It tries to convert the received message from JSON string to a dict
+		"""
+		POST_content = self.get_POST()
+		if(POST_content):
+			return translator.decode_JSON(POST_content)
+		else:
+			return {}

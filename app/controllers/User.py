@@ -4,5 +4,8 @@ class User(default.Controller):
 	def __init__(self):
 		pass
 
-	def sample(self, variables = None):
-		return "hello bitch: {}".format(repr(variables.POST))
+	def sample(self, request = None):
+		if 'name' in request.body:
+			return request.body['name']
+		else:
+			return "attribute 'name' not found"
