@@ -13,3 +13,9 @@ class Response:
 
 	def get_body(self):
 		return self.body.encode("utf-8")
+
+	def make_warning(self, msg):
+		warning = Response()
+		warning.ok = False
+		warning.body = msg
+		return warning
