@@ -1,15 +1,17 @@
+from framework.helpers import general as helper
+
 class Response:
 	def __init__(self):
 		self.status = '200 OK'
-		self.headers = {'Content-type':'text/html; charset=utf-8'}
+		self.headers = [('Content-type', 'text/html; charset=utf-8')]
 		self.body = None
 		self.ok = True
 
-	def get_headers(self):
-		return list(self.headers.items())
+	def set_headers(self, headers):
+		self.headers = headers
 
-	def set_header(self, item, value):
-		self.headers[item] = value
+	def append_header(self, header):
+		self.headers = helper.fit_pair_to_list(self.headers, header)
 
 	def get_body(self):
 		return self.body.encode("utf-8")

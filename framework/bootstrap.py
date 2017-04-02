@@ -14,6 +14,5 @@ from framework.helpers.environment import dump_env
 def bootstrap(env, meta):
 	request = Request(env)
 	response = route(request)
-	meta(response.status, response.get_headers())
+	meta(response.status, response.headers)
 	return [response.get_body()]
-	#return [dump_env(env).encode("utf-8")]

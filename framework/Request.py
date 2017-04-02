@@ -8,7 +8,7 @@ class Request:
 		self.urn_list = self.urn.strip('/').split('/')
 		self.ok = len(self.urn_list) == 2
 		if self.ok:
-			self.resource, self.action = self.urn_list[0], self.urn_list[1]
+			self.controller, self.action = self.urn_list[0], self.urn_list[1]
 		self.body = self.translate_content()
 
 	def get_body_size(self):
