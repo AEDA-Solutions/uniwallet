@@ -9,7 +9,7 @@ class Request:
 		self.ok = len(self.urn_list) == 2
 		if self.ok:
 			self.controller, self.action = self.urn_list[0], self.urn_list[1]
-		self.body = self.translate_content()
+		self.body = self.translate_POST_content()
 
 	def get_body_size(self):
 		"""
@@ -29,7 +29,7 @@ class Request:
 		return request_body.decode("utf-8")
 
 
-	def translate_content(self):
+	def translate_POST_content(self):
 		"""
 		translate_content(): It tries to convert the received message from JSON string to a dict
 		"""
