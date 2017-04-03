@@ -1,6 +1,7 @@
-from framework import Connection as default
+from framework import Connection as std
+from app.db import config as db
 
-class Model(default.Connection):
+class Model:
 	def __init__(self):
-		pass
+		self.db = std.Connection(db.config())
 		

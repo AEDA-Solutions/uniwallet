@@ -1,9 +1,9 @@
-from framework import Response as default
+from framework import Response as std
 
 class Controller:
 
 	def __init__(self):
-		self.response = default.Response()
+		self.response = std.Response()
 
 	def fetch_response(self, body):
 		"""
@@ -20,5 +20,5 @@ class Controller:
 		if hasattr(self, action_name) and callable(getattr(self, action_name)):
 			return self.fetch_response(getattr(self, action_name)(variables))
 		else:
-			return default.Response().make_warning("Action '{}' unavailable".format(action_name))
+			return std.Response().make_warning("Action '{}' unavailable".format(action_name))
 

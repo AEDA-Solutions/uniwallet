@@ -8,6 +8,7 @@ It means it is just a spark for the system which is actually built through the b
 
 from wsgiref.simple_server import make_server
 from framework.bootstrap import bootstrap
+import mysql.connector
 	
 host = 'localhost'
 port = 8000
