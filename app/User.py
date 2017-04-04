@@ -6,14 +6,19 @@ class User(std.Model):
 	def foo(self):
 
 		cursor = self.conn.cursor()
-		teste_data = ('Registro9')
-		add_teste = ("INSERT INTO teste "
-			"(data) "
-			"VALUES ('{}')".format(teste_data))
-		cursor.execute(add_teste)
+
+		script = get_script()
+
+		dados = ('guilhere', 25, 'email')
+
+		db_command = (script.format(dados))
+		#pegar script com db
+
+		retorno = cursor.execute(db_command)
 		self.conn.commit()
+		
 		cursor.close()
-		return "Stored"
+		return "Pronto"
 
 	def abc(self):
 		return "abc"

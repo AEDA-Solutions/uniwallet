@@ -17,3 +17,7 @@ class User(std.Controller):
 			"attr2": [1, 2, 3]
 		}
 
+	def register(self, request):
+		return self.model().foo()
+
+
