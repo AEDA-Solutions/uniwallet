@@ -20,7 +20,7 @@ def bootstrap(env, meta):
 		response = Router(request, database).route()
 		database.conn.close()
 	else:
-		response = Response().make_warning("I'm sorry Dave. I've found a db connection issue. Try taking a look at the logs.")
+		response = Response(ok = False, body = "I'm sorry Dave. I've found a db connection issue. Try taking a look at the logs.")
 	meta(response.status, response.headers)
-	return [response.get_body()]
+	return [Response().prepare(response)]
 

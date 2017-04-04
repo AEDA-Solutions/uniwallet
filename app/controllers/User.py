@@ -12,5 +12,8 @@ class User(std.Controller):
 		return "Abc {}".format("ok")
 
 	def run(self, request):
-		return self.model().foo()
+		return {
+			"attr1" : "error",
+			"attr2": [1, 2, 3]
+		}
 

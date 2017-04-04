@@ -17,9 +17,9 @@ class Router():
 			if controller_name:
 				return self.get_controller_output(controller_name)
 			else:
-				return std.Response().make_warning("Controller '{}' not found".format(self.request.controller))
+				return std.Response(ok = False, body = "Controller '{}' not found".format(self.request.controller))
 		else:
-			return std.Response().make_warning("Invalid route")
+			return std.Response(ok = False, body = "Invalid route")
 
 	def parse_controller_name(self, cname):
 		"""
@@ -40,7 +40,7 @@ class Router():
 		try:
 			controller = getattr(mod, controller_name)(self.database)
 		except Exception as err:
-			return std.Response().make_warning("Ops. Error calling controller: {}".format(str(err)))
+			return std.Response(ok = False, body = "Ops. Error calling controller: {}".format(str(err)))
 		return self.run_action(controller)
 
 	def run_action(self, controller):
@@ -50,5 +50,5 @@ class Router():
 		try:
 			action_output = controller.action(self.request.action, self.request)
 		except Exception as err:
-			action_output = std.Response().make_warning("Ops. Error calling action: {}".format(str(err)))
+			return std.Response(ok = False, body = "Ops. Error calling action: {}".format(str(err)))
 		return action_output
