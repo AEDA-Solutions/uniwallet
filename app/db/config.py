@@ -1,7 +1,7 @@
 def config():
 	return {
 	'user': 'root',
-	'password': 'qwecxz123',
+	'password': 'enterhere',
 	'host': 'localhost',
 	'database': 'uniwallet',
 	'raise_on_warnings': True,

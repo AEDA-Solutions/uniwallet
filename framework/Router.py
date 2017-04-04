@@ -4,8 +4,9 @@ import importlib
 from framework.helpers import general as helper
 
 class Router():
-	def __init__(self, request):
+	def __init__(self, request, database):
 		self.request = request
+		self.database = database
 
 	def route(self):
 		"""
@@ -38,7 +39,7 @@ class Router():
 		"""
 		mod = importlib.import_module("app.controllers.{}".format(controller_name))
 		try:
-			controller = getattr(mod, controller_name)()
+			controller = getattr(mod, controller_name)(self.database)
 		except Exception as err:
 			return std.Response().make_warning("Ops. Error calling controller: {}".format(str(err)))
 		return self.run_action(controller)

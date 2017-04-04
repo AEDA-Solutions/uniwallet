@@ -1,9 +1,13 @@
 from framework import Response as std
+import importlib
+from framework.helpers import general as helper
+import app
 
 class Controller:
 
-	def __init__(self):
+	def __init__(self, database):
 		self.response = std.Response()
+		self.db = database
 
 	def fetch_response(self, body):
 		"""
@@ -21,4 +25,16 @@ class Controller:
 			return self.fetch_response(getattr(self, action_name)(variables))
 		else:
 			return std.Response().make_warning("Action '{}' unavailable".format(action_name))
+
+	def model(self):
+		"""
+		get_model(): It returns a instance a of a correspondent model
+		"""
+		model_instance = None
+		for model_name in helper.get_package_modules(app):
+			if model_name == self.__class__.__name__:
+				model_instance = getattr(importlib.import_module("app.{}".format(model_name)), model_name)(self.db)
+				break
+		return model_instance
+
 
