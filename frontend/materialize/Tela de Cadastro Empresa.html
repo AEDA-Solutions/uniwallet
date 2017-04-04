@@ -1,0 +1,67 @@
+<!-- Tela de Cadastro Empresa-->
+
+
+<html>
+
+<head>
+  <title>Tela de Cadastro Empresa</title>
+        <link rel="stylesheet" type="text/css" href="assets\css\styleslogin.css">
+        </link>
+
+        <link rel="stylesheet" type="text/css" href="assets\css\font-awesome.css">
+
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!---------------------------------------------->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+</head>
+
+
+<body>
+      <div class="containercadastro">
+        <img src="assets\images\uwlogo.gif">
+        <form>
+
+          <div class="form-input">
+             <input type="text" name="Nome de Usuario" placeholder="Coloque o nome da empresa">
+          </div>
+
+          <div class="form-input">
+            <input type="text" name="Senha" placeholder="Coloque a senha desejada">
+          </div>
+
+          <div class="form-input">
+            <input type="ncpf" name="CNPJ" placeholder="Insira o CNPJ da empresa">
+          </div>
+
+          <div class="form-input">
+            <input type="cadastroemp" name="email" placeholder="Insira o email da empresa">
+          </div>
+
+          <h3>Selecione o ramo de vendas da empresa:</h3>
+          <form method="post" action="cadastrar-enquete.php">
+          <select name="Ramo de vendas">
+          <option value="Alim">Alimentos</option>
+          <option value="Roup">Roupas</option>
+          <option value="Livro">Livros</option>
+          <option value="Outros">Outros</option>
+          </select>
+
+<br>
+<br>
+          <input type="submit" name="submit" value="CADASTRE-SE COMO EMPRESA" class="btn-login">
+          <br>
+          <a href="#">Cadastre-se como usuario</a>
+        </fomr>
+      </div>
+
+
+</body>
+
+</html>
