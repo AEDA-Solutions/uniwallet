@@ -1,6 +1,7 @@
 from framework import Response as std
 import importlib
 from framework.helpers import general as helper
+from framework.helpers import translator as translator
 import app
 
 class Controller:
@@ -13,7 +14,7 @@ class Controller:
 		"""
 		fetch_response(): It assigns the response body content and return the Response object
 		"""
-		self.response.body = body
+		self.response.body = translator.encode_JSON(body)
 		return self.response
 
 	def action(self, action_name, variables = None):

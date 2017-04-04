@@ -32,7 +32,6 @@ class Router():
 				break
 		return controller_name
 
-
 	def get_controller_output(self, controller_name):
 		"""
 		get_controller_output(): It makes a controller object and returns the action result
