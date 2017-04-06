@@ -20,5 +20,12 @@ class User(std.Middleware):
 				"auth": ["manager", "client"]
 			}, request)
 
+	def make(self, request):
+		return self.rules({
+				"fields": {
+					"name" : ["required"]
+				}
+			}, request)
+
 
 
