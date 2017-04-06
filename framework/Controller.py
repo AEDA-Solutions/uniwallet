@@ -15,9 +15,10 @@ class Controller:
 		If that method is not found, it returns a warning.
 		"""
 		if hasattr(self, action_name) and callable(getattr(self, action_name)):
-			return std.Response(ok = True, body = getattr(self, action_name)(variables))
+			action_output = getattr(self, action_name)(variables)
+			return std.Response(code = self.response.code, body = action_output)
 		else:
-			return std.Response(ok = False, body = "Action '{}' unavailable".format(action_name))
+			return std.Response(code = 'Not Found', body = "Action '{}' unavailable".format(action_name))
 
 	def model(self):
 		"""

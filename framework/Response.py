@@ -2,11 +2,24 @@ from framework.helpers import general as helper
 from framework.helpers import translator as translator
 
 class Response:
-	def __init__(self, ok = True, body = None):
+	def __init__(self, code = 'OK', body = None):
 		self.status = '200 OK'
 		self.headers = [('Content-type', 'text/html; charset=utf-8')]
-		self.ok = ok
+		self.code = code
 		self.body = body
+
+	def translate_code(self, code):
+		"""
+		translate_code(): Check out https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+		"""
+		codes = {
+		'OK': 200,
+		'Bad Request': 400,
+		'Forbidden': 403,
+		'Not Found': 404,
+		'Internal Server Error': 500
+		}
+		return codes[code]
 
 	def set_headers(self, headers):
 		"""
@@ -22,4 +35,4 @@ class Response:
 		self.headers = helper.fit_pair_to_list(self.headers, header)
 
 	def prepare(self, response):
-		return translator.encode_JSON({"ok": response.ok, "content": response.body}).encode("utf-8")
+		return translator.encode_JSON({"code": self.translate_code(response.code), "content": response.body}).encode("utf-8")
