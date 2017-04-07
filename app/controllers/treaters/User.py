@@ -1,6 +1,6 @@
-from framework import Middleware as std
+from framework import Treater as std
 
-class User(std.Middleware):
+class User(std.Treater):
 	def register(self, request):
 		return self.rules({
 				"fields": {

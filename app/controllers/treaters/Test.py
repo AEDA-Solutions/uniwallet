@@ -1,6 +1,6 @@
-from framework import Middleware as std
+from framework import Treater as std
 
-class Test(std.Middleware):
+class Test(std.Treater):
 	def coisa(self, request):
 		return self.rules({
 				"fields": {

@@ -35,4 +35,7 @@ class Response:
 		self.headers = helper.fit_pair_to_list(self.headers, header)
 
 	def prepare(self, response):
+		"""
+		prepare(): This function makes a transmittable response
+		"""
 		return translator.encode_JSON({"code": self.translate_code(response.code), "content": response.body}).encode("utf-8")

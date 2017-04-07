@@ -1,27 +1,37 @@
 from app import controllers
-from app.controllers import middlewares
+from app.controllers import treaters
 from framework import Response as std
 import importlib
 from framework.helpers import general as helper
 from framework.helpers import debugger as debugger
+import sys, traceback
 
 class Router():
-	def __init__(self, request, database):
+	def __init__(self, request):
 		self.request = request
-		self.database = database
 		
 	def route(self):
 		"""
-		route(): Route
+		route(): It chooses the appropriate controller
 		"""
 		if self.request.ok:
-			middleware = self.call_controller(middlewares)
-			if middleware.code == 'OK' or middleware.code == 'Not Found':
-				return self.call_controller(controllers)
-			else:
-				return std.Response(code = middleware.code, body = middleware.body)
+			try:
+				return self.choose_road()
+			except:
+				debugger.applog(traceback.format_exc())
+				return std.Response(code = 'Internal Server Error', body = "Look Dave, I can see you're really upset about this. But try to take a look at the logs, please.")
 		else:
 			return std.Response(code = 'Bad Request', body = "Invalid route")
+
+	def choose_road(self):
+		"""
+		choose_road(): It call the specified controller
+		"""
+		treater = self.call_controller(treaters)
+		if treater.code == 'OK' or treater.code == 'Not Found':
+			return self.call_controller(controllers)
+		else:
+			return std.Response(code = treater.code, body = treater.body)
 
 	def call_controller(self, package):
 		"""
@@ -38,11 +48,8 @@ class Router():
 		instance_controller(): It makes a controller object and returns the action result
 		"""
 		mod = importlib.import_module(package.__name__ + ".{}".format(controller_name))
-		try:
-			controller = getattr(mod, controller_name)(self.database)
-		except Exception as err:
-			return std.Response(code = 'Internal Server Error', body = "Ops. Error calling controller: {}".format(str(err)))
-		return self.execute_action(controller)
+		controller = getattr(mod, controller_name)()
+		return controller.action(self.request.action, self.request)
 
 	
 	def translate_controller_name(self, package, raw_name):
@@ -55,13 +62,3 @@ class Router():
 				controller_name = name
 				break
 		return controller_name
-
-	def execute_action(self, controller):
-		"""
-		execute_action(): It calls the specified action from the passed controller instance
-		"""
-		try:
-			action_output = controller.action(self.request.action, self.request)
-		except Exception as err:
-			return std.Response(code = 'Internal Server Error', body = "Ops. Error calling action: {}".format(str(err)))
-		return action_output

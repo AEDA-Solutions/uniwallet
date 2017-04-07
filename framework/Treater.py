@@ -1,6 +1,6 @@
 from framework import Controller as std
 
-class Middleware(std.Controller):
+class Treater(std.Controller):
 	def forbid(self):
 		self.response.code = 'Bad Request'
 
@@ -11,12 +11,12 @@ class Middleware(std.Controller):
 		return True
 
 	def check_fields(self, fields, request):
-		response = []
+		response = ""
 		for key, value in fields.items():
 			if 'required' in value and not key in request.body:
-				response.append("{} field is required".format(key))
-		if len(response):
-			self.forbid()
+				response = "{} field is required".format(key)
+				self.forbid()
+				break			
 		return response
 
 	def validate(self, rules, request):

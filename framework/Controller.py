@@ -5,9 +5,8 @@ import app
 
 class Controller:
 
-	def __init__(self, database):
+	def __init__(self):
 		self.response = std.Response()
-		self.db = database
 
 	def action(self, action_name, variables = None):
 		"""
@@ -27,7 +26,7 @@ class Controller:
 		model_instance = None
 		for model_name in helper.get_package_modules(app):
 			if model_name == self.__class__.__name__:
-				model_instance = getattr(importlib.import_module("app.{}".format(model_name)), model_name)(self.db)
+				model_instance = getattr(importlib.import_module("app.{}".format(model_name)), model_name)()
 				break
 		return model_instance
 

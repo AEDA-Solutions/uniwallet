@@ -8,7 +8,7 @@ class Request:
 		self.urn_list = self.urn.strip('/').split('/')
 		self.ok = len(self.urn_list) == 2
 		if self.ok:
-			self.controller, self.action = self.urn_list[0], self.urn_list[1]
+			self.controller, self.action = self.urn_list[0].replace(".", ""), self.urn_list[1].replace(".", "")
 		self.body = self.translate_POST_content()
 
 	def get_body_size(self):

@@ -8,4 +8,7 @@ class User(std.Controller):
 	def make(self, request):
 		return self.model().save(request)	
 
+	def run(self, request):
+		return "fdsafd"
+
 
