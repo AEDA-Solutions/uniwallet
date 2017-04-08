@@ -16,16 +16,16 @@ class Router():
 		"""
 		if self.request.ok:
 			try:
-				return self.choose_road()
+				return self.resolve()
 			except:
 				debugger.applog(traceback.format_exc())
-				return std.Response(code = 'Internal Server Error', body = "Look Dave, I can see you're really upset about this. But try to take a look at the logs, please.")
+				return std.Response(code = 'Internal Server Error', body = "I'm sorry Dave, I'm afraid I can't do that")
 		else:
 			return std.Response(code = 'Bad Request', body = "Invalid route")
 
-	def choose_road(self):
+	def resolve(self):
 		"""
-		choose_road(): It call the specified controller
+		resolve(): It call the specified controller
 		"""
 		treater = self.call_controller(treaters)
 		if treater.code == 'OK' or treater.code == 'Not Found':
@@ -48,8 +48,8 @@ class Router():
 		instance_controller(): It makes a controller object and returns the action result
 		"""
 		mod = importlib.import_module(package.__name__ + ".{}".format(controller_name))
-		controller = getattr(mod, controller_name)()
-		return controller.action(self.request.action, self.request)
+		controller = getattr(mod, controller_name)(self.request)
+		return controller.action(self.request.action)
 
 	
 	def translate_controller_name(self, package, raw_name):

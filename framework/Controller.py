@@ -5,16 +5,17 @@ import app
 
 class Controller:
 
-	def __init__(self):
+	def __init__(self, request):
 		self.response = std.Response()
+		self.request = request
 
-	def action(self, action_name, variables = None):
+	def action(self, action_name):
 		"""
 		action(): It tries to call a method called 'action_name' from the current Controller object. Then it returns the output of that method.
 		If that method is not found, it returns a warning.
 		"""
 		if hasattr(self, action_name) and callable(getattr(self, action_name)):
-			action_output = getattr(self, action_name)(variables)
+			action_output = getattr(self, action_name)()
 			return std.Response(code = self.response.code, body = action_output)
 		else:
 			return std.Response(code = 'Not Found', body = "Action '{}' unavailable".format(action_name))

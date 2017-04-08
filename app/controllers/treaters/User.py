@@ -1,7 +1,7 @@
 from framework import Treater as std
 
 class User(std.Treater):
-	def register(self, request):
+	def register(self):
 		return self.rules({
 				"fields": {
 					"firstname": ["required"],
@@ -18,14 +18,21 @@ class User(std.Treater):
 					"cpf": ["optional"],
 				},
 				"auth": ["manager", "client"]
-			}, request)
+			})
 
-	def make(self, request):
+	def make(self):
 		return self.rules({
 				"fields": {
-					"name" : ["required"]
+					"name": ["required"]
 				}
-			}, request)
+			})
+
+	def run(self):
+		return self.rules({
+				"fields": {
+					"addr": ["required"]
+				}
+			})
 
 
 
