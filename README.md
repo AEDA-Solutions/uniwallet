@@ -3,21 +3,25 @@ A project to get rich.
 
 ## Requirements
 
- * Python3 and utilities (sudo apt-get install python3 python-pip python-dev python3-setuptools python3-mysql.connector
- sudo easy_install3 pip)
- * Mysql (sudo apt-get install mysql-server libmysqlclient-dev)
+ * Python3 and utilities
+ 	- sudo apt-get install python3 python-pip python-dev python3-setuptools python3-mysql.connector
+ 	- sudo easy_install3 pip
+ * Mysql 
+ 	- sudo apt-get install mysql-server libmysqlclient-dev
  * A browser
 
 ## Swagger
 ### Swagger dependencies (for making API documentation)
- * npm (sudo apt-get npm install
- sudo npm install npm -g
- sudo ln -s /usr/bin/nodejs /usr/bin/node)
- * Node (sudo npm cache clean -f
- sudo npm install -g n
- sudo n stable
- )
- * Swagger module (sudo npm install -g swagger)
+ * npm
+ 	- sudo apt-get npm install
+ 	- sudo npm install npm -g
+ 	- sudo ln -s /usr/bin/nodejs /usr/bin/node
+ * Node 
+	- sudo npm cache clean -f
+ 	- sudo npm install -g n
+ 	- sudo n stable
+ * Swagger module
+ 	- sudo npm install -g swagger
 
 ### Start swagger editor
 There is a browser based editor. Just run:
@@ -25,8 +29,6 @@ There is a browser based editor. Just run:
  cd doc/swagger/
  swagger project edit
  ```
-
-
 ## How to run
 
  * Open the terminal and go into uniwallet root directory.
