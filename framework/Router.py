@@ -4,7 +4,7 @@ from framework import Response as std
 import importlib
 from framework.helpers import general as helper
 from framework.helpers import debugger as debugger
-import sys, traceback
+import traceback
 
 class Router():
 	def __init__(self, request):
