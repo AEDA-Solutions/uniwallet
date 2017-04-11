@@ -7,31 +7,10 @@ class User(std.Treater):
 					"firstname": ["required"],
 					"lastname": ["required"],
 					"email": ["required"],
-					"login": ["required"],
-					"password": ["required"],
-					"ddd": ["optional"],
-					"cellphone": ["optional"],
-					"address": ["optional"],
-					"city": ["optional"],
-					"state": ["optional"],
-					"neighborhhood": ["optional"],
-					"cpf": ["optional"],
+					"university": ["required"],
+					"password": ["required"]
 				},
-				"auth": ["manager", "client"]
-			})
-
-	def make(self):
-		return self.rules({
-				"fields": {
-					"name": ["required"]
-				}
-			})
-
-	def run(self):
-		return self.rules({
-				"fields": {
-					"addr": ["required"]
-				}
+				#"auth": ["manager", "client"]
 			})
 
 

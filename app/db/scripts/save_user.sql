@@ -1,2 +1,2 @@
-INSERT INTO Users (firstname,lastname, login, password, ddd, cellphone, address, city, state, neighborhhood, cpf, email)
-VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')
+INSERT INTO Users (firstname, lastname, email, university, password)
+VALUES ('{firstname}','{lastname}','{email}','{university}','{password}')

@@ -20,15 +20,24 @@ class Controller:
 		else:
 			return std.Response(code = 'Not Found', body = "Action '{}' unavailable".format(action_name))
 
-	def model(self):
+	def model(self, data):
 		"""
 		get_model(): It returns a instance a of a correspondent model
 		"""
 		model_instance = None
 		for model_name in helper.get_package_modules(app):
 			if model_name == self.__class__.__name__:
-				model_instance = getattr(importlib.import_module("app.{}".format(model_name)), model_name)()
+				model_instance = getattr(importlib.import_module("app.{}".format(model_name)), model_name)(data)
 				break
-		return model_instance
+		if model_instance:
+			return model_instance
+		else:
+			raise Exception("Error invoking model '{}'. This model is not created yet.".format(self.__class__.__name__))
+
+	def get_request_parameters(self):
+		"""
+		get_request_parameters(): It returns the request body
+		"""
+		return self.request.body
 
 
