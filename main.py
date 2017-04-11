@@ -11,7 +11,7 @@ from framework.bootstrap import bootstrap
 import mysql.connector
 	
 host = 'localhost'
-port = 8000
+port = 8003
 
 httpd = make_server(host, port, bootstrap)
 print("Serving on port {}...".format(port))
