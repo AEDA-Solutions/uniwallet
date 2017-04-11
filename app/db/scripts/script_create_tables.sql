@@ -28,10 +28,7 @@ companylogin VARCHAR(15) NOT NULL,
 companypassword VARCHAR(15) NOT NULL,
 companyddd INT(2),
 companyphone INT(9),
-companyaddress VARCHAR(100)
+companyaddress VARCHAR(100),
 city VARCHAR(20),
 cnpj INT(14)
-);
-
-
 );
