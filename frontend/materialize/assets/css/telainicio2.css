@@ -11,7 +11,7 @@
 body{ 
 
   margin: 0 auto; 
-  background-image: url("desktop8.jpg"); 
+  background-image: url("../images/desktop8.jpg"); 
   background-repeat: no-repeat; 
   background-size: cover; 
 } 
