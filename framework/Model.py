@@ -2,23 +2,24 @@ from framework.Database import Database
 from app.db import config as DB
 
 class Model:
+	id = None
+
 	def __init__(self, data = None):
 		if data:
-			database = Database(DB.config())
-			self.conn = database.conn
+			self.db = Database(DB.config())
 			self.data = data
 			self.define_attributes(data)
-			self.db_scripts = self.define_sql_scripts_path()
 		else:
 			raise Exception("Error calling model '{}'. Model must receive some data.".format(self.__class__.__name__))
 
-	def define_sql_scripts_path(self):
+	def get_table_name(self):
 		"""
-		define_sql_scripts_path(): It fetches the sql scripts names
+		get_table_name() It returns the table name.
 		"""
-		return {
-			'save': "save_{}".format(self.__class__.__name__.lower())
-		}
+		if hasattr(self, "table_name"):
+			return self.table_name
+		else:
+			return self.__class__.__name__ + 's';
 
 	def get_attributes(self):
 		"""
@@ -39,39 +40,36 @@ class Model:
 			else:
 				raise Exception("Error calling model '{}'. Attribute '{}' is missing on the passed data.".format(self.__class__.__name__, attr))
 
-	def sql_script(self, script_name, path = "app/db/scripts"):
+	
+	def execute_standard_db_script(self, script_name):
 		"""
-		sql_script(): It returns the sql script file content
+		execute_standard_db_script(): It executes scripts placed on framework/db/scripts 
 		"""
-		with open("{}/{}.sql".format(path, script_name), 'r') as file:
-			return file.read()
-		
-	def prepare_sql_script(self, sql_script_name, data):
-		"""
-		prepare_sql_script(): It replaces the data on the script
-		"""
-		file_content = self.sql_script(sql_script_name)
-		for key, value in data.items():
-			if "{" + key + "}" in file_content: 
-				file_content = file_content.replace("{" + key + "}", value)
-			else:
-				raise Exception("Error calling model '{}'. SQL script '{}' is missing parameter '{}'.".format(self.__class__.__name__, sql_script_name, key))
-		return file_content
-
-	def execute_db_script(self, sql_script_name, data):
-		"""
-		execute_db_script(): It execute the selected file query
-		"""
-		cursor = self.conn.cursor()
-		sql = (self.prepare_sql_script(sql_script_name, data))
-		cursor.execute(sql)
-		self.conn.commit()
-		return cursor
+		cursor = self.db.execute(self.db.build_query(script_name, self.get_table_name(), self.get_attributes()), self.get_attributes())
+		cursor.close()
+		return self.db.conn
 
 	def save(self):
 		"""
-		save(): It saves the model content on db
+		save(): It saves the model content on db.
+		If the Model::id is None a new record is created. Otherwise it'll try to update an existing record.
 		"""
-		cursor = self.execute_db_script(self.db_scripts['save'], self.get_attributes())
-		cursor.close()
-		return self.conn
+		if self.id:
+			return self.update()
+		else:
+			return self.create()
+
+	def load(self, id):
+		pass
+
+	def destroy(self):
+		pass
+
+	def find(self):
+		pass
+
+	def create(self):
+		return self.execute_standard_db_script("create")
+
+	def update(self):
+		return self.execute_standard_db_script("update")

@@ -1,5 +1,7 @@
 app/db/config.py
 
+.~lock.*
+
 *.py[cod]
 db.sqlite3
 migrations/

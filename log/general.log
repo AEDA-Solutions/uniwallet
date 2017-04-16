@@ -1,0 +1,132 @@
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 19, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 32, in resolve
+    return self.call_controller(controllers)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 42, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 52, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    action_output = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/app/controllers/User.py", line 6, in register
+    self.model(self.get_request_parameters()).save().close()
+  File "/home/guilherme/repo/uniwallet/framework/Model.py", line 50, in save
+    cursor = self.db.execute(query, self.get_attributes())
+  File "/home/guilherme/repo/uniwallet/framework/Database.py", line 36, in execute
+    sql = (self.inject_data_on_query(query, data))
+  File "/home/guilherme/repo/uniwallet/framework/Database.py", line 28, in inject_data_on_query
+    raise Exception("Error calling model '{}'. SQL script '{}' is missing parameter '{}'.".format(self.__class__.__name__, query, key))
+Exception: Error calling model 'Database'. SQL script 'INSERT INTO Users (lastname, firstname, password, email, university)
+VALUES ('lastname', 'firstname', 'password', 'email', 'university')
+
+' is missing parameter 'lastname'.
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 19, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 32, in resolve
+    return self.call_controller(controllers)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 42, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 52, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    action_output = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/app/controllers/User.py", line 6, in register
+    self.model(self.get_request_parameters()).save().close()
+  File "/home/guilherme/repo/uniwallet/framework/Model.py", line 50, in save
+    cursor = self.db.execute(query, self.get_attributes())
+  File "/home/guilherme/repo/uniwallet/framework/Database.py", line 36, in execute
+    sql = (self.inject_data_on_query(query, data))
+  File "/home/guilherme/repo/uniwallet/framework/Database.py", line 28, in inject_data_on_query
+    raise Exception("Error calling model '{}'. SQL script '{}' is missing parameter '{}'.".format(self.__class__.__name__, query, key))
+Exception: Error calling model 'Database'. SQL script 'INSERT INTO Users (lastname, password, email, firstname, university)
+VALUES ('{}', '{}', '{}', '{}', '{}')
+
+' is missing parameter 'lastname'.
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 19, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 32, in resolve
+    return self.call_controller(controllers)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 42, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 52, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    action_output = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/app/controllers/User.py", line 6, in register
+    self.model(self.get_request_parameters()).save().close()
+  File "/home/guilherme/repo/uniwallet/framework/Model.py", line 48, in save
+    cursor = self.db.execute(self.db.build_query("create", self.get_attributes()), self.get_attributes())
+  File "/home/guilherme/repo/uniwallet/framework/Database.py", line 45, in build_query
+    query = self.get_script(script_name, "framework/db/scripts", data)
+  File "/home/guilherme/repo/uniwallet/framework/Database.py", line 16, in get_script
+    return file.read().replace("{table_name}", table_name)
+TypeError: Can't convert 'dict' object to str implicitly
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 19, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 32, in resolve
+    return self.call_controller(controllers)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 42, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 52, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    action_output = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/app/controllers/User.py", line 6, in register
+    self.model(self.get_request_parameters()).save().close()
+  File "/home/guilherme/repo/uniwallet/framework/Model.py", line 54, in save
+    return self.execute_standard_db_script("save")
+  File "/home/guilherme/repo/uniwallet/framework/Model.py", line 45, in execute_standard_db_script
+    cursor = self.db.execute(self.db.build_query(script_name, self.get_table_name(), self.get_attributes()), self.get_attributes())
+  File "/home/guilherme/repo/uniwallet/framework/Database.py", line 46, in build_query
+    query = self.get_script(script_name, "framework/db/scripts", table_name)
+  File "/home/guilherme/repo/uniwallet/framework/Database.py", line 14, in get_script
+    with open("{}/{}.sql".format(path, script_name), 'r') as file:
+FileNotFoundError: [Errno 2] No such file or directory: 'framework/db/scripts/save.sql'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 19, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 32, in resolve
+    return self.call_controller(controllers)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 42, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 52, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    action_output = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/app/controllers/User.py", line 6, in register
+    self.model(self.get_request_parameters()).save().close()
+  File "/home/guilherme/repo/uniwallet/framework/Model.py", line 60, in save
+    self.create()
+  File "/home/guilherme/repo/uniwallet/framework/Model.py", line 72, in create
+    return self.execute_standard_db_script("update")
+  File "/home/guilherme/repo/uniwallet/framework/Model.py", line 48, in execute_standard_db_script
+    cursor = self.db.execute(self.db.build_query(script_name, self.get_table_name(), self.get_attributes()), self.get_attributes())
+  File "/home/guilherme/repo/uniwallet/framework/Database.py", line 36, in execute
+    sql = (self.inject_data_on_query(query, data))
+  File "/home/guilherme/repo/uniwallet/framework/Database.py", line 28, in inject_data_on_query
+    raise Exception("Error calling model '{}'. SQL script '{}' is missing parameter '{}'.".format(self.__class__.__name__, query, key))
+Exception: Error calling model 'Database'. SQL script '' is missing parameter 'university'.
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 19, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 32, in resolve
+    return self.call_controller(controllers)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 42, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 52, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    action_output = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/app/controllers/User.py", line 6, in register
+    self.model(self.get_request_parameters()).save().close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
