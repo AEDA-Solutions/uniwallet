@@ -1,12 +1,14 @@
 from framework.helpers import general as helper
 from framework.helpers import translator as translator
+from http.client import responses
 
 class Response:
-	def __init__(self, code = 'OK', body = None):
+	def __init__(self, code = 'OK', body = None, raw = False):
 		self.status = '200 OK'
 		self.headers = [('Content-type', 'text/html; charset=utf-8')]
 		self.code = code
 		self.body = body
+		self.raw = raw;
 
 	def translate_code(self, code):
 		"""
@@ -34,8 +36,12 @@ class Response:
 		"""
 		self.headers = helper.fit_pair_to_list(self.headers, header)
 
-	def prepare(self, response):
+	def prepare(self):
 		"""
 		prepare(): This function makes a transmittable response
 		"""
-		return translator.encode_JSON({"code": self.translate_code(response.code), "content": response.body}).encode("utf-8")
+		if self.raw:
+			self.status = '{} {}'.format(self.translate_code(self.code), responses[self.translate_code(self.code)])
+			return self.body.encode("utf-8")
+		else:
+			return translator.encode_JSON({"code": self.translate_code(self.code), "content": self.body}).encode("utf-8")
