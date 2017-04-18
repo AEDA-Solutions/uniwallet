@@ -1,6 +1,7 @@
 from framework import Response as std
 import importlib
 from framework.helpers import general as helper
+import os
 
 class Controller:
 
@@ -14,8 +15,8 @@ class Controller:
 		If that method is not found, it returns a warning.
 		"""
 		if hasattr(self, action_name) and callable(getattr(self, action_name)):
-			action_output = getattr(self, action_name)()
-			return std.Response(code = self.response.code, body = action_output)
+			self.response.body = getattr(self, action_name)()
+			return self.response
 		else:
 			return std.Response(code = 'Not Found', body = "Action '{}' unavailable".format(action_name))
 
@@ -31,8 +32,8 @@ class Controller:
 		get_model(): It returns a instance a of a correspondent model
 		"""
 		model_instance = None
-		app = helper.get_package_from_module(self.request.module, "modules")
-		for model_name in helper.get_package_modules(app):
+		pack = helper.get_package_from_module(self.request.module, "modules")
+		for model_name in helper.get_package_modules(pack):
 			if model_name == self.__class__.__name__:
 				model_instance = getattr(importlib.import_module("modules.{}.{}".format(self.request.module, model_name)), model_name)(self.get_db_config(), data)
 				break
@@ -46,5 +47,26 @@ class Controller:
 		get_request_parameters(): It returns the request body
 		"""
 		return self.request.body
+
+	def get_html(self, html_file_name):
+		"""
+		get_html(): It reads and returns the content of some html file placed on modules/{current_module}/html
+		"""
+		self.response_body_directly()
+		return self.get_file("html/{}.html".format(html_file_name))
+
+	def get_file(self, file_path, mode = 'r'):
+		"""
+		get_file(): Get the file content
+		"""
+		pack = helper.get_package_from_module(self.request.module, "modules")
+		with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+			return file.read()
+
+	def response_body_directly(self):
+		"""
+		response_body_directly(): It sets response.raw as True
+		"""
+		self.response.raw = True
 
 

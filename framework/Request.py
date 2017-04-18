@@ -14,6 +14,14 @@ class Request:
 			else:
 				self.module, self.controller, self.action = self.urn_list[0].replace(".", ""), self.urn_list[1].replace(".", ""), self.urn_list[2].replace(".", "")
 		self.body = self.translate_POST_content()
+		self.GET = self.get_GET()
+
+	def get_GET(self):
+		"""
+		get_GET(): It returns the variables passed through the url
+		"""
+		variables = parse_qs(self.env['QUERY_STRING'])
+		return variables
 
 	def get_body_size(self):
 		"""

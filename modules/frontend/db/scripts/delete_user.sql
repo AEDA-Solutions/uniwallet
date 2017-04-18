@@ -1,1 +1,0 @@
-DELETE FROM Users WHERE id='{pass_id}'

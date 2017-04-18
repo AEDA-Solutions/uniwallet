@@ -1,0 +1,501 @@
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 7, in plain
+    return self.get_file("static/{}".format(self.request.GET["target"][0]))
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/vendor/bootstrap/css/bootstrap.min.css'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 7, in plain
+    return self.get_file("static/{}".format(self.request.GET["target"][0]))
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/js/jqBootstrapValidation.js'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 7, in plain
+    return self.get_file("static/{}".format(self.request.GET["target"][0]))
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/vendor/bootstrap/js/bootstrap.min.js'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 7, in plain
+    return self.get_file("static/{}".format(self.request.GET["target"][0]))
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/vendor/jquery/jquery.min.js'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 7, in plain
+    return self.get_file("static/{}".format(self.request.GET["target"][0]))
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/vendor/font-awesome/css/font-awesome.min.css'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 7, in plain
+    return self.get_file("static/{}".format(self.request.GET["target"][0]))
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/css/freelancer.min.css'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 7, in plain
+    return self.get_file("static/{}".format(self.request.GET["target"][0]))
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/js/contact_me.js'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 7, in plain
+    return self.get_file("static/{}".format(self.request.GET["target"][0]))
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/js/freelancer.min.js'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 15, in img
+    img = self.get_file("static/{}".format(self.request.GET["target"][0]), 'rb')
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/img/portfolio/cabin.png'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 15, in img
+    img = self.get_file("static/{}".format(self.request.GET["target"][0]), 'rb')
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/img/portfolio/cake.png'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 15, in img
+    img = self.get_file("static/{}".format(self.request.GET["target"][0]), 'rb')
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/img/portfolio/circus.png'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 15, in img
+    img = self.get_file("static/{}".format(self.request.GET["target"][0]), 'rb')
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/img/portfolio/game.png'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 15, in img
+    img = self.get_file("static/{}".format(self.request.GET["target"][0]), 'rb')
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/img/portfolio/safe.png'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 15, in img
+    img = self.get_file("static/{}".format(self.request.GET["target"][0]), 'rb')
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/img/portfolio/submarine.png'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 7, in plain
+    return self.get_file("static/{}".format(self.request.GET["target"][0]))
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/vendor/bootstrap/css/bootstrap.min.css'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 7, in plain
+    return self.get_file("static/{}".format(self.request.GET["target"][0]))
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/js/jqBootstrapValidation.js'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 7, in plain
+    return self.get_file("static/{}".format(self.request.GET["target"][0]))
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/vendor/bootstrap/js/bootstrap.min.js'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 7, in plain
+    return self.get_file("static/{}".format(self.request.GET["target"][0]))
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/vendor/jquery/jquery.min.js'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 7, in plain
+    return self.get_file("static/{}".format(self.request.GET["target"][0]))
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/vendor/font-awesome/css/font-awesome.min.css'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 7, in plain
+    return self.get_file("static/{}".format(self.request.GET["target"][0]))
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/css/freelancer.min.css'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 7, in plain
+    return self.get_file("static/{}".format(self.request.GET["target"][0]))
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/js/contact_me.js'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 7, in plain
+    return self.get_file("static/{}".format(self.request.GET["target"][0]))
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/js/freelancer.min.js'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 15, in img
+    img = self.get_file("static/{}".format(self.request.GET["target"][0]), 'rb')
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/img/portfolio/cabin.png'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 15, in img
+    img = self.get_file("static/{}".format(self.request.GET["target"][0]), 'rb')
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/img/portfolio/cake.png'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 15, in img
+    img = self.get_file("static/{}".format(self.request.GET["target"][0]), 'rb')
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/img/portfolio/circus.png'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 15, in img
+    img = self.get_file("static/{}".format(self.request.GET["target"][0]), 'rb')
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/img/portfolio/game.png'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 15, in img
+    img = self.get_file("static/{}".format(self.request.GET["target"][0]), 'rb')
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/img/portfolio/safe.png'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Static.py", line 15, in img
+    img = self.get_file("static/{}".format(self.request.GET["target"][0]), 'rb')
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/guilherme/repo/uniwallet/modules/frontend/static/img/portfolio/submarine.png'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 30, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 51, in instance_controller
+    mod = importlib.import_module(package.__name__ + ".{}".format(controller_name))
+  File "/usr/lib/python3.4/importlib/__init__.py", line 109, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 2254, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 2237, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 2226, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1200, in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1129, in _exec
+  File "<frozen importlib._bootstrap>", line 1467, in exec_module
+  File "<frozen importlib._bootstrap>", line 1572, in get_code
+  File "<frozen importlib._bootstrap>", line 1532, in source_to_code
+  File "<frozen importlib._bootstrap>", line 321, in _call_with_frames_removed
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Welcome.py", line 9
+    .replace("{assets-plain}", "/frontend/static/plain?target=assets/")
+    ^
+SyntaxError: invalid syntax
+

@@ -14,6 +14,7 @@ from framework.Response import Response
 def bootstrap(env, meta):
 	request = Request(env)
 	response = Router(request).route()
+	print(response.raw)
 	server_output = response.prepare()
 	meta(response.status, response.headers)
 	return [server_output]

@@ -8,7 +8,8 @@ class Response:
 		self.headers = [('Content-type', 'text/html; charset=utf-8')]
 		self.code = code
 		self.body = body
-		self.raw = raw;
+		self.raw = raw
+		self.encode_before_transmission = True
 
 	def translate_code(self, code):
 		"""
@@ -40,8 +41,13 @@ class Response:
 		"""
 		prepare(): This function makes a transmittable response
 		"""
+		output = None
 		if self.raw:
 			self.status = '{} {}'.format(self.translate_code(self.code), responses[self.translate_code(self.code)])
-			return self.body.encode("utf-8")
+			output = self.body
 		else:
-			return translator.encode_JSON({"code": self.translate_code(self.code), "content": self.body}).encode("utf-8")
+			output = translator.encode_JSON({"code": self.translate_code(self.code), "content": self.body})
+		if self.encode_before_transmission:
+			return output.encode("utf-8")
+		else:
+			return output
