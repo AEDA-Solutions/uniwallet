@@ -1,5 +1,3 @@
-from app import controllers
-from app.controllers import treaters
 from framework import Response as std
 import importlib
 from framework.helpers import general as helper
@@ -27,9 +25,9 @@ class Router():
 		"""
 		resolve(): It call the specified controller
 		"""
-		treater = self.call_controller(treaters)
+		treater = self.call_controller(helper.get_package_from_module("controllers.treaters", "modules.{}".format(self.request.module)))
 		if treater.code == 'OK' or treater.code == 'Not Found':
-			return self.call_controller(controllers)
+			return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
 		else:
 			return std.Response(code = treater.code, body = treater.body)
 
@@ -37,11 +35,14 @@ class Router():
 		"""
 		call_controller(): It tries to find the required controller
 		"""
-		controller_name = self.translate_controller_name(package, self.request.controller)
+		controller_name = None
+		if package:
+			controller_name = self.translate_controller_name(package, self.request.controller)
+
 		if controller_name:
 			return self.instance_controller(package, controller_name)
 		else:
-			return std.Response(code = 'Not Found', body = "Controller '{}' not found".format(self.request.controller))
+			return std.Response(code = 'Not Found', body = "Controller '{}' from module '{}' not found".format(self.request.controller, self.request.module))
 
 	def instance_controller(self, package, controller_name):
 		"""

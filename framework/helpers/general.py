@@ -1,4 +1,5 @@
 import pkgutil
+import importlib
 
 def fit_pair_to_list(pair_list, new_pair):
 	new_pair_list = []
@@ -19,4 +20,23 @@ def get_package_modules(package):
 			modules_list.append(modname)
 	return modules_list
 
+def get_package_from_module(self, package_name, module_name):
+		"""
+		get_package_from_module(): It gets an package from the modules module
+		"""
+		try:
+			mod = importlib.import_module("modules.{}.{}".format(module_name, package_name))
+		except Exception:
+			mod = None
+		return mod
+
+def get_package_from_module(package_name, module_name):
+	"""
+	get_package_from_module(): It gets an package from the modules module
+	"""
+	try:
+		mod = importlib.import_module("{}.{}".format(module_name, package_name))
+	except Exception:
+		mod = None
+	return mod
 

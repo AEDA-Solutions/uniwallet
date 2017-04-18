@@ -6,9 +6,13 @@ class Request:
 		self.env = env
 		self.urn = env['PATH_INFO']
 		self.urn_list = self.urn.strip('/').split('/')
-		self.ok = len(self.urn_list) == 2
+		self.ok = len(self.urn_list) >= 2
+		self.module = '/'
 		if self.ok:
-			self.controller, self.action = self.urn_list[0].replace(".", ""), self.urn_list[1].replace(".", "")
+			if len(self.urn_list) == 2:
+				self.controller, self.action = self.urn_list[0].replace(".", ""), self.urn_list[1].replace(".", "")
+			else:
+				self.module, self.controller, self.action = self.urn_list[0].replace(".", ""), self.urn_list[1].replace(".", ""), self.urn_list[2].replace(".", "")
 		self.body = self.translate_POST_content()
 
 	def get_body_size(self):

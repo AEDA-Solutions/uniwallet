@@ -1,7 +1,6 @@
 from framework import Response as std
 import importlib
 from framework.helpers import general as helper
-import app
 
 class Controller:
 
@@ -20,14 +19,22 @@ class Controller:
 		else:
 			return std.Response(code = 'Not Found', body = "Action '{}' unavailable".format(action_name))
 
+	def get_db_config(self):
+		"""
+		get_db_config(): It returns the module db config details
+		"""
+		return getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")()
+
+
 	def model(self, data):
 		"""
 		get_model(): It returns a instance a of a correspondent model
 		"""
 		model_instance = None
+		app = helper.get_package_from_module(self.request.module, "modules")
 		for model_name in helper.get_package_modules(app):
 			if model_name == self.__class__.__name__:
-				model_instance = getattr(importlib.import_module("app.{}".format(model_name)), model_name)(data)
+				model_instance = getattr(importlib.import_module("modules.{}.{}".format(self.request.module, model_name)), model_name)(self.get_db_config(), data)
 				break
 		if model_instance:
 			return model_instance

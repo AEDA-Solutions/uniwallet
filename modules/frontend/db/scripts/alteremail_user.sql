@@ -1,0 +1,1 @@
+UPDATE Users SET email='{pass_email}' WHERE id='{pass_id}'

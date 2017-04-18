@@ -1,12 +1,11 @@
 from framework.Database import Database
-from app.db import config as DB
 
 class Model:
 	id = None
 
-	def __init__(self, data = None):
+	def __init__(self, db_config, data = None):
 		if data:
-			self.db = Database(DB.config())
+			self.db = Database(db_config)
 			self.data = data
 			self.define_attributes(data)
 		else:
