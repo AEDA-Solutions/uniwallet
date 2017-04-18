@@ -12,6 +12,7 @@ class Company(std.Treater):
 					"cnpj": ["optional"]
 
 				},
+				"method": "post"
 				#"auth": ["manager", "client"]
 			})
 
