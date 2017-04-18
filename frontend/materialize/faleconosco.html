@@ -1,15 +1,33 @@
+
+<!--Código HTML--> 
+
+ 
 <!DOCTYPE html> 
+
+
 <html lang="pt-br"> 
-<head> 
+
+	 <head> 
 		 <meta charset="utf-8"> 
 		 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-		 <title> UniWallet </title> 
+		 <title> Materialize </title> 
+
+		<!--Materialize CSS--> 
+		 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
 		 <link rel="stylesheet" href="css/materialize.css"> 
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
-     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     <link rel="stylesheet" type="text/css" href="assets\css\telainicio2.css">
+		 <link rel="stylesheet" href="assets/css/faleconosco.css"> 
      <link rel="shortcut icon" href="official.ico" type="image/x-icon" />
- </head> 
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link   rel="stylesheet" href="css/google-fonts.css">
+
+	 	<!--Jquery--> 
+
+		 <script src="https://code.jquery.com/jquery-3.2.0.min.js"> </script> 
+
+   		 <!--Materialize JS--> 
+
+	 	 <script src="js/materialize.js"> </script>
+		 </head> 
 
  <body> 
 
@@ -22,7 +40,7 @@
  
 	 			<!--Logo--> 
 
-	 			<a href="file:///C:/Users/rmora/Desktop/materialize/web%20pag/index1.html" class="brand-logo"><img src="assets/images/official.png" class="circle left mini-logo"></img> UniWallet </a> 
+	 		<a href="index.html" class="brand-logo"><img src="assets/images/official.png" class="circle left mini-logo"></img> UniWallet </a>
 
 	 				 <!--Para esconder o conteúdo da direita--> 
 
@@ -37,10 +55,10 @@
                  <span>Sobre</span>
                  </a></li> 
 
-                 <li><a href="faleconosco.html">
+                 <li><a href="javascript:void(0)">
                  <i class="material-icons left ">phone</i>
                  <span> Fale Conosco</span>
-                 </a>
+                 </a></li>
 
       				   </ul> 
 
@@ -53,46 +71,44 @@
 
   <div class="containerlogin"> 
  
-        <img src="assets\images\uwlogo.gif" class="circle">
+   <img src="assets/images/official.png" class="circle">
 
 <!--Classe "floating-box" serve para alinhar um ao lado do outro, o texto e o código do cadastro--> 
 
         <div class="floating-box"> 
  
-           <h4>Bem-vindo ao UniWallet</h4> 
+       		 <h4>Gostaria de nos dizer algo?</h4> 
  
-           <h6> O University Wallet é o lugar onde você reserva suas compras de alimentos e muito mais, sem enfrentar filas. </h6> 
+        	 <h6> O relacionamento com nossos usuários é muito impotante para nós. Se você tem alguma 
+           dúvida, sugestão ou acha que algo pode melhorar, mande-nos uma mensagem. </h6> 
 
         </div>
-            
-    <div class="floating-box">
-          <form>
-                <input type="text" name="Email" placeholder="E-mail">
-      
-                <input type="password" name="Senha" placeholder="Crie uma senha"> 
-                
+        	  
+		<div class="floating-box">
+     	 		<form>
 
-                <input type="submit" name = "submit" value="Continuar" class="btn-continuar" onClick = "javascript:window.open('TeladeCadastro.html')"> 
+          		 	<input type="text" name="Nome" placeholder="Nome">
+          		 
+            	 	<input type="text" name="E-mail" placeholder="E-mail"> 
 
-          <p>ou</p> 
-                
-                <input type="submit" name="submit" value="Continuar com Facebook" class="btn-conFace"> 
-                
-            </form> 
+                <input type="mensagem" name="Mensagem" placeholder="Mensagem">
+            	
+
+
+           			<input type="submit" name="submit" value="ENVIAR!" class="btn-continuar"> 
+
+
+
+ 			 		</form> 
 
          </div>
   </div> 
-<!--
-  {
-    "name": "fdsaifdjisafjdi",
-    "lista_de_lugares_visitados": ["fdsa", "fda", "fdafsa"],
-    "idade": 5
 
-  }
--->
-  <div class="center">
-      	<b> Ao criar uma conta, você concorda com os termos de serviço do University Wallet.</b>
-      </div> 
+      <div class="center">
+        <b> UniWallet® since 2017</b>
+      </div>
+
+
 <footer class="page-footer indigo dark-4">
           <div class="container">
             <div class="row">
@@ -117,26 +133,6 @@
             </div>
           </div>
         </footer>
-
-<!--Import jQuery before materialize.js-->
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<!-- Compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
-
-<script>
-
-document.getElementById("botao-continuar").addEventListener("click", function(){
-  window.location = 'file:///home/aluno/Downloads/uniwallet-master/frontend/materialize/TeladeLogin.html';
-  //window.alert("fioajisdojafipo")
-})
-
-
-  $(document).ready(function(){
-      $('.parallax').parallax();
-    });
-</script>
-
-
  </body>
 
 </html> 

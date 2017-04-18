@@ -9,3 +9,6 @@ class Company(std.Controller):
 	def test(self):
 		return self.request.body
 
+	def testekohl(self):
+		return "Pokemon"
+

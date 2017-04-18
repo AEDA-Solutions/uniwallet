@@ -8,6 +8,6 @@ class User(std.Controller):
 
 	def update(self):
 		self.model(self.get_request_parameters()).save().close()
-		return "Stored motherfucker"
+		return "Stored motherfucka"
 
 
