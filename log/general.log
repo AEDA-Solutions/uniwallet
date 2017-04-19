@@ -9,13 +9,27 @@ Traceback (most recent call last):
     return controller.action(self.request.action)
   File "/home/aluno/repo/uniwallet/framework/Controller.py", line 18, in action
     self.response.body = getattr(self, action_name)()
-  File "/home/aluno/repo/uniwallet/modules/frontend/controllers/Pages.py", line 7, in cadastro
-    html = self.get_html("TeladeCadastro.html")
-  File "/home/aluno/repo/uniwallet/framework/Controller.py", line 56, in get_html
-    return self.get_file("html/{}.html".format(html_file_name))
-  File "/home/aluno/repo/uniwallet/framework/Controller.py", line 63, in get_file
-    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
-FileNotFoundError: [Errno 2] No such file or directory: '/home/aluno/repo/uniwallet/modules/frontend/html/TeladeCadastro.html.html'
+  File "/home/aluno/repo/uniwallet/modules/backend/controllers/User.py", line 6, in register
+    self.model(self.get_request_parameters()).save().close()
+  File "/home/aluno/repo/uniwallet/framework/Controller.py", line 38, in model
+    model_instance = getattr(importlib.import_module("modules.{}.{}".format(self.request.module, model_name)), model_name)(self.get_db_config(), data)
+  File "/home/aluno/repo/uniwallet/framework/Model.py", line 8, in __init__
+    self.db = Database(db_config)
+  File "/home/aluno/repo/uniwallet/framework/Database.py", line 8, in __init__
+    self.conn = mysql.connector.connect(**config)
+  File "/usr/lib/python3/dist-packages/mysql/connector/__init__.py", line 179, in connect
+    return MySQLConnection(*args, **kwargs)
+  File "/usr/lib/python3/dist-packages/mysql/connector/connection.py", line 95, in __init__
+    self.connect(**kwargs)
+  File "/usr/lib/python3/dist-packages/mysql/connector/abstracts.py", line 719, in connect
+    self._open_connection()
+  File "/usr/lib/python3/dist-packages/mysql/connector/connection.py", line 210, in _open_connection
+    self._ssl)
+  File "/usr/lib/python3/dist-packages/mysql/connector/connection.py", line 144, in _do_auth
+    self._auth_switch_request(username, password)
+  File "/usr/lib/python3/dist-packages/mysql/connector/connection.py", line 177, in _auth_switch_request
+    raise errors.get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1049 (42000): Unknown database 'Uniwallet'
 
 Traceback (most recent call last):
   File "/home/aluno/repo/uniwallet/framework/Router.py", line 17, in route
@@ -29,10 +43,10 @@ Traceback (most recent call last):
   File "/home/aluno/repo/uniwallet/framework/Controller.py", line 18, in action
     self.response.body = getattr(self, action_name)()
   File "/home/aluno/repo/uniwallet/modules/frontend/controllers/Static.py", line 8, in css
-    return self.get_file("static/{}".format(self.request.parameters["target"][0]))
+    return self.get_file("static/{}".format(self.request.parameters["target"]))
   File "/home/aluno/repo/uniwallet/framework/Controller.py", line 63, in get_file
     with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
-FileNotFoundError: [Errno 2] No such file or directory: '/home/aluno/repo/uniwallet/modules/frontend/static/a'
+FileNotFoundError: [Errno 2] No such file or directory: '/home/aluno/repo/uniwallet/modules/frontend/static/css/materialize.css'
 
 Traceback (most recent call last):
   File "/home/aluno/repo/uniwallet/framework/Router.py", line 17, in route
@@ -46,27 +60,10 @@ Traceback (most recent call last):
   File "/home/aluno/repo/uniwallet/framework/Controller.py", line 18, in action
     self.response.body = getattr(self, action_name)()
   File "/home/aluno/repo/uniwallet/modules/frontend/controllers/Static.py", line 8, in css
-    return self.get_file("static/{}".format(self.request.parameters["target"][0]))
+    return self.get_file("static/{}".format(self.request.parameters["target"]))
   File "/home/aluno/repo/uniwallet/framework/Controller.py", line 63, in get_file
     with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
-FileNotFoundError: [Errno 2] No such file or directory: '/home/aluno/repo/uniwallet/modules/frontend/static/a'
-
-Traceback (most recent call last):
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 17, in route
-    return self.resolve()
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 30, in resolve
-    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 43, in call_controller
-    return self.instance_controller(package, controller_name)
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 53, in instance_controller
-    return controller.action(self.request.action)
-  File "/home/aluno/repo/uniwallet/framework/Controller.py", line 18, in action
-    self.response.body = getattr(self, action_name)()
-  File "/home/aluno/repo/uniwallet/modules/frontend/controllers/Static.py", line 21, in img
-    img = self.get_file("static/{}".format(self.request.parameters["target"][0]), 'rb')
-  File "/home/aluno/repo/uniwallet/framework/Controller.py", line 63, in get_file
-    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
-FileNotFoundError: [Errno 2] No such file or directory: '/home/aluno/repo/uniwallet/modules/frontend/static/a'
+FileNotFoundError: [Errno 2] No such file or directory: '/home/aluno/repo/uniwallet/modules/frontend/static/css/materialize.css'
 
 Traceback (most recent call last):
   File "/home/aluno/repo/uniwallet/framework/Router.py", line 17, in route
@@ -80,10 +77,10 @@ Traceback (most recent call last):
   File "/home/aluno/repo/uniwallet/framework/Controller.py", line 18, in action
     self.response.body = getattr(self, action_name)()
   File "/home/aluno/repo/uniwallet/modules/frontend/controllers/Static.py", line 8, in css
-    return self.get_file("static/{}".format(self.request.parameters["target"][0]))
+    return self.get_file("static/{}".format(self.request.parameters["target"]))
   File "/home/aluno/repo/uniwallet/framework/Controller.py", line 63, in get_file
     with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
-FileNotFoundError: [Errno 2] No such file or directory: '/home/aluno/repo/uniwallet/modules/frontend/static/a'
+FileNotFoundError: [Errno 2] No such file or directory: '/home/aluno/repo/uniwallet/modules/frontend/static/css/materialize.css'
 
 Traceback (most recent call last):
   File "/home/aluno/repo/uniwallet/framework/Router.py", line 17, in route
@@ -97,110 +94,8 @@ Traceback (most recent call last):
   File "/home/aluno/repo/uniwallet/framework/Controller.py", line 18, in action
     self.response.body = getattr(self, action_name)()
   File "/home/aluno/repo/uniwallet/modules/frontend/controllers/Static.py", line 8, in css
-    return self.get_file("static/{}".format(self.request.parameters["target"][0]))
+    return self.get_file("static/{}".format(self.request.parameters["target"]))
   File "/home/aluno/repo/uniwallet/framework/Controller.py", line 63, in get_file
     with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
-FileNotFoundError: [Errno 2] No such file or directory: '/home/aluno/repo/uniwallet/modules/frontend/static/a'
-
-Traceback (most recent call last):
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 17, in route
-    return self.resolve()
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 30, in resolve
-    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 43, in call_controller
-    return self.instance_controller(package, controller_name)
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 53, in instance_controller
-    return controller.action(self.request.action)
-  File "/home/aluno/repo/uniwallet/framework/Controller.py", line 18, in action
-    self.response.body = getattr(self, action_name)()
-  File "/home/aluno/repo/uniwallet/modules/frontend/controllers/Static.py", line 8, in css
-    return self.get_file("static/{}".format(self.request.parameters["target"][0]))
-  File "/home/aluno/repo/uniwallet/framework/Controller.py", line 63, in get_file
-    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
-FileNotFoundError: [Errno 2] No such file or directory: '/home/aluno/repo/uniwallet/modules/frontend/static/a'
-
-Traceback (most recent call last):
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 17, in route
-    return self.resolve()
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 30, in resolve
-    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 43, in call_controller
-    return self.instance_controller(package, controller_name)
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 53, in instance_controller
-    return controller.action(self.request.action)
-  File "/home/aluno/repo/uniwallet/framework/Controller.py", line 18, in action
-    self.response.body = getattr(self, action_name)()
-  File "/home/aluno/repo/uniwallet/modules/frontend/controllers/Static.py", line 8, in css
-    return self.get_file("static/{}".format(self.request.parameters["target"][0]))
-  File "/home/aluno/repo/uniwallet/framework/Controller.py", line 63, in get_file
-    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
-FileNotFoundError: [Errno 2] No such file or directory: '/home/aluno/repo/uniwallet/modules/frontend/static/a'
-
-Traceback (most recent call last):
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 17, in route
-    return self.resolve()
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 30, in resolve
-    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 43, in call_controller
-    return self.instance_controller(package, controller_name)
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 53, in instance_controller
-    return controller.action(self.request.action)
-  File "/home/aluno/repo/uniwallet/framework/Controller.py", line 18, in action
-    self.response.body = getattr(self, action_name)()
-  File "/home/aluno/repo/uniwallet/modules/frontend/controllers/Static.py", line 8, in css
-    return self.get_file("static/{}".format(self.request.parameters["target"][0]))
-  File "/home/aluno/repo/uniwallet/framework/Controller.py", line 63, in get_file
-    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
-FileNotFoundError: [Errno 2] No such file or directory: '/home/aluno/repo/uniwallet/modules/frontend/static/a'
-
-Traceback (most recent call last):
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 17, in route
-    return self.resolve()
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 30, in resolve
-    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 43, in call_controller
-    return self.instance_controller(package, controller_name)
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 53, in instance_controller
-    return controller.action(self.request.action)
-  File "/home/aluno/repo/uniwallet/framework/Controller.py", line 18, in action
-    self.response.body = getattr(self, action_name)()
-  File "/home/aluno/repo/uniwallet/modules/frontend/controllers/Static.py", line 21, in img
-    img = self.get_file("static/{}".format(self.request.parameters["target"][0]), 'rb')
-  File "/home/aluno/repo/uniwallet/framework/Controller.py", line 63, in get_file
-    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
-FileNotFoundError: [Errno 2] No such file or directory: '/home/aluno/repo/uniwallet/modules/frontend/static/a'
-
-Traceback (most recent call last):
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 17, in route
-    return self.resolve()
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 30, in resolve
-    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 43, in call_controller
-    return self.instance_controller(package, controller_name)
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 53, in instance_controller
-    return controller.action(self.request.action)
-  File "/home/aluno/repo/uniwallet/framework/Controller.py", line 18, in action
-    self.response.body = getattr(self, action_name)()
-  File "/home/aluno/repo/uniwallet/modules/frontend/controllers/Static.py", line 8, in css
-    return self.get_file("static/{}".format(self.request.parameters["target"][0]))
-  File "/home/aluno/repo/uniwallet/framework/Controller.py", line 63, in get_file
-    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
-FileNotFoundError: [Errno 2] No such file or directory: '/home/aluno/repo/uniwallet/modules/frontend/static/a'
-
-Traceback (most recent call last):
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 17, in route
-    return self.resolve()
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 30, in resolve
-    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 43, in call_controller
-    return self.instance_controller(package, controller_name)
-  File "/home/aluno/repo/uniwallet/framework/Router.py", line 53, in instance_controller
-    return controller.action(self.request.action)
-  File "/home/aluno/repo/uniwallet/framework/Controller.py", line 18, in action
-    self.response.body = getattr(self, action_name)()
-  File "/home/aluno/repo/uniwallet/modules/frontend/controllers/Static.py", line 8, in css
-    return self.get_file("static/{}".format(self.request.parameters["target"][0]))
-  File "/home/aluno/repo/uniwallet/framework/Controller.py", line 63, in get_file
-    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
-FileNotFoundError: [Errno 2] No such file or directory: '/home/aluno/repo/uniwallet/modules/frontend/static/a'
+FileNotFoundError: [Errno 2] No such file or directory: '/home/aluno/repo/uniwallet/modules/frontend/static/css/materialize.css'
 

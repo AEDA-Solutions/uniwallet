@@ -78,8 +78,8 @@ document.getElementById("botao_submit").addEventListener("click", function(){
 	var dados_em_json = JSON.stringify(pegar_dados_campos())
 	//console.log(dados_em_json)
 	enviar_dados(dados_em_json, function(response){
-		window.alert("Dados enfim enviados!!!!")
-		console.log(response)
+		window.alert(response)
+		//console.log(response)
 	})
 })
 

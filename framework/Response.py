@@ -5,7 +5,7 @@ from http.client import responses
 class Response:
 	def __init__(self, code = 'OK', body = None, raw = False):
 		self.status = '200 OK'
-		self.headers = [('Content-type', 'text/html; charset=utf-8'), ('Access-Control-Allow-Origin', '*')]
+		self.headers = [('Content-type', 'text/html; charset=utf-8'), ('Access-Control-Allow-Origin', '*'), ('Cache-Control', 'max-age=120')]
 		self.code = code
 		self.body = body
 		self.raw = raw
