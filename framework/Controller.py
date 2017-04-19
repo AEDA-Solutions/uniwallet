@@ -44,9 +44,9 @@ class Controller:
 
 	def get_request_parameters(self):
 		"""
-		get_request_parameters(): It returns the request body
+		get_request_parameters(): It returns the request parameters
 		"""
-		return self.request.body
+		return self.request.get_inputs_from_method()
 
 	def get_html(self, html_file_name):
 		"""

@@ -10,4 +10,7 @@ class User(std.Controller):
 		self.model(self.get_request_parameters()).save().close()
 		return "Stored motherfucka"
 
+	def doit(self):
+		return self.request.parameters;
+
 

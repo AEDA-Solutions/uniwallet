@@ -14,14 +14,22 @@ class Request:
 			else:
 				self.module, self.controller, self.action = self.urn_list[0].replace(".", ""), self.urn_list[1].replace(".", ""), self.urn_list[2].replace(".", "")
 		self.body = self.translate_POST_content()
-		self.GET = self.get_GET()
+		self.parameters = self.get_GET()
+		self.method = env['REQUEST_METHOD']
 
 	def get_GET(self):
 		"""
 		get_GET(): It returns the variables passed through the url
 		"""
 		variables = parse_qs(self.env['QUERY_STRING'])
-		return variables
+		treated_vars = {}
+		print(variables)
+		for key in variables.keys():
+			if isinstance(variables[key], list) and len(variables[key]) == 1:
+				treated_vars[key] = variables[key][0]
+			else:
+				treated_vars[key.replace('[]', '')] = variables[key]
+		return treated_vars
 
 	def get_body_size(self):
 		"""
@@ -50,3 +58,12 @@ class Request:
 			return translator.decode_JSON(POST_content)
 		else:
 			return {}
+
+	def get_inputs_from_method(self):
+		"""
+		get_inputs_from_method(): It makes the inputs from the current method
+		"""
+		if self.method.lower() == 'get':
+			return self.parameters
+		else:
+			return self.body
