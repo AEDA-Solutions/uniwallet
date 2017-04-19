@@ -1,0 +1,91 @@
+
+
+<html>
+
+<head>
+	<title>Tela de Cadastro</title>
+				<link rel="stylesheet" type="text/css" href="{assets-css}assets/css/styleslogin.css">
+				</link>
+
+				<link rel="stylesheet" type="text/css" href="{assets-css}assets/css/font-awesome.css">
+
+				<link rel="shortcut icon" href="official.ico" type="image/x-icon" />
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+
+
+<body>
+			<div class="containercadastro">
+				<img src="{assets-img}assets/images/uwlogo.gif">
+				<form>
+
+					<div class="form-input">
+						 <input class="input-form" type="text" name="firstname" placeholder="Coloque seu nome completo">
+					</div>
+
+					<div class="form-input">
+						 <input class="input-form" type="text" name="lastname" placeholder="Coloque seu nome completo">
+					</div>
+
+					<div class="form-input">
+						<input class="input-form" type="password" name="password" placeholder="Coloque sua senha">
+					</div>
+
+					<!--<div class="form-input">
+						<input class="input-form" type="text" name="cpf" placeholder="Insira seu CPF">
+					</div>0-->
+
+					<div class="form-input">
+						<input class="input-form" type="text" name="email" placeholder="Insira seu email">
+					</div>
+
+					
+					<br>
+					<a href="TeladeCadastroEmpresa.html">Cadastre-se como empresa</a>
+				</form>
+				<button class="btn-login" id="botao_submit">CADASTRE-SE COMO USUARIO</button>
+			</div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.0.min.js"> </script> 
+<script type="text/javascript">
+
+
+
+function enviar_dados(dados, callback){
+	$.ajax({
+		type: "POST",
+		url: "http://localhost:8000/backend/user/register",
+		data: dados,
+		success: callback,
+		dataType: 'json'
+	});
+}
+
+function pegar_dados_campos(){
+	var inputs = document.getElementsByClassName("input-form")
+	var objeto = {}
+	for (var i = 0; i < inputs.length; i++) {
+		objeto[inputs[i].name] = inputs[i].value
+	}
+	return objeto;
+}
+
+document.getElementById("botao_submit").addEventListener("click", function(){
+	var dados_em_json = JSON.stringify(pegar_dados_campos())
+	//console.log(dados_em_json)
+	enviar_dados(dados_em_json, function(response){
+		window.alert("Dados enfim enviados!!!!")
+		console.log(response)
+	})
+})
+
+</script>
+
+</body>
+
+</html>
+
