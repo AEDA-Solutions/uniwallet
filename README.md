@@ -47,7 +47,7 @@ The frontend application depends on a separated webserver to provide static cont
 To configure the apache server, first install apache:
  * Install apache
  	- ```sudo apt-get install apache2```
- * Configure virtual host:
+ * Create config file:
  	- Create the configuration file: ```sudo touch /etc/apache2/sites-available/static_uniwallet.conf```
  	- Insert this content to the file /etc/apache2/sites-available/static_uniwallet.conf: 
 ```
@@ -59,6 +59,7 @@ Listen 8008
 </VirtualHost>
 
 ```
+ * Enable virtual host
 	- Create a simbolic link to uniwallet/static directory into /var/www/ ```sudo ln -s {insert custom path here}/uniwallet/static /var/www/static_uniwallet```
 	- Active the virtual host: ```sudo a2ensite static_uniwallet.conf```
 	- Restart the server: ```sudo service apache2 restart```
