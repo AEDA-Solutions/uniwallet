@@ -16,3 +16,6 @@ class Pages(std.Controller):
 
 	def arthur(self):
 		return self.get_html("guilherme")
+
+	def motherfucker(self):
+		return self.get_html("rafael")
