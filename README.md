@@ -60,6 +60,6 @@ Listen 8008
 
 ```
  * Enable virtual host
-	- Create a simbolic link to uniwallet/static directory into /var/www/ ```sudo ln -s {insert custom path here}/uniwallet/static /var/www/static_uniwallet```
+	- Create a simbolic link to uniwallet/static directory into /var/www/ ```sudo ln -s {insert_custom_path_here}/uniwallet/static /var/www/static_uniwallet```
 	- Active the virtual host: ```sudo a2ensite static_uniwallet.conf```
 	- Restart the server: ```sudo service apache2 restart```
