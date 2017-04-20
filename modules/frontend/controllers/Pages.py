@@ -11,5 +11,8 @@ class Pages(std.Controller):
 	def inicial(self):
 		return self.prepare_static(self.get_html("index"))
 
+	def faleconosco(self):
+		return self.prepare_static(self.get_html("faleconosco"))
+
 	def arthur(self):
 		return self.get_html("guilherme")
