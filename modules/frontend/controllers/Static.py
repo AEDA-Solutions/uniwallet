@@ -5,12 +5,12 @@ class Static(std.Controller):
 	def css(self):
 		self.response_body_directly()
 		self.response.set_headers([('content-type', 'text/css')])
-		return self.get_file("static/{}".format(self.request.parameters["target"][0]))
+		return self.get_file("static/{}".format(self.request.parameters["target"]))
 
 	def js(self):
 		self.response_body_directly()
 		self.response.set_headers([('content-type', 'text/javascript')])
-		return self.get_file("static/{}".format(self.request.parameters["target"][0]))
+		return self.get_file("static/{}".format(self.request.parameters["target"]))
 
 	def img(self):
 		"""
@@ -18,6 +18,6 @@ class Static(std.Controller):
 		"""
 		self.response_body_directly()
 		self.response.encode_before_transmission = False
-		img = self.get_file("static/{}".format(self.request.parameters["target"][0]), 'rb')
+		img = self.get_file("static/{}".format(self.request.parameters["target"]), 'rb')
 		self.response.set_headers([('content-type', 'image'), ('content-length', str(len(img)))])
 		return img

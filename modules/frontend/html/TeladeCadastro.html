@@ -4,10 +4,10 @@
 
 <head>
 	<title>Tela de Cadastro</title>
-				<link rel="stylesheet" type="text/css" href="assets/css/styleslogin.css">
+				<link rel="stylesheet" type="text/css" href="{assets-css}assets/css/styleslogin.css">
 				</link>
 
-				<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+				<link rel="stylesheet" type="text/css" href="{assets-css}assets/css/font-awesome.css">
 
 				<link rel="shortcut icon" href="official.ico" type="image/x-icon" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,8 +19,10 @@
 
 <body>
 			<div class="containercadastro">
-				<img src="assets/images/uwlogo.gif">
+				<img src="{assets-img}assets/images/uwlogo.gif">
 				<form>
+
+					<div id="mensagem_retorno" style="font-size: 100px; color: red"></div>
 
 					<div class="form-input">
 						 <input class="input-form" type="text" name="firstname" placeholder="Coloque seu nome completo">
@@ -34,9 +36,9 @@
 						<input class="input-form" type="password" name="password" placeholder="Coloque sua senha">
 					</div>
 
-					<!--<div class="form-input">
-						<input class="input-form" type="text" name="cpf" placeholder="Insira seu CPF">
-					</div>0-->
+					<div class="form-input">
+						<input class="input-form" type="text" name="university" placeholder="Insira seu universidade">
+					</div>
 
 					<div class="form-input">
 						<input class="input-form" type="text" name="email" placeholder="Insira seu email">
@@ -78,8 +80,9 @@ document.getElementById("botao_submit").addEventListener("click", function(){
 	var dados_em_json = JSON.stringify(pegar_dados_campos())
 	//console.log(dados_em_json)
 	enviar_dados(dados_em_json, function(response){
-		window.alert(response)
+		//window.alert("Dados enfim enviados!!!!")
 		//console.log(response)
+		document.getElementById("mensagem_retorno").innerHTML = response.content
 	})
 })
 

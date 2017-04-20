@@ -28,19 +28,27 @@
         <form>
 
           <div class="form-input">
-             <input type="text" name="Nome de Usuario" placeholder="Coloque o nome da empresa">
+             <input type="text" name="compname" placeholder="Coloque o nome da empresa">
           </div>
 
-          <div class="form-input">
-            <input type="text" name="Senha" placeholder="Coloque a senha desejada">
-          </div>
-
-          <div class="form-input">
-            <input type="ncpf" name="CNPJ" placeholder="Insira o CNPJ da empresa">
-          </div>
-
-          <div class="form-input">
+           <div class="form-input">
             <input type="cadastroemp" name="email" placeholder="Insira o email da empresa">
+          </div>
+
+            <div class="form-input">
+            <input type="text" name="location" placeholder="Insira o local da sua empresa">
+          </div>
+
+          <div class="form-input">
+            <input type="text" name="password" placeholder="Coloque a senha desejada">
+          </div>
+
+          <div class="form-input">
+            <input type="text" name="phone" placeholder="Insira o telefone de contato da empresa">
+          </div>
+
+          <div class="form-input">
+            <input type="ncpf" name="cnpj" placeholder="Insira o CNPJ da empresa">
           </div>
 
           <h3>Selecione o ramo de vendas da empresa:</h3>
@@ -60,6 +68,41 @@
         </fomr>
       </div>
 
+
+<script src="https://code.jquery.com/jquery-3.2.0.min.js"> </script> 
+<script type="text/javascript">
+
+
+
+function enviar_dados(dados, callback){
+  $.ajax({
+    type: "POST",
+    url: "http://localhost:8000/backend/user/register",
+    data: dados,
+    success: callback,
+    dataType: 'json'
+  });
+}
+
+function pegar_dados_campos(){
+  var inputs = document.getElementsByClassName("input-form")
+  var objeto = {}
+  for (var i = 0; i < inputs.length; i++) {
+    objeto[inputs[i].name] = inputs[i].value
+  }
+  return objeto;
+}
+
+document.getElementById("botao_submit").addEventListener("click", function(){
+  var dados_em_json = JSON.stringify(pegar_dados_campos())
+  //console.log(dados_em_json)
+  enviar_dados(dados_em_json, function(response){
+    window.alert(response)
+    //console.log(response)
+  })
+})
+
+</script>
 
 </body>
 
