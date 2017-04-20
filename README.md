@@ -49,17 +49,16 @@ To configure the apache server, first install apache:
  	- ```sudo apt-get install apache2```
  * Configure virtual host:
  	- Create the configuration file: ```sudo touch /etc/apache2/sites-available/static_uniwallet.conf```
- 	- Push config content to the file: 
-
-```Listen 8007
-<VirtualHost *:8007>
-	#ServerName www.example.com
+ 	- Insert this content to the file /etc/apache2/sites-available/static_uniwallet.conf: 
+```
+Listen 8008
+<VirtualHost *:8008>
 	DocumentRoot /var/www/static_uniwallet
 	ErrorLog ${APACHE_LOG_DIR}/error.log
 	CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 
 ```
-
-
-
+	- Create a simbolic link to uniwallet/static directory into /var/www/ ```sudo ln -s {insert custom path here}/uniwallet/static /var/www/static_uniwallet```
+	- Active the virtual host: ```sudo a2ensite static_uniwallet.conf```
+	- Restart the server: ```sudo service apache2 restart```
