@@ -6,7 +6,7 @@ class User(std.Treater):
 				"fields": {
 					"firstname": ["required"],
 					"lastname": ["required"],
-					"email": ["required"],
+					"email": ["required", "email"],
 					"university": ["required"],
 					"password": ["required"]
 				},

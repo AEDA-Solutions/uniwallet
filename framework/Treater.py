@@ -1,4 +1,5 @@
 from framework import Controller as std
+import re
 
 class Treater(std.Controller):
 	def forbid(self):
@@ -17,7 +18,13 @@ class Treater(std.Controller):
 				if not(key in self.request.get_inputs_from_method() and len(self.request.get_inputs_from_method()[key]) > 0):
 					response = "{} field is required".format(key)
 					self.forbid()
-					break			
+					break	
+			if 'email' in value:
+				if not re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", self.request.get_inputs_from_method()[key]):
+					response = "{} is not an valid email".format(key)
+					self.forbid()
+					break	
+
 		return response
 
 	def check_method(self, method):

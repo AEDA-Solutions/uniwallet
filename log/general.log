@@ -1,0 +1,130 @@
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 28, in resolve
+    treater = self.call_controller(helper.get_package_from_module("controllers.treaters", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/treaters/User.py", line 13, in register
+    "method": "post"
+  File "/home/guilherme/repo/uniwallet/framework/Treater.py", line 9, in rules
+    return self.validate(rules)
+  File "/home/guilherme/repo/uniwallet/framework/Treater.py", line 56, in validate
+    response = self.check_fields(rules['fields'])
+  File "/home/guilherme/repo/uniwallet/framework/Treater.py", line 23, in check_fields
+    if not re.match(r"/^(([^<>()\[\]\\.,;:\s@\"]+(\.[^<>()\[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$", email):
+NameError: name 'email' is not defined
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 28, in resolve
+    treater = self.call_controller(helper.get_package_from_module("controllers.treaters", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/treaters/User.py", line 13, in register
+    "method": "post"
+  File "/home/guilherme/repo/uniwallet/framework/Treater.py", line 9, in rules
+    return self.validate(rules)
+  File "/home/guilherme/repo/uniwallet/framework/Treater.py", line 56, in validate
+    response = self.check_fields(rules['fields'])
+  File "/home/guilherme/repo/uniwallet/framework/Treater.py", line 23, in check_fields
+    if not re.match(r"/^(([^<>()\[\]\\.,;:\s@\"]+(\.[^<>()\[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$", value):
+  File "/usr/lib/python3.4/re.py", line 156, in match
+    return _compile(pattern, flags).match(string)
+TypeError: expected string or buffer
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 28, in resolve
+    treater = self.call_controller(helper.get_package_from_module("controllers.treaters", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/treaters/User.py", line 13, in register
+    "method": "post"
+  File "/home/guilherme/repo/uniwallet/framework/Treater.py", line 9, in rules
+    return self.validate(rules)
+  File "/home/guilherme/repo/uniwallet/framework/Treater.py", line 56, in validate
+    response = self.check_fields(rules['fields'])
+  File "/home/guilherme/repo/uniwallet/framework/Treater.py", line 23, in check_fields
+    if not re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", value):
+  File "/usr/lib/python3.4/re.py", line 156, in match
+    return _compile(pattern, flags).match(string)
+TypeError: expected string or buffer
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 28, in resolve
+    treater = self.call_controller(helper.get_package_from_module("controllers.treaters", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/treaters/User.py", line 13, in register
+    "method": "post"
+  File "/home/guilherme/repo/uniwallet/framework/Treater.py", line 9, in rules
+    return self.validate(rules)
+  File "/home/guilherme/repo/uniwallet/framework/Treater.py", line 56, in validate
+    response = self.check_fields(rules['fields'])
+  File "/home/guilherme/repo/uniwallet/framework/Treater.py", line 23, in check_fields
+    if not re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", self.get_inputs_from_method()[key]):
+AttributeError: 'User' object has no attribute 'get_inputs_from_method'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 28, in resolve
+    treater = self.call_controller(helper.get_package_from_module("controllers.treaters", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/treaters/User.py", line 13, in register
+    "method": "post"
+  File "/home/guilherme/repo/uniwallet/framework/Treater.py", line 9, in rules
+    return self.validate(rules)
+  File "/home/guilherme/repo/uniwallet/framework/Treater.py", line 56, in validate
+    response = self.check_fields(rules['fields'])
+  File "/home/guilherme/repo/uniwallet/framework/Treater.py", line 23, in check_fields
+    if not re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", self.request.get_inputs_from_method()[key]):
+KeyError: 'email'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 28, in resolve
+    treater = self.call_controller(helper.get_package_from_module("controllers.treaters", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/treaters/User.py", line 13, in register
+    "method": "post"
+  File "/home/guilherme/repo/uniwallet/framework/Treater.py", line 9, in rules
+    return self.validate(rules)
+  File "/home/guilherme/repo/uniwallet/framework/Treater.py", line 56, in validate
+    response = self.check_fields(rules['fields'])
+  File "/home/guilherme/repo/uniwallet/framework/Treater.py", line 23, in check_fields
+    if not re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", self.request.get_inputs_from_method()[key]) and len(self.request.get_inputs_from_method()[key]) > 0:
+KeyError: 'email'
+
