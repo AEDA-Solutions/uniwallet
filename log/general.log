@@ -1,0 +1,42 @@
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 28, in resolve
+    treater = self.call_controller(helper.get_package_from_module("controllers.treaters", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/treaters/User.py", line 19, in doit
+    "private": True
+  File "/home/guilherme/repo/uniwallet/framework/Treater.py", line 8, in rules
+    return self.validate(rules)
+  File "/home/guilherme/repo/uniwallet/framework/Treater.py", line 38, in validate
+    response = self.check_method(rules['private'])
+  File "/home/guilherme/repo/uniwallet/framework/Treater.py", line 24, in check_method
+    if method.lower() != self.request.method.lower():
+AttributeError: 'bool' object has no attribute 'lower'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 17, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 28, in resolve
+    treater = self.call_controller(helper.get_package_from_module("controllers.treaters", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 43, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 53, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/treaters/User.py", line 19, in doit
+    "private": True
+  File "/home/guilherme/repo/uniwallet/framework/Treater.py", line 8, in rules
+    return self.validate(rules)
+  File "/home/guilherme/repo/uniwallet/framework/Treater.py", line 38, in validate
+    response = self.check_method(rules['private'])
+  File "/home/guilherme/repo/uniwallet/framework/Treater.py", line 24, in check_method
+    if method.lower() != self.request.method.lower():
+AttributeError: 'bool' object has no attribute 'lower'
+

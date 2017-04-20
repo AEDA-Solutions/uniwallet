@@ -14,5 +14,15 @@ class User(std.Treater):
 				#"auth": ["manager", "client"]
 			})
 
+	def doit(self):
+		return self.rules({
+				"private": True
+			})
+
+	def make(self):
+		return self.rules({
+				"private": True
+			})
+
 
 

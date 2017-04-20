@@ -25,19 +25,28 @@ class Treater(std.Controller):
 			self.forbid()
 			return "{} HTTP method not allowed".format(self.request.method)
 
+	def check_privacy(self, is_private):
+		if is_private:
+			self.forbid()
+			return "Access denied. This resource is private".format(self.request.action)
 
 	def validate(self, rules):
+		if 'private' in rules:
+			response = self.check_privacy(rules['private'])
+			if response:
+				return response
+
 		if 'auth' in rules and not self.is_authorized(rules['auth']):
 			self.forbid()
 			return "Access denied"
 
 		if 'method' in rules:
 			response = self.check_method(rules['method'])
-			if response and len(response):
+			if response:
 				return response
 
 		if 'fields' in rules:
 			response = self.check_fields(rules['fields'])
-			if response and len(response):
+			if response:
 				return response
 

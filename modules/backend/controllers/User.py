@@ -13,4 +13,7 @@ class User(std.Controller):
 	def doit(self):
 		return self.request.parameters;
 
+	def make(self):
+		return "Making makers"
+
 
