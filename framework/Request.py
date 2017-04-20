@@ -23,7 +23,6 @@ class Request:
 		"""
 		variables = parse_qs(self.env['QUERY_STRING'])
 		treated_vars = {}
-		print(variables)
 		for key in variables.keys():
 			if isinstance(variables[key], list) and len(variables[key]) == 1:
 				treated_vars[key] = variables[key][0]
