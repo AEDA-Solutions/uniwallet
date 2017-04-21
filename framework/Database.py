@@ -23,7 +23,7 @@ class Database:
 		"""
 		for key, value in data.items():
 			if "{" + key + "}" in query: 
-				query = query.replace("{" + key + "}", value)
+				query = query.replace("{}{}{}".format("{", key, "}"), str(value))
 			else:
 				raise Exception("Error calling model '{}'. SQL script '{}' is missing parameter '{}'.".format(self.__class__.__name__, query, key))
 		return query
@@ -40,13 +40,15 @@ class Database:
 
 	def build_query(self, script_name, table_name, data):
 		"""
-		build_query(): It prepares the query replacing {fields} and {data} snippets
+		build_query(): It prepares the query replacing {fields}, {data}, {field_to_set}, snippets
 		It is used just for the framework itself.
 		"""
 		query = self.get_script(script_name, "framework/db/scripts", table_name)
 		fields = []
 		quoted_fields = []
+		fields_to_set = []
 		for key, value in data.items():
 			fields.append(key)
 			quoted_fields.append("'{" + key + "}'")
-		return query.replace("{fields}", ", ".join(fields)).replace("{data}", ", ".join(quoted_fields))
+			fields_to_set.append("{}={}{}{}".format(key, "'{", key, "}'"))
+		return query.replace("{fields}", ", ".join(fields)).replace("{data}", ", ".join(quoted_fields)).replace("{fields_to_set}", ", ".join(fields_to_set))

@@ -16,4 +16,7 @@ class User(std.Controller):
 	def make(self):
 		return "Making makers"
 
+	def foo(self):
+		return "Hello world"
+
 

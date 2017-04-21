@@ -10,7 +10,21 @@ class User(std.Treater):
 					"university": ["required"],
 					"password": ["required"]
 				},
-				"method": "post"
+				"method": "post",
+				#"auth": ["manager", "client"]
+			})
+
+	def update(self):
+		return self.rules({
+				"fields": {
+					"id": ["required"],
+					"firstname": ["required"],
+					"lastname": ["required"],
+					"email": ["required", "email"],
+					"university": ["required"],
+					"password": ["required"]
+				},
+				"method": "post",
 				#"auth": ["manager", "client"]
 			})
 
@@ -22,6 +36,16 @@ class User(std.Treater):
 	def make(self):
 		return self.rules({
 				"private": True
+			})
+
+	def foo(self):
+		return self.rules({
+				"fields": {
+					"name": ["email"]
+				},
+				"method": "get",
+				"private": False
+				#"auth": ["ok"]
 			})
 
 

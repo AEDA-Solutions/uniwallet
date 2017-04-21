@@ -69,4 +69,10 @@ class Controller:
 		"""
 		self.response.raw = True
 
+	def forbid(self):
+		"""
+		forbid(): It sets the code as 400
+		"""
+		self.response.code = 'Bad Request'
+
 

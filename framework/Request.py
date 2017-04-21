@@ -66,3 +66,13 @@ class Request:
 			return self.parameters
 		else:
 			return self.body
+
+	def get_input(self, input_name):
+		"""
+		get_input(): It makes an input from the current method
+		"""
+		inputs = self.get_inputs_from_method()
+		if input_name in inputs:
+			return inputs[input_name]
+		else:
+			return None

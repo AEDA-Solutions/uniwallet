@@ -33,6 +33,8 @@ class Model:
 		"""
 		define_attributes(): It assings the attribute values following the atributes set on attributes child attribute
 		"""
+		if 'id' in data:
+			self.attributes.append('id')
 		for attr in self.attributes:
 			if attr in data:
 				setattr(self, attr, data[attr])

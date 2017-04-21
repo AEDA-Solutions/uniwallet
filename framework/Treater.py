@@ -2,58 +2,86 @@ from framework import Controller as std
 import re
 
 class Treater(std.Controller):
-	def forbid(self):
-		self.response.code = 'Bad Request'
 
 	def rules(self, rules):
+		"""
+		rules(): It receives the set rules
+		"""
 		return self.validate(rules)
 
-	def is_authorized(self, white_list):
-		return True
+	def validate(self, rules):
+		"""
+		validate(): It receives the rules and checks them
+		"""
+		rules_priority = ["private", "method", "auth", "fields"]
+		for rule_name in rules_priority:
+			if rule_name in rules.keys():
+				rule_method = getattr(self, "rule_{}".format(rule_name), None)
+				if callable(rule_method):
+					response = rule_method(rules[rule_name])
+					if response:
+						return response
 
-	def check_fields(self, fields):
-		response = ""
-		for key, value in fields.items():
-			if 'required' in value:
-				if not(key in self.request.get_inputs_from_method() and len(self.request.get_inputs_from_method()[key]) > 0):
-					response = "{} field is required".format(key)
-					self.forbid()
-					break	
-			if 'email' in value:
-				if not re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", self.request.get_inputs_from_method()[key]):
-					response = "{} is not an valid email".format(key)
-					self.forbid()
-					break	
+	def rule_auth(self, auth):
+		"""
+		rule_auth(): It checks if the request is authorized to access the resource
+		"""
+		self.forbid()
+		return "Not authorized"
 
-		return response
-
-	def check_method(self, method):
+	def rule_method(self, method):
+		"""
+		rule_method(): It checks if the HTTP method is allowed
+		"""
 		if method.lower() != self.request.method.lower():
 			self.forbid()
 			return "{} HTTP method not allowed".format(self.request.method)
 
-	def check_privacy(self, is_private):
+	def rule_private(self, is_private):
+		"""
+		rule_private(): It checks if the controller method is private
+		"""
 		if is_private:
 			self.forbid()
 			return "Access denied. This resource is private".format(self.request.action)
 
-	def validate(self, rules):
-		if 'private' in rules:
-			response = self.check_privacy(rules['private'])
-			if response:
-				return response
+	def check_forbidden_fields(self, fields):
+		"""
+		check_forbidden_fields(): It checks if there is any input that does not correspond to any the defined fields
+		"""
+		for input_name in self.request.get_inputs_from_method().keys():
+			if input_name not in fields.keys():
+				self.forbid()
+				return "'{}' parameter is not acceptable".format(input_name)
 
-		if 'auth' in rules and not self.is_authorized(rules['auth']):
+	def rule_fields(self, fields):
+		"""
+		rule_fields(): It checks the fields especifications
+		"""
+		response = self.check_forbidden_fields(fields)
+		if response:
+			return response
+		for field_name in fields.keys():
+			for field_rule in fields[field_name]:
+				field_method = getattr(self, "field_{}".format(field_rule), None)
+				if callable(field_method):
+					response = field_method(field_name, str(self.request.get_input(field_name)))
+					if response:
+						return response
+
+	def field_email(self, field_name, field_content):
+		"""
+		field_email(): It checks if passed field is an email
+		"""
+		if not field_content or not re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", field_content):
 			self.forbid()
-			return "Access denied"
+			return "{} is not an valid email".format(field_name)
 
-		if 'method' in rules:
-			response = self.check_method(rules['method'])
-			if response:
-				return response
-
-		if 'fields' in rules:
-			response = self.check_fields(rules['fields'])
-			if response:
-				return response
+	def field_required(self, field_name, field_content):
+		"""
+		field_required(): It checks if passed field exists or is not empty
+		"""
+		if not field_content or len(field_content) == 0:
+			self.forbid()
+			return "{} is required".format(field_name)
 
