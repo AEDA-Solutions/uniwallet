@@ -52,7 +52,7 @@ class Treater(std.Controller):
 		for input_name in self.request.get_inputs_from_method().keys():
 			if input_name not in fields.keys():
 				self.forbid()
-				return "'{}' parameter is not acceptable".format(input_name)
+				return "{} parameter is not acceptable".format(input_name)
 
 	def rule_fields(self, fields):
 		"""
@@ -65,7 +65,7 @@ class Treater(std.Controller):
 			for field_rule in fields[field_name]:
 				field_method = getattr(self, "field_{}".format(field_rule), None)
 				if callable(field_method):
-					response = field_method(field_name, str(self.request.get_input(field_name)))
+					response = field_method(field_name, self.request.get_input(field_name))
 					if response:
 						return response
 
@@ -81,7 +81,7 @@ class Treater(std.Controller):
 		"""
 		field_required(): It checks if passed field exists or is not empty
 		"""
-		if not field_content or len(field_content) == 0:
+		if field_content is None or len(str(field_content)) == 0:
 			self.forbid()
-			return "{} is required".format(field_name)
+			return "{} parameter is required".format(field_name)
 

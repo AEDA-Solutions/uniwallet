@@ -19,7 +19,7 @@ class Router():
 				debugger.applog(traceback.format_exc())
 				return std.Response(code = 'Internal Server Error', body = "I'm sorry Dave, I'm afraid I can't do that")
 		else:
-			return std.Response(code = 'Bad Request', body = "Invalid route")
+			return std.Response(code = 'Not Found', body = "Invalid route", raw = True)
 
 	def resolve(self):
 		"""

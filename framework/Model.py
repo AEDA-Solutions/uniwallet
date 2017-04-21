@@ -1,12 +1,11 @@
-from framework.Database import Database
+from framework import Database as std
 
 class Model:
 	id = None
 
 	def __init__(self, db_config, data = None):
 		if data:
-			self.db = Database(db_config)
-			self.data = data
+			self.db = std.Database(db_config)
 			self.define_attributes(data)
 		else:
 			raise Exception("Error calling model '{}'. Model must receive some data.".format(self.__class__.__name__))

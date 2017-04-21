@@ -5,11 +5,11 @@ class Company(std.Treater):
 		return self.rules({
 				"fields": {
 					"compname": ["required"],
-					"email": ["required"],
+					"email": 	["required", "email", "unique"],
 					"location": ["required"],
 					"password": ["required"],
-					"phone": ["required"],
-					"cnpj": ["optional"]
+					"phone": 	["required"],
+					"cnpj": 	["optional"]
 
 				},
 				"method": "post"

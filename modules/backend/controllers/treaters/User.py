@@ -4,11 +4,11 @@ class User(std.Treater):
 	def register(self):
 		return self.rules({
 				"fields": {
-					"firstname": ["required"],
-					"lastname": ["required"],
-					"email": ["required", "email"],
-					"university": ["required"],
-					"password": ["required"]
+					"firstname": 	["required"],
+					"lastname": 	["required"],
+					"email": 		["required", "email", "unique"],
+					"university": 	["required"],
+					"password": 	["required"]
 				},
 				"method": "post",
 				#"auth": ["manager", "client"]
@@ -17,12 +17,12 @@ class User(std.Treater):
 	def update(self):
 		return self.rules({
 				"fields": {
-					"id": ["required"],
-					"firstname": ["required"],
-					"lastname": ["required"],
-					"email": ["required", "email"],
-					"university": ["required"],
-					"password": ["required"]
+					"id": 			["required"],
+					"firstname": 	["required"],
+					"lastname": 	["required"],
+					"email": 		["required", "email", "unique"],
+					"university": 	["required"],
+					"password": 	["required"]
 				},
 				"method": "post",
 				#"auth": ["manager", "client"]

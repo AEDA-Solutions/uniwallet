@@ -3,9 +3,10 @@ from framework.helpers import translator as translator
 from http.client import responses
 
 class Response:
+
 	def __init__(self, code = 'OK', body = None, raw = False):
 		self.status = '200 OK'
-		self.headers = [('Content-type', 'text/html; charset=utf-8'), ('Access-Control-Allow-Origin', '*'), ('Cache-Control', 'max-age=120')]
+		self.headers = [('Content-type', 'application/json; charset=utf-8'), ('Access-Control-Allow-Origin', '*'), ('Cache-Control', 'max-age=120')]
 		self.code = code
 		self.body = body
 		self.raw = raw
@@ -16,11 +17,11 @@ class Response:
 		translate_code(): Check out https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 		"""
 		codes = {
-		'OK': 200,
-		'Bad Request': 400,
-		'Forbidden': 403,
-		'Not Found': 404,
-		'Internal Server Error': 500
+			'OK': 200,
+			'Bad Request': 400,
+			'Forbidden': 403,
+			'Not Found': 404,
+			'Internal Server Error': 500
 		}
 		return codes[code]
 
@@ -44,6 +45,7 @@ class Response:
 		output = None
 		if self.raw:
 			self.status = '{} {}'.format(self.translate_code(self.code), responses[self.translate_code(self.code)])
+			self.append_header(('Content-type', 'text/html; charset=utf-8'))
 			output = self.body
 		else:
 			output = translator.encode_JSON({"code": self.translate_code(self.code), "content": self.body})

@@ -1,4 +1,5 @@
 from cgi import parse_qs, escape
+from http.cookies import SimpleCookie
 from framework.helpers import translator as translator
 
 class Request:
@@ -74,5 +75,24 @@ class Request:
 		inputs = self.get_inputs_from_method()
 		if input_name in inputs:
 			return inputs[input_name]
+		else:
+			return None
+
+	def parse_cookies(self):
+		"""
+		parse_cookies(): Turns the cookies into a object
+		""" 
+		cookies = None
+		if 'HTTP_COOKIE' in self.env.keys():
+			cookies = SimpleCookie(self.env['HTTP_COOKIE'])
+		return cookies
+
+	def get_cookie(self, cookie_name):
+		"""
+		get_cookie(): Get a cookie by name
+		"""
+		cookies = self.parse_cookies()
+		if cookies is not None and cookie_name in cookies:
+			return cookies[cookie_name].value
 		else:
 			return None
