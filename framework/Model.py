@@ -45,20 +45,19 @@ class Model:
 				raise Exception("Error calling model '{}'. Attribute '{}' is missing on the passed data.".format(self.__class__.__name__, attr))
 
 	
-	def execute_standard_db_script(self, script_name, attributes = self.get_attributes()):
+	def run_standard_query(self, script_name, attributes):
 		"""
-		execute_standard_db_script(): It executes scripts placed on framework/db/scripts 
+		run_standard_query(): It executes scripts placed on framework/db/scripts 
 		"""
-		cursor = self.db.execute(self.db.build_query(script_name, self.get_table_name(), attributes), attributes)
-		cursor.close()
-		return self.db.conn
+		cursor = self.db.execute(self.db.build_query(script_name, self.get_table_name(), attributes.keys()), attributes)
+		return (self.db.conn, cursor)
 
 	def save(self):
 		"""
 		save(): It saves the model content on db.
 		If the Model::id is None a new record is created. Otherwise it'll try to update an existing record.
 		"""
-		if self.id:
+		if self.id is not None:
 			return self.update()
 		else:
 			return self.create()
@@ -73,7 +72,15 @@ class Model:
 		pass
 
 	def create(self):
-		return self.execute_standard_db_script("create")
+		conn, cursor = self.run_standard_query("create", self.get_attributes())
+		lastrowid = cursor.lastrowid
+		cursor.close()
+		conn.close()
+		return lastrowid
 
 	def update(self):
-		return self.execute_standard_db_script("update")
+		conn, cursor = self.run_standard_query("update", self.get_attributes())
+		rowcount = cursor.rowcount
+		cursor.close()
+		conn.close()
+		return rowcount

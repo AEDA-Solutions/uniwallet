@@ -3,12 +3,10 @@ from framework import Controller as std
 class User(std.Controller):
 	
 	def register(self):
-		self.model(self.get_request_parameters()).save().close()
-		return "Stored motherfucker"
+		return "Done: {} is the last id created".format(self.model(self.get_request_parameters()).save())
 
 	def update(self):
-		self.model(self.get_request_parameters()).save().close()
-		return "Stored motherfucka"
+		return "Done: {} rows affected".format(self.model(self.get_request_parameters()).save())
 
 	def doit(self):
 		return self.request.parameters;

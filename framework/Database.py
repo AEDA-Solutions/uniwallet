@@ -38,17 +38,15 @@ class Database:
 		self.conn.commit()
 		return cursor
 
-	def build_query(self, script_name, table_name, data):
+	def build_query(self, script_name, table_name, fields):
 		"""
 		build_query(): It prepares the query replacing {fields}, {data}, {field_to_set}, snippets
 		It is used just for the framework itself.
 		"""
 		query = self.get_script(script_name, "framework/db/scripts", table_name)
-		fields = []
 		quoted_fields = []
 		fields_to_set = []
-		for key, value in data.items():
-			fields.append(key)
-			quoted_fields.append("'{" + key + "}'")
-			fields_to_set.append("{}={}{}{}".format(key, "'{", key, "}'"))
+		for field in fields:
+			quoted_fields.append("'{" + field + "}'")
+			fields_to_set.append("{}={}{}{}".format(field, "'{", field, "}'"))
 		return query.replace("{fields}", ", ".join(fields)).replace("{data}", ", ".join(quoted_fields)).replace("{fields_to_set}", ", ".join(fields_to_set))
