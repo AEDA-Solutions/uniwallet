@@ -1,5 +1,6 @@
 from framework import Response as std
 import importlib
+from modules.aliases import aliases as modules_aliases
 from framework.helpers import general as helper
 from framework.helpers import debugger as debugger
 import traceback
@@ -24,7 +25,10 @@ class Router():
 	def resolve(self):
 		"""
 		resolve(): It call the specified controller
-		"""
+		""" 
+		if self.request.module in modules_aliases().keys():
+			self.request.module = modules_aliases()[self.request.module]
+
 		treater = self.call_controller(helper.get_package_from_module("controllers.treaters", "modules.{}".format(self.request.module)))
 		if treater.code == 'OK' or treater.code == 'Not Found':
 			return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))

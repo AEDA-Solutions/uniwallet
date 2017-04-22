@@ -1,27 +1,42 @@
 # Script de criação do banco de dados.
 
+DROP DATABASE Uniwallet;
 CREATE DATABASE Uniwallet;
 
 USE Uniwallet;
 
 CREATE TABLE Users (
-id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-firstname VARCHAR(30) NOT NULL,
-lastname VARCHAR(30) NOT NULL,
-email VARCHAR(50) NOT NULL,
-password VARCHAR(50) NOT NULL,
-university VARCHAR(20) NOT NULL
+	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	firstname VARCHAR(128) NOT NULL,
+	lastname VARCHAR(128) NOT NULL,
+	email VARCHAR(64) NOT NULL,
+	password VARCHAR(128) NOT NULL,
+	university VARCHAR(64) NOT NULL
 );
 
-CREATE TABLE Company (
-companyid INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-companyname VARCHAR(30) NOT NULL,
-companyemail VARCHAR(50) NOT NULL,
-companylogin VARCHAR(15) NOT NULL,
-companypassword VARCHAR(15) NOT NULL,
-companyddd INT(2),
-companyphone INT(9),
-companyaddress VARCHAR(100),
-city VARCHAR(20),
-cnpj INT(14)
+CREATE TABLE AccessLevels (
+	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(32) NOT NULL,
+	description VARCHAR(256)
+);
+
+CREATE TABLE User_AccessLevel (
+	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	user_id INT(32) NOT NULL,
+	access_level INT(32) NOT NULL,
+	FOREIGN KEY (user_id) REFERENCES Users(id),
+	FOREIGN KEY (access_level) REFERENCES AccessLevels(id)
+);
+
+CREATE TABLE Companies (
+	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(128) NOT NULL,
+	email VARCHAR(64) NOT NULL,
+	login VARCHAR(64) NOT NULL,
+	password VARCHAR(128) NOT NULL,
+	ddd VARCHAR(32),
+	phone VARCHAR(32),
+	address VARCHAR(128),
+	city VARCHAR(128),
+	cnpj VARCHAR(32)
 );

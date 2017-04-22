@@ -75,7 +75,7 @@ class Treater(std.Controller):
 		"""
 		if not field_content or not re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", field_content):
 			self.forbid()
-			return "{} is not an valid email".format(field_name)
+			return "{} is not a valid email".format(field_name)
 
 	def field_required(self, field_name, field_content):
 		"""

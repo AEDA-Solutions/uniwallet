@@ -1,0 +1,59 @@
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 18, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 29, in resolve
+    if self.request.module in aliases.keys():
+AttributeError: 'module' object has no attribute 'keys'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 18, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 29, in resolve
+    if self.request.module in aliases().keys():
+TypeError: 'module' object is not callable
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 18, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 29, in resolve
+    if self.request.module in aliases.keys():
+AttributeError: 'function' object has no attribute 'keys'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 18, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 35, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(choose_module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Pages.py", line 9, in cadastro
+    return self.prepare_static(self.get_html("TeladeCadastro"))
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 56, in get_html
+    return self.get_file("html/{}.html".format(html_file_name))
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+AttributeError: 'NoneType' object has no attribute '__file__'
+
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 18, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 35, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(choose_module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/frontend/controllers/Pages.py", line 12, in inicial
+    return self.prepare_static(self.get_html("index"))
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 56, in get_html
+    return self.get_file("html/{}.html".format(html_file_name))
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 63, in get_file
+    with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
+AttributeError: 'NoneType' object has no attribute '__file__'
+

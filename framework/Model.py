@@ -10,6 +10,10 @@ class Model:
 		else:
 			raise Exception("Error calling model '{}'. Model must receive some data.".format(self.__class__.__name__))
 
+	def set_attribute(self, attribute_name, value):
+		self.attributes.append(attribute_name)
+		setattr(self, attribute_name, value)
+
 	def get_table_name(self):
 		"""
 		get_table_name() It returns the table name.
@@ -41,11 +45,11 @@ class Model:
 				raise Exception("Error calling model '{}'. Attribute '{}' is missing on the passed data.".format(self.__class__.__name__, attr))
 
 	
-	def execute_standard_db_script(self, script_name):
+	def execute_standard_db_script(self, script_name, attributes = self.get_attributes()):
 		"""
 		execute_standard_db_script(): It executes scripts placed on framework/db/scripts 
 		"""
-		cursor = self.db.execute(self.db.build_query(script_name, self.get_table_name(), self.get_attributes()), self.get_attributes())
+		cursor = self.db.execute(self.db.build_query(script_name, self.get_table_name(), attributes), attributes)
 		cursor.close()
 		return self.db.conn
 
