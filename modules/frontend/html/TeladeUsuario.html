@@ -6,10 +6,13 @@
       <meta charset="utf-8"> 
       <meta name="viewport" content="width=device-width, initial-scale=1.0"> 		 
       <title> UniWallet </title>  
-      <link rel="stylesheet" href="css/materialize.css"> 
+      <link rel="stylesheet" href="{static}css/materialize.css"> 
+      <link rel="stylesheet" href="{static}assets/css/telausuario.css">
+      <link rel="stylesheet" href="{static}css/google-fonts.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-       <link rel="stylesheet" type="text/css" href="{static}assets/css/telausuario.css">
+      <script src="https://code.jquery.com/jquery-3.2.0.min.js"> </script> 
+      <script src="{static}js/materialize.js"> </script>
 </head> 
 
 <header class="navbar-fixed">  
@@ -57,42 +60,93 @@
 <body>
 
 <div class="row">
-	<div class="menuprincipal">
-		<div class="col s8 offset-s2">
-		<ul class="collapsible" data-collapsible="accordion">
-		<li>
-      		<div class="collapsible-header"><i class="material-icons">credit_card</i>Saldo</div>
-      		<div class="collapsible-body"><span>R$200,00</span></div>
-    	</li>
-    	<li>
-      		<div class="collapsible-header"><i class="material-icons">trending_up</i>Extratos</div>
-      		<div class="collapsible-body"><span></span></div>
-    	</li>
-    	<li>
-      		<div class="collapsible-header"><i class="material-icons">view_list</i>Histórico de Compras</div>
-      		<div class="collapsible-body"><span></span></div>
-    	</li>
-    	<li>
-      		<div class="collapsible-header"><i class="material-icons">store</i>Loja Virtual</div>
-      		<div class="collapsible-body"><span></span></div>
-    	</li>
-    	<li>
-      		<div class="collapsible-header"><i class="material-icons">swap_vertical_circle</i>Converta seus Créditos</div>
-      		<div class="collapsible-body"><span></span></div>
-    	</li>
-    	<li>
-      		<div class="collapsible-header"><i class="material-icons">new_releases</i>Compras Pendentes</div>
-      		<div class="collapsible-body"><span></span></div>
-    	</li>
-  		</ul>
-  		</div>
-  	</div>
+<ul class="collection">
+    <li class="collection-item avatar">
+      <i class="material-icons circle">perm_identity</i>
+      <span class="title">Cliente</span>
+      <p> Último Acesso<br>
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+  </ul>
+</div>
+</div>
+
+<div class="row">
+<div class="menuprincipal">
+<div class="col s8 offset-s2">
+<div class="arruma">
+<ul class="collapsible" data-collapsible="accordion">
+<li>
+      <div class="collapsible-header"><i class="material-icons">credit_card</i>Saldo</div>
+      <div class="collapsible-body"><span>R$200,00</span></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">trending_up</i>Extratos</div>
+      <div class="collapsible-body"><span></span></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">view_list</i>Histórico de Compras</div>
+      <div class="collapsible-body"><span>
+      <table>
+        <thead>
+          <tr>
+           <th>Data</th>
+              <th>Loja</th>
+              <th>Produto</th>
+              <th>Preço</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+          <td>21/04/2017</td>
+            <td>Alvin</td>
+            <td>Eclair</td>
+            <td>R$0.87</td>
+          </tr>
+          <tr>
+          <td>22/04/2017</td>
+            <td>Alan</td>
+            <td>Jellybean</td>
+            <td>R$3.76</td>
+          </tr>
+          <tr>
+          <td>23/04/2017</td>
+            <td>Jonathan</td>
+            <td>Lollipop</td>
+            <td>R$7.00</td>
+          </tr>
+        </tbody>
+      </table></span></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">store</i>Loja Virtual</div>
+      <div class="collapsible-body"><span>
+      <div class="row">
+      <div class="col s6"><input type="submit" name="submit" value="Alimentos" class="btn-conFace"></div>
+      <div class="col s6"><input type="submit" name="submit" value="Outros" class="btn-conFace"></div>
+    </div>
+      </span></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">swap_vertical_circle</i>Converta seus Créditos</div>
+      <div class="collapsible-body"><span></span></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">new_releases</i>Compras Pendentes</div>
+      <div class="collapsible-body"><span>Voce deixou de retirar o item X na loja tal</span></div>
+    </li>
+  </ul>
+  </div>
+  </div>
+  </div>
+  </div>
 </div>
 
 <div class="row">
 <div class="tags">
       <div class="col s4">
-        <!-- Promo Content 1 goes here -->
         <div class="row">
           <div class="card white">
             <div class="card-content black-text">
@@ -106,7 +160,6 @@
       </div>
 
       <div class="col s4">
-        <!-- Promo Content 2 goes here -->
         <div class="row">
           <div class="card white">
             <div class="card-content black-text">
@@ -120,7 +173,6 @@
       </div>
 
       <div class="col s4">
-        <!-- Promo Content 1 goes here -->
         <div class="row">
           <div class="card white">
             <div class="card-content black-text">
@@ -145,7 +197,7 @@
         <div class="col l4 offset-l2 s12">
             <h5 class="white-text">Mais de UniWallet</h5>
             <ul>
-              	<li><a class="grey-text text-lighten-3" href="#!">Dúvidas Frequentes</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Dúvidas Frequentes</a></li>
                 <li><a class="grey-text text-lighten-3" href="#!">Promoções Exclusivas</a></li>
                 <!--  <li><a class="grey-text text-lighten-3" href="TeladeCadastro.html">Cadastre-se</a></li> -->
             </ul>
@@ -154,7 +206,7 @@
         </div>
         <div class="footer-copyright">
         <div class="container">
-           	© 2017 Copyright
+            © 2017 Copyright
             <a class="grey-text text-lighten-4 right" href="#!">Equipe UniWallet</a>
         </div>
     </div>
@@ -166,25 +218,24 @@
 
 
 <script>
-	document.getElementById("botao-continuar").addEventListener("click", function(){
-  	window.location = 'file:///home/aluno/Downloads/uniwallet-master/frontend/materialize/TeladeLogin.html';
-  	//window.alert("fioajisdojafipo")
-	})
-  	$(document).ready(function(){
+document.getElementById("botao-continuar").addEventListener("click", function(){
+  window.location = 'file:///home/aluno/Downloads/uniwallet-master/frontend/materialize/TeladeLogin.html';
+  //window.alert("fioajisdojafipo")
+})
+  $(document).ready(function(){
       $('.parallax').parallax();
     });
 </script>
 
 <script>
-	$(document).ready(function(){
+$(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
-  	});
+  });
 </script>
 
 <script>
-	
-	$(document).ready(function(){
+$(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
   });       
@@ -192,7 +243,7 @@
 </script>
 
 <script>
-	$(document).ready(function(){
+$(document).ready(function(){
     $('.collapsible').collapsible();
   });
 </script>
