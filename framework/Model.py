@@ -58,9 +58,13 @@ class Model:
 		If the Model::id is None a new record is created. Otherwise it'll try to update an existing record.
 		"""
 		if self.id is not None:
-			return self.update()
+			conn, cursor = self.run_standard_query("update", self.get_attributes())
 		else:
-			return self.create()
+			conn, cursor = self.run_standard_query("create", self.get_attributes())
+		return {
+			"conn": conn,
+			"cursor": cursor
+		}
 
 	def load(self, id):
 		pass
@@ -70,17 +74,3 @@ class Model:
 
 	def find(self):
 		pass
-
-	def create(self):
-		conn, cursor = self.run_standard_query("create", self.get_attributes())
-		lastrowid = cursor.lastrowid
-		cursor.close()
-		conn.close()
-		return lastrowid
-
-	def update(self):
-		conn, cursor = self.run_standard_query("update", self.get_attributes())
-		rowcount = cursor.rowcount
-		cursor.close()
-		conn.close()
-		return rowcount

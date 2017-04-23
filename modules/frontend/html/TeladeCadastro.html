@@ -53,8 +53,43 @@
 			</div>
 
 
-<script src="https://code.jquery.com/jquery-3.2.0.min.js"> </script> 
+<script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
 
+<script type="text/javascript">
+
+	function enviar_dados(dados, callback){
+		$.ajax({
+			type: "POST",
+			url: "http://localhost:8000/api/user/register",
+			data: dados,
+			success: callback,
+			dataType: 'json'
+		});
+	}
+
+	function pegar_dados_campos(){
+		var inputs = document.getElementsByClassName("input-form")
+		var objeto = {}
+		for (var i = 0; i < inputs.length; i++) {
+			objeto[inputs[i].name] = inputs[i].value
+		}
+		return objeto;
+	}
+
+	document.getElementById("botao_submit").addEventListener("click", function(){
+		var dados_em_json = JSON.stringify(pegar_dados_campos())
+		enviar_dados(dados_em_json, function(response){
+			if (response.code == 200){
+				window.location.href = "http://localhost:8000/pages/inicial";
+				//var msg = '<img src="{static}assets/images/caio.jpeg"></img>' + response.content
+			}
+			else
+				var msg = response.content
+			document.getElementById("mensagem_retorno").innerHTML = msg
+		})
+	})
+
+</script>
 
 </body>
 
