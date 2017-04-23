@@ -4,9 +4,9 @@ class Transaction(std.Treater):
 	def save(self):
 		return self.rules({
 				"fields": {
-					"id": 	["required"],
-					"operation": 	["required"]
+					"operation": 	["required"],
+					"value": 	["required"]
 				},
-				"method": "get",
+				"method": "post",
 				#"auth": ["manager", "client"]
 			})
