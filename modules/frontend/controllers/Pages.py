@@ -20,5 +20,8 @@ class Pages(std.Controller):
 	def arthur(self):
 		return self.get_html("guilherme")
 
+	def transaction(self):
+		return  self.prepare_static(self.get_html("CreateTransaction"))
+
 	def motherfucker(self):
 		return self.get_html("rafael")
