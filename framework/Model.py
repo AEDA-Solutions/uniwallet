@@ -61,10 +61,8 @@ class Model:
 			conn, cursor = self.run_standard_query("update", self.get_attributes())
 		else:
 			conn, cursor = self.run_standard_query("create", self.get_attributes())
-		return {
-			"conn": conn,
-			"cursor": cursor
-		}
+
+		return Model.Connection(conn, cursor)
 
 	def load(self, id):
 		pass
@@ -74,3 +72,13 @@ class Model:
 
 	def find(self):
 		pass
+
+	class Connection:
+		
+		def __init__(self, connection, cursor):
+			self.connection = connection
+			self.cursor = cursor
+
+		def close(self):
+			self.connection.close()
+			self.cursor.close()

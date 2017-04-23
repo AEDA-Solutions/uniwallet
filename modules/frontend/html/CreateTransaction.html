@@ -68,11 +68,11 @@
 		enviar_dados(dados_em_json, function(response){
 			if (response.code == 200){
 				//window.location.href = "http://localhost:8000/pages/inicial";
-				//var msg = '<img src="{static}assets/images/caio.jpeg"></img>' + response.content
-			}
-			else
+				//==var msg = '<img src="{static}assets/images/caio.jpeg"></img>' + response.content
 				var msg = response.content
-			document.getElementById("mensagem_retorno").innerHTML = msg
+				document.getElementById("mensagem_retorno").innerHTML = msg
+			}
+			
 		})
 	})
 
