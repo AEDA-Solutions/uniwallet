@@ -26,11 +26,11 @@
 					</div>
 
 					<div class="form-input">
-						 <input class="input-form" type="text" name="firstname" placeholder="Coloque seu nome completo">
+						 <input class="input-form" type="text" name="firstname" placeholder="Coloque seu nome">
 					</div>
 
 					<div class="form-input">
-						 <input class="input-form" type="text" name="lastname" placeholder="Coloque seu nome completo">
+						 <input class="input-form" type="text" name="lastname" placeholder="Coloque seu sobrenome">
 					</div>
 
 					<div class="form-input">
@@ -47,7 +47,7 @@
 
 					
 					<br>
-					<a href="TeladeCadastroEmpresa.html">Cadastre-se como empresa</a>
+					<a href="empresa">Cadastre-se como empresa</a>
 				</form>
 				<button class="btn-login" id="botao_submit">CADASTRE-SE COMO USUARIO</button>
 			</div>
@@ -77,18 +77,12 @@
 	}
 
 	document.getElementById("botao_submit").addEventListener("click", function(){
-		var dados_em_json = JSON.stringify(pegar_dados_campos())
-		enviar_dados(dados_em_json, function(response){
-			if (response.code == 200){
-				window.location.href = "http://localhost:8000/pages/inicial";
-				//var msg = '<img src="{static}assets/images/caio.jpeg"></img>' + response.content
-			}
-			else
-				var msg = response.content
-			document.getElementById("mensagem_retorno").innerHTML = msg
-		})
-	})
-
+        var dados_em_json = JSON.stringify(pegar_dados_campos())
+        enviar_dados(dados_em_json, function(response){
+            var msg = response.content
+            document.getElementById("mensagem_retorno").innerHTML = msg
+        })
+    }) 
 </script>
 
 </body>

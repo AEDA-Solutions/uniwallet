@@ -1,0 +1,110 @@
+<!-- Tela de Cadastro Empresa-->
+
+
+<html>
+
+<head>
+  <title>Tela de Cadastro Empresa</title>
+        <link rel="stylesheet" type="text/css" href="{static}assets\css\styleslogin1.css">
+        </link>
+
+        <link rel="stylesheet" type="text/css" href="{static}assets\css\font-awesome.css">
+
+        <link rel="shortcut icon" href="official.ico" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+</head>
+
+
+<body>
+      <div class="containercadastro">
+        <img src="{static}assets\images\uwlogo.gif">
+        <form>
+
+          <div class="form-input">
+             <input type="text" name="compname" placeholder="Coloque o nome da empresa">
+          </div>
+
+           <div class="form-input">
+            <input type="cadastroemp" name="email" placeholder="Insira o email da empresa">
+          </div>
+
+            <div class="form-input">
+            <input type="text" name="location" placeholder="Insira o local da sua empresa">
+          </div>
+
+          <div class="form-input">
+            <input type="text" name="password" placeholder="Coloque a senha desejada">
+          </div>
+
+          <div class="form-input">
+            <input type="text" name="phone" style="font-size: 14px;" placeholder="Insira o telefone de contato da empresa">
+          </div>
+
+          <div class="form-input">
+            <input type="ncpf" name="cnpj" placeholder="Insira o CNPJ da empresa">
+          </div>
+
+          <h3>Selecione o ramo de vendas da empresa:</h3>
+          <form method="post" action="cadastrar-enquete.php">
+          <select name="Ramo de vendas">
+          <option value="Alim">Alimentos</option>
+          <option value="Roup">Roupas</option>
+          <option value="Livro">Livros</option>
+          <option value="Outros">Outros</option>
+          </select>
+
+<br>
+<br>
+          <input type="submit" name="submit" value="CADASTRE-SE COMO EMPRESA" class="btn-login">
+          <br>
+          <a href="#">Cadastre-se como usuario</a>
+        </fomr>
+      </div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.0.min.js"> </script> 
+<script type="text/javascript">
+
+
+
+function enviar_dados(dados, callback){
+  $.ajax({
+    type: "POST",
+    url: "http://localhost:8000/backend/user/register",
+    data: dados,
+    success: callback,
+    dataType: 'json'
+  });
+}
+
+function pegar_dados_campos(){
+  var inputs = document.getElementsByClassName("input-form")
+  var objeto = {}
+  for (var i = 0; i < inputs.length; i++) {
+    objeto[inputs[i].name] = inputs[i].value
+  }
+  return objeto;
+}
+
+document.getElementById("botao_submit").addEventListener("click", function(){
+  var dados_em_json = JSON.stringify(pegar_dados_campos())
+  //console.log(dados_em_json)
+  enviar_dados(dados_em_json, function(response){
+    window.alert(response)
+    //console.log(response)
+  })
+})
+
+</script>
+
+</body>
+
+</html>
+

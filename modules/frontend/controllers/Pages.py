@@ -7,6 +7,10 @@ class Pages(std.Controller):
 
 	def cadastro(self):
 		return self.prepare_static(self.get_html("TeladeCadastro"))
+		
+	def empresa(self):
+		return self.prepare_static(self.get_html("TeladeCadastroEmpresa"))
+
 
 	def inicial(self):
 		return self.prepare_static(self.get_html("index"))

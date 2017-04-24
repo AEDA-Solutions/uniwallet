@@ -78,28 +78,37 @@ input[type="cadastroemp"]{
 
 
 .form-input::before{
-  content: "\f007";
+  content: "\f1fa";
   position: absolute;
   font-family: "FontAwesome";
   padding-left: 5px;
   padding-top: 20px;
-  font-size: 35px;
+  font-size: 25px;
+  margin-top: 5px;
 }
 
 .form-input:nth-child(2)::before{
-  content: "\f023";
+  content: "\f2c0";
+  font-size: 25px;
+  margin-top: 5px;
 }
 
 .form-input:nth-child(3)::before{
-  content: "\f2bc";
+  content: "\f007";
+  font-size: 25px;
+  margin-top: 5px;
 }
 
 .form-input:nth-child(4)::before{
-  content: "\f1fa";
+  content: "\f023";
+  font-size: 25px;
+  margin-top: 5px;
 }
-
+ 
 .form-input:nth-child(5)::before{
   content: "\f02d";
+  font-size: 25px;
+  margin-top: 5px;
 }
 
 .btn-login{
