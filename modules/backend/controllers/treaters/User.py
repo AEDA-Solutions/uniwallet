@@ -40,12 +40,8 @@ class User(std.Treater):
 
 	def foo(self):
 		return self.rules({
-				"fields": {
-					"name": ["email"]
-				},
 				"method": "get",
-				"private": False
-				#"auth": ["ok"]
+				"auth": ["user"]
 			})
 
 

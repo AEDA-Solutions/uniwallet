@@ -12,8 +12,5 @@ class Auth(std.Treater):
 
 	def logout(self):
 		return self.rules({
-				"fields": {
-					"token": ["required"]
-				},
 				"method": "get"
 			})

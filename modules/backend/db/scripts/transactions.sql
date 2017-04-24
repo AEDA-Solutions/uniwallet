@@ -1,6 +1,6 @@
 USE Uniwallet;
 
-CREATE TABLE Transaction (
+CREATE TABLE Transactions (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	operation VARCHAR(32) NOT NULL,
 	value FLOAT(4) NOT NULL

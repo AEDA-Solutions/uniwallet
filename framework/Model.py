@@ -39,7 +39,7 @@ class Model:
 		if 'id' in data:
 			self.attributes.append('id')
 		for attr in self.attributes:
-			if attr in data:
+			if attr in data.keys():
 				setattr(self, attr, data[attr])
 			else:
 				raise Exception("Error calling model '{}'. Attribute '{}' is missing on the passed data.".format(self.__class__.__name__, attr))

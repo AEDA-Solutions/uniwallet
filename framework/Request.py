@@ -1,11 +1,10 @@
 from cgi import parse_qs, escape
-from http.cookies import SimpleCookie
 from framework.helpers import translator as translator
 
 class Request:
 	def __init__(self, env):
 		self.env = env
-		self.urn = env['PATH_INFO']
+		self.urn = env.get('PATH_INFO')
 		self.urn_list = self.urn.strip('/').split('/')
 		self.ok = len(self.urn_list) >= 2
 		self.module = '/'
@@ -16,13 +15,14 @@ class Request:
 				self.module, self.controller, self.action = self.urn_list[0].replace(".", ""), self.urn_list[1].replace(".", ""), self.urn_list[2].replace(".", "")
 		self.body = self.translate_POST_content()
 		self.parameters = self.get_GET()
-		self.method = env['REQUEST_METHOD']
+		self.method = env.get('REQUEST_METHOD')
+		self.authorization = env.get('HTTP_AUTHORIZATION')
 
 	def get_GET(self):
 		"""
 		get_GET(): It returns the variables passed through the url
 		"""
-		variables = parse_qs(self.env['QUERY_STRING'])
+		variables = parse_qs(self.env.get('QUERY_STRING'))
 		treated_vars = {}
 		for key in variables.keys():
 			if isinstance(variables[key], list) and len(variables[key]) == 1:
@@ -75,24 +75,5 @@ class Request:
 		inputs = self.get_inputs_from_method()
 		if input_name in inputs:
 			return inputs[input_name]
-		else:
-			return None
-
-	def parse_cookies(self):
-		"""
-		parse_cookies(): Turns the cookies into a object
-		""" 
-		cookies = None
-		if 'HTTP_COOKIE' in self.env.keys():
-			cookies = SimpleCookie(self.env['HTTP_COOKIE'])
-		return cookies
-
-	def get_cookie(self, cookie_name):
-		"""
-		get_cookie(): Get a cookie by name
-		"""
-		cookies = self.parse_cookies()
-		if cookies is not None and cookie_name in cookies:
-			return cookies[cookie_name].value
 		else:
 			return None

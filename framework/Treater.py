@@ -1,4 +1,5 @@
 from framework import Controller as std
+from framework.Auth import Auth
 import re
 
 class Treater(std.Controller):
@@ -26,8 +27,9 @@ class Treater(std.Controller):
 		"""
 		rule_auth(): It checks if the request is authorized to access the resource
 		"""
-		self.forbid()
-		return "Not authorized"
+		#self.forbid()
+		print(self.request.authorization)
+		print(auth)
 
 	def rule_method(self, method):
 		"""
