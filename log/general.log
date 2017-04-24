@@ -164,6 +164,7 @@ Traceback (most recent call last):
 mysql.connector.errors.DatabaseError: 1265 (01000): Data truncated for column 'value' at row 1
 
 Traceback (most recent call last):
+<<<<<<< HEAD
   File "/home/pcc/uniwallet/framework/Router.py", line 18, in route
     return self.resolve()
   File "/home/pcc/uniwallet/framework/Router.py", line 34, in resolve
@@ -234,4 +235,33 @@ Traceback (most recent call last):
   File "/home/pcc/uniwallet/modules/backend/controllers/Transaction.py", line 6, in save
     self.model(self.get_request_parameters()).save().close()
 AttributeError: 'dict' object has no attribute 'close'
+=======
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 18, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 34, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 47, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 57, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/Transaction.py", line 6, in save
+    self.model(self.get_request_parameters()).save().close()
+  File "/home/guilherme/repo/uniwallet/framework/Model.py", line 63, in save
+    conn, cursor = self.run_standard_query("create", self.get_attributes())
+  File "/home/guilherme/repo/uniwallet/framework/Model.py", line 52, in run_standard_query
+    cursor = self.db.execute(self.db.build_query(script_name, self.get_table_name(), attributes.keys()), attributes)
+  File "/home/guilherme/repo/uniwallet/framework/Database.py", line 37, in execute
+    cursor.execute(sql)
+  File "/usr/lib/python3/dist-packages/mysql/connector/cursor.py", line 518, in execute
+    self._handle_result(self._connection.cmd_query(stmt))
+  File "/usr/lib/python3/dist-packages/mysql/connector/cursor.py", line 442, in _handle_result
+    self._handle_noresultset(result)
+  File "/usr/lib/python3/dist-packages/mysql/connector/cursor.py", line 412, in _handle_noresultset
+    self._warnings = self._fetch_warnings()
+  File "/usr/lib/python3/dist-packages/mysql/connector/cursor.py", line 765, in _fetch_warnings
+    raise errors.get_mysql_exception(res[0][1], res[0][2])
+mysql.connector.errors.DatabaseError: 1265: Data truncated for column 'value' at row 1
+>>>>>>> ab1474afcf9c8451b6da96a35f37ee8cea71cc93
 
