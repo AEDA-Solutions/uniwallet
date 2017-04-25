@@ -10,7 +10,7 @@ class User(std.Treater):
 					"university": 	["required"],
 					"password": 	["required"]
 				},
-				"method": "get",
+				"method": "post",
 				#"auth": ["manager", "client"]
 			})
 
