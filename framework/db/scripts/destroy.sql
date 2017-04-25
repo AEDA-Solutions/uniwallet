@@ -1,1 +1,1 @@
-DELETE FROM {table_name} WHERE id='{id}'; 
+DELETE FROM {table_name} WHERE ids='{ids}'; 
