@@ -5,7 +5,8 @@ class Auth(std.Treater):
 		return self.rules({
 				"fields": {
 					"email": 	["required", "email", "exists"],
-					"password": ["required"]
+					"password": ["required"],
+					"user_id": ["required", "from:User"]
 				},
 				"method": "post"
 			})

@@ -67,8 +67,12 @@ class Model:
 	def load(self, id):
 		pass
 
-	def destroy(self):
-		pass
+	@staticmethod
+	def destroy(self, ids):
+		conn, cursor = self.db.execute("""
+			DELETE FROM {table_name} WHERE id IN '({id})'; 
+			""".replace('{id}', ",".join(ids)))
+		return Model.Connection(conn, cursor)
 
 	def find(self):
 		pass

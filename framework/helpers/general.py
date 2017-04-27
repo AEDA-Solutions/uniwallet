@@ -40,3 +40,8 @@ def get_package_from_module(package_name, module_name):
 		mod = None
 	return mod
 
+def replace_on_list(list_, target, replace_by):
+	for pos, content in enumerate(list_):
+		list_[pos] = list_[pos].replace(target, replace_by)
+	return list_
+
