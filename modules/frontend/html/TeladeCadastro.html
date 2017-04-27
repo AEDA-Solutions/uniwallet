@@ -22,32 +22,39 @@
 				<img src="{static}assets/images/uwlogo.gif">
 				<form>
 					<div id="mensagem_retorno" style="font-size: 30px; color: red">
-						
+
 					</div>
 
 					<div class="form-input">
-						 <input class="input-form" type="text" name="firstname" placeholder="Coloque seu nome">
+	 					<input class="input-form" type="text" name="fullname" size=30 minlenght=3 maxlength=50 placeholder="Coloque seu nome Completo">
 					</div>
 
 					<div class="form-input">
-						 <input class="input-form" type="text" name="lastname" placeholder="Coloque seu sobrenome">
+						<input class="input-form" type="ncpf" name="cpf" placeholder="Insira seu CPF">
 					</div>
 
 					<div class="form-input">
-						<input class="input-form" type="password" name="password" placeholder="Coloque sua senha">
+						<input class="input-form" type="password" name="password" size=30 minlength=6 maxlength=10 placeholder="Coloque sua senha">
 					</div>
 
 					<div class="form-input">
-						<input class="input-form" type="text" name="university" placeholder="Insira seu universidade">
+						<input class="input-form" type="password" name="confirmpassword" size=30 minlength=6 maxlength=10 placeholder="Confirme sua senha">
 					</div>
 
 					<div class="form-input">
-						<input class="input-form" type="text" name="email" placeholder="Insira seu email">
+						<input class="input-form" type="cssemail" name="email" placeholder="Insira seu email">
 					</div>
 
-					
+					<div class="form-input">
+						<input class="input-form" type="cssemail" name="email" placeholder="Confirme seu email">
+					</div>
+
+					<div class="form-input">
+						<input class="input-form" type="cssemail" name="univ" placeholder="Insira sua universidade">
+					</div>
+
 					<br>
-					<a href="empresa">Cadastre-se como empresa</a>
+					<a href="TeladeCadastroEmpresa.html">Cadastre-se como empresa</a>
 				</form>
 				<button class="btn-login" id="botao_submit">CADASTRE-SE COMO USUARIO</button>
 			</div>
@@ -82,10 +89,9 @@
             var msg = response.content
             document.getElementById("mensagem_retorno").innerHTML = msg
         })
-    }) 
+    })
 </script>
 
 </body>
 
 </html>
-
