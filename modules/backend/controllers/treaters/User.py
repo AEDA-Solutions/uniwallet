@@ -4,11 +4,11 @@ class User(std.Treater):
 	def register(self):
 		return self.rules({
 				"fields": {
-					"firstname": 	["required"],
-					"lastname": 	["required"],
+					"fullname": 	["required"],
 					"email": 		["required", "email", "unique"],
 					"university": 	["required"],
-					"password": 	["required"]
+					"password": 	["required"],
+					"cpf":			["required", "cpf"]
 				},
 				"method": "post",
 				#"auth": ["manager", "client"]
@@ -18,14 +18,22 @@ class User(std.Treater):
 		return self.rules({
 				"fields": {
 					"id": 			["required"],
-					"firstname": 	["required"],
-					"lastname": 	["required"],
+					"fullname": 	["required"],
 					"email": 		["required", "email", "unique"],
 					"university": 	["required"],
-					"password": 	["required"]
+					"password": 	["required"],
+					"cpf":			["required", "cpf"]
 				},
 				"method": "post",
 				#"auth": ["manager", "client"]
+			})
+
+	def delete(self):
+		return self.rules({
+				"fields": {
+					"ids[]": ["required"]
+				},
+				"method": "post"
 			})
 
 	def doit(self):

@@ -1,13 +1,20 @@
-from framework import Response as std
-import importlib
+from framework.Response import Response
+from framework.Database import Database
 from framework.helpers import general as helper
+import importlib
 import os
 
 class Controller:
 
 	def __init__(self, request):
-		self.response = std.Response()
+		self.response = Response()
 		self.request = request
+
+	def get_module_nome(self):
+		"""
+		get_module_name(): It gets the module name where controller is located into
+		"""
+		pass
 
 	def action(self, action_name):
 		"""
@@ -18,27 +25,33 @@ class Controller:
 			self.response.body = getattr(self, action_name)()
 			return self.response
 		else:
-			return std.Response(code = 'Not Found', body = "Action '{}' unavailable".format(action_name))
+			return Response(code = 'Not Found', body = "Action '{}' unavailable".format(action_name))
 
-	def get_db_config(self):
+	def get_db_connection(self):
 		"""
-		get_db_config(): It returns the module db config details
+		get_db_connection(): It returns the database connection
 		"""
-		return getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")()
+		return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
 
 
-	def model(self, data):
+	def model(self, data = None):
 		"""
 		get_model(): It returns a instance a of a correspondent model
 		"""
-		model_instance = None
+		return self.model_class()(self.get_db_connection(), data)
+
+	def model_class(self):
+		"""
+		get_model(): It returns a instance a of a correspondent model
+		"""
+		model_class = None
 		pack = helper.get_package_from_module(self.request.module, "modules")
 		for model_name in helper.get_package_modules(pack):
 			if model_name == self.__class__.__name__:
-				model_instance = getattr(importlib.import_module("modules.{}.{}".format(self.request.module, model_name)), model_name)(self.get_db_config(), data)
+				model_class = getattr(importlib.import_module("modules.{}.{}".format(self.request.module, model_name)), model_name)
 				break
-		if model_instance:
-			return model_instance
+		if model_class:
+			return model_class
 		else:
 			raise Exception("Error invoking model '{}'. This model is not created yet.".format(self.__class__.__name__))
 

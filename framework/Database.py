@@ -17,9 +17,9 @@ class Database:
 			else:
 				return file.read()
 		
-	def inject_data_on_query(self, query, data):
+	def inject_data(self, query, data):
 		"""
-		inject_data_on_query(): It replaces the data on the script
+		inject_data(): It replaces the data on the script
 		"""
 		for key, value in data.items():
 			if "{" + key + "}" in query: 
@@ -28,25 +28,15 @@ class Database:
 				raise Exception("Error calling model '{}'. SQL script '{}' is missing parameter '{}'.".format(self.__class__.__name__, query, key))
 		return query
 
-	def execute(self, query, data):
+	def execute(self, query, data = None):
 		"""
 		execute(): It execute the selected file query
 		"""
 		cursor = self.conn.cursor()
-		sql = (self.inject_data_on_query(query, data))
+		if data:
+			sql = (self.inject_data(query, data))
+		else:
+			sql = (query)
 		cursor.execute(sql)
 		self.conn.commit()
 		return cursor
-
-	def build_query(self, script_name, table_name, fields):
-		"""
-		build_query(): It prepares the query replacing {fields}, {data}, {field_to_set}, snippets
-		It is used just for the framework itself.
-		"""
-		query = self.get_script(script_name, "framework/db/scripts", table_name)
-		quoted_fields = []
-		fields_to_set = []
-		for field in fields:
-			quoted_fields.append("'{" + field + "}'")
-			fields_to_set.append("{}={}{}{}".format(field, "'{", field, "}'"))
-		return query.replace("{fields}", ", ".join(fields)).replace("{data}", ", ".join(quoted_fields)).replace("{fields_to_set}", ", ".join(fields_to_set))

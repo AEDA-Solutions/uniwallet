@@ -14,8 +14,14 @@ class User(std.Controller):
 		connection.close()
 		return "Done: {} rows affected".format(rowcount)
 
+	def delete(self):
+		connection = self.model().destroy(self.get_request_parameters()['ids'])
+		rowcount = connection.cursor.rowcount
+		connection.close()
+		return "Done: {} rows affected".format(rowcount)
+
 	def doit(self):
-		return self.request.parameters;
+		return self.request.parameters
 
 	def make(self):
 		return "Making makers"

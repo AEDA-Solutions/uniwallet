@@ -65,7 +65,7 @@ class Treater(std.Controller):
 		if response:
 			return response
 		for field_name in fields.keys():
-			response = self.check_is_list(field_name)
+			response = self.check_listness(field_name)
 			if response:
 				return response
 			for field_rule in fields[field_name]:
@@ -73,13 +73,16 @@ class Treater(std.Controller):
 				if response:
 					return response
 				
-	def check_is_list(self, field_name):
+	def check_listness(self, field_name):
 		"""
-		check_is_list(): It checks if the field can be a list
+		check_listness(): It checks if the field can be a list
 		"""
 		if '[]' not in field_name and isinstance(self.request.get_input(field_name), list):
 			self.forbid()
 			return "{} cannot be a list".format(field_name)
+		elif '[]' in field_name and not isinstance(self.request.get_input(field_name.replace('[]', '')), list):
+			self.forbid()
+			return "{} must be a list".format(field_name.replace('[]', ''))
 
 	def call_field_controller(self, field_rule, field_name):
 		"""
