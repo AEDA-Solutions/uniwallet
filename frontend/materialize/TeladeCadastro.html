@@ -14,14 +14,46 @@
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
+<!-- FUNÇÃO DE VERIFICAÇÃO DE EMAIL -->
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="Javascript">
+function validacaoEmail(field) {
+usuario = field.value.substring(0, field.value.indexOf("@"));
+dominio = field.value.substring(field.value.indexOf("@")+ 1, field.value.length);
+
+if ((usuario.length >=1) &&
+    (dominio.length >=3) && 
+    (usuario.search("@")==-1) && 
+    (dominio.search("@")==-1) &&
+    (usuario.search(" ")==-1) && 
+    (dominio.search(" ")==-1) &&
+    (dominio.search(".")!=-1) &&      
+    (dominio.indexOf(".") >=1)&& 
+    (dominio.lastIndexOf(".") < dominio.length - 1)) {
+
+document.getElementById("msgemail").innerHTML="E-mail valido";
+alert("E-mail valido");
+}
+else{
+document.getElementById("msgemail").innerHTML="<font color='red'>E-mail invalido </font>";
+alert("E-mail invalido");
+}
+}
+
+</script>
 </head>
 
 
 <body>
+
+		<form name="veri_email">
+	  	<hr color='gray'>
+
 			<div class="containercadastro">
 				<img src="assets/images/uwlogo.gif">
 				<form>
-
+				
 					<div class="form-input">
 						 <input class="input-form" type="text" name="firstname" placeholder="Coloque seu nome completo">
 					</div>
@@ -39,8 +71,11 @@
 					</div>0-->
 
 					<div class="form-input">
-						<input class="input-form" type="text" name="email" placeholder="Insira seu email">
+						<input class="input-form" type="text" name="email" onblur=" validacaoEmail(veri_email.email)" placeholder="Insira seu email">
+						<div id="msgemail"></div>
 					</div>
+
+					
 
 					
 					<br>
@@ -48,6 +83,9 @@
 				</form>
 				<button class="btn-login" id="botao_submit">CADASTRE-SE COMO USUARIO</button>
 			</div>
+
+
+
 
 
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"> </script> 

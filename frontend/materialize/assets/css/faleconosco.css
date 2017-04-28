@@ -65,7 +65,7 @@ h6{
   margin-right: 400px; 
 } 
 
- 
+/*Nome e Email*/
 input[type="text"]{ 
 
   height: 45px; 
@@ -80,7 +80,8 @@ input[type="text"]{
 
 } 
 
-input[type="mensagem"]{ 
+/*  Mensagem */
+textarea{ 
 
   height: 120px; 
   width: 350px; 

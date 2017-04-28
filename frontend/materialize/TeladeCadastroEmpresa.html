@@ -17,12 +17,47 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
+<!-- FUNÇÃO DE VERIFICAÇÃO DE EMAIL -->
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="Javascript">
+function validacaoEmail(field) {
+usuario = field.value.substring(0, field.value.indexOf("@"));
+dominio = field.value.substring(field.value.indexOf("@")+ 1, field.value.length);
+
+if ((usuario.length >=1) &&
+    (dominio.length >=3) && 
+    (usuario.search("@")==-1) && 
+    (dominio.search("@")==-1) &&
+    (usuario.search(" ")==-1) && 
+    (dominio.search(" ")==-1) &&
+    (dominio.search(".")!=-1) &&      
+    (dominio.indexOf(".") >=1)&& 
+    (dominio.lastIndexOf(".") < dominio.length - 1)) {
+
+document.getElementById("msgemail").innerHTML="E-mail valido";
+alert("E-mail valido");
+}
+else{
+document.getElementById("msgemail").innerHTML="<font color='red'>E-mail invalido </font>";
+alert("E-mail invalido");
+}
+}
+
+</script>
+
 
 
 </head>
 
 
 <body>
+
+
+    <form name="veri_email">
+      <hr color='gray'>
+
+
       <div class="containercadastro">
         <img src="assets\images\uwlogo.gif">
         <form>
@@ -31,9 +66,14 @@
              <input type="text" name="compname" placeholder="Coloque o nome da empresa">
           </div>
 
+
+      
            <div class="form-input">
-            <input type="cadastroemp" name="email" placeholder="Insira o email da empresa">
+            <input type="cadastroemp" name="email" onblur=" validacaoEmail(veri_email.email)" placeholder="Insira o email da empresa">
+            <div id="msgemail"></div>
+
           </div>
+         
 
             <div class="form-input">
             <input type="text" name="location" placeholder="Insira o local da sua empresa">
