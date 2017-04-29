@@ -1,5 +1,5 @@
-from framework.helpers import general as helper
-from framework.helpers import translator as translator
+from helpers import general as helper
+from helpers import translator as translator
 from http.client import responses
 
 class Response:

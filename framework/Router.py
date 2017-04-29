@@ -1,8 +1,8 @@
 from framework import Response as std
 import importlib
 from modules.aliases import aliases as modules_aliases
-from framework.helpers import general as helper
-from framework.helpers import debugger as debugger
+from helpers import general as helper
+from helpers import debugger as debugger
 import traceback
 
 class Router():

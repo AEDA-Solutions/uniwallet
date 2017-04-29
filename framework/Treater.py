@@ -1,6 +1,7 @@
 from framework import Controller as std
 from framework.Auth import Auth
-from framework.helpers import general as helper
+from helpers import general
+from helpers import cpf
 import re
 
 class Treater(std.Controller):
@@ -61,7 +62,7 @@ class Treater(std.Controller):
 		"""
 		rule_fields(): It checks the fields especifications
 		"""
-		response = self.check_forbidden_fields(helper.replace_on_list(list(fields.keys()), '[]', ''))
+		response = self.check_forbidden_fields(general.replace_on_list(list(fields.keys()), '[]', ''))
 		if response:
 			return response
 		for field_name in fields.keys():
@@ -116,4 +117,13 @@ class Treater(std.Controller):
 			if content is None or len(str(content)) == 0:
 				self.forbid()
 				return "{} parameter is required".format(field_name, pos)
+
+	def field_cpf(self, field_name, field_content):
+		"""
+		field_required(): It checks if passed field exists or is not empty
+		"""
+		for pos, content in enumerate(field_content):
+			if content is None or not cpf.is_cpf_valid(content):
+				self.forbid()
+				return "{} is an invalid cpf".format(field_name, pos)
 

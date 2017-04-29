@@ -106,11 +106,17 @@ class Model:
 		pass
 
 	class Connection:
+		"""
+		class Connection: It represents the connection artefact that must be returned to the controller after a database transaction
+		"""
 		
 		def __init__(self, connection, cursor):
 			self.connection = connection
 			self.cursor = cursor
 
 		def close(self):
-			self.connection.close()
+			"""
+			close(): It closes both cursor and database connection
+			"""
 			self.cursor.close()
+			self.connection.close()

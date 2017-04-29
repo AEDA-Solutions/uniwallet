@@ -1,1 +1,0 @@
-UPDATE {table_name} SET {fields_to_set} WHERE id='{id}'

@@ -1,6 +1,6 @@
 from framework.Response import Response
 from framework.Database import Database
-from framework.helpers import general as helper
+from helpers import general as helper
 import importlib
 import os
 

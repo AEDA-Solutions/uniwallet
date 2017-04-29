@@ -1,5 +1,5 @@
 from cgi import parse_qs, escape
-from framework.helpers import translator as translator
+from helpers import translator as translator
 
 class Request:
 	def __init__(self, env):
