@@ -38,22 +38,23 @@ class Controller:
 		"""
 		get_model(): It returns a instance a of a correspondent model
 		"""
-		return self.model_class()(self.get_db_connection(), data)
-
-	def model_class(self):
-		"""
-		get_model(): It returns a instance a of a correspondent model
-		"""
-		model_class = None
 		pack = helper.get_package_from_module(self.request.module, "modules")
-		for model_name in helper.get_package_modules(pack):
-			if model_name == self.__class__.__name__:
-				model_class = getattr(importlib.import_module("modules.{}.{}".format(self.request.module, model_name)), model_name)
+		model_name = None
+		for model in helper.get_package_modules(pack):
+			if model == self.__class__.__name__:
+				model_name = model
+				model_class = getattr(importlib.import_module("modules.{}.{}".format(self.request.module, model)), model)
 				break
-		if model_class:
-			return model_class
-		else:
-			raise Exception("Error invoking model '{}'. This model is not created yet.".format(self.__class__.__name__))
+		return self.model_class(model_name)(self.get_db_connection(), data)
+
+	def model_class(self, model_name):
+		"""
+		model_class(): It returns a instance a of a correspondent model
+		"""
+		try:
+			return getattr(importlib.import_module("modules.{}.{}".format(self.request.module, model_name)), model_name)
+		except:
+			raise Exception("Error invoking model '{}'. This model does not exist.".format(model_name))
 
 	def get_request_parameters(self):
 		"""
@@ -82,10 +83,12 @@ class Controller:
 		"""
 		self.response.raw = True
 
-	def forbid(self):
+	def forbid(self, message = None):
 		"""
 		forbid(): It sets the code as 400
 		"""
 		self.response.code = 'Bad Request'
+		if message:
+			return message 
 
 

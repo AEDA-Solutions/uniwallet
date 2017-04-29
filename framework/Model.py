@@ -102,8 +102,17 @@ class Model:
 		
 		return self.run_query(query)
 
-	def find(self):
-		pass
+	def find(self, fields):
+		"""
+		destroy(): It removes records from db from the ids passed (ids must be a list)
+		"""
+		query = """
+
+			SELECT * FROM {table_name} WHERE {fields};
+
+			""".format(table_name = self.get_table_name(), fields = " AND ".join("{}={}".format(item, "'{" + item + "}'") for item in fields))
+
+		return self.run_query(query, fields)
 
 	class Connection:
 		"""

@@ -32,7 +32,7 @@ class Database:
 		"""
 		execute(): It execute the selected file query
 		"""
-		cursor = self.conn.cursor()
+		cursor = self.conn.cursor(buffered=True)
 		if data:
 			sql = (self.inject_data(query, data))
 		else:

@@ -38,16 +38,14 @@ class Treater(std.Controller):
 		rule_method(): It checks if the HTTP method is allowed
 		"""
 		if method.lower() != self.request.method.lower():
-			self.forbid()
-			return "{} HTTP method not allowed".format(self.request.method)
+			return self.forbid("{} HTTP method not allowed".format(self.request.method))
 
 	def rule_private(self, is_private):
 		"""
 		rule_private(): It checks if the controller method is private
 		"""
 		if is_private:
-			self.forbid()
-			return "Access denied. This resource is private".format(self.request.action)
+			return self.forbid("Access denied. This resource is private".format(self.request.action))
 
 	def check_forbidden_fields(self, fields):
 		"""
@@ -55,8 +53,7 @@ class Treater(std.Controller):
 		"""
 		for input_name in self.request.get_inputs_from_method().keys():
 			if input_name not in fields:
-				self.forbid()
-				return "{} parameter is not acceptable".format(input_name)
+				return self.forbid("{} parameter is not acceptable".format(input_name))
 
 	def rule_fields(self, fields):
 		"""
@@ -79,51 +76,86 @@ class Treater(std.Controller):
 		check_listness(): It checks if the field can be a list
 		"""
 		if '[]' not in field_name and isinstance(self.request.get_input(field_name), list):
-			self.forbid()
-			return "{} cannot be a list".format(field_name)
+			return self.forbid("{} cannot be a list".format(field_name))
 		elif '[]' in field_name and not isinstance(self.request.get_input(field_name.replace('[]', '')), list):
-			self.forbid()
-			return "{} must be a list".format(field_name.replace('[]', ''))
+			return self.forbid("{} must be a list".format(field_name.replace('[]', '')))
 
 	def call_field_controller(self, field_rule, field_name):
 		"""
 		call_field_controller(): It tries to call an existent field controller
 		"""
-		field_method = getattr(self, "field_{}".format(field_rule), None)
+		field_method = getattr(self, "field_{}".format(field_rule.split(':')[0]), None)
 		if callable(field_method):
 			field_content = self.request.get_input(field_name)
 			if not isinstance(field_content, list):
 				field_content = [field_content]
 			if len(field_content) == 0:
 				field_content = [""]
-			response = field_method(field_name, field_content)
+			response = field_method(field_name, field_content, field_rule.split(':'))
 			if response:
 				return response
 
-	def field_email(self, field_name, field_content):
+	def field_email(self, name, content, parameter):
 		"""
 		field_email(): It checks if passed field is an email
 		"""
-		for pos, content in enumerate(field_content):
-			if not content or not re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", content):
-				self.forbid()
-				return "{} is not a valid email".format(field_name, pos)
+		for pos, content in enumerate(content):
+			if not content or not re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", str(content)):
+				return self.forbid("{} is not a valid email".format(name, pos))
+				
 
-	def field_required(self, field_name, field_content):
+	def field_required(self, name, content, meta):
 		"""
 		field_required(): It checks if passed field exists or is not empty
 		"""
-		for pos, content in enumerate(field_content):
+		for pos, content in enumerate(content):
 			if content is None or len(str(content)) == 0:
-				self.forbid()
-				return "{} parameter is required".format(field_name, pos)
+				return self.forbid("{} parameter is required".format(name, pos))
 
-	def field_cpf(self, field_name, field_content):
+	def field_cpf(self, name, content, meta):
 		"""
-		field_required(): It checks if passed field exists or is not empty
+		field_cpf(): It checks if string is valid cpf
 		"""
-		for pos, content in enumerate(field_content):
-			if content is None or not cpf.is_cpf_valid(content):
-				self.forbid()
-				return "{} is an invalid cpf".format(field_name, pos)
+		for pos, content in enumerate(content):
+			if content is None or not cpf.is_cpf_valid(str(content)):
+				return self.forbid("{} is an invalid cpf".format(name, pos))
+
+	def field_maxlength(self, name, content, meta):
+		"""
+		field_maxlength(): It checks max length for the content
+		"""
+		if len(meta) == 2:
+			for pos, content in enumerate(content):
+				if content is not None and len(str(content)) > int(meta[1]):
+					return self.forbid("Maximum length for {} is {}".format(name, meta[1]))
+		else:
+			return self.forbid("Invalid '{}' rule sintax on Treater for {}".format(meta[0], name))
+
+	def field_minlength(self, name, content, meta):
+		"""
+		field_maxlength(): It checks max length for the content
+		"""
+		if len(meta) == 2:
+			for pos, content in enumerate(content):
+				if content is not None and len(str(content)) < int(meta[1]):
+					self.forbid()
+					return "Minimum length for {} is {}".format(name, meta[1])
+		else:
+			return self.forbid("Invalid '{}' rule sintax on Treater for {}".format(meta[0], name))
+
+	def field_exists(self, name, content, meta):
+		"""
+		field_exists(): It checks if field exists
+		"""
+		if len(meta) == 3:
+			for pos, content in enumerate(content):
+				if True:
+					model = self.model_class(meta[2])(self.get_db_connection())
+					connection = model.find({meta[1]: content})
+					count = connection.cursor.rowcount
+					connection.close()
+					if count == 0:
+						return self.forbid("{} does not exist as {}:{}".format(name, meta[1], meta[2]))
+		else:
+			return self.forbid("Invalid '{}' rule sintax on Treater for {}".format(meta[0], name))
 
