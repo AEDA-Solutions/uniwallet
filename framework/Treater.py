@@ -149,13 +149,24 @@ class Treater(std.Controller):
 		"""
 		if len(meta) == 3:
 			for pos, content in enumerate(content):
-				if True:
-					model = self.model_class(meta[2])(self.get_db_connection())
-					connection = model.find({meta[1]: content})
-					count = connection.cursor.rowcount
-					connection.close()
-					if count == 0:
-						return self.forbid("{} does not exist as {}:{}".format(name, meta[1], meta[2]))
+				model = self.model_class(meta[2])(self.get_db_connection())
+				connection = model.find({meta[1]: content})
+				count = connection.cursor.rowcount
+				connection.close()
+				if count == 0:
+					return self.forbid("{} does not exist as {}:{}".format(name, meta[1], meta[2]))
 		else:
 			return self.forbid("Invalid '{}' rule sintax on Treater for {}".format(meta[0], name))
+
+	def field_unique(self, name, content, meta):
+		"""
+		field_unique(): It checks if field exists
+		"""
+		for pos, content in enumerate(content):
+			model = self.model_class(self.__class__.__name__)(self.get_db_connection())
+			connection = model.find({name: content})
+			count = connection.cursor.rowcount
+			connection.close()
+			if count != 0:
+				return self.forbid("{} is already taken".format(name))
 

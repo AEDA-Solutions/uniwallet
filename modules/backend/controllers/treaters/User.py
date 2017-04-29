@@ -5,7 +5,7 @@ class User(std.Treater):
 		return self.rules({
 				"fields": {
 					"fullname": 	["required"],
-					"email": 		["required", "email", "unique", "exists:email:User"],
+					"email": 		["required", "email", "unique"],
 					"university": 	["required"],
 					"password": 	["required", "maxlength:8", "minlength:8"],
 					"cpf":			["required", "cpf"]
