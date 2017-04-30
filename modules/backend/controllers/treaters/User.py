@@ -36,6 +36,15 @@ class User(std.Treater):
 				"method": "post"
 			})
 
+	def fetch(self):
+		return self.rules({
+				"fields": {
+					"start": ["required"],
+					"limit": ["required"]
+				},
+				"method": "get"
+			})	
+
 	def doit(self):
 		return self.rules({
 				"private": True

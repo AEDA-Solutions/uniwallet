@@ -17,6 +17,7 @@ class Request:
 		self.parameters = self.get_GET()
 		self.method = env.get('REQUEST_METHOD')
 		self.authorization = env.get('HTTP_AUTHORIZATION')
+		print(self.urn_list)
 
 	def get_GET(self):
 		"""

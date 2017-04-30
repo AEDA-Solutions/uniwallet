@@ -20,6 +20,12 @@ class User(std.Controller):
 		connection.close()
 		return "Done: {} rows affected".format(rowcount)
 
+	def fetch(self):
+		connection = self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit'))
+		records = connection.fetch_selection(fields_to_ignore = ['password'])
+		connection.close()
+		return records
+
 	def doit(self):
 		return self.request.parameters
 

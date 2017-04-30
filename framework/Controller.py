@@ -38,21 +38,15 @@ class Controller:
 		"""
 		get_model(): It returns a instance a of a correspondent model
 		"""
-		pack = helper.get_package_from_module(self.request.module, "modules")
-		model_name = None
-		for model in helper.get_package_modules(pack):
-			if model == self.__class__.__name__:
-				model_name = model
-				model_class = getattr(importlib.import_module("modules.{}.{}".format(self.request.module, model)), model)
-				break
-		return self.model_class(model_name)(self.get_db_connection(), data)
+		return self.model_class(self.__class__.__name__)(self.get_db_connection(), data)
 
 	def model_class(self, model_name):
 		"""
 		model_class(): It returns a instance a of a correspondent model
 		"""
+		print("modules.{}.models.{}".format(self.request.module, model_name))
 		try:
-			return getattr(importlib.import_module("modules.{}.{}".format(self.request.module, model_name)), model_name)
+			return getattr(importlib.import_module("modules.{}.models.{}".format(self.request.module, model_name)), model_name)
 		except:
 			raise Exception("Error invoking model '{}'. This model does not exist.".format(model_name))
 
@@ -61,6 +55,12 @@ class Controller:
 		get_request_parameters(): It returns the request parameters
 		"""
 		return self.request.get_inputs_from_method()
+
+	def get_input(self, field):
+		"""
+		get_input(): It gets a request paramenter
+		"""
+		return self.request.get_input(field)
 
 	def get_html(self, html_file_name):
 		"""

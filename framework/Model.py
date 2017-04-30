@@ -105,7 +105,7 @@ class Model:
 
 	def find(self, fields = None, fields_to_ignore = None, start_from = 0, limit = 18446744073709551615):
 		"""
-		destroy(): It removes records from db from the ids passed (ids must be a list)
+		find(): It finds records with the specified fields according the referred limits
 		"""
 		query = """
 
