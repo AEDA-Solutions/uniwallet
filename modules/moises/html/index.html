@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hello minha ṕágina</title>
+</head>
+<body>
+<div id="mensagem_retorno"></div>
+
+
+<form>
+	
+
+	nome: <input type="text" name="nome" class="inputs_usuario">
+	email: <input type="text" name="email" class="inputs_usuario">
+	senha: <input type="password" name="senha" class="inputs_usuario">
+
+</form>
+
+<button id="botao_submit">Enviar</button>
+
+
+<script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+<script type="text/javascript">
+
+	function enviar_dados(dados, callback){
+		$.ajax({
+			type: "POST",
+			url: "http://localhost:8000/moises/cebolitos/salvar",
+			data: dados,
+			success: callback,
+			dataType: 'json'
+		});
+	}
+
+	function pegar_dados_campos(){
+		var inputs = document.getElementsByClassName("inputs_usuario")
+		var objeto = {}
+		for (var i = 0; i < inputs.length; i++) {
+			if (inputs[i].name) {
+				objeto[inputs[i].name] = inputs[i].value
+			}
+		}
+		return objeto;
+	}
+
+	document.getElementById("botao_submit").addEventListener("click", function(){
+        var dados_em_json = JSON.stringify(pegar_dados_campos())
+        enviar_dados(dados_em_json, function(response){
+            var msg = response.content
+            document.getElementById("mensagem_retorno").innerHTML = msg
+        })
+    })
+</script>
+
+</body>
+</html>
