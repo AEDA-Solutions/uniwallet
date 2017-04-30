@@ -1,6 +1,5 @@
 from framework import Controller as std
 from framework.Auth import Auth
-from helpers import general
 from helpers import cpf
 import re
 
@@ -55,11 +54,19 @@ class Treater(std.Controller):
 			if input_name not in fields:
 				return self.forbid("{} parameter is not acceptable".format(input_name))
 
+	def get_id_field(self, fields):
+		"""
+		get_id_field(): It gets ids fields
+		"""
+		for field in fields.keys():
+			if '*' in field:
+				return {field.replace('*', ''): self.request.get_input(field.replace('*', ''))}
+
 	def rule_fields(self, fields):
 		"""
 		rule_fields(): It checks the fields especifications
 		"""
-		response = self.check_forbidden_fields(general.replace_on_list(list(fields.keys()), '[]', ''))
+		response = self.check_forbidden_fields(list(field.replace('[]', '').replace('*', '') for field in fields.keys()))
 		if response:
 			return response
 		for field_name in fields.keys():
@@ -67,7 +74,7 @@ class Treater(std.Controller):
 			if response:
 				return response
 			for field_rule in fields[field_name]:
-				response = self.call_field_controller(field_rule, field_name.replace('[]', ''))
+				response = self.call_field_controller(field_rule, field_name.replace('[]', '').replace('*', ''), self.get_id_field(fields))
 				if response:
 					return response
 				
@@ -80,7 +87,20 @@ class Treater(std.Controller):
 		elif '[]' in field_name and not isinstance(self.request.get_input(field_name.replace('[]', '')), list):
 			return self.forbid("{} must be a list".format(field_name.replace('[]', '')))
 
-	def call_field_controller(self, field_rule, field_name):
+	class FieldRule():
+		"""
+		class FieldRule: It represents the data passed to the field rule controllers
+		"""
+		def __init__(self, field_name, content, identificator, parameters):
+			self.name = parameters[0] if len(parameters) > 0 else None
+			self.field_name = field_name
+			self.content = content
+			self.identificator = identificator
+			if len(parameters) > 0:
+				del parameters[0]
+			self.params = parameters
+
+	def call_field_controller(self, field_rule, field_name, identificator):
 		"""
 		call_field_controller(): It tries to call an existent field controller
 		"""
@@ -91,82 +111,85 @@ class Treater(std.Controller):
 				field_content = [field_content]
 			if len(field_content) == 0:
 				field_content = [""]
-			response = field_method(field_name, field_content, field_rule.split(':'))
+			response = field_method(self.FieldRule(field_name, field_content, identificator, field_rule.split(':')))
 			if response:
 				return response
 
-	def field_email(self, name, content, parameter):
+	def field_email(self, meta):
 		"""
 		field_email(): It checks if passed field is an email
 		"""
-		for pos, content in enumerate(content):
+		for pos, content in enumerate(meta.content):
 			if not content or not re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", str(content)):
-				return self.forbid("{} is not a valid email".format(name, pos))
+				return self.forbid("{} is not a valid email".format(field_name, pos))
 				
 
-	def field_required(self, name, content, meta):
+	def field_required(self, meta):
 		"""
 		field_required(): It checks if passed field exists or is not empty
 		"""
-		for pos, content in enumerate(content):
+		for pos, content in enumerate(meta.content):
 			if content is None or len(str(content)) == 0:
-				return self.forbid("{} parameter is required".format(name, pos))
+				return self.forbid("{} parameter is required".format(meta.field_name, pos))
 
-	def field_cpf(self, name, content, meta):
+	def field_cpf(self, meta):
 		"""
 		field_cpf(): It checks if string is valid cpf
 		"""
-		for pos, content in enumerate(content):
+		for pos, content in enumerate(meta.content):
 			if content is None or not cpf.is_cpf_valid(str(content)):
-				return self.forbid("{} is an invalid cpf".format(name, pos))
+				return self.forbid("{} is an invalid cpf".format(meta.field_name, pos))
 
-	def field_maxlength(self, name, content, meta):
+	def field_maxlength(self, meta):
 		"""
 		field_maxlength(): It checks max length for the content
 		"""
-		if len(meta) == 2:
-			for pos, content in enumerate(content):
-				if content is not None and len(str(content)) > int(meta[1]):
-					return self.forbid("Maximum length for {} is {}".format(name, meta[1]))
+		if len(meta.params) == 1:
+			for pos, content in enumerate(meta.content):
+				if content is not None and len(str(content)) > int(meta.params[0]):
+					return self.forbid("Maximum length for {} is {}".format(meta.field_name, meta.params[0]))
 		else:
-			return self.forbid("Invalid '{}' rule sintax on Treater for {}".format(meta[0], name))
+			return self.forbid("Invalid '{}' rule sintax on Treater for {}".format(meta.name, meta.field_name))
 
-	def field_minlength(self, name, content, meta):
+	def field_minlength(self, meta):
 		"""
 		field_maxlength(): It checks max length for the content
 		"""
-		if len(meta) == 2:
-			for pos, content in enumerate(content):
-				if content is not None and len(str(content)) < int(meta[1]):
+		if len(meta.params) == 1:
+			for pos, content in enumerate(meta.content):
+				if content is not None and len(str(content)) < int(meta.params[0]):
 					self.forbid()
-					return "Minimum length for {} is {}".format(name, meta[1])
+					return "Minimum length for {} is {}".format(meta.field_name, meta.params[0])
 		else:
-			return self.forbid("Invalid '{}' rule sintax on Treater for {}".format(meta[0], name))
+			return self.forbid("Invalid '{}' rule sintax on Treater for {}".format(meta.name, meta.field_name))
 
-	def field_exists(self, name, content, meta):
+	def field_exists(self, meta):
 		"""
 		field_exists(): It checks if field exists
 		"""
-		if len(meta) == 3:
-			for pos, content in enumerate(content):
-				model = self.model_class(meta[2])(self.get_db_connection())
-				connection = model.find({meta[1]: content})
+		if len(meta.params) == 2:
+			for pos, content in enumerate(meta.content):
+				model = self.model_class(meta.params[1])(self.get_db_connection())
+				connection = model.find({meta.params[0]: content})
 				count = connection.cursor.rowcount
 				connection.close()
 				if count == 0:
-					return self.forbid("{} does not exist as {}:{}".format(name, meta[1], meta[2]))
+					return self.forbid("{} does not exist as {}:{}".format(meta.field_name, meta.params[0], meta.params[1]))
 		else:
-			return self.forbid("Invalid '{}' rule sintax on Treater for {}".format(meta[0], name))
+			return self.forbid("Invalid '{}' rule sintax on Treater for {}".format(meta.name, meta.field_name))
 
-	def field_unique(self, name, content, meta):
+	def field_unique(self, meta):
 		"""
 		field_unique(): It checks if field exists
 		"""
-		for pos, content in enumerate(content):
-			model = self.model_class(self.__class__.__name__)(self.get_db_connection())
-			connection = model.find({name: content})
-			count = connection.cursor.rowcount
-			connection.close()
-			if count != 0:
-				return self.forbid("{} is already taken".format(name))
+		if len(meta.params) == 1:
+			for pos, content in enumerate(meta.content):
+				model = self.model_class(self.__class__.__name__)(self.get_db_connection())
+				connection = model.find({meta.params[0]: content}, None if meta.identificator is None else meta.identificator)
+				count = connection.cursor.rowcount
+				connection.close()
+				if count != 0:
+					return self.forbid("{} is already taken".format(meta.field_name))
+		else:
+			return self.forbid("Invalid '{}' rule sintax on Treater for {}".format(meta.name, meta.field_name))
 

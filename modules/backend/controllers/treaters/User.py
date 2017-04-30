@@ -5,7 +5,7 @@ class User(std.Treater):
 		return self.rules({
 				"fields": {
 					"fullname": 	["required"],
-					"email": 		["required", "email", "unique"],
+					"email": 		["required", "email", "unique:email"],
 					"university": 	["required"],
 					"password": 	["required", "maxlength:8", "minlength:8"],
 					"cpf":			["required", "cpf"]
@@ -17,9 +17,9 @@ class User(std.Treater):
 	def update(self):
 		return self.rules({
 				"fields": {
-					"id": 			["required"],
+					"id*": 			["required"],
 					"fullname": 	["required"],
-					"email": 		["required", "email", "unique"],
+					"email": 		["required", "email", "unique:email"],
 					"university": 	["required"],
 					"password": 	["required"],
 					"cpf":			["required", "cpf"]

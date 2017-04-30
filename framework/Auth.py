@@ -1,4 +1,5 @@
 from framework import Model as std
+import uuid
 
 class Auth(std.Model):
 
@@ -6,7 +7,7 @@ class Auth(std.Model):
 	table_name = 'AuthSession'
 
 	def generate_token(self):	
-		pass
+		return uuid.uuid4()
 
 	def create_session(self):
 		pass

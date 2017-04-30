@@ -102,17 +102,17 @@ class Model:
 		
 		return self.run_query(query)
 
-	def find(self, fields):
+	def find(self, fields, fields_to_ignore = None):
 		"""
 		destroy(): It removes records from db from the ids passed (ids must be a list)
 		"""
 		query = """
 
-			SELECT * FROM {table_name} WHERE {fields};
+			SELECT * FROM {table_name} WHERE {fields} AND {fields_to_ignore};
 
-			""".format(table_name = self.get_table_name(), fields = " AND ".join("{}={}".format(item, "'{" + item + "}'") for item in fields))
+			""".format(table_name = self.get_table_name(), fields = " AND ".join("{}={}".format(item, "'" + fields[item] + "'") for item in fields), fields_to_ignore = 1 if fields_to_ignore is None else " AND ".join("{}<>{}".format(item, "'" + fields_to_ignore[item] + "'") for item in fields_to_ignore))
 
-		return self.run_query(query, fields)
+		return self.run_query(query)
 
 	class Connection:
 		"""
