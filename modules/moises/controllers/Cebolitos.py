@@ -10,3 +10,9 @@ class Cebolitos(std.Controller):
 		self.model(self.get_request_parameters()).save().close()
 		return "sucesso"
 
+	def get(self):
+		connection = self.model().find(start_from = 0, limit = 3)
+		data = connection.fetch_selection(fields_to_ignore = ['senha'])
+		connection.close()
+		return data
+

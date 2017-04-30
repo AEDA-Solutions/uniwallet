@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 18, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 34, in resolve
+    return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 47, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Router.py", line 57, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 25, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/moises/controllers/Cebolitos.py", line 14, in get
+    connection = self.model().find()
+TypeError: find() missing 1 required positional argument: 'fields'
+

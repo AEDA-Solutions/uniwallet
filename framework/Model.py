@@ -1,4 +1,5 @@
 from framework import Database as std
+import helpers
 
 class Model:
 	id = None
@@ -102,15 +103,19 @@ class Model:
 		
 		return self.run_query(query)
 
-	def find(self, fields, fields_to_ignore = None):
+	def find(self, fields = None, fields_to_ignore = None, start_from = 0, limit = 18446744073709551615):
 		"""
 		destroy(): It removes records from db from the ids passed (ids must be a list)
 		"""
 		query = """
 
-			SELECT * FROM {table_name} WHERE {fields} AND {fields_to_ignore};
+			SELECT * FROM {table_name} WHERE {fields} AND {fields_to_ignore} LIMIT {start_from},{limit};
 
-			""".format(table_name = self.get_table_name(), fields = " AND ".join("{}={}".format(item, "'" + fields[item] + "'") for item in fields), fields_to_ignore = 1 if fields_to_ignore is None else " AND ".join("{}<>{}".format(item, "'" + fields_to_ignore[item] + "'") for item in fields_to_ignore))
+			""".format(table_name = self.get_table_name(), 
+					   fields = 1 if fields is None else " AND ".join("{}={}".format(item, "'" + fields[item] + "'") for item in fields), 
+					   fields_to_ignore = 1 if fields_to_ignore is None else " AND ".join("{}<>{}".format(item, "'" + fields_to_ignore[item] + "'") for item in fields_to_ignore),
+					   start_from = start_from,
+					   limit = limit)
 
 		return self.run_query(query)
 
@@ -129,3 +134,14 @@ class Model:
 			"""
 			self.cursor.close()
 			self.connection.close()
+
+		def fetch_selection(self, fields_to_ignore = []):
+			"""
+			fetch_records_as_dict(): It returns a list of dict from the got data
+			"""
+			raw_records = self.cursor.fetchall()
+			records = []
+			for record_tuple in raw_records:
+				records.append(helpers.general.remove_fields_from_dict(dict(zip(self.cursor.column_names, record_tuple)), fields_to_ignore))
+			return records
+
