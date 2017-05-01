@@ -21,7 +21,7 @@
 			<div class="containercadastro">
 				<img src="{static}assets/images/uwlogo.gif">
 				<form>
-					<div id="mensagem_retorno" style="font-size: 30px; color: red">
+					<div id="div_mensagem_retorno" style="font-size: 30px; color: red">
 
 					</div>
 
@@ -65,38 +65,24 @@
 
 <script type="text/javascript">
 
+	//Adiciona um evento no botão de enviar dados
 	Page.listen("botao_submit", function(){
-		window.alert("hello")
-	})
-/*
-	function enviar_dados(dados, callback){
-		$.ajax({
-			type: "POST",
-			url: "http://localhost:8000/api/user/register",
-			data: dados,
-			success: callback,
-			dataType: 'json'
-		});
-	}
 
-	function pegar_dados_campos(){
-		var inputs = document.getElementsByClassName("input-form")
-		var objeto = {}
-		for (var i = 0; i < inputs.length; i++) {
-			if (inputs[i].name) {
-				objeto[inputs[i].name] = inputs[i].value
+		//Pega os dados inseridos nos campos de input
+		data = Page.get_input("input-form")
+
+		//Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
+		Request.send(data, "user/register", "POST", function(response){
+
+			if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
+				Page.redirect("inicial")
+			} else {
+				Page.fill("div_mensagem_retorno", response.content) //Insere a mensagem na div
 			}
-		}
-		return objeto;
-	}
 
-	document.getElementById("botao_submit").addEventListener("click", function(){
-        var dados_em_json = JSON.stringify(pegar_dados_campos())
-        enviar_dados(dados_em_json, function(response){
-            var msg = response.content
-            document.getElementById("mensagem_retorno").innerHTML = msg
-        })
-    })*/
+		})
+	})
+
 </script>
 
 </body>

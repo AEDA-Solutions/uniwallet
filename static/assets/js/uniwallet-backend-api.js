@@ -30,12 +30,12 @@ function Auth(){
 }
 
 
-function Request(domain = "localhost:8000", module_name = "api"){
+function Request(domain = "http://localhost:8000", module_name = "api"){
 	this.send = function(data, route, method, callback){
 		$.ajax({
 			type: method,
 			url: domain + "/" + module_name  + "/" + route,
-			data: data,
+			data: (method == "POST") ? JSON.stringify(data) : data,
 			success: callback,
 			dataType: 'json'
 		});
