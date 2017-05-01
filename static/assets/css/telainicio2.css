@@ -1,4 +1,4 @@
-.mini-logo{ 
+.mini-logo{
 
 
   width: 52px; 
@@ -101,15 +101,15 @@ input[type="text"],input[type="password"]{
 } 
 
 
-.btn-conFace{ 
+.fb-login-button{ 
   width: 300px;
-  padding: 15px 30px; 
+  padding: 15px; 
   cursor: pointer; 
-  color: #fff; 
+  color: #303f9f; 
   border-radius: 6px; 
   border: none; 
-  background-color: #303f9f; 
-  margin-left: 350px; 
+  margin-left: 350px;
+   margin-top: 5px; 
 
 } 
 .center{
@@ -136,3 +136,4 @@ p{
   padding: 40x;
   border-radius: 10px; 
 }
+
