@@ -1,0 +1,126 @@
+<!-- Tela de Login -->
+
+<html>
+
+<head>
+  <title>Tela de login</title>
+        <link rel="stylesheet" type="text/css" href="assets\css\styleslogin.css">
+        </link>
+
+        <link rel="stylesheet" type="text/css" href="assets\css\font-awesome.css">
+
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+
+
+<body>
+      <div class="containerlogin">
+        <img src="assets\images\uwlogo.gif">
+        <form>
+          <div class="form-input">
+             <input type="text" name="Nome de Usuario" placeholder="Coloque seu nome de usuario">
+          </div>
+          <div class="form-input">
+            <input type="text" name="Senha" placeholder="Coloque sua senha">
+          </div>
+
+          <input type="submit" name="submit" value="LOGIN" class="btn-login">
+          <br>
+          <a href="#">Esqueceu sua senha?</a>
+        </fomr>
+      </div>
+
+
+</body>
+
+</html>
+
+
+<!------------------------------------------------------------------------------------
+
+TODA ESSA PARTE É EM OUTRO CÓDIGO COM NOME DE "styleslogin.css"
+
+-->
+
+body{
+  margin: 0 auto;
+  background-image: url("../images/btf.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover  720px;
+}
+
+.containerlogin{
+  width:500px;
+  height: 400px;
+  text-align: center;
+  background-color: rgba(52, 73, 94,0.7);
+  border-radius: 40px;
+  margin: 0 auto;
+  margin-top: 150px;
+}
+
+.containerlogin img{
+  width: 120px;
+  height: 120px;
+  margin-top: -60px;
+
+}
+
+input[type="text"],input[type="password"]{
+  height: 45px;
+  width: 300px;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 13px;
+  margin-top: 17px;
+  background-color: #fff;
+  padding-left: 35px;
+
+}
+.form-input::before{
+  content: "\f007";
+  position: absolute;
+  font-family: "FontAwesome";
+  padding-left: 5px;
+  padding-top: 20px;
+  font-size: 35px;
+}
+
+.form-input:nth-child(2)::before{
+  content: "\f023";
+}
+
+.btn-login{
+  padding: 15px 30px;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 6px;
+  border: none;
+  background-color: #2ECC71;
+  margin-bottom: 20px;
+}
+
+a{
+  color: #F0FFFF;
+  font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

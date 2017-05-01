@@ -61,9 +61,14 @@
 
 
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+<script src="{static}assets/js/uniwallet-backend-api.js"></script>
 
 <script type="text/javascript">
 
+	Page.listen("botao_submit", function(){
+		window.alert("hello")
+	})
+/*
 	function enviar_dados(dados, callback){
 		$.ajax({
 			type: "POST",
@@ -91,7 +96,7 @@
             var msg = response.content
             document.getElementById("mensagem_retorno").innerHTML = msg
         })
-    })
+    })*/
 </script>
 
 </body>

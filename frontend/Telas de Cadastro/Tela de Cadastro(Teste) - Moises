@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang = "pt">
+<head>
+	<meta charset = "UTF-8">
+	<title>Test</title>
+	<!-- Compiled and minified CSS -->
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+  	<link rel="stylesheet" type="text/css" href="telacadastro.css">
+    <link rel="stylesheet" type="text/css" href="telacadastro.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<head>
+<body>
+ <nav>
+    <div class="nav-wrapper blue dark-1">
+      <a href="#" class="brand-logo center">Página de Cadastro</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down"></ul>
+    </div>
+  </nav>
+<div></div>
+<div></div>
+<div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="icon_prefix" type="text" class="validate">
+          <label for="icon_prefix">Name</label>
+        </div>
+        <div class="input-field col s12">
+      <select>
+            <option value="" disabled selected>Universidade</option>
+            <option value="1">Universidade de Brasília - Campus Darcy Ribeiro</option>
+            <option value="2">Universidade de Brasília - Campus Gama</option>
+            <option value="3">Universidade de Brasília - Campus Ceilandia</option>
+            <option value="4">Universidade de Brasília - Campus Planaltina</option>
+          </select>
+      </div>
+       <div class="row">
+        <div class="input-field col s4">
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s4">
+          <i class="material-icons prefix">phonelink_lock</i>
+          <input id="icon_phonelink_lock" type="tel" class="validate">
+          <label for="icon_phonelink_lock">Senha</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          Insira-o novamente:
+          <div class="input-field inline">
+            <input id="email" type="email" class="validate">
+            <label for="email" data-error="wrong" data-success="right">Email</label>
+          </div>
+        </div>
+      <div class="input-field col s6">
+          <i class="material-icons prefix">phone</i>
+          <input id="icon_telephone" type="tel" class="validate">
+          <label for="icon_telephone">Telephone</label>
+        </div>  
+      </div>
+      <button class="btn waves-effect waves-light" type="submit" name="action">Enviar Formulário
+    <i class="material-icons right">send</i>
+  </button>
+    </form>
+  </div>
+
+<div class="container">
+        <!-- Page Content goes here -->
+</div>
+
+</script>
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+
+<script>
+	$(document).ready(function(){
+      $('.parallax').parallax();
+    });
+</script>
+<script>
+	$(".button-collapse").sideNav();
+</script>
+<script>
+	$(document).ready(function(){
+     	 $('.slider').slider();
+    });
+</script>
+
+<script>
+	$(document).ready(function(){
+    $('.target').pushpin({
+      top: 0,
+      bottom: 1000,
+      offset: 0
+    });
+  });
+</script>
+
+<script>
+$(document).ready(function() {
+    $('select').material_select();
+  });
+$('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
+</script>
+
+</body>
+<html>
