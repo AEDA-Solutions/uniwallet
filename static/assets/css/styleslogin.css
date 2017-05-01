@@ -48,7 +48,7 @@ input[type="text"],input[type="password"]{
   margin-bottom: 13px;
   margin-top: 17px;
   background-color: #fff;
-  padding-left: 35px;
+  padding-left: 50px;
 
 }
 
@@ -72,7 +72,7 @@ input[type="cssemail"]{
   margin-bottom: 13px;
   margin-top: 17px;
   background-color: #fff;
-  padding-left: 45px;
+  padding-left: 50px;
 }
 
 input[type="cadastroemp"]{
@@ -135,3 +135,4 @@ a{
   color: #F0FFFF;
   font-size: 18px;
 }
+
