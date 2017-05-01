@@ -192,4 +192,11 @@ class Treater(std.Controller):
 					return self.forbid("{} is already taken".format(meta.field_name))
 		else:
 			return self.forbid("Invalid '{}' rule sintax on Treater for {}".format(meta.name, meta.field_name))
+	
+	def field_integer(self, meta):
+		'''
+		Verifica apenas se a variavel é uma int ou não
+		'''
+		if isinstance(meta,int) is False:
+			return self.forbid("{} is not a number".format(meta.field_name, pos))
 
