@@ -1,5 +1,5 @@
 from framework import Database as std
-import helpers
+from framework.Connection import Connection
 
 class Model:
 	id = None
@@ -50,7 +50,7 @@ class Model:
 		run_standard_query(): It executes scripts placed on framework/db/scripts 
 		"""
 		cursor = self.db.execute(query, data)
-		return Model.Connection(self.db.conn, cursor)
+		return Connection(self.db.conn, cursor)
 
 	def save(self):
 		"""
@@ -95,7 +95,6 @@ class Model:
 		"""
 		destroy(): It removes records from db from the ids passed (ids must be a list)
 		"""
-		
 		query = """
 
 			DELETE FROM {table_name} WHERE {fields};
@@ -122,30 +121,4 @@ class Model:
 					   limit = limit)
 
 		return self.run_query(query)
-
-	class Connection:
-		"""
-		class Connection: It represents the connection artefact that must be returned to the controller after a database transaction
-		"""
-		
-		def __init__(self, connection, cursor):
-			self.connection = connection
-			self.cursor = cursor
-
-		def close(self):
-			"""
-			close(): It closes both cursor and database connection
-			"""
-			self.cursor.close()
-			self.connection.close()
-
-		def fetch(self, fields_to_ignore = []):
-			"""
-			fetch_records_as_dict(): It returns a list of dict from the got data
-			"""
-			raw_records = self.cursor.fetchall()
-			records = []
-			for record_tuple in raw_records:
-				records.append(helpers.general.remove_fields_from_dict(dict(zip(self.cursor.column_names, record_tuple)), fields_to_ignore))
-			return records
 
