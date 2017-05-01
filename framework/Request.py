@@ -17,7 +17,7 @@ class Request:
 		self.parameters = self.get_GET()
 		self.method = env.get('REQUEST_METHOD')
 		self.authorization = env.get('HTTP_AUTHORIZATION')
-		print(self.urn_list)
+		self.client_ip = self.get_client_ip(env)
 
 	def get_GET(self):
 		"""
@@ -78,3 +78,12 @@ class Request:
 			return inputs[input_name]
 		else:
 			return None
+
+	def get_client_ip(self, env):
+		"""
+		get_client_ip(): It gets the client's ip (code from http://stackoverflow.com/questions/7835030/obtaining-client-ip-address-from-a-wsgi-app-using-eventlet)
+		"""
+		try:
+			return env['HTTP_X_FORWARDED_FOR'].split(',')[-1].strip()
+		except KeyError:
+			return env['REMOTE_ADDR']

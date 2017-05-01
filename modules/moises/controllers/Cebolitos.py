@@ -12,7 +12,7 @@ class Cebolitos(std.Controller):
 
 	def get(self):
 		connection = self.model().find(start_from = 0, limit = 3)
-		data = connection.fetch_selection(fields_to_ignore = ['senha'])
+		data = connection.fetch(fields_to_ignore = ['senha'])
 		connection.close()
 		return data
 

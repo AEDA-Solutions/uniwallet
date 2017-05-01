@@ -15,14 +15,14 @@ class User(std.Controller):
 		return "Done: {} rows affected".format(rowcount)
 
 	def delete(self):
-		connection = self.model().destroy(self.get_request_parameters()['ids'])
+		connection = self.model().destroy(list({'id': item} for item in self.get_request_parameters()['ids']))
 		rowcount = connection.cursor.rowcount
 		connection.close()
 		return "Done: {} rows affected".format(rowcount)
 
 	def fetch(self):
 		connection = self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit'))
-		records = connection.fetch_selection(fields_to_ignore = ['password'])
+		records = connection.fetch(fields_to_ignore = ['password'])
 		connection.close()
 		return records
 

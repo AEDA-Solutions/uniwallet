@@ -7,10 +7,11 @@ class Auth(std.Model):
 	table_name = 'AuthSession'
 
 	def generate_token(self):	
-		return uuid.uuid4()
+		return str(uuid.uuid4())
 
 	def create_session(self):
-		pass
+		self.save().close()
+		return self.token
 
 	def destroy_session(self):
 		pass

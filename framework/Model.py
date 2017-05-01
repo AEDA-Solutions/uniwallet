@@ -91,29 +91,33 @@ class Model:
 		
 		return self.run_query(query, self.get_attributes())
 
-	def destroy(self, ids):
+	def destroy(self, fields):
 		"""
 		destroy(): It removes records from db from the ids passed (ids must be a list)
 		"""
+		
 		query = """
 
-			DELETE FROM {table_name} WHERE id IN ({ids});
+			DELETE FROM {table_name} WHERE {fields};
 
-			""".format(table_name = self.get_table_name(), ids = ", ".join("'" + item + "'" for item in ids))
+			""".format(table_name = self.get_table_name(),
+					   fields = 0 if fields is None or len(fields) == 0 else " OR ".join(list((0 if item is None else " AND ".join(list("{}={}{}{}".format(elem, "'", item[elem], "'") for elem in item))) for item in fields)))
 		
 		return self.run_query(query)
 
-	def find(self, fields = None, fields_to_ignore = None, start_from = 0, limit = 18446744073709551615):
+
+	def find(self, fields = None, fields_to_ignore = None, start_from = 0, limit = 18446744073709551615, target_fields = ["*"]):
 		"""
 		find(): It finds records with the specified fields according the referred limits
 		"""
 		query = """
 
-			SELECT * FROM {table_name} WHERE {fields} AND {fields_to_ignore} LIMIT {start_from},{limit};
+			SELECT {target_fields} FROM {table_name} WHERE {fields} AND {fields_to_ignore} LIMIT {start_from},{limit};
 
-			""".format(table_name = self.get_table_name(), 
-					   fields = 1 if fields is None else " AND ".join("{}={}".format(item, "'" + fields[item] + "'") for item in fields), 
-					   fields_to_ignore = 1 if fields_to_ignore is None else " AND ".join("{}<>{}".format(item, "'" + fields_to_ignore[item] + "'") for item in fields_to_ignore),
+			""".format(target_fields = ", ".join(item for item in target_fields),
+					   table_name = self.get_table_name(), 
+					   fields = 1 if fields is None or len(fields) == 0 else " OR ".join(list((1 if item is None else " AND ".join(list("{}={}{}{}".format(elem, "'", item[elem], "'") for elem in item))) for item in fields)), 
+					   fields_to_ignore = 1 if fields_to_ignore is None or len(fields_to_ignore) == 0 else " OR ".join(list((1 if item is None else " AND ".join(list("{}<>{}{}{}".format(elem, "'", item[elem], "'") for elem in item))) for item in fields_to_ignore)),
 					   start_from = start_from,
 					   limit = limit)
 
@@ -135,7 +139,7 @@ class Model:
 			self.cursor.close()
 			self.connection.close()
 
-		def fetch_selection(self, fields_to_ignore = []):
+		def fetch(self, fields_to_ignore = []):
 			"""
 			fetch_records_as_dict(): It returns a list of dict from the got data
 			"""

@@ -121,7 +121,7 @@ class Treater(std.Controller):
 		"""
 		for pos, content in enumerate(meta.content):
 			if not content or not re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", str(content)):
-				return self.forbid("{} is not a valid email".format(field_name, pos))
+				return self.forbid("{} is not a valid email".format(meta.field_name, pos))
 				
 
 	def field_required(self, meta):
@@ -170,7 +170,7 @@ class Treater(std.Controller):
 		if len(meta.params) == 2:
 			for pos, content in enumerate(meta.content):
 				model = self.model_class(meta.params[1])(self.get_db_connection())
-				connection = model.find({meta.params[0]: content})
+				connection = model.find([{meta.params[0]: content}])
 				count = connection.cursor.rowcount
 				connection.close()
 				if count == 0:
@@ -185,7 +185,7 @@ class Treater(std.Controller):
 		if len(meta.params) == 1:
 			for pos, content in enumerate(meta.content):
 				model = self.model_class(self.__class__.__name__)(self.get_db_connection())
-				connection = model.find({meta.params[0]: content}, None if meta.identificator is None else meta.identificator)
+				connection = model.find([{meta.params[0]: content}], None if meta.identificator is None else [meta.identificator])
 				count = connection.cursor.rowcount
 				connection.close()
 				if count != 0:

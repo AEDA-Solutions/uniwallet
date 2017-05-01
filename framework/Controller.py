@@ -44,7 +44,6 @@ class Controller:
 		"""
 		model_class(): It returns a instance a of a correspondent model
 		"""
-		print("modules.{}.models.{}".format(self.request.module, model_name))
 		try:
 			return getattr(importlib.import_module("modules.{}.models.{}".format(self.request.module, model_name)), model_name)
 		except:
