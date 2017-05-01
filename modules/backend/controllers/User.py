@@ -3,28 +3,16 @@ from framework import Controller as std
 class User(std.Controller):
 	
 	def register(self):
-		connection = self.model(self.get_request_parameters()).save()
-		last_id = connection.cursor.lastrowid
-		connection.close()
-		return "Done: {} is the last id created".format(last_id)
+		return "Done: {} is the last id created".format(self.model(self.get_request_parameters()).save().last_id())
 
 	def update(self):
-		connection = self.model(self.get_request_parameters()).save()
-		rowcount = connection.cursor.rowcount
-		connection.close()
-		return "Done: {} rows affected".format(rowcount)
+		return "Done: {} rows affected".format(self.model(self.get_request_parameters()).save().count_rows())
 
 	def delete(self):
-		connection = self.model().destroy(list({'id': item} for item in self.get_request_parameters()['ids']))
-		rowcount = connection.cursor.rowcount
-		connection.close()
-		return "Done: {} rows affected".format(rowcount)
+		return "Done: {} rows affected".format(self.model().destroy(list({'id': item} for item in self.get_request_parameters()['ids'])).count_rows())
 
 	def fetch(self):
-		connection = self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit'))
-		records = connection.fetch(fields_to_ignore = ['password'])
-		connection.close()
-		return records
+		return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
 
 	def doit(self):
 		return self.request.parameters

@@ -10,9 +10,6 @@ class Auth(std.Model):
 		return str(uuid.uuid4())
 
 	def create_session(self):
-		self.save().close()
-		return self.token
-
-	def destroy_session(self):
-		pass
+		self.destroy([{'user_id': self.user_id}]) #It removes previous user's session
+		return self.save().close()
 
