@@ -13,11 +13,49 @@
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<!-- 			Função JavaScript para validação de e-mail                             -->
+
+
+<html>
+<head>
+<script type="text/javascript">
+function verifica() {
+  if (document.forms[0].email.value.length == 0) {
+    alert('Por favor, informe o seu EMAIL.');
+	document.frmEnvia.email.focus();
+    return false;
+  }
+  return true;
+}
+ 
+function checarEmail(){
+if( document.forms[0].email.value=="" 
+   || document.forms[0].email.value.indexOf('@')==-1 
+     || document.forms[0].email.value.indexOf('.')==-1 )
+	{
+	   alert( "Por favor, informe um E-MAIL válido!" );
+	   return false;
+	}
+}
+</script>
+
+
+
+
+
+
+
 
 </head>
 
 
 <body>
+
+
+	
+
+	<table>
+	
 			<div class="containercadastro">
 				<img src="{static}assets/images/uwlogo.gif">
 				<form>
@@ -37,17 +75,24 @@
 						<input class="input-form" type="password" name="password" size=30 minlength=6 maxlength=10 placeholder="Senha">
 					</div>
 
+
+
 					<div class="form-input">
 						<input class="input-form" type="password" size=30 minlength=6 maxlength=10 placeholder="Confirme sua senha">
 					</div>
 
-					<div class="form-input">
-						<input class="input-form" type="cssemail" name="email" placeholder="E-mail">
+				
+					<div class="form-input"> 
+						<form method="post" action="" onSubmit="return ( verifica() )" name="frmEnvia">
+						   <input name="email" type="text" class="input" id="email" placeholder="E-mail" onblur="checarEmail();" />
+						</form>
 					</div>
 
+
 					<div class="form-input">
-						<input class="input-form" type="cssemail" placeholder="Confirme seu E-mail">
+						<input class="input-form" type="cssemail" name="email" placeholder="Confirme seu E-mail">
 					</div>
+
 
 					<div class="form-input">
 						<input class="input-form" type="cssemail" name="university" placeholder="Universidade">

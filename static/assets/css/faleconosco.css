@@ -80,7 +80,7 @@ input[type="text"]{
 
 } 
 
-input[type="mensagem"]{ 
+textarea{ 
 
   height: 120px; 
   width: 350px; 
