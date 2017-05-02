@@ -97,20 +97,12 @@ input[type="cadastroemp"]{
   font-size: 35px;
 }
 
-.form-input:nth-child(2)::before{
-  content: "\f2c3";
-}
-
-.form-input:nth-child(3)::before{
-  content: "\f023";
-}
-
 .form-input:nth-child(4)::before{
-  content: "\f023";
+  content: "\f2bb";
 }
 
 .form-input:nth-child(5)::before{
-  content: "\f1fa";
+  content: "\f2bc";
 }
 
 .form-input:nth-child(6)::before{
@@ -118,6 +110,9 @@ input[type="cadastroemp"]{
 }
 .form-input:nth-child(7)::before{
   content: "\f02d";
+}
+.form-input:nth-child(10)::before{
+  content: "\f19c";
 }
 
 
