@@ -152,7 +152,7 @@
       console.log(response)
       if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
         Auth.Token.set(response.content.token)
-        //Page.redirect("inicial")
+        Page.redirect("usuario")
       } else {
         window.alert(response.content)
         //Page.fill("div_mensagem_retorno", response.content) //Insere a mensagem na div
