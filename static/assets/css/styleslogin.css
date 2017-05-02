@@ -89,7 +89,7 @@ input[type="cadastroemp"]{
 
 
 .form-input::before{
-  content: "\f007";
+  content: "\f1fa";
   position: absolute;
   font-family: "FontAwesome";
   padding-left: 5px;
@@ -106,10 +106,10 @@ input[type="cadastroemp"]{
 }
 
 .form-input:nth-child(6)::before{
-  content: "\f1fa";
+  content: "\f023";
 }
 .form-input:nth-child(7)::before{
-  content: "\f02d";
+  content: "\f023";
 }
 .form-input:nth-child(10)::before{
   content: "\f19c";
