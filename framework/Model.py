@@ -4,7 +4,7 @@ from framework.Connection import Connection
 class Model:
 	id = None
 
-	def __init__(self, database, data = None):
+	def __init__(self, database, data = None, table_name = None):
 		self.db = database
 		if data:
 			self.define_attributes(data)
@@ -67,7 +67,7 @@ class Model:
 	def load(self):
 		pass
 
-	def update(self):
+	def update(self, fields = None, table_name = None):
 		"""
 		update(): It updates a db record from the passed data (id is required)
 		"""
@@ -75,11 +75,11 @@ class Model:
 
 			UPDATE {table_name} SET {fields} WHERE id='{id}'
 
-			""".format(table_name = self.get_table_name(), fields = ", ".join("{}={}".format(item, "'{" + item + "}'") for item in self.attributes), id = self.id)
+			""".format(table_name = self.get_table_name() if table_name is None else table_name, fields = ", ".join("{}={}".format(item, "'{" + item + "}'") for item in self.attributes), id = self.id)
 
-		return self.run_query(query, self.get_attributes())
+		return self.run_query(query, self.get_attributes() if fields is None else fields)
 
-	def create(self):
+	def create(self, table_name = None):
 		"""
 		create(): It creates a new db record from passed data
 		"""
@@ -87,11 +87,11 @@ class Model:
 
 			INSERT INTO {table_name} ({fields}) VALUES ({data})
 
-			""".format(table_name = self.get_table_name(), fields = ", ".join(self.attributes), data = ", ".join("'{" + item + "}'" for item in self.attributes))
+			""".format(table_name = self.get_table_name() if table_name is None else table_name, fields = ", ".join(self.attributes), data = ", ".join("'{" + item + "}'" for item in self.attributes))
 		
 		return self.run_query(query, self.get_attributes())
 
-	def destroy(self, fields):
+	def destroy(self, fields, table_name = None):
 		"""
 		destroy(): It removes records from db from the ids passed (ids must be a list)
 		"""
@@ -99,13 +99,13 @@ class Model:
 
 			DELETE FROM {table_name} WHERE {fields};
 
-			""".format(table_name = self.get_table_name(),
+			""".format(table_name = self.get_table_name() if table_name is None else table_name,
 					   fields = 0 if fields is None or len(fields) == 0 else " OR ".join(list((0 if item is None else " AND ".join(list("{}={}{}{}".format(elem, "'", item[elem], "'") for elem in item))) for item in fields)))
 		
 		return self.run_query(query)
 
 
-	def find(self, fields = None, fields_to_ignore = None, start_from = 0, limit = 18446744073709551615, target_fields = ["*"]):
+	def find(self, fields = None, fields_to_ignore = None, start_from = 0, limit = 18446744073709551615, target_fields = ["*"], table_name = None):
 		"""
 		find(): It finds records with the specified fields according the referred limits
 		"""
@@ -114,7 +114,7 @@ class Model:
 			SELECT {target_fields} FROM {table_name} WHERE {fields} AND {fields_to_ignore} LIMIT {start_from},{limit};
 
 			""".format(target_fields = ", ".join(item for item in target_fields),
-					   table_name = self.get_table_name(), 
+					   table_name = self.get_table_name() if table_name is None else table_name, 
 					   fields = 1 if fields is None or len(fields) == 0 else " OR ".join(list((1 if item is None else " AND ".join(list("{}={}{}{}".format(elem, "'", item[elem], "'") for elem in item))) for item in fields)), 
 					   fields_to_ignore = 1 if fields_to_ignore is None or len(fields_to_ignore) == 0 else " OR ".join(list((1 if item is None else " AND ".join(list("{}<>{}{}{}".format(elem, "'", item[elem], "'") for elem in item))) for item in fields_to_ignore)),
 					   start_from = start_from,

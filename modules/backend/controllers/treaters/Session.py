@@ -1,6 +1,6 @@
 from framework import Treater as std
 
-class Auth(std.Treater):
+class Session(std.Treater):
 	def login(self):
 		return self.rules({
 				"fields": {
@@ -24,4 +24,9 @@ class Auth(std.Treater):
 	def reset_session(self):
 		return self.rules({
 				"private": True
+			})
+
+	def oba(self):
+		return self.rules({
+				"auth": ["god"]
 			})

@@ -17,8 +17,12 @@ class Response:
 		translate_code(): Check out https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 		"""
 		codes = {
+			'Continue': 100,
 			'OK': 200,
+			'Created': 201,
+			'Accepted': 202,
 			'Bad Request': 400,
+			'Unauthorized': 401,
 			'Forbidden': 403,
 			'Not Found': 404,
 			'Internal Server Error': 500

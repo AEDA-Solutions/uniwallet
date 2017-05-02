@@ -1,5 +1,4 @@
-from framework import Model as std
+from framework import AccessLevel as std
 
-class AccessLevel(std.Model):
-
-	attributes = ["name", "description"]
+class AccessLevel(std.AccessLevel):
+	pass
