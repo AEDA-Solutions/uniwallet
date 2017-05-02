@@ -93,6 +93,7 @@ class Request:
 		get_authorization(): It handles the http authorization header
 		"""
 		authstr = env.get('HTTP_AUTHORIZATION')
+		print(authstr)
 		if authstr is not None:
 			pieces_authstr = authstr.split(' ')
 			if len(pieces_authstr) >= 2:

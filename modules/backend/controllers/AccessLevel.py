@@ -8,4 +8,6 @@ class AccessLevel(std.Controller):
 	def empower(self):
 		return "Ok. {} rows affected".format(self.model_class('User_AccessLevel')(data = self.get_request_parameters(), database = self.get_db_connection()).check_save())
 
+	def fetch(self):
+		return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch()
 

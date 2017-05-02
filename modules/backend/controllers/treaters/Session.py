@@ -26,7 +26,11 @@ class Session(std.Treater):
 				"private": True
 			})
 
-	def oba(self):
+	def fetch(self):
 		return self.rules({
-				"auth": ["god"]
-			})
+			"fields": {
+				"start": ["required"],
+				"limit": ["required"]
+			},
+			"method": "get"
+		})	

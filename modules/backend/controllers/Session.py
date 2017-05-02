@@ -18,5 +18,5 @@ class Session(std.Controller):
 	def logout(self):
 		return "ok"
 
-	def oba(self):
-		return "obaoba"
+	def fetch(self):
+		return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch()

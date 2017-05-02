@@ -20,6 +20,8 @@ CREATE TABLE AccessLevels (
 	description VARCHAR(256)
 );
 
+INSERT INTO AccessLevels (name, description) VALUES ('registered', 'Basic access level for everyone by default');
+
 CREATE TABLE User_AccessLevel (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	user_id INT(32) UNSIGNED NOT NULL,

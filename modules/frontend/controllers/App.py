@@ -1,6 +1,6 @@
 from framework import Controller as std
 
-class Pages(std.Controller):
+class App(std.Controller):
 
 	def prepare_static(self, html):
 		return html.replace("{static}", "http://localhost:8008/")
@@ -28,3 +28,6 @@ class Pages(std.Controller):
 
 	def motherfucker(self):
 		return self.get_html("rafael")
+
+	def gerenciamento(self):
+		return self.prepare_static(self.get_html("AdminPanel"))
