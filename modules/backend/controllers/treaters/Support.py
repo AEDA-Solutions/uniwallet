@@ -9,5 +9,5 @@ class Support(std.Treater):
 					"name": 	["required"],
 					"content": 	["required"]
 				},
-				"method": "get"
+				"method": "POST"
 			})

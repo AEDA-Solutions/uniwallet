@@ -208,17 +208,24 @@ class Treater(std.Controller):
 			return self.forbid("Invalid '{}' rule sintax on Treater for {}".format(meta.name, meta.field_name))
 	
 	def field_integer(self, meta):
+		
+		meta.isdigit()
 		'''
-		Verifica apenas se a variavel é uma int ou não
+		Verifica se a string possui apenas numeros
 		'''
-		if isinstance(meta,int) is False:
-			return self.forbid("{} is not a number".format(meta.field_name, pos))
+		'''isinstance(meta,int)
+		if meta.isdigit() is False:'''
+		for pos, content in enumerate(meta.content):
+			
+			if content is None or content.isdigit() is False:	
+				return self.forbid("{} is not a number".format(meta.field_name, pos))
 
+	"""
 	def field_integer(self, meta):
 		'''
 		Verifica apenas se a variavel é uma int ou não
 		'''
 		if isinstance(meta,int) is False:
 			return self.forbid("{} is not a number".format(meta.field_name, pos))
-		
+		"""
 	
