@@ -26,7 +26,8 @@ class AccessLevel(std.Treater):
 				"start": ["required"],
 				"limit": ["required"]
 			},
-			"method": "get"
+			"method": "get",
+			"auth": ["registered"]
 		})	
 
 

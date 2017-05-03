@@ -4,7 +4,6 @@ import uuid
 class Session(std.Model):
 
 	attributes = ['user_id', 'token', 'ip']
-	table_name = 'AuthSession'
 
 	def generate_token(self):	
 		return str(uuid.uuid4())

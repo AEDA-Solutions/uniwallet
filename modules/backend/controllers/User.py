@@ -15,14 +15,3 @@ class User(std.Controller):
 
 	def fetch(self):
 		return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
-
-	def doit(self):
-		return self.request.parameters
-
-	def make(self):
-		return "Making makers"
-
-	def foo(self):
-		return "Hello world"
-
-

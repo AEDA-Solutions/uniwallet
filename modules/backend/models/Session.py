@@ -1,4 +1,5 @@
 from framework import Session as std
 
 class Session(std.Session):
-	pass
+	
+	table_name = 'AuthSession'
