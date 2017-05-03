@@ -16,7 +16,7 @@ class Request:
 		self.body = self.translate_POST_content()
 		self.parameters = self.get_GET()
 		self.method = env.get('REQUEST_METHOD')
-		self.authorization = env.get('HTTP_AUTHORIZATION')
+		self.authorization = self.get_authorization(env)
 		self.client_ip = self.get_client_ip(env)
 
 	def get_GET(self):
@@ -87,3 +87,24 @@ class Request:
 			return env['HTTP_X_FORWARDED_FOR'].split(',')[-1].strip()
 		except KeyError:
 			return env['REMOTE_ADDR']
+
+	def get_authorization(self, env):
+		"""
+		get_authorization(): It handles the http authorization header
+		"""
+		authstr = env.get('HTTP_AUTHORIZATION')
+		print(authstr)
+		if authstr is not None:
+			pieces_authstr = authstr.split(' ')
+			if len(pieces_authstr) >= 2:
+				return HTTP_Authorization(exists = True, type = pieces_authstr[0], content = pieces_authstr[1])
+			else:
+				return HTTP_Authorization(exists = False)
+		else:
+			return HTTP_Authorization(exists = False)
+
+class HTTP_Authorization():
+	def __init__(self, exists, type = None, content = None):
+		self.exists = exists
+		self.type = type
+		self.content = content

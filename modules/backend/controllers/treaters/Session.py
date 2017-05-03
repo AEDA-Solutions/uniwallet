@@ -1,6 +1,6 @@
 from framework import Treater as std
 
-class Auth(std.Treater):
+class Session(std.Treater):
 	def login(self):
 		return self.rules({
 				"fields": {
@@ -25,3 +25,13 @@ class Auth(std.Treater):
 		return self.rules({
 				"private": True
 			})
+
+	def fetch(self):
+		return self.rules({
+			"fields": {
+				"start": ["required"],
+				"limit": ["required"]
+			},
+			"method": "get",
+			"auth": ["registered"]
+		})	

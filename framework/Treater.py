@@ -1,5 +1,4 @@
 from framework import Controller as std
-from framework.Auth import Auth
 from helpers import cpf
 import re
 
@@ -24,13 +23,28 @@ class Treater(std.Controller):
 					if response:
 						return response
 
+	def check_authorization(self, user_id, credential_list):
+		"""
+		check_authorization(): It checks if the user is allowed to access the resource
+		"""				
+		if self.model_class('AccessLevel')(self.get_db_connection()).user_has(user_id = user_id, credential_list = credential_list):
+			self.request.user_id = user_id
+		else:
+			return self.forbid("You got access fuckin' denied")
+
 	def rule_auth(self, auth):
 		"""
 		rule_auth(): It checks if the request is authorized to access the resource
 		"""
-		#self.forbid()
-		print(self.request.authorization)
-		print(auth)
+		if len(auth):
+			if self.request.authorization.exists:
+				user_id = self.model_class('Session')(self.get_db_connection()).get_user_id_vinculated(token = self.request.authorization.content, ip = self.request.client_ip)
+				if user_id:
+					return self.check_authorization(user_id, auth)
+				else:
+					return self.forbid("You got access fuckin' denied")
+			else:
+				return self.forbid("You got access fuckin' denied")
 
 	def rule_method(self, method):
 		"""
@@ -192,6 +206,13 @@ class Treater(std.Controller):
 					return self.forbid("{} is already taken".format(meta.field_name))
 		else:
 			return self.forbid("Invalid '{}' rule sintax on Treater for {}".format(meta.name, meta.field_name))
+	
+	def field_integer(self, meta):
+		'''
+		Verifica apenas se a variavel é uma int ou não
+		'''
+		if isinstance(meta,int) is False:
+			return self.forbid("{} is not a number".format(meta.field_name, pos))
 
 	def field_integer(self, meta):
 		'''

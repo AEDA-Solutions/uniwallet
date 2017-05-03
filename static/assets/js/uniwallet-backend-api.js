@@ -14,7 +14,7 @@ function Auth(){
 			localStorage.setItem("uniwallettoken", token)
 		}
 		this.get = function(){
-			return localStorage.uniwallettoken
+			return localStorage.getItem("uniwallettoken")
 		}
 		this.destroy = function(){
 			localStorage.removeItem("uniwallettoken")
@@ -37,8 +37,13 @@ function Request(domain = "http://localhost:8000", module_name = "api"){
 			url: domain + "/" + module_name  + "/" + route,
 			data: (method == "POST") ? JSON.stringify(data) : data,
 			success: callback,
+			beforeSend: function(xhr) {
+				if (Auth.Token.exists()){
+					xhr.setRequestHeader('Authorization', 'Basic ' + Auth.Token.get())
+				}
+			},
 			dataType: 'json'
-		});
+		})
 	}
 }
 
@@ -66,6 +71,44 @@ function Page(){
 	}
 }
 
+
+function HTML_Factory(){
+	this.make_table = function(fields, data, title){
+		ths = ''
+		for (var i = 0; i < fields.length; i++) ths += this.make_tag('th', fields[i])
+		tr = this.make_tag('tr', ths)
+		thead = this.make_tag('thead', tr)
+		trs = ''
+		for (var i = 0; i < data.length; i++) {
+			tds = ''
+			for (var j = 0; j < fields.length; j++) tds += this.make_tag('td', data[i][fields[j]])
+			trs += this.make_tag('tr', tds)
+		}
+		tbody = this.make_tag('tbody', trs)
+
+		return this.get_snippet()['table'].replace('{{thead}}', thead).replace('{{tbody}}', tbody).replace('{{title}}', title)
+	}
+
+	this.get_snippet = function(){
+		return {
+			'table':'<div class="table-responsive">' +
+						'<h2>{{title}}</h2>' +       
+						'<table class="table table-striped">' +
+						'{{thead}}' +
+						'{{tbody}}' +
+						'</table>' +
+					'</div>'
+		}
+	}
+
+	this.make_tag = function(tag_name, content){
+		return ('<' + tag_name + '>' + content + '</' + tag_name + '>')
+	}
+}
+
+
+
 var Page = new Page()
 var Request = new Request()
 var Auth = new Auth()
+var HTML_Factory = new HTML_Factory()

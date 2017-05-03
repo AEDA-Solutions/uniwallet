@@ -46,8 +46,8 @@ class Controller:
 		"""
 		try:
 			return getattr(importlib.import_module("modules.{}.models.{}".format(self.request.module, model_name)), model_name)
-		except:
-			raise Exception("Error invoking model '{}'. This model does not exist.".format(model_name))
+		except Exception as e:
+			raise Exception("Error invoking model '{}': {}".format(model_name, str(e)))
 
 	def get_request_parameters(self):
 		"""
@@ -82,11 +82,11 @@ class Controller:
 		"""
 		self.response.raw = True
 
-	def forbid(self, message = None):
+	def forbid(self, message = None, code = 'Bad Request'):
 		"""
-		forbid(): It sets the code as 400
+		forbid(): It sets the code as 400 by default
 		"""
-		self.response.code = 'Bad Request'
+		self.response.code = code
 		if message:
 			return message 
 

@@ -42,24 +42,6 @@ class User(std.Treater):
 					"start": ["required"],
 					"limit": ["required"]
 				},
-				"method": "get"
-			})	
-
-	def doit(self):
-		return self.rules({
-				"private": True
-			})
-
-	def make(self):
-		return self.rules({
-				"private": True
-			})
-
-	def foo(self):
-		return self.rules({
 				"method": "get",
-				"auth": ["user"]
+				"auth": ["registered"]
 			})
-
-
-
