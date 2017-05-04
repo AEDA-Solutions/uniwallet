@@ -34,4 +34,4 @@ class Session(std.Treater):
 			},
 			"method": "get",
 			"auth": ["registered"]
-		})	
+		})

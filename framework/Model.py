@@ -1,5 +1,6 @@
 from framework import Database as std
 from framework.Connection import Connection
+from framework.QueryBuilder import QueryBuilder
 
 class Model:
 	id = None
@@ -10,6 +11,9 @@ class Model:
 			self.define_attributes(data)
 		#else:
 		#	raise Exception("Error calling model '{}'. Model must receive some data.".format(self.__class__.__name__))
+
+	def build_query(self):
+		return QueryBuilder()
 
 	def set_attribute(self, attribute_name, value):
 		"""
@@ -83,13 +87,8 @@ class Model:
 		"""
 		create(): It creates a new db record from passed data
 		"""
-		query = """
-
-			INSERT INTO {table_name} ({fields}) VALUES ({data})
-
-			""".format(table_name = self.get_table_name() if table_name is None else table_name, fields = ", ".join(self.attributes), data = ", ".join("'{" + item + "}'" for item in self.attributes))
-		
-		return self.run_query(query, self.get_attributes())
+		query = self.build_query().table(self.get_table_name() if table_name is None else table_name).insert([self.get_attributes()]).get()
+		return self.run_query(query)
 
 	def destroy(self, fields, table_name = None):
 		"""

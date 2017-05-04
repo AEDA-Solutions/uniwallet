@@ -2,6 +2,7 @@
 Under construction by Uniwallet team
 This class will make all SQL queries for our application
 """
+import re
 
 class QueryBuilder:
 
@@ -18,39 +19,43 @@ class QueryBuilder:
 		def __init__(self, table_name):
 			self.table_name = table_name
 
-		def select(self, fields = []):
-			return (QueryBuilder.Table.Select(self.table_name, fields))
+		def select(self, fields = [], start = 0, limit = 18446744073709551615):
+			return (QueryBuilder.Table.Select(self.table_name, fields, start, limit))
 
-		def insert(self):
-			return (QueryBuilder.Table.Insert())
+		def insert(self, list_of_values_dict):
+			return (QueryBuilder.Table.Insert(self.table_name, list_of_values_dict))
 
-		def update(self):
-			return (QueryBuilder.Table.Update())
+		def update(self, values_dict):
+			return (QueryBuilder.Table.Update(self.table_name, values_dict))
 
 		def delete(self):
-			return (QueryBuilder.Table.Delete())
+			return (QueryBuilder.Table.Delete(self.table_name))
 
 		class Common():
 
-			def __init__(self, table):
-				pass
+			query = None
 
-			def where(self):
-				pass
+			table_name = None
 
-			def orderBy(self):
-				pass
+			def get(self):
+				return re.sub(r'(\[.*\]|\t+)', '', self.query, flags=re.MULTILINE)
 
-			def groupBy(self):
-				pass
+		class Filter(Common):
 
-			def run(self):
-				pass
+			def where(self, conditions):
+				snippet = """
+					WHERE
 
+					{conditions}
 
-		class Select(Common):
+					[condition]
+				"""
+				self.query = self.query.replace('[condition]', snippet.format(conditions = '{}'.format(' '.join(list(item if isinstance(item, str) else "{}.{}{}'{}'".format(self.table_name, item[0], item[1], item[2]) for item in conditions)))))
+				return self
 
-			def __init__(self, table_name, fields = []):
+		class Select(Filter):
+
+			def __init__(self, table_name, fields, start, limit):
 				self.table_name = table_name
 				self.query = """
 					SELECT
@@ -62,40 +67,126 @@ class QueryBuilder:
 					[inner]
 
 					[condition]
+
+					LIMIT {start},{limit}
 				""".format(fields = '*' if len(fields) is 0 else ", ".join(list("{}.{}".format(table_name, item) for item in fields)),
-						   table_name = table_name)
+						   table_name = table_name,
+						   start = start, 
+						   limit = limit)
 
 			def join(self, table_name, conditions = []):
 				snippet = """
 					INNER JOIN
 
-					{table_name}
+					{table_name} AS {table_name}
 
 					{conditions}
+
+					[inner]
 				"""
 				self.query = self.query.replace('[inner]', snippet.format(table_name = table_name,
-															 			  conditions = 'ON {}'.format(' '.join(list(item if isinstance(item, str) else '{}.{}{}{}.{}'.format(table_name, item[0], item[1], self.table_name, item[2]) for item in conditions)))))
+															 			  conditions = 'ON {}'.format(' '.join(list(item if isinstance(item, str) else '{}{}{}'.format(item[0], item[1], item[2]) for item in conditions)))))
 				return self
 
-		class Insert():
+			def orderBy(self, field):
+				snippet = """
+					ORDER BY
 
-			def __init__(self, table):
-				pass
+					{field}
 
-		class Update(Common):
+					[condition]
+				"""
+				self.query = self.query.replace('[condition]', snippet.format(field = field))
 
-			def __init__(self, table):
-				pass
+				return self
 
-		class Delete(Common):
+			def groupBy(self, field):
+				snippet = """
+					GROUP BY
 
-			def __init__(self, table):
-				pass
+					{field}
+
+					[condition]
+				"""
+				self.query = self.query.replace('[condition]', snippet.format(field = field))
+
+				return self
+
+		class Insert(Common):
+
+			def __init__(self, table_name, list_of_values_dict):
+				self.table_name = table_name
+				fields = list_of_values_dict[0].keys()
+				self.query = """
+					INSERT INTO
+
+					{table_name}
+						
+					({fields})
+
+					VALUES 
+
+					{values}
+				""".format(table_name = table_name,
+						   fields = (', '.join(list(item for item in fields))),
+						   values = ('\n'.join(list(('({})'.format(', '.join(list("'{}'".format(values_dict[item]) for item in fields)))) for values_dict in list_of_values_dict))))
+
+		class Update(Filter):
+
+			def __init__(self, table_name, values_dict):
+				self.table_name = table_name
+				fields = values_dict.keys()
+				self.query = """
+					UPDATE 
+
+					{table_name}
+						
+					SET
+
+					{fields_values}
+
+					[condition]
+				""".format(table_name = table_name,
+						   fields_values = (", ".join("{}.{}={}".format(self.table_name, item,  "'{}'".format(values_dict[item])) for item in fields)))
+
+		class Delete(Filter):
+
+			def __init__(self, table_name):
+				self.table_name = table_name
+				self.query = """
+					DELETE FROM 
+
+					{table_name}
+
+					[condition]
+				""".format(table_name = self.table_name)
 
 
-qb = QueryBuilder()
-z = qb.table('Users')
-print(z.select(['id', 'qwerty', 'fror', 'fude']).join("Marte", [['teste', '=', 'teste'], 'AND', ['User.teste', '=', 'umi.teste']]).query)
+"""print(QueryBuilder()
+	.table('Users')
+	.select()
+	.join("User_AccessLevel", [['Users.id', '=', 'User_AccessLevel.user_id']])
+	.join('AccessLevels', [['AccessLevels.id', '=', 'User_AccessLevel.accesslevel_id']])
+	.get())"""
+
+"""print(QueryBuilder()
+	.table('Users')
+	.insert([{'fullname': 'guiga', 'moise': 'coisas'}, 
+			 {'fullname': 'raianr', 'moise': 'bobo'},
+			 {'fullname': 'cuca', 'moise': 'foice'}]).get()
+	)"""
+
+"""print(QueryBuilder()
+	.table('Users')
+	.update({'name': 'besouro', 'coisa': 'dinheiro'})
+	.where([['goi', '=', 'hi']]).get()
+	)"""
+				
+"""print(QueryBuilder()
+	.table('Users')
+	.delete()
+	.where([['goi', '=', 'hi']]).get()
+	)"""
 				
 				
 			
