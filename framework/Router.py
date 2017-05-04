@@ -2,8 +2,6 @@ from framework import Response as std
 import importlib
 from modules.aliases import aliases as modules_aliases
 from helpers import general as helper
-from helpers import debugger as debugger
-import traceback
 
 class Router():
 	def __init__(self, request):
@@ -14,11 +12,7 @@ class Router():
 		route(): It chooses the appropriate controller
 		"""
 		if self.request.ok:
-			try:
-				return self.resolve()
-			except:
-				debugger.applog(traceback.format_exc())
-				return std.Response(code = 'Internal Server Error', body = "I'm sorry Dave, I'm afraid I can't do that")
+			return self.resolve()
 		else:
 			return std.Response(code = 'Not Found', body = "Invalid route", raw = True)
 

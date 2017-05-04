@@ -10,14 +10,15 @@ class Request:
 		self.module = '/'
 		if self.ok:
 			if len(self.urn_list) == 2:
-				self.controller, self.action = self.urn_list[0].replace(".", ""), self.urn_list[1].replace(".", "")
+				self.controller, self.action = self.urn_list[0].replace('.', ''), self.urn_list[1].replace('.', '')
 			else:
-				self.module, self.controller, self.action = self.urn_list[0].replace(".", ""), self.urn_list[1].replace(".", ""), self.urn_list[2].replace(".", "")
+				self.module, self.controller, self.action = self.urn_list[0].replace('.', ''), self.urn_list[1].replace('.', ''), self.urn_list[2].replace('.', '')
 		self.body = self.translate_POST_content()
 		self.parameters = self.get_GET()
 		self.method = env.get('REQUEST_METHOD')
 		self.authorization = self.get_authorization(env)
 		self.client_ip = self.get_client_ip(env)
+		print("[module: {}] [controller: {}] [action: {}]".format(self.module, self.controller, self.action))
 
 	def get_GET(self):
 		"""
@@ -93,7 +94,6 @@ class Request:
 		get_authorization(): It handles the http authorization header
 		"""
 		authstr = env.get('HTTP_AUTHORIZATION')
-		print(authstr)
 		if authstr is not None:
 			pieces_authstr = authstr.split(' ')
 			if len(pieces_authstr) >= 2:

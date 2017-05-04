@@ -10,10 +10,16 @@ In general the system is built differently for each request to serve exactly wha
 from framework.Router import Router
 from framework.Request import Request
 from framework.Response import Response
+from helpers import debugger as debugger
+import traceback
 
 def bootstrap(env, meta):
-	request = Request(env)
-	response = Router(request).route()
+	try:
+		request = Request(env)
+		response = Router(request).route()
+	except Exception as e:
+		debugger.applog(traceback.format_exc())
+		response = Response(code = 'Internal Server Error', body = "I'm sorry Dave, I'm afraid I can't do that ({})".format(str(e)))
 	server_output = response.prepare()
 	meta(response.status, response.headers)
 	return [server_output]
