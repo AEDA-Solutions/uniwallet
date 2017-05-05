@@ -42,7 +42,7 @@ class QueryBuilder:
 
 		class Filter(Common):
 
-			def where(self, conditions):
+			def where(self, conditions = '', glue = '', raw = None):
 				snippet = """
 					WHERE
 
@@ -50,7 +50,7 @@ class QueryBuilder:
 
 					[condition]
 				"""
-				self.query = self.query.replace('[condition]', snippet.format(conditions = '{}'.format(' '.join(list(item if isinstance(item, str) else "{}.{}{}'{}'".format(self.table_name, item[0], item[1], item[2]) for item in conditions)))))
+				self.query = self.query.replace('[condition]', snippet.format(conditions = raw if raw is not None else "{}".format(glue).join( list(item if isinstance(item, str) else "{}.{}{}'{}'".format(self.table_name, item[0], item[1], item[2]) for item in conditions))))
 				return self
 
 		class Select(Filter):
@@ -179,7 +179,9 @@ class QueryBuilder:
 """print(QueryBuilder()
 	.table('Users')
 	.update({'name': 'besouro', 'coisa': 'dinheiro'})
-	.where([['goi', '=', 'hi']]).get()
+	.where([['goi', '=', 'hi'],['nome', '=', 'goia'], '1', '2'], ' AND ')
+	#.where(raw = '1 = NOne bbaba')
+	.get()
 	)"""
 				
 """print(QueryBuilder()

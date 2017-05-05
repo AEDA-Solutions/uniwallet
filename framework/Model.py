@@ -87,22 +87,23 @@ class Model:
 		"""
 		create(): It creates a new db record from passed data
 		"""
-		query = self.build_query().table(self.get_table_name() if table_name is None else table_name).insert([self.get_attributes()]).get()
+		query = (self.build_query()
+			.table(self.get_table_name() if table_name is None else table_name)
+			.insert([self.get_attributes()])
+			.get())
 		return self.run_query(query)
 
 	def destroy(self, fields, table_name = None):
 		"""
 		destroy(): It removes records from db from the ids passed (ids must be a list)
 		"""
-		query = """
+		query = (self.build_query()
+			.table(self.get_table_name() if table_name is None else table_name)
+			.delete()
+			.where(raw = 0 if fields is None or len(fields) == 0 else " OR ".join(list((0 if item is None else " AND ".join(list("{}={}{}{}".format(elem, "'", item[elem], "'") for elem in item))) for item in fields)))
+			.get())
 
-			DELETE FROM {table_name} WHERE {fields};
-
-			""".format(table_name = self.get_table_name() if table_name is None else table_name,
-					   fields = 0 if fields is None or len(fields) == 0 else " OR ".join(list((0 if item is None else " AND ".join(list("{}={}{}{}".format(elem, "'", item[elem], "'") for elem in item))) for item in fields)))
-		
 		return self.run_query(query)
-
 
 	def find(self, fields = None, fields_to_ignore = None, start_from = 0, limit = 18446744073709551615, target_fields = ["*"], table_name = None):
 		"""
