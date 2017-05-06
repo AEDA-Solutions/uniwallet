@@ -34,4 +34,3 @@ class App(std.Controller):
 
 	def resumo(self):
 		return self.prepare_static(self.get_html("sobre"))
-

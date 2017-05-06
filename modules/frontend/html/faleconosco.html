@@ -76,6 +76,10 @@
 <!--Classe "floating-box" serve para alinhar um ao lado do outro, o texto e o código do cadastro--> 
 
         <div class="floating-box"> 
+
+          <div id="div_mensagem_retorno" style="color: red">
+          
+          </div>
  
        		 <h4>Gostaria de nos dizer algo?</h4> 
  
@@ -85,6 +89,7 @@
         </div>
         	  
 		<div class="floating-box">
+
      	 		<form>
 
           		 	<input class="input-form" type="text" name="name" placeholder="Nome">
@@ -96,8 +101,6 @@
 
 
            			<button type="submit" name="submit" class="btn-continuar" id="botao_submit">ENVIAR!</button>
-
-
 
  			 		</form> 
 
@@ -141,15 +144,19 @@
 <script type="text/javascript">
 
   //Adiciona um evento no botão de enviar dados
-  Page.listen("botao_submit", function(){
+  Page.listen("botao_submit", function(e){
+    e.preventDefault()
 
     //Pega os dados inseridos nos campos de input
     data = Page.get_input("input-form")
+
+    console.log(data)
 
     //Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
     Request.send(data, "support/report", "POST", function(response){
 
       if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
+        window.alert("Parabéns! Sua mensagem foi enviada com sucesso")
         Page.redirect("inicial")
       } else {
         Page.fill("div_mensagem_retorno", response.content) //Insere a mensagem na div
