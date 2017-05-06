@@ -75,13 +75,12 @@ class Model:
 		"""
 		update(): It updates a db record from the passed data (id is required)
 		"""
-		query = """
-
-			UPDATE {table_name} SET {fields} WHERE id='{id}'
-
-			""".format(table_name = self.get_table_name() if table_name is None else table_name, fields = ", ".join("{}={}".format(item, "'{" + item + "}'") for item in self.attributes), id = self.id)
-
-		return self.run_query(query, self.get_attributes() if fields is None else fields)
+		query = (self.build_query()
+			.table(self.get_table_name() if table_name is None else table_name)
+			.update(values_dict = fields if fields is not None else self.get_attributes())
+			.where(conditions = [['id', '=', self.id]])
+			.get())
+		return self.run_query(query)
 
 	def create(self, table_name = None):
 		"""
@@ -102,23 +101,17 @@ class Model:
 			.delete()
 			.where(raw = 0 if fields is None or len(fields) == 0 else " OR ".join(list((0 if item is None else " AND ".join(list("{}={}{}{}".format(elem, "'", item[elem], "'") for elem in item))) for item in fields)))
 			.get())
-
 		return self.run_query(query)
 
-	def find(self, fields = None, fields_to_ignore = None, start_from = 0, limit = 18446744073709551615, target_fields = ["*"], table_name = None):
+	def find(self, fields = None, fields_to_ignore = None, start_from = 0, limit = 18446744073709551615, target_fields = ['*'], table_name = None):
 		"""
 		find(): It finds records with the specified fields according the referred limits
 		"""
-		query = """
-
-			SELECT {target_fields} FROM {table_name} WHERE {fields} AND {fields_to_ignore} LIMIT {start_from},{limit};
-
-			""".format(target_fields = ", ".join(item for item in target_fields),
-					   table_name = self.get_table_name() if table_name is None else table_name, 
-					   fields = 1 if fields is None or len(fields) == 0 else " OR ".join(list((1 if item is None else " AND ".join(list("{}={}{}{}".format(elem, "'", item[elem], "'") for elem in item))) for item in fields)), 
-					   fields_to_ignore = 1 if fields_to_ignore is None or len(fields_to_ignore) == 0 else " OR ".join(list((1 if item is None else " AND ".join(list("{}<>{}{}{}".format(elem, "'", item[elem], "'") for elem in item))) for item in fields_to_ignore)),
-					   start_from = start_from,
-					   limit = limit)
-
+		query = (self.build_query()
+			.table(self.get_table_name() if table_name is None else table_name)
+			.select(start = start_from, limit = limit)
+			.where(raw = '{fields} AND {to_ignore}'.format(
+					fields = 1 if fields is None or len(fields) == 0 else " OR ".join(list((1 if item is None else " AND ".join(list("{}={}{}{}".format(elem, "'", item[elem], "'") for elem in item))) for item in fields)),
+					to_ignore = 1 if fields_to_ignore is None or len(fields_to_ignore) == 0 else " OR ".join(list((1 if item is None else " AND ".join(list("{}<>{}{}{}".format(elem, "'", item[elem], "'") for elem in item))) for item in fields_to_ignore))))
+			.get())
 		return self.run_query(query)
-

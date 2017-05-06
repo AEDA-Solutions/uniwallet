@@ -16,6 +16,9 @@ class Controller:
 		"""
 		pass
 
+	def build_query(self):
+		return QueryBuilder()
+
 	def action(self, action_name):
 		"""
 		action(): It tries to call a method called 'action_name' from the current Controller object. Then it returns the output of that method.

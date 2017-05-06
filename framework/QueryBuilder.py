@@ -160,36 +160,3 @@ class QueryBuilder:
 
 					[condition]
 				""".format(table_name = self.table_name)
-
-
-"""print(QueryBuilder()
-	.table('Users')
-	.select()
-	.join("User_AccessLevel", [['Users.id', '=', 'User_AccessLevel.user_id']])
-	.join('AccessLevels', [['AccessLevels.id', '=', 'User_AccessLevel.accesslevel_id']])
-	.get())"""
-
-"""print(QueryBuilder()
-	.table('Users')
-	.insert([{'fullname': 'guiga', 'moise': 'coisas'}, 
-			 {'fullname': 'raianr', 'moise': 'bobo'},
-			 {'fullname': 'cuca', 'moise': 'foice'}]).get()
-	)"""
-
-"""print(QueryBuilder()
-	.table('Users')
-	.update({'name': 'besouro', 'coisa': 'dinheiro'})
-	.where([['goi', '=', 'hi'],['nome', '=', 'goia'], '1', '2'], ' AND ')
-	#.where(raw = '1 = NOne bbaba')
-	.get()
-	)"""
-				
-"""print(QueryBuilder()
-	.table('Users')
-	.delete()
-	.where([['goi', '=', 'hi']]).get()
-	)"""
-				
-				
-			
-			
