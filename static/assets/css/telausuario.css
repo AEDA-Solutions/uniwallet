@@ -1,5 +1,5 @@
 body{
-background: white;
+	background: ghostwhite;
 }
 
 .mini-logo{ 
@@ -34,55 +34,44 @@ background: white;
 
 input[type="search"]{
 
-height: 50px; 
-  width: 20px; 
-  font-size: 18px; 
-  border: none; 
-  border-radius: 10px; 
-  margin-bottom: 20px; 
-  margin-top: 0px; 
-  background-color: #fff; 
-  margin-left: 8px; 
+	height: 50px; 
+  	width: 20px; 
+  	font-size: 18px; 
+  	border: none; 
+  	border-radius: 10px; 
+  	margin-bottom: 20px; 
+  	margin-top: 0px; 
+  	background-color: #fff; 
+  	margin-left: 8px; 
 }
 
 .menuprincipal{
-  width:860px; 
-  height: 400px; 
-  text-align: center; 
-  background-color:white
-  border-radius: 15px;  
-  margin-left: 250px;
-  margin-top: 15px; 
-}
-
-.tags{
-  width:860px; 
-  height: 310px; 
-  text-align: center;
-  background-color: ghostwhite;
-  border-radius: 10px; 
-  margin-left: 250px;
-  margin-top: 22px; 
+  	width:860px; 
+  	height: 400px; 
+  	text-align: center; 
+  	background-color:white
+  	border-radius: 15px;  
+  	margin-left: 250px;
+  	margin-top: 15px; 
 }
 
 .arruma{
-width:860px; 
-  height: 200px; 
-  text-align: center; 
-  background-color: white; 
-  border-radius: 15px;  
-  margin-left: -155px;
-  margin-top: 25px; 
+	width:860px; 
+  	height: 200px; 
+  	text-align: center; 
+  	border-radius: 15px;  
+  	margin-left: -155px;
+  	margin-top: 25px; 
 }
 
 .collection{
-width:500px; 
-  height: 65px; 
-  text-align: center; 
-  background-color: white; 
-  border-radius:5px;  
-  margin-left: 450px;
-  margin-top: 25px; 
+	width:500px; 
+  	height: 65px; 
+  	text-align: center; 
+  	background-color: white; 
+  	border-radius:5px;  
+  	margin-left: 450px;
+  	margin-top: 25px; 
 }
 
 .btn-conFace{ 
@@ -96,3 +85,23 @@ width:500px;
   margin-left: 15px;  
 } 
 
+.botao-sup{
+  width: 100px;
+  cursor: pointer; 
+  border-radius: 6px; 
+  border: none; 
+  background-color: #303f9f; 
+  margin-left: 330px;  
+
+}
+
+.botao-sup1{
+  width: 100px;
+  cursor: pointer;  
+  border-radius: 6px; 
+  border: none; 
+  background-color: #303f9f; 
+  margin-left: 720px;
+  margin-top:-68px;  
+
+}
