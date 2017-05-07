@@ -4,8 +4,11 @@
      <meta charset="utf-8"> 
      <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
      <title> Sobre Uniwallet </title> 
-     <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
-     <link rel="stylesheet" type="text/css" href="{static}assets/css/sobre.css">
+
+     <!--verificar os css e as imagens para referenciar-->
+
+     <link rel="stylesheet" href="materialize.css"> 
+     <link rel="stylesheet" type="text/css" href="sobre.css">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
      <link rel="shortcut icon" href="official.ico" type="image/x-icon" />
@@ -21,8 +24,8 @@
                  <div class="nav-wrapper container" > 
  
                 <!--Logo--> 
-
-                <a href="index" class="brand-logo"><img src="{static}assets/images/official.png" class="circle left mini-logo"></img> UniWallet </a> 
+                <!-- a linha abaixo tem mais uma imagem que deve ser referenciada corretamente-->
+                <a href="index" class="brand-logo"><img src="official.png" class="circle left mini-logo"></img> UniWallet </a> 
 
                      <!--Para esconder o conteúdo da direita--> 
 
@@ -49,19 +52,11 @@
  
         </header> 
 
+<div class="parallax-container">
+<!--aqui tem uma imagem que precisa ser referenciada-->
+      <div class="parallax"><img src="sobre.jpg"></div>
 
-    <div class="parallax-container">
-
-      <div class="parallax"><img src="{static}assets/images/sobre.jpg"></div>
-
-    </div>
-
-<script>
-
-  $(document).ready(function(){
-      $('.parallax').parallax();
-    });
-</script>
+</div>
 
 <div class="row">
 <div class="tags">
@@ -134,6 +129,13 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+
+<script>
+  $(document).ready(function(){
+      $('.parallax').parallax();
+    });
+</script>
+
 
 </body>
 
