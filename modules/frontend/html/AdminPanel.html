@@ -51,15 +51,51 @@
 		<!-- /#sidebar-wrapper -->
 
 		<!-- Page Content -->
+
+				
+
+		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+		  <div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+			 ...
+			</div>
+		  </div>
+		</div>
+
+
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-sm-6">
+					<div class="col-lg-12">
 						<div id="maincontent">
-							Oi Dave
-							<img src="{static}assets/images/Dave.jpg">
+							<!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+
+
+							<h1>Área dos desenvolvedores</h1>
+							<center><img src="{static}assets/images/uwlogo.gif"></center>-->
+
+							<table id="example" class="table table-striped table-bordered" width="100%" cellspacing="0">
+								<thead>
+									<tr>
+										<th>Id</th>
+										<th>Fullname</th>
+										<th>Email</th>
+										<th>CPF</th>
+										<th>University</th>
+									</tr>
+								</thead>
+								<tfoot>
+									<tr>
+										<th>Id</th>
+										<th>Fullname</th>
+										<th>Email</th>
+										<th>CPF</th>
+										<th>University</th>
+									</tr>
+								</tfoot>
+							</table>
 						</div>
-						<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+						<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Mover barra lateral</a>
 					</div>
 				</div>
 			</div>
@@ -120,6 +156,139 @@
 
 	</script>
 
+	<script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.14/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.14/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/select/1.2.2/js/dataTables.select.min.js"></script>
+	<script type="text/javascript" src="{static}assets/datatables/extensions/Editor/js/dataTables.editor.min.js"></script>
+	<script type="text/javascript" src="{static}assets/datatables/extensions/Editor/js/editor.bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		var editor; // use a global for the submit and return data rendering in the examples
+		 
+		$(document).ready(function() {
+			
+			var table = $('#example').DataTable( {
+				lengthChange: false,
+				ajax: {
+					url: "/api/user/fetch",
+					data: {
+						"start": 0,
+						"limit": 100
+					},
+					dataFilter: function(data){
+						var json = jQuery.parseJSON( data );
+						json.recordsTotal = json.content.length;
+						json.recordsFiltered = json.content.length;
+						json.data = json.content;
+						return JSON.stringify( json ); // return JSON string
+					}
+				},
+				language: {
+					url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Portuguese-Brasil.json",
+				},
+				columns: [
+					{ data: "id" },
+					{ data: "fullname" },
+					{ data: "email" },
+					{ data: "cpf" },
+					{ data: "university" }
+				],
+				initComplete: function(){
+					showButtons();
+				},
+				select: true
+			} );
+
+			function showButtons(){
+				// Display the buttons
+				new $.fn.dataTable.Buttons( table, [
+					{ extend: "create", editor: editor },
+					{ extend: "edit",   editor: editor },
+					{ extend: "remove", editor: editor }
+				] );
+				table.buttons().container().appendTo( $('.col-sm-6:eq(0)', table.table().container() ) );
+			}
+		 
+
+			editor = new $.fn.dataTable.Editor( {
+				ajax: {
+					url: "/api/user/fetch",
+					data: {
+						"start": 0, 
+						"limit": 100
+					}
+				},
+				idSrc: 'id',
+				table: "#example",
+				fields: [ 
+					/*{
+						label: "Id:",
+						name: "id"
+					}, */
+					{
+						label: "Fullname:",
+						name: "fullname"
+					}, {
+						label: "Email:",
+						name: "email"
+					}, {
+						label: "CPF:",
+						name: "cpf"
+					}, {
+						label: "University:",
+						name: "university"
+					}
+				],
+
+						
+				i18n: { //https://editor.datatables.net/manual/i18n
+					create: {
+						button: "Novo",
+						title:  "Criar novo registro",
+						submit: "Criar"
+					},
+					edit: {
+						button: "Modificar",
+						title:  "Modificar registro",
+						submit: "Atualizar"
+					},
+					remove: {
+						button: "Remover",
+						title:  "Remover registro",
+						submit: "Remover",
+						confirm: {
+							_: "Tem certeza que quer remover estes %d registros?",
+							1: "Tem certeza que quer remover estes registro?"
+						}
+					},
+					error: {
+						system: "Ops. Identifiquei um erro que não pude tratar. Contate o administrador deste software"
+					},
+					multi: {
+						title: "Vários valores",
+						info: "Os itens selecionados contêm valores diferentes para esta entrada.Para definir esta entrada como um mesmo valor para todos os registros selecionados, clique aqui, caso contrário, eles manterão seus valores individuais.",
+						restore: "Descartar modificações"
+					},
+					datetime: {
+						previous: 'Précédent',
+						next:     'Premier',
+						months:   [ 'Janvier', 'Février', 'Mars', 'Avril', 'peut', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre' ],
+						weekdays: [ 'Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam' ]
+					}
+				}
+
+			} );
+			
+
+		} );
+	</script>
+
 </body>
 
 </html>
+
+
