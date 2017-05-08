@@ -6,10 +6,10 @@ class App(std.Controller):
 		return html.replace("{static}", "http://localhost:8008/")
 
 	def cadastro(self):
-		return self.prepare_static(self.get_html("TeladeCadastro"))
+		return self.prepare_static(self.get_html("cadastro"))
 		
 	def empresa(self):
-		return self.prepare_static(self.get_html("TeladeCadastroEmpresa"))
+		return self.prepare_static(self.get_html("cadastroEmpresa"))
 
 	def inicial(self):
 		return self.prepare_static(self.get_html("index"))
@@ -18,19 +18,13 @@ class App(std.Controller):
 		return self.prepare_static(self.get_html("faleconosco"))
 
 	def usuario(self):
-		return self.prepare_static(self.get_html("TeladeUsuario"))
-
-	def arthur(self):
-		return self.get_html("guilherme")
+		return self.prepare_static(self.get_html("usuario"))
 
 	def transaction(self):
 		return  self.prepare_static(self.get_html("CreateTransaction"))
 
-	def motherfucker(self):
-		return self.get_html("rafael")
-
 	def gerenciamento(self):
 		return self.prepare_static(self.get_html("AdminPanel"))
 
-	def resumo(self):
+	def sobre(self):
 		return self.prepare_static(self.get_html("sobre"))

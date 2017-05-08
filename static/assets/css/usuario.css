@@ -1,5 +1,5 @@
 body{
-	background: #fffde7;
+	background: #ffecb3;
 }
 
 .mini-logo{ 
@@ -81,7 +81,7 @@ input[type="search"]{
   color: #fff; 
   border-radius: 6px; 
   border: none; 
-  background-color: #303f9f; 
+  background-color: #3f51b5; 
   margin-left: 15px;  
 } 
 
@@ -90,7 +90,7 @@ input[type="search"]{
   cursor: pointer; 
   border-radius: 6px; 
   border: none; 
-  background-color: #303f9f; 
+  background-color: #3f51b5; 
   margin-left: 330px;  
 
 }
@@ -100,7 +100,7 @@ input[type="search"]{
   cursor: pointer;  
   border-radius: 6px; 
   border: none; 
-  background-color: #303f9f; 
+  background-color: #3f51b5; 
   margin-left: 720px;
   margin-top:-68px;  
 
