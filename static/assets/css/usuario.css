@@ -1,5 +1,9 @@
 body{
-	background: #ffecb3;
+
+  margin: 0 auto; 
+  background-image: url("../images/athos2.jpg"); 
+  background-repeat: no-repeat; 
+  background-size: cover; 
 }
 
 .mini-logo{ 
