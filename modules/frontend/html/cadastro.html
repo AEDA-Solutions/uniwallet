@@ -3,7 +3,14 @@
 <html>
 
 <head>
-	<title>Tela de Cadastro</title>
+         <meta charset="utf-8"> 
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>cadastro</title>
+	<!-- Referentes ao nav-bar -->
+	<link rel="stylesheet" href="{static}assets/css/materialize.css"> 
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" href="{static}assets/css/index.css">
 				<link rel="stylesheet" type="text/css" href="{static}assets/css/cadastro.css">
 				</link>
 
@@ -44,6 +51,43 @@ if( document.forms[0].email.value==""
 
 
 <body>
+
+
+        <header class="navbar-fixed">  
+            <nav class="amber darken-2"> 
+
+                <!--Colocar todo o conteúdo do painel da nav-bar--> 
+
+                 <div class="nav-wrapper container" > 
+ 
+                <!--Logo--> 
+
+                <a href="index" class="brand-logo"><img src="{static}assets/images/official.png" class="circle left mini-logo"></img> UniWallet </a> 
+
+                     <!--Para esconder o conteúdo da direita--> 
+
+                       <ul id="nav-mobile" class="right hide-on-med-and-down"> 
+
+                 <li><a href="inicial">
+                 <i class="material-icons left">lock_open</i>
+                 <span>Login</span> 
+
+                       <li><a href="sobre">
+                 <i class="material-icons left ">group</i>
+                 <span>Sobre</span>
+                 </a></li> 
+
+                 <li><a href="faleconosco">
+                 <i class="material-icons left ">phone</i>
+                 <span> Fale Conosco</span>
+                 </a>
+
+                       </ul> 
+
+                 </div> 
+            </nav>  
+ 
+         </header>
 
 	<table>
 	
@@ -89,10 +133,11 @@ if( document.forms[0].email.value==""
 						<input class="input-form" type="cssemail" name="university" placeholder="Universidade">
 					</div>
 
+					<!-- Foi retirado pois ocorreram mudanas nos direcionamentos das telas
 					<br>
 					<a href="empresa">Cadastre-se como empresa</a>
-				</form>
-				<button class="btn-login" id="botao_submit">CADASTRE-SE COMO USUARIO</button>
+				</form> -->
+				<button class="btn-login" id="botao_submit">CADASTRE-SE</button>
 			</div>
 
 
