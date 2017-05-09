@@ -10,7 +10,6 @@
 	<link rel="stylesheet" href="{static}assets/css/materialize.css"> 
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     <link rel="stylesheet" type="text/css" href="{static}assets/css/index.css">
 				<link rel="stylesheet" type="text/css" href="{static}assets/css/cadastro.css">
 				</link>
 
@@ -99,38 +98,37 @@ if( document.forms[0].email.value==""
 					</div>
 
 					<div class="form-input">
-	 					<input class="input-form" type="cssemail" name="fullname" size=30 minlenght=3 maxlength=50 placeholder="Nome Completo">
+	 					<input class="input-form" type="text" name="fullname" size=30 minlenght=3 maxlength=50 placeholder="Nome Completo">
 					</div>
 
 					<div class="form-input">
-						<input class="input-form" type="ncpf" name="cpf" placeholder="CPF">
+						<input class="input-form" type="text" name="cpf" placeholder="CPF">
 					</div>
 
 					<div class="form-input">
-						<input class="input-form" type="cssemail" name="password" size=30 minlength=6 maxlength=10 placeholder="Senha">
+						<input class="input-form" type="password" name="password" size=30 minlength=6  placeholder="Senha">
 					</div>
 
 
-
 					<div class="form-input">
-						<input class="input-form" type="cssemail" size=30 minlength=6 maxlength=10 placeholder="Confirme sua senha">
+						<input class="input-form" type="password" size=30 minlength=6 placeholder="Confirme sua senha">
 					</div>
 
 				
 					<div class="form-input"> 
 						<form method="post" action="" onSubmit="return ( verifica() )" name="frmEnvia">
-						   <input name="email" type="cssemail" class="input" id="email" placeholder="E-mail" onblur="checarEmail();" />
+						   <input name="email" type="text" class="input" id="email" placeholder="E-mail" onblur="checarEmail();" />
 						</form>
 					</div>
 
 
 					<div class="form-input">
-						<input class="input-form" type="cssemail" name="email" placeholder="Confirme seu E-mail">
+						<input class="input-form" type="text" name="email" placeholder="Confirme seu E-mail">
 					</div>
 
 
 					<div class="form-input">
-						<input class="input-form" type="cssemail" name="university" placeholder="Universidade">
+						<input class="input-form" type="text" name="university" placeholder="Universidade">
 					</div>
 
 					<!-- Foi retirado pois ocorreram mudanas nos direcionamentos das telas
