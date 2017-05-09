@@ -28,3 +28,5 @@ class App(std.Controller):
 
 	def sobre(self):
 		return self.prepare_static(self.get_html("sobre"))
+
+	
