@@ -1,6 +1,14 @@
+.mini-logo{
+
+  width: 52px; 
+  margin-top: 6px; 
+  margin-right: 15px; 
+  margin-left: 60px; 
+}
+
 body{
   margin: 0 auto;
-  background-image: url("../images/bolhasAL.jpg");
+  background-image: url("../images/food-truck.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
