@@ -1,11 +1,3 @@
-.mini-logo{
-
-
-  width: 52px; 
-  margin-top: 6px; 
-  margin-right: 15px; 
-  margin-left: 60px; 
-} 
 
  /*PANIEL DE LOGIN*/
 body{ 
@@ -16,6 +8,13 @@ body{
   background-size: cover; 
 } 
 
+.mini-logo{
+
+  width: 52px; 
+  margin-top: 6px; 
+  margin-right: 15px; 
+  margin-left: 60px; 
+} 
  
  h4{ 
  
