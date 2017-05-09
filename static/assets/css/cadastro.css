@@ -5,31 +5,14 @@ body{
   background-size: cover;
 }
 
-.containerlogin{
-  width:500px;
-  height: 350px;
-  text-align: center;
-  background-color: rgba(52, 73, 94,0.7);
-  border-radius: 40px;
-  margin: 0 auto;
-  margin-top: 150px;
-}
-
 .containercadastro{
   width:500px;
-  height: 760px;
+  height: 660px;
   text-align: center;
   background-color: rgba(52, 73, 94,0.7);
   border-radius: 40px;
   margin: 0 auto;
   margin-top: 100px;
-}
-
-.containerlogin img{
-  width: 120px;
-  height: 120px;
-  margin-top: -60px;
-
 }
 
 .containercadastro img{

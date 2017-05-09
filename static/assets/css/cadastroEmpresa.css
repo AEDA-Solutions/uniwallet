@@ -1,35 +1,26 @@
+.mini-logo{
+
+  width: 52px; 
+  margin-top: 6px; 
+  margin-right: 15px; 
+  margin-left: 60px; 
+}
+
 body{
   margin: 0 auto;
-  background-image: url("../images/desktop3.jpg");
+  background-image: url("../images/food-truck.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.containerlogin{
-  width:500px;
-  height: 350px;
-  text-align: center;
-  background-color: rgba(52, 73, 94,0.7);
-  border-radius: 40px;
-  margin: 0 auto;
-  margin-top: 150px;
-}
-
 .containercadastro{
   width:500px;
-  height: 550px;
+  height: 580px;
   text-align: center;
   background-color: rgba(52, 73, 94,0.7);
   border-radius: 40px;
   margin: 0 auto;
   margin-top: 100px;
-}
-
-.containerlogin img{
-  width: 120px;
-  height: 120px;
-  margin-top: -60px;
-
 }
 
 .containercadastro img{
@@ -40,7 +31,7 @@ body{
 }
 
 input[type="text"],input[type="password"]{
-  height: 45px;
+  height: 1005px;
   width: 300px;
   font-size: 18px;
   border: none;

@@ -3,9 +3,11 @@
 
 <html>
 
-<head>
-  <title>Tela de Cadastro Empresa</title>
-        <link rel="stylesheet" type="text/css" href="{static}assets\css\styleslogin1.css">
+   <head>
+         <meta charset="utf-8"> 
+         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>cadastro empresa</title>
+        <link rel="stylesheet" type="text/css" href="{static}assets\css\cadastroEmpresa.css">
         </link>
 
         <link rel="stylesheet" type="text/css" href="{static}assets\css\font-awesome.css">
@@ -15,7 +17,12 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<!--nav-bar -->
+     <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     
+</head>
 <!--      Função JavaScript para validação de e-mail                             -->
 
 
@@ -44,19 +51,44 @@ alert("E-mail invalido");
 </script>
 
 
-</head>
-
-
 <body>
 
+            <header class="navbar-fixed">  
+            <nav class="N/A transparent"> 
 
-    <form name="veri_email">
-      <hr color='gray'>
+                <!--Colocar todo o conteúdo do painel da nav-bar--> 
 
+                 <div class="nav-wrapper container" > 
+ 
+                <!--Logo--> 
 
+                <a href="inicial" class="brand-logo"><img src="{static}assets/images/official.png" class="circle left mini-logo"></img> UniWallet </a> 
 
+                     <!--Para esconder o conteúdo da direita--> 
 
-      <div class="containercadastro">
+                       <ul id="nav-mobile" class="right hide-on-med-and-down"> 
+
+                       <li><a href="javascript:void(0)">
+                 <i class="material-icons left ">assessment</i>
+                 <span>Sobre ter uma Empresa</span>
+                 </a></li> 
+
+                 <li><a href="usuario">
+                 <i class="material-icons left ">account_circle</i>
+                 <span>Tela de usuário</span>
+                 </a>
+
+                       </ul> 
+
+                 </div> 
+            </nav>  
+ 
+         </header> 
+
+        <form name="veri_email">
+        <hr color='gray'>
+
+        <div class="containercadastro">
         <img src="{static}assets\images\uwlogo.gif">
         <form>
 
@@ -74,9 +106,9 @@ alert("E-mail invalido");
             <input type="text" name="location" placeholder="Insira o local da sua empresa">
           </div>
 
-          <div class="form-input">
+         <!-- <div class="form-input">
             <input type="text" name="password" placeholder="Coloque a senha desejada">
-          </div>
+          </div> -->
 
           <div class="form-input">
             <input type="text" name="phone" style="font-size: 14px;" placeholder="Insira o telefone de contato da empresa">
@@ -97,9 +129,9 @@ alert("E-mail invalido");
 
 <br>
 <br>
-          <input type="submit" name="submit" value="CADASTRE-SE COMO EMPRESA" class="btn-login">
+          <input type="submit" name="submit" value="CADASTRAR EMPRESA" class="btn-login">
           <br>
-          <a href="#">Cadastre-se como usuario</a>
+         <!-- <a href="#">Cadastre-se como usuario</a> -->
         </fomr>
       </div>
 
