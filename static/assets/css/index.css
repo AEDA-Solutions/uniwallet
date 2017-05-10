@@ -1,29 +1,15 @@
 
  /*PANIEL DE LOGIN*/
 
- body{
-  background-color: #424242; 
- }
-
- .imagem-parallax{ 
+ body{ 
+   background-image: url("../images/index.jpg");
    max-width: 1080px;   /* Máximo da largura da imagem */
    width: auto;
    max-height: auto;  /* Máximo da altura da imagem */
-   min-height: auto;      /* Mínimo da altura, por padrão “auto” */
+   min-height: auto;      
    background-size:100%;
-   background-repeat: no-repeat;
+   background-repeat: no-repeat; 
  }
-   /*background-image: url("../images/index.jpg"); 
-     max-width: 1080px;   /* Máximo da largura da imagem */  
-
-
-  /*width: auto;
-  margin: 0 auto; 
-  background-image: url("../images/index.jpg"); 
-  background-repeat: no-repeat; 
-  background-size: cover; 
-  max-width: 100%; 
-} */
 
 .margin-login{
   margin-right: 30px;
@@ -70,3 +56,6 @@
   margin-left: 250px;
   margin-top: 22px; 
 }
+.margen-cards{
+  margin-top: 670px;
+
