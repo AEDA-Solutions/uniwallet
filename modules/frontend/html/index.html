@@ -12,7 +12,11 @@
  </head> 
 
  <body> 
-       <header>
+     <div class="parallax-container">
+
+         <div class="parallax"><img src="{static}assets/images/index.jpg" class="imagem-parallax"></img></div>
+
+       <header class="navbar-fixed">
 
                  <!-- Dropdown1 Structure -->
                 <ul id="dropdown1" class="dropdown-content">
@@ -29,7 +33,7 @@
                 </ul>
 
                 <nav class="N/A transparent">
-                  <div class="navbar-fixed">
+                  <div class="navbar-wrapper">
 
                   <!-- Logo -->
                     <a href="inicial" class="brand-logo"><img src="{static}assets/images/official.png" class="circle left mini-logo"></img> UniWallet </a>
@@ -66,12 +70,24 @@
 
 <div class="row">
 <div class="tags">
-
-<div class="col s3">
+      <div class="col s4">
         <div class="row">
-          <div class="card transparent">
+          <div class="card grey darken-4">
             <div class="card-content white-text">
-              <i class=" material-icons" style="color:#ffff00;">grade</i>
+              <i class="material-icons" style ="color:#d50000;">query_builder</i>
+              <span class="card-title">Prático</span>
+              <p>Com o UniWallet, as suas compras ficam mais ágeis. Basta um clique.
+              Sem filas nem estresse, ao alcance da sua mão!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s4">
+        <div class="row">
+          <div class="card grey darken-4">
+            <div class="card-content white-text">
+              <i class="material-icons" style="color:#ffff00;">grade</i>
               <span class="card-title">Exclusivo</span>
               <p>Usuários UniWallet recebem promoções exclusivas e créditos extras para usarem da melhor maneira.
               Tudo online, sem complicações!</p>
@@ -80,11 +96,11 @@
         </div>
       </div>
 
-      <div class="col s3">
+      <div class="col s4">
         <div class="row">
-          <div class="card transparent">
+          <div class="card grey darken-4">
             <div class="card-content white-text">
-              <i class=" material-icons" style ="color:#32cd32;">visibility</i>
+              <i class="material-icons" style ="color:#32cd32;">visibility</i>
               <span class="card-title">Seguro</span>
               <p>Fácil de usar, o UniWallet utiliza os métodos mais recentes de segurança em redes, protegendo seus dados.
              Sem preocupações!</p>
@@ -92,24 +108,10 @@
           </div>
         </div>
       </div>
-
-      <div class="col s3">
-        <div class="row">
-          <div class="card transparent">
-            <div class="card-content white-text">
-              <i class=" material-icons" style ="color:#d50000;">query_builder</i>
-              <span class="card-title">Prático</span>
-              <p>Com o UniWallet, as suas compras ficam mais ágeis. Basta um clique.
-              Sem filas nem estresse, ao alcance da sua mão!</p>
-            </div>
-          </div>
-        </div>
-      </div>
 </div>
 </div>
 
-
-<footer class="page-footer grey darken-3">
+<footer class="page-footer grey darken-4">
     <div class="container">
         <div class="row">
         <div class="col l6 s12">
@@ -149,11 +151,11 @@
       });
     </script>
 
-<!--<script>
+<script>
   $(document).ready(function(){
       $('.parallax').parallax();
     });
-</script> -->
+</script> 
 
 
 </body>
