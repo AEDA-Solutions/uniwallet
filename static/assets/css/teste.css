@@ -1,10 +1,11 @@
 /*PANIEL DE LOGIN*/
 body{ 
-
+  width: auto;
   margin: 0 auto; 
   background-image: url("../images/index.jpg"); 
   background-repeat: no-repeat; 
   background-size: cover; 
+  max-width: 100%;
 } 
 
 .mini-logo{

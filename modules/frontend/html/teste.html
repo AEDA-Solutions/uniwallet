@@ -1,0 +1,173 @@
+<!DOCTYPE html> 
+<html lang="pt-br"> 
+<head> 
+         <meta charset="utf-8"> 
+         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+         <title> UniWallet </title> 
+         <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" href="{static}assets/css/index.css">
+     <link rel="shortcut icon" href="official.ico" type="image/x-icon" />
+ </head> 
+
+ <body> 
+
+        <header class="navbar-fixed">  
+            <nav class="N/A transparent"> 
+
+                <!--Colocar todo o conteúdo do painel da nav-bar--> 
+
+                 <div class="nav-wrapper container" > 
+ 
+                <!--Logo--> 
+
+                <a href="inicial" class="brand-logo"><img src="{static}assets/images/official.png" class="circle left mini-logo"></img> UniWallet </a> 
+
+                     <!--Para esconder o conteúdo da direita--> 
+
+                       <ul id="nav-mobile" class="right hide-on-med-and-down"> 
+
+                 <li><a href="cadastro">
+                 <i class="material-icons left">account_circle</i>
+                 <span>Cadastre-se</span> 
+
+                       <li><a href="sobre">
+                 <i class="material-icons left ">group</i>
+                 <span>Sobre</span>
+                 </a></li> 
+
+                 <li><a href="faleconosco">
+                 <i class="material-icons left ">phone</i>
+                 <span> Fale Conosco</span>
+                 </a>
+
+                       </ul> 
+
+                 </div> 
+            </nav>  
+ 
+         </header> 
+
+     <!--Painel de cadastro--> 
+
+  <div class="containerlogin"> 
+ 
+        <img src="{static}assets/images/uwlogo.gif" class="circle">
+
+<!--Classe "floating-box" serve para alinhar um ao lado do outro, o texto e o código do cadastro--> 
+
+        <div class="floating-box"> 
+ 
+           <h4>Bem-vindo ao UniWallet</h4> 
+ 
+           <h6> O University Wallet é o lugar onde você reserva suas compras de alimentos e muito mais, sem enfrentar filas. </h6> 
+
+        </div>
+            
+    <div class="floating-box">
+          <form>
+                <input type="text" name="email" placeholder="E-mail" class="input-form">
+      
+                <input type="password" name="password" placeholder="Senha" class="input-form"> 
+                
+               <input type="button" name = "submit" value="Continuar" class="btn-continuar" id="botao_submit">
+
+               <!--
+                TRECHO DESATIVADO TEMPORARIAMENTE PORQUE ESTAVA DEIXANDO A PÁGINA LENTA
+               <p>ou</p>
+
+               <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>--> 
+          </form> 
+
+         </div>
+  </div> 
+
+  <div class="center">
+        <b> Ao criar uma conta, você concorda com os termos de serviço do University Wallet.</b>
+      </div>
+
+<footer class="page-footer amber darken-2">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Saiba Mais</h5>
+                <p class="grey-text text-lighten-4"></p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Veja isso!</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Nossos Parceiros</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Como Funciona</a></li>
+                 <li><a class="grey-text text-lighten-3" href="cadastro">Cadastre-se</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2017 Copyright
+            <a class="grey-text text-lighten-4 right" href="#!">Equipe UniWallet</a>
+            </div>
+          </div>
+        </footer>
+
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+
+<!--
+<div id="fb-root"></div>
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.9&appId=1387239477981767";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script>
+
+  $(document).ready(function(){
+      $('.parallax').parallax();
+    });
+</script>-->
+
+
+
+
+<script src="{static}assets/js/uniwallet-backend-api.js"></script>
+
+<script type="text/javascript">
+
+  //Adiciona um evento no botão de enviar dados
+  Page.listen("botao_submit", function(e){
+    e.preventDefault() //Impede a atualização da página
+
+    //Pega os dados inseridos nos campos de input
+    data = Page.get_input("input-form")
+
+    //Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
+    Request.send(data, "session/login", "POST", function(response){
+
+      console.log(response)
+      if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
+        Auth.Token.set(response.content.token)
+        Page.redirect("usuario")
+      } else {
+        window.alert(response.content)
+        //Page.fill("div_mensagem_retorno", response.content) //Insere a mensagem na div
+      }
+
+    })
+  })
+
+</script>
+
+
+ </body>
+
+</html> 
+ 

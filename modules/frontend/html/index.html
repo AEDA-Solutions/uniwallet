@@ -12,162 +12,150 @@
  </head> 
 
  <body> 
+       <header>
 
-        <header class="navbar-fixed">  
-            <nav class="amber darken-2"> 
+                 <!-- Dropdown1 Structure -->
+                <ul id="dropdown1" class="dropdown-content">
+                  <li><a href="#">Usuário</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Empresa</a></li>
+                </ul>
 
-                <!--Colocar todo o conteúdo do painel da nav-bar--> 
+                <!-- Dropdown2 Structure -->
+                <ul id="dropdown2" class="dropdown-content">
+                  <li><a href="cadastro">Como Usuário</a></li>
+                  <li class="divider"></li>
+                  <li><a href="empresa">Como Empresa</a></li>
+                </ul>
 
-                 <div class="nav-wrapper container" > 
- 
-                <!--Logo--> 
+                <nav class="N/A transparent">
+                  <div class="navbar-fixed">
 
-                <a href="inicial" class="brand-logo"><img src="{static}assets/images/official.png" class="circle left mini-logo"></img> UniWallet </a> 
+                  <!-- Logo -->
+                    <a href="inicial" class="brand-logo"><img src="{static}assets/images/official.png" class="circle left mini-logo"></img> UniWallet </a>
+                    <a href="#" data-activates="menu-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 
-                     <!--Para esconder o conteúdo da direita--> 
+                <!--Para esconder o conteúdo da direita em telas de tabletes e molibe-->
+                    <ul class="right hide-on-med-and-down"> 
+                <!-- Dropdown Trigger -->
+                        <li><a class="dropdown-button" href="#" data-activates="dropdown2">CADASTRE-SE<i class="material-icons left">group</i></a></li>
+                       
+                        <li><a class="dropdown-button margin-login" href="#" data-activates="dropdown1">Login<i class="material-icons left">lock_open</i></a></li>
+                    </ul>
 
-                       <ul id="nav-mobile" class="right hide-on-med-and-down"> 
-
-                 <li><a href="cadastro">
-                 <i class="material-icons left">account_circle</i>
-                 <span>Cadastre-se</span> 
-
-                       <li><a href="sobre">
-                 <i class="material-icons left ">group</i>
-                 <span>Sobre</span>
-                 </a></li> 
-
-                 <li><a href="faleconosco">
-                 <i class="material-icons left ">phone</i>
-                 <span> Fale Conosco</span>
-                 </a>
-
-                       </ul> 
-
-                 </div> 
-            </nav>  
- 
-         </header> 
-
-     <!--Painel de cadastro--> 
-
-  <div class="containerlogin"> 
- 
-        <img src="{static}assets/images/uwlogo.gif" class="circle">
-
-<!--Classe "floating-box" serve para alinhar um ao lado do outro, o texto e o código do cadastro--> 
-
-        <div class="floating-box"> 
- 
-           <h4>Bem-vindo ao UniWallet</h4> 
- 
-           <h6> O University Wallet é o lugar onde você reserva suas compras de alimentos e muito mais, sem enfrentar filas. </h6> 
-
-        </div>
-            
-    <div class="floating-box">
-          <form>
-                <input type="text" name="email" placeholder="E-mail" class="input-form">
-      
-                <input type="password" name="password" placeholder="Senha" class="input-form"> 
+                    <!--Botões para o sanduíche-->
+                     <ul class="side-nav" id="menu-mobile">
                 
-               <input type="button" name = "submit" value="Continuar" class="btn-continuar" id="botao_submit">
+                        <li><a href="#">CADASTRE-SE<i class="material-icons left">group</i></a></li>
+                                <li><a href="cadastro">Como Usuário</a></li>
+                                <li><a href="empresa">Como Empresa</a></li>
+                               <li class="divider"></li>
 
-               <!--
-                TRECHO DESATIVADO TEMPORARIAMENTE PORQUE ESTAVA DEIXANDO A PÁGINA LENTA
-               <p>ou</p>
+                        <li><a href="#">Login<i class="material-icons left">lock_open</i></a></li>
+                                <li><a href="#">Usuário</a></li>
+                                <li><a href="#">Empresa</a></li>
+                     </ul> 
+                  </div>
+                </nav>
+         </header>
 
-               <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>--> 
-          </form> 
+                      <h5 class="flow-text primeiro-h5">Aqui você reserva suas compras de </h5>
+                      <h5 class="flow-text segundo-h5">alimentos e muito mais, sem</h5> 
+                      <h5 class="flow-text terceiro-h5">enfrentar fila </h5> 
+</div>
 
-         </div>
-  </div> 
+<div class="row">
+<div class="tags">
 
-  <div class="center">
-        <b> Ao criar uma conta, você concorda com os termos de serviço do University Wallet.</b>
+<div class="col s3">
+        <div class="row">
+          <div class="card transparent">
+            <div class="card-content white-text">
+              <i class=" material-icons" style="color:#ffff00;">grade</i>
+              <span class="card-title">Exclusivo</span>
+              <p>Usuários UniWallet recebem promoções exclusivas e créditos extras para usarem da melhor maneira.
+              Tudo online, sem complicações!</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-<footer class="page-footer amber darken-2">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Saiba Mais</h5>
-                <p class="grey-text text-lighten-4"></p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Veja isso!</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Nossos Parceiros</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Como Funciona</a></li>
-                 <li><a class="grey-text text-lighten-3" href="cadastro">Cadastre-se</a></li>
-                </ul>
-              </div>
+      <div class="col s3">
+        <div class="row">
+          <div class="card transparent">
+            <div class="card-content white-text">
+              <i class=" material-icons" style ="color:#32cd32;">visibility</i>
+              <span class="card-title">Seguro</span>
+              <p>Fácil de usar, o UniWallet utiliza os métodos mais recentes de segurança em redes, protegendo seus dados.
+             Sem preocupações!</p>
             </div>
           </div>
-          <div class="footer-copyright">
-            <div class="container">
+        </div>
+      </div>
+
+      <div class="col s3">
+        <div class="row">
+          <div class="card transparent">
+            <div class="card-content white-text">
+              <i class=" material-icons" style ="color:#d50000;">query_builder</i>
+              <span class="card-title">Prático</span>
+              <p>Com o UniWallet, as suas compras ficam mais ágeis. Basta um clique.
+              Sem filas nem estresse, ao alcance da sua mão!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+</div>
+
+
+<footer class="page-footer grey darken-3">
+    <div class="container">
+        <div class="row">
+        <div class="col l6 s12">
+            <h5 class="white-text">Saiba Mais</h5>
+            <p class="grey-text text-lighten-4"></p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Mais de UniWallet</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#!">Dúvidas Frequentes</a></li>
+                <li><a class="grey-text text-lighten-3" href="#!">Promoções Exclusivas</a></li>
+                <!--  <li><a class="grey-text text-lighten-3" href="TeladeCadastro.html">Cadastre-se</a></li> -->
+            </ul>
+        </div>
+        </div>
+        </div>
+        <div class="footer-copyright">
+        <div class="container">
             © 2017 Copyright
             <a class="grey-text text-lighten-4 right" href="#!">Equipe UniWallet</a>
-            </div>
-          </div>
-        </footer>
+        </div>
+    </div>
+</footer>
 
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
 
-<!--
-<div id="fb-root"></div>
+<script src="{static}assets/js/uniwallet-backend-api.js"></script>
 
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.9&appId=1387239477981767";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+<!-- Script para o botão sanduíche das telas responsivas-->
+     <script>
+    $(function(){
+        $(".button-collapse").sideNav();
+      });
+    </script>
 
-<script>
-
+<!--<script>
   $(document).ready(function(){
       $('.parallax').parallax();
     });
-</script>-->
+</script> -->
 
 
+</body>
 
-
-<script src="{static}assets/js/uniwallet-backend-api.js"></script>
-
-<script type="text/javascript">
-
-  //Adiciona um evento no botão de enviar dados
-  Page.listen("botao_submit", function(e){
-    e.preventDefault() //Impede a atualização da página
-
-    //Pega os dados inseridos nos campos de input
-    data = Page.get_input("input-form")
-
-    //Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
-    Request.send(data, "session/login", "POST", function(response){
-
-      console.log(response)
-      if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
-        Auth.Token.set(response.content.token)
-        Page.redirect("usuario")
-      } else {
-        window.alert(response.content)
-        //Page.fill("div_mensagem_retorno", response.content) //Insere a mensagem na div
-      }
-
-    })
-  })
-
-</script>
-
-
- </body>
-
-</html> 
- 
+</html>

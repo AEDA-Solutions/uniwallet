@@ -29,6 +29,5 @@ class App(std.Controller):
 	def sobre(self):
 		return self.prepare_static(self.get_html("sobre"))
 
-    def login1(self):
-		return self.prepare_static(self.get_html("login1"))
+   
 	
