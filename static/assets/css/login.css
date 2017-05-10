@@ -1,9 +1,9 @@
 body{ 
 
   margin: 0 auto; 
-  background-image: url("login.jpg"); 
+  background-image: url("../images/login.jpg"); 
   background-repeat: no-repeat; 
-  background-size: cover; 
+  background-size: 100%; 
 }
 input[type="text"],input[type="password"]{ 
   height: 45px; 

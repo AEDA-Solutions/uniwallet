@@ -26,6 +26,9 @@ class App(std.Controller):
 	def gerenciamento(self):
 		return self.prepare_static(self.get_html("AdminPanel"))
 
+	def login(self):
+		return self.prepare_static(self.get_html("login"))
+		
 	def sobre(self):
 		return self.prepare_static(self.get_html("sobre"))
 
