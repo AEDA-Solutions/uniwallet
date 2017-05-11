@@ -23,7 +23,7 @@
 } 
  
 .primeiro-h5{
-  margin-left: 400px;
+  margin-left: 420px;
   font-weight: 400px; 
   color: white;
   font-family: Courier; 
@@ -37,13 +37,7 @@
   font-family: Courier; 
   margin-top: 10px;     
 }
-.terceiro-h5{
-  margin-left: 300px; 
-  font-weight: 400px; 
-  color: white;
-  font-family: Courier; 
-  margin-top: 10px;     
-}
+
 .center{
   text-align: center;
 }
