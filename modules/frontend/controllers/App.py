@@ -7,7 +7,7 @@ class App(std.Controller):
 
 	def cadastro(self):
 		return self.prepare_static(self.get_html("cadastro"))
-		
+
 	def empresa(self):
 		return self.prepare_static(self.get_html("cadastroEmpresa"))
 
@@ -28,7 +28,7 @@ class App(std.Controller):
 
 	def login(self):
 		return self.prepare_static(self.get_html("login"))
-		
+
 	def sobre(self):
 		return self.prepare_static(self.get_html("sobre"))
 
@@ -37,5 +37,3 @@ class App(std.Controller):
 
 	def usuarioEmpresa(self):
 		return self.prepare_static(self.get_html("usuarioEmpresa"))
-   
-	

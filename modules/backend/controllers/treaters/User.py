@@ -7,7 +7,7 @@ class User(std.Treater):
 					"fullname": 	["required"],
 					"email": 		["required", "email", "unique:email"],
 					"university": 	["required"],
-					"password": 	["required", "maxlength:8", "minlength:8"],
+					"password": 	["required", "maxlength:32", "minlength:8"],
 					"cpf":			["required", "cpf"]
 				},
 				"method": "post",
