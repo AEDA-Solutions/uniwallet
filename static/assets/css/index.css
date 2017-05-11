@@ -1,8 +1,9 @@
 
+ 
  /*PANIEL DE LOGIN*/
 
  body{ 
-   background-image: url("../images/index.jpg");
+   background-image: url("../images/index.png");
    max-width: 1080px;   /* Máximo da largura da imagem */
    width: auto;
    max-height: auto;  /* Máximo da altura da imagem */
@@ -23,7 +24,10 @@
 } 
  
 .primeiro-h5{
+<<<<<<< HEAD
   margin-left: 420px;
+=======
+>>>>>>> 766d2d27a9f341b49a2132b9f96da93c200edeca
   font-weight: 400px; 
   color: white;
   font-family: Courier; 
@@ -31,7 +35,10 @@
    
 } 
 .segundo-h5{
+<<<<<<< HEAD
   margin-left: 350px; 
+=======
+>>>>>>> 766d2d27a9f341b49a2132b9f96da93c200edeca
   font-weight: 400px; 
   color: white;
   font-family: Courier; 
@@ -52,4 +59,7 @@
 }
 .margen-cards{
   margin-top: 670px;
+
+}
+
 
