@@ -52,8 +52,7 @@ input[type="text"],input[type="password"]{
 } 
 
 .mini-logo{
-  width:411px; 
-  height: 130px;
-  margin-left: 480px; 
-  margin-top:60px; 
+  width: 50px; 
+  margin-top:60px;
+ 
 }
