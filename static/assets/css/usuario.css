@@ -1,7 +1,7 @@
 body{
 
   margin: 0 auto; 
-  background-image: url("../images/athos2.jpg"); 
+  background-image: url("../images/sky5.jpg"); 
   background-repeat: no-repeat; 
   background-size: cover; 
 }
@@ -23,6 +23,10 @@ body{
   margin-left: 520px;
   margin-top: -71px; 
 
+}
+
+.margin-login{
+  margin-right: 30px;
 }
 
 .barra{
@@ -85,7 +89,7 @@ input[type="search"]{
   color: #fff; 
   border-radius: 6px; 
   border: none; 
-  background-color: #3f51b5; 
+  background-color: #607d8b; 
   margin-left: 15px;  
 } 
 
@@ -94,7 +98,7 @@ input[type="search"]{
   cursor: pointer; 
   border-radius: 6px; 
   border: none; 
-  background-color: #3f51b5; 
+  background-color: #607d8b; 
   margin-left: 330px;  
 
 }
@@ -104,7 +108,7 @@ input[type="search"]{
   cursor: pointer;  
   border-radius: 6px; 
   border: none; 
-  background-color: #3f51b5; 
+  background-color: #607d8b; 
   margin-left: 720px;
   margin-top:-68px;  
 
