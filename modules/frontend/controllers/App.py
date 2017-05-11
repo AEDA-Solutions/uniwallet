@@ -21,7 +21,7 @@ class App(std.Controller):
 		return self.prepare_static(self.get_html("usuario"))
 
 	def transaction(self):
-		return  self.prepare_static(self.get_html("CreateTransaction"))
+		return self.prepare_static(self.get_html("CreateTransaction"))
 
 	def gerenciamento(self):
 		return self.prepare_static(self.get_html("AdminPanel"))

@@ -1,11 +1,12 @@
 from framework import Treater as std
 
-class Company(std.Treater):
+class Consumer(std.Treater):
 	def register(self):
 		return self.rules({
 				"fields": {
-					"name": 		["required"],
-					"cnpj":			["required", "cpf"],
+					"fullname": 	["required"],
+					"university": 	["required"],
+					"cpf":			["required", "cpf"],
 
 					"email": 		["required", "email", "unique:email:User"],
 					"password": 	["required"]
@@ -18,8 +19,9 @@ class Company(std.Treater):
 		return self.rules({
 				"fields": {
 					"id*": 			["required"],
-					"name": 		["required"],
-					"cnpj":			["required", "cpf"]
+					"fullname": 	["required"],
+					"university": 	["required"],
+					"cpf":			["required", "cpf"]
 				},
 				"method": "post",
 				#"auth": ["manager", "client"]

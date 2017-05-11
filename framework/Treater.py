@@ -181,9 +181,9 @@ class Treater(std.Controller):
 		"""
 		field_exists(): It checks if field exists
 		"""
-		if len(meta.params) == 2:
+		if len(meta.params) >= 1:
 			for pos, content in enumerate(meta.content):
-				model = self.model_class(meta.params[1])(self.get_db_connection())
+				model = self.model_class(self.__class__.__name__ if len(meta.params) == 1 else meta.params[1])(self.get_db_connection())
 				connection = model.find([{meta.params[0]: content}])
 				count = connection.cursor.rowcount
 				connection.close()
@@ -196,9 +196,9 @@ class Treater(std.Controller):
 		"""
 		field_unique(): It checks if field exists
 		"""
-		if len(meta.params) == 1:
+		if len(meta.params) >= 1:
 			for pos, content in enumerate(meta.content):
-				model = self.model_class(self.__class__.__name__)(self.get_db_connection())
+				model = self.model_class(self.__class__.__name__ if len(meta.params) == 1 else meta.params[1])(self.get_db_connection())
 				connection = model.find([{meta.params[0]: content}], None if meta.identificator is None else [meta.identificator])
 				count = connection.cursor.rowcount
 				connection.close()

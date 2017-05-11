@@ -75,11 +75,13 @@ class Model:
 		"""
 		update(): It updates a db record from the passed data (id is required)
 		"""
+		data = fields if fields is not None else self.get_attributes()
 		query = (self.build_query()
 			.table(self.get_table_name() if table_name is None else table_name)
-			.update(values_dict = fields if fields is not None else self.get_attributes())
-			.where(conditions = [['id', '=', self.id]])
+			.update(values_dict = data)
+			.where(conditions = [['id', '=', data['id']]])
 			.get())
+		print(query)
 		return self.run_query(query)
 
 	def create(self, table_name = None):
