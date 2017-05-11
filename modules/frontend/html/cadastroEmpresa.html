@@ -19,7 +19,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--nav-bar -->
      <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+     
      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
      
 </head>
@@ -27,7 +27,7 @@
 <!--      Função JavaScript para validação de e-mail    -->
 
 
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <title> Validação de E-mail com JavaScript</title>
 <script language="Javascript">
 function validacaoEmail(field) {
@@ -49,13 +49,13 @@ document.getElementById("msgemail").innerHTML="<font color='red'>Email inválido
 alert("E-mail invalido");
 }
 }
-</script>
+</script> -->
 
 
 <body>
  
 
-<header class="navbar-fixed">  
+<header class="navbar">  
             <nav class="N/A transparent"> 
 
                 <!--Colocar todo o conteúdo do painel da nav-bar--> 
@@ -90,7 +90,7 @@ alert("E-mail invalido");
         <form name="veri_email">
         <hr color='gray'>
 
-        <div class="containercadastro">
+      <div class="containercadastro">
         <img src="{static}assets\images\uwlogo.gif">
         <form>
 
@@ -98,19 +98,27 @@ alert("E-mail invalido");
              <input type="cadastroemp" name="compname" placeholder="Coloque o nome da empresa">
           </div>
 
-           <div class="form-input">
+          <div class="form-input">
             <input type="cadastroemp" name="email" onblur=" validacaoEmail(veri_email.email)" placeholder="Insira o email da empresa">
-            <div id="msgemail"></div>
-
+            <div id="msgemail">
+            </div>
           </div>
 
-            <div class="form-input">
+          <div class="form-input">
             <input type="cadastroemp" name="location" placeholder="Insira o local da sua empresa">
           </div>
 
-         <!-- <div class="form-input">
+          <div class="form-input">
+<<<<<<< HEAD
+            <input type="cadastroemp" name="senha" placeholder="Coloque a senha desejada">
+          </div> 
+
+          <div class="form-input">
+            <input type="cadastroemp" name="senha" placeholder="Confirme sua senha">
+=======
             <input type="text" name="password" placeholder="Coloque a senha desejada">
-          </div> -->
+>>>>>>> 2358f565e77f495b9827ad45eddbfdcb27826d82
+          </div> 
 
           <div class="form-input">
             <input type="cadastroemp" name="phone" style="font-size: 14px;" placeholder="Insira o telefone de contato da empresa">
@@ -120,33 +128,57 @@ alert("E-mail invalido");
             <input type="ncpf" name="cnpj" placeholder="Insira o CNPJ da empresa">
           </div>
 
-          <h5>Selecione o ramo de vendas da empresa:</h5>
-          <form method="post" action="cadastrar-enquete.php">
-          <select name="Ramo de vendas">
-          <option value="Alim">Alimentos</option>
-          <option value="Roup">Roupas</option>
-          <option value="Livro">Livros</option>
-          <option value="Outros">Outros</option>
+          <h6>Selecione o ramo de vendas da empresa:</h6>
+        <form method="post" action="cadastrar-enquete.php">
+
+          <select size="4" name="Ramo de vendas">
+            <option value="Alim">Alimentos</option>
+            <option value="Roup">Roupas</option>
+            <option value="Livro">Livros</option>
+            <option value="Outros">Outros</option>
           </select>
 
-<br>
-<br>
-          <input type="submit" name="submit" value="CADASTRAR EMPRESA" class="btn-login">
-          <br>
+
+          <input type="submit" name="submit" value="CADASTRAR EMPRESA" class="btn-login"> 
+          
          <!-- <a href="#">Cadastre-se como usuario</a> -->
-        </fomr>
+        </form>
+        </form>
       </div>
 
 
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"> </script> 
+<<<<<<< HEAD
+<!--<script type="text/javascript">
+=======
 <script type="text/javascript">
 
+//Função JavaScript para validação de e-mail   
+>>>>>>> 2358f565e77f495b9827ad45eddbfdcb27826d82
 
+function verifica() {
+  if (document.forms[0].email.value.length == 0) {
+    alert('Por favor, informe o seu EMAIL.');
+  document.frmEnvia.email.focus();
+    return false;
+  }
+  return true;
+}
+ 
+function checarEmail(){
+if( document.forms[0].email.value=="" 
+   || document.forms[0].email.value.indexOf('@')==-1 
+     || document.forms[0].email.value.indexOf('.')==-1 )
+  {
+     alert( "Por favor, informe um E-MAIL válido!" );
+     return false;
+  }
+}
 
 function enviar_dados(dados, callback){
   $.ajax({
     type: "POST",
-    url: "http://localhost:8000/backend/user/register",
+    url: "http://localhost:8000/app/empresa",
     data: dados,
     success: callback,
     dataType: 'json'
@@ -170,6 +202,28 @@ document.getElementById("botao_submit").addEventListener("click", function(){
     //console.log(response)
   })
 })
+
+</script>-->
+
+<script type="text/javascript">
+
+  //Adiciona um evento no botão de enviar dados
+  Page.listen("botao_submit", function(){
+
+    //Pega os dados inseridos nos campos de input
+    data = Page.get_input("input-form")
+
+    //Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
+    Request.send(data, "user/register", "POST", function(response){
+
+      if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
+        Page.redirect("usuario")
+      } else {
+        Page.fill("div_mensagem_retorno", response.content) //Insere a mensagem na div
+      }
+
+    })
+  })
 
 </script>
 

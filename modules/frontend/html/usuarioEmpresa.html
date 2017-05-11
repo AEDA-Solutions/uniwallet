@@ -1,24 +1,21 @@
-<!DOCTYPE html> 
-
-<html lang="pt-br"> 
-
-<head>  
-      <meta charset="utf-8"> 
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"> 		 
-      <title> UniWallet </title>  
-      <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link rel="stylesheet" type="text/css" href="{static}assets/css/usuario.css">
-</head> 
-
-<header class="navbar-fixed">  
-	<nav class="amber darken-2"> 
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>usuarioEmpresa</title>
+	<meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{static}assets/css/usuarioEmpresa.css">
+</head>
+<body>
+	<nav class="green accent-3"> 
 	 			   <!--Colocar todo o conteúdo do painel da nav-bar--> 
         <div class="nav-wrapper container" > 
 
           <!--Logo--> 
-	 			  <a href="file:///C:/Users/rmora/Desktop/materialize/web%20pag/index1.html" class="brand-logo"><img src="{static}assets/images/official.png" class="circle left mini-logo"></img></a> 
+	 			  <a href="usuarioEmpresa" class="brand-logo"><img src="{static}assets/images/official.png" class="circle left mini-logo"></img></a> 
 	 			  <div class="nav-wrapper">
 
 	 			  <div class="nav-wrapper">
@@ -56,7 +53,7 @@
 </header> 
 <body>
 
-<div class="row">
+<div class="row left">
 <ul class="collection">
     <li class="collection-item avatar">
       <i class="material-icons circle">perm_identity</i>
@@ -69,7 +66,7 @@
 </div>
 </div>
 
-<div class="row">
+<div class="row left">
 <div class="botao-sup">
             <div class="col s6"><input type="submit" name="submit" value="Saldo" class="btn-conFace"></div>
 </div>
@@ -80,7 +77,7 @@
 </div>
 
 
-<div class="row">
+<div class="row left">
 	<div class="menuprincipal">
 		<div class="col s8 offset-s2">
 		<div class="arruma">
@@ -152,7 +149,7 @@
 
 <footer class="page-footer amber darken-2">
     <div class="container">
-        <div class="row">
+        <div class="row left">
         <div class="col l6 s12">
             <h5 class="white-text">Saiba Mais</h5>
             <p class="grey-text text-lighten-4"></p>
@@ -179,39 +176,5 @@
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
 
-
-<script>
-	document.getElementById("botao-continuar").addEventListener("click", function(){
-  	window.location = 'file:///home/aluno/Downloads/uniwallet-master/frontend/materialize/TeladeLogin.html';
-  	//window.alert("fioajisdojafipo")
-	})
-  	$(document).ready(function(){
-      $('.parallax').parallax();
-    });
-</script>
-
-<script>
-	$(document).ready(function(){
-    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal();
-  	});
-</script>
-
-<script>
-	
-	$(document).ready(function(){
-    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal();
-  });       
-
-</script>
-
-<script>
-	$(document).ready(function(){
-    $('.collapsible').collapsible();
-  });
-</script>
-
 </body>
-
-</html> 
+</html>
