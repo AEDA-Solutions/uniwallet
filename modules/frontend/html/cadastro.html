@@ -79,12 +79,12 @@
 					</div>
 
 					<div class="form-input">
-						<input class="input-form" type="password" name="password" size=30 minlength=6  placeholder="Senha">
+						<input class="input-form" type="password" name="password" size="30" minlength="6" maxlength="30" placeholder="Senha">
 					</div>
 
 
 					<div class="form-input">
-						<input class="input-form" type="password" size=30 minlength=6 placeholder="Confirme sua senha">
+						<input class="input-form" type="password" size="30" minlength="6" maxlength="30" placeholder="Confirme sua senha">
 					</div>
 
 				
@@ -129,7 +129,7 @@ function verifica() {
 }
  
 function checarEmail(){
-if( document.forms[0].email.value=="" 
+if( document.forms[0].email.value=="0" 
    || document.forms[0].email.value.indexOf('@')==-1 
      || document.forms[0].email.value.indexOf('.')==-1 )
 	{
