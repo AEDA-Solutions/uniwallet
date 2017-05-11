@@ -8,17 +8,19 @@
 
 body{
   margin: 0 auto;
-  background-image: url("../images/food-truck.jpg");
+  background-image: url("../images/sky3.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
-
+ h1{
+  color: white
+ }
 .containercadastro{
   width:500px;
-  height: 700px;
+  height: 650px;
   text-align: center;
   background-color: rgba(52, 73, 94,0.7);
-  border-radius: 40px;
+  border-radius: 10px;
   margin: 0 auto;
   margin-top: 100px;
 }
@@ -107,6 +109,7 @@ input[type="password"]{
 .btn-login{
   padding: 15px 30px;
   cursor: pointer;
+  margin-top: 15px;
   color: #fff;
   border-radius: 6px;
   border: none;

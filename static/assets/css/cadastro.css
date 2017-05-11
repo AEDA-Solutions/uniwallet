@@ -1,9 +1,9 @@
 
 body{
   margin: 0 auto;
-  background-image: url("../images/sky4.jpg");
+  background-image: url("../images/night.jpg");
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
 }
 
 .mini-logo{
@@ -16,11 +16,12 @@ body{
 
 .containercadastro{
   width:500px;
-  height: 700px;
+  height: 690px;
   text-align: center;
   background-color: rgba(52, 73, 94,0.7);
+  border-radius: 10px;
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: 80px;
 }
 
 .containercadastro img{
