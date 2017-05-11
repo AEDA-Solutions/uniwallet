@@ -145,7 +145,7 @@ if( document.forms[0].email.value=="0"
 		data = Page.get_input("input-form")
 
 		//Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
-		Request.send(data, "user/register", "POST", function(response){
+		Request.send(data, "consumer/register", "POST", function(response){
 
 			if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
 				Page.redirect("usuario")
