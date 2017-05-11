@@ -31,32 +31,20 @@ body{
 }
 
 input[type="text"]{
-  height: 45px;
+  height: 50px;
   width: 300px;
   font-size: 18px;
   border: none;
   border-radius: 4px;
-  margin-bottom: 6px;
+  margin-bottom: 13px;
   margin-top: 17px;
+
   background-color: #fff;
-  padding-left: 50px;
+  padding-left: 60px;
+
 }
 
 input[type="password"]{
-
-  height: 45px;
-  width: 300px;
-  font-size: 18px;
-  border: none;
-  border-radius: 4px;
-  margin-bottom: 6px;
-  margin-top: 17px;
-  background-color: #fff;
-  padding-left: 50px;
-
-}
-
-input[type="ncpf"]{
   height: 45px;
   width: 300px;
   font-size: 18px;
@@ -66,20 +54,8 @@ input[type="ncpf"]{
   margin-top: 17px;
   background-color: #fff;
   padding-left: 50px;
-}
 
-input[type="cadastroemp"]{
-  height: 45px;
-  width: 300px;
-  font-size: 18px;
-  border: none;
-  border-radius: 4px;
-  margin-bottom: 6px;
-  margin-top: 17px;
-  background-color: #fff;
-  padding-left: 50px;
 }
-
 
 .form-input::before{
   content: "\f1ad";

@@ -52,14 +52,12 @@ input[type="text"],input[type="password"]{
 } 
 
 .mini-logo{
-<<<<<<< HEAD
-  width:411px; 
+  
   height: 130px;
   margin-left: 445px; 
   margin-top:60px; 
-=======
-  width: 50px; 
+  width: 411px; 
   margin-top:60px;
  
->>>>>>> 2358f565e77f495b9827ad45eddbfdcb27826d82
+
 }

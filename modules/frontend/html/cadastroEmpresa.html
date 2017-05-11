@@ -7,20 +7,17 @@
          <meta charset="utf-8"> 
          <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <title>cadastro empresa</title>
-        <link rel="stylesheet" type="text/css" href="{static}assets\css\cadastroEmpresa.css">
+    <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{static}assets/css/cadastroEmpresa.css">
         </link>
 
-        <link rel="stylesheet" type="text/css" href="{static}assets\css\font-awesome.css">
+        <link rel="stylesheet" type="text/css" href="{static}assets/css/font-awesome.css">
 
         <link rel="shortcut icon" href="official.ico" type="image/x-icon" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--nav-bar -->
-     <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
-     
-     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
      
 </head>
 
@@ -89,40 +86,39 @@ alert("E-mail invalido");
     
         <form name="veri_email">
         <hr color='gray'>
-
+<table>
       <div class="containercadastro">
         <img src="{static}assets\images\uwlogo.gif">
         <form>
-
+        
           <div class="form-input">
-             <input type="cadastroemp" name="compname" placeholder="Coloque o nome da empresa">
+             <input class="input-form" type="text" name="compname" placeholder="Coloque o nome da empresa">
           </div>
 
           <div class="form-input">
-            <input type="cadastroemp" name="email" onblur=" validacaoEmail(veri_email.email)" placeholder="Insira o email da empresa">
+            <input class="input-form" type="text" name="email" onblur=" validacaoEmail(veri_email.email)" placeholder="Insira o email da empresa">
             <div id="msgemail">
             </div>
           </div>
 
           <div class="form-input">
-            <input type="cadastroemp" name="location" placeholder="Insira o local da sua empresa">
+            <input class="input-form" type="text" name="location" placeholder="Insira o local da sua empresa">
           </div>
 
           <div class="form-input">
-
-            <input type="cadastroemp" name="senha" placeholder="Coloque a senha desejada">
+            <input class="input-form" type="password" name="password" size="30" minlength="6"  placeholder="Senha">
           </div> 
 
           <div class="form-input">
-            <input type="cadastroemp" name="senha" placeholder="Confirme sua senha">
-          </div> 
-
-          <div class="form-input">
-            <input type="cadastroemp" name="phone" style="font-size: 14px;" placeholder="Insira o telefone de contato da empresa">
+            <input class="input-form" type="password" size="30" minlength="6" placeholder="Confirme sua senha">
           </div>
 
           <div class="form-input">
-            <input type="ncpf" name="cnpj" placeholder="Insira o CNPJ da empresa">
+            <input class="input-form" type="text" name="phone" style="font-size: 14px;" placeholder="Insira o telefone de contato da empresa">
+          </div>
+
+          <div class="form-input">
+            <input class="input-form" type="text" name="cnpj" placeholder="Insira o CNPJ da empresa">
           </div>
 
           <h6>Selecione o ramo de vendas da empresa:</h6>
@@ -139,7 +135,7 @@ alert("E-mail invalido");
           <input type="submit" name="submit" value="CADASTRAR EMPRESA" class="btn-login"> 
           
          <!-- <a href="#">Cadastre-se como usuario</a> -->
-        </form>
+        
         </form>
       </div>
 

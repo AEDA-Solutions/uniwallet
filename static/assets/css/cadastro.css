@@ -65,25 +65,36 @@ input[type="password"]{
   font-family: "FontAwesome";
   padding-left: 5px;
   padding-top: 20px;
-  font-size: 35px;
+  font-size: 25px;
+  margin-top: 5px;
 }
 
 .form-input:nth-child(4)::before{
   content: "\f2bb";
+  font-size: 25px;
+  margin-top: 5px;
 }
 
 .form-input:nth-child(5)::before{
   content: "\f2bc";
+  font-size: 25px;
+  margin-top: 5px;
 }
 
 .form-input:nth-child(6)::before{
   content: "\f023";
+  font-size: 25px;
+  margin-top: 5px;
 }
 .form-input:nth-child(7)::before{
   content: "\f023";
+  font-size: 25px;
+  margin-top: 5px;
 }
 .form-input:nth-child(10)::before{
   content: "\f19c";
+  font-size: 25px;
+  margin-top: 5px;
 }
 
 
