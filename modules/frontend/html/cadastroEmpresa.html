@@ -27,7 +27,7 @@
 <!--      Função JavaScript para validação de e-mail    -->
 
 
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <title> Validação de E-mail com JavaScript</title>
 <script language="Javascript">
 function validacaoEmail(field) {
@@ -49,7 +49,7 @@ document.getElementById("msgemail").innerHTML="<font color='red'>Email inválido
 alert("E-mail invalido");
 }
 }
-</script>
+</script> -->
 
 
 <body>
@@ -109,11 +109,15 @@ alert("E-mail invalido");
           </div>
 
           <div class="form-input">
+<<<<<<< HEAD
             <input type="cadastroemp" name="senha" placeholder="Coloque a senha desejada">
           </div> 
 
           <div class="form-input">
             <input type="cadastroemp" name="senha" placeholder="Confirme sua senha">
+=======
+            <input type="text" name="password" placeholder="Coloque a senha desejada">
+>>>>>>> 2358f565e77f495b9827ad45eddbfdcb27826d82
           </div> 
 
           <div class="form-input">
@@ -144,8 +148,32 @@ alert("E-mail invalido");
 
 
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"> </script> 
+<<<<<<< HEAD
 <!--<script type="text/javascript">
+=======
+<script type="text/javascript">
 
+//Função JavaScript para validação de e-mail   
+>>>>>>> 2358f565e77f495b9827ad45eddbfdcb27826d82
+
+function verifica() {
+  if (document.forms[0].email.value.length == 0) {
+    alert('Por favor, informe o seu EMAIL.');
+  document.frmEnvia.email.focus();
+    return false;
+  }
+  return true;
+}
+ 
+function checarEmail(){
+if( document.forms[0].email.value=="" 
+   || document.forms[0].email.value.indexOf('@')==-1 
+     || document.forms[0].email.value.indexOf('.')==-1 )
+  {
+     alert( "Por favor, informe um E-MAIL válido!" );
+     return false;
+  }
+}
 
 function enviar_dados(dados, callback){
   $.ajax({
