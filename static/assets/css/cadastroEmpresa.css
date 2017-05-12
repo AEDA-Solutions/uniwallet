@@ -5,6 +5,14 @@
   margin-right: 15px; 
   margin-left: 60px; 
 }
+.mini-logo1{
+  
+  height: 130px;
+  margin-left: 445px; 
+  margin-top:60px; 
+  width: 411px; 
+  margin-top:50px;
+}
 
 body{
   margin: 0 auto;
@@ -12,17 +20,16 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
 }
- h1{
-  color: white
- }
+ 
 .containercadastro{
   width:500px;
-  height: 650px;
+  height: 590px;
   text-align: center;
   background-color: rgba(52, 73, 94,0.7);
   border-radius: 10px;
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: 5px;
+  margin-bottom: 30px;
 }
 
 .containercadastro img{
