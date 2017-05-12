@@ -1,7 +1,7 @@
 body{
 
   margin: 0 auto; 
-  background-image: url("../images/sky5.jpg"); 
+  background-image: url("../images/sky7.jpg"); 
   background-repeat: no-repeat; 
   background-size: cover; 
 }
@@ -15,7 +15,6 @@ body{
 } 
 
 .informacoes{
-
   width:590px; 
   height: 50px; 
   text-align: auto;
@@ -73,7 +72,7 @@ input[type="search"]{
 }
 
 .collection{
-  width:500px; 
+    width:500px; 
     height: 65px; 
     text-align: center; 
     background-color: white; 
@@ -89,7 +88,7 @@ input[type="search"]{
   color: #fff; 
   border-radius: 6px; 
   border: none; 
-  background-color: #607d8b; 
+  background-color: #37474f; 
   margin-left: 15px;  
 } 
 
@@ -98,7 +97,7 @@ input[type="search"]{
   cursor: pointer; 
   border-radius: 6px; 
   border: none; 
-  background-color: #607d8b; 
+  background-color: #37474f; 
   margin-left: 330px;  
 
 }
@@ -108,7 +107,7 @@ input[type="search"]{
   cursor: pointer;  
   border-radius: 6px; 
   border: none; 
-  background-color: #607d8b; 
+  background-color: #37474f; 
   margin-left: 720px;
   margin-top:-68px;  
 
