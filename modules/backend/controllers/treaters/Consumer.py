@@ -9,7 +9,7 @@ class Consumer(std.Treater):
 					"cpf":			["required", "cpf"],
 
 					"email": 		["required", "email", "unique:email:User"],
-					"password": 	["required"]
+					"password": 	["required", "maxlength:32", "minlength:8"]
 				},
 				"method": "post",
 				#"auth": ["manager", "client"]

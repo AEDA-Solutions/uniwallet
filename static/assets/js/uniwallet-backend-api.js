@@ -37,6 +37,7 @@ function Request(domain = "http://localhost:8000", module_name = "api"){
 			url: domain + "/" + module_name  + "/" + route,
 			data: (method == "POST") ? JSON.stringify(data) : data,
 			success: callback,
+			cache: false,
 			beforeSend: function(xhr) {
 				if (Auth.Token.exists()){
 					xhr.setRequestHeader('Authorization', 'Basic ' + Auth.Token.get())

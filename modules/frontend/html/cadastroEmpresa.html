@@ -21,88 +21,26 @@
      
 </head>
 
-<!--      Função JavaScript para validação de e-mail    -->
-
-
-<!-- <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title> Validação de E-mail com JavaScript</title>
-<script language="Javascript">
-function validacaoEmail(field) {
-usuario = field.value.substring(0, field.value.indexOf("@"));
-dominio = field.value.substring(field.value.indexOf("@")+ 1, field.value.length);
-if ((usuario.length >=1) &&
-    (dominio.length >=3) && 
-    (usuario.search("@")==-1) && 
-    (dominio.search("@")==-1) &&
-    (usuario.search(" ")==-1) && 
-    (dominio.search(" ")==-1) &&
-    (dominio.search(".")!=-1) &&      
-    (dominio.indexOf(".") >=1)&& 
-    (dominio.lastIndexOf(".") < dominio.length - 1)) {
-document.getElementById("msgemail").innerHTML="";
-}
-else{
-document.getElementById("msgemail").innerHTML="<font color='red'>Email inválido </font>";
-alert("E-mail invalido");
-}
-}
-</script> -->
-
 
 <body>
- 
-<!-- <header class="navbar">  
-            <nav class="N/A transparent"> 
-
-                <!--Colocar todo o conteúdo do painel da nav-bar-> 
-
-                 <div class="nav-wrapper" > 
- 
-                <!--Logo-> 
-
-                <a href="inicial" class="brand-logo"><img src="{static}assets/images/official.png" class="circle left mini-logo"></img> UniWallet </a> 
-
-                     <!--Para esconder o conteúdo da direita-> 
-
-                       <ul id="nav-mobile" class="right hide-on-med-and-down"> 
-
-                       <li><a href="javascript:void(0)">
-                 <i class="material-icons left ">assessment</i>
-                 <span>Sobre ter uma Empresa</span>
-                 </a></li> 
-
-                 <li><a href="usuario">
-                 <i class="material-icons left ">account_circle</i>
-                 <span>Tela de usuário</span>
-                 </a>
-
-                       </ul> 
-
-                 </div> 
-            </nav>  
- 
-         </header> -->
     
-        <form name="veri_email">
         
-        <a href="inicial" class="brand-logo"><img src="{static}assets/images/uwtrans1.png" class="mini-logo1"></img></a>
-<table>
-      <div class="containercadastro">
+      <a href="inicial" class="brand-logo"><img src="{static}assets/images/uwtrans1.png" class="mini-logo1"></img></a>
 
+      <div class="containercadastro">
+      <div id="div_mensagem_retorno" style="font-size: 30px; color: red">
+
+          </div>
         <form>
         
           <div class="form-input">
-             <input class="input-form" type="text" name="compname" placeholder="Coloque o nome da empresa">
+             <input class="input-form" type="text" name="name" placeholder="Coloque o nome da empresa">
           </div>
 
           <div class="form-input">
-            <input class="input-form" type="text" name="email" onblur=" validacaoEmail(veri_email.email)" placeholder="Insira o email da empresa">
+            <input class="input-form" type="text" name="email" onblur="validacaoEmail(veri_email.email)" placeholder="Insira o email da empresa">
             <div id="msgemail">
             </div>
-          </div>
-
-          <div class="form-input">
-            <input class="input-form" type="text" name="location" placeholder="Insira o local da sua empresa">
           </div>
 
           <div class="form-input">
@@ -118,7 +56,7 @@ alert("E-mail invalido");
             <input class="input-form" type="text" name="cnpj" placeholder="Insira o CNPJ da empresa">
           </div>
 
-            <input type="submit" name="submit" value="CADASTRAR EMPRESA" class="btn-login"> 
+            <input type="submit" name="submit" value="CADASTRAR EMPRESA" class="btn-login" id="botao_submit"> 
           
         </form>
       </div>
@@ -126,66 +64,13 @@ alert("E-mail invalido");
 
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"> </script> 
 
-<!--<script type="text/javascript">
-
-<script type="text/javascript">
-
-//Função JavaScript para validação de e-mail   
-
-function verifica() {
-  if (document.forms[0].email.value.length == 0) {
-    alert('Por favor, informe o seu EMAIL.');
-  document.frmEnvia.email.focus();
-    return false;
-  }
-  return true;
-}
- 
-function checarEmail(){
-if( document.forms[0].email.value=="" 
-   || document.forms[0].email.value.indexOf('@')==-1 
-     || document.forms[0].email.value.indexOf('.')==-1 )
-  {
-     alert( "Por favor, informe um E-MAIL válido!" );
-     return false;
-  }
-}
-
-function enviar_dados(dados, callback){
-  $.ajax({
-    type: "POST",
-    url: "http://localhost:8000/app/empresa",
-    data: dados,
-    success: callback,
-    dataType: 'json'
-  });
-}
-
-function pegar_dados_campos(){
-  var inputs = document.getElementsByClassName("input-form")
-  var objeto = {}
-  for (var i = 0; i < inputs.length; i++) {
-    objeto[inputs[i].name] = inputs[i].value
-  }
-  return objeto;
-}
-
-document.getElementById("botao_submit").addEventListener("click", function(){
-  var dados_em_json = JSON.stringify(pegar_dados_campos())
-  //console.log(dados_em_json)
-  enviar_dados(dados_em_json, function(response){
-    window.alert(response)
-    //console.log(response)
-  })
-})
-
-</script>-->
+<script src="{static}assets/js/uniwallet-backend-api.js"></script>
 
 <script type="text/javascript">
 
   //Adiciona um evento no botão de enviar dados
-  Page.listen("botao_submit", function(){
-
+  Page.listen("botao_submit", function(e){
+    e.preventDefault() //Impede a atualização da página
     //Pega os dados inseridos nos campos de input
     data = Page.get_input("input-form")
 
@@ -193,7 +78,7 @@ document.getElementById("botao_submit").addEventListener("click", function(){
     Request.send(data, "company/register", "POST", function(response){
 
       if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
-        Page.redirect("usuario")
+        Page.redirect("inicial")
       } else {
         Page.fill("div_mensagem_retorno", response.content) //Insere a mensagem na div
       }

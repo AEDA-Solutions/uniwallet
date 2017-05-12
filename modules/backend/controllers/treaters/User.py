@@ -4,11 +4,8 @@ class User(std.Treater):
 	def register(self):
 		return self.rules({
 				"fields": {
-					"fullname": 	["required"],
 					"email": 		["required", "email", "unique:email"],
-					"university": 	["required"],
 					"password": 	["required", "maxlength:32", "minlength:8"],
-					"cpf":			["required", "cpf"]
 				},
 				"method": "post",
 				#"auth": ["manager", "client"]
@@ -18,11 +15,8 @@ class User(std.Treater):
 		return self.rules({
 				"fields": {
 					"id*": 			["required"],
-					"fullname": 	["required"],
 					"email": 		["required", "email", "unique:email"],
-					"university": 	["required"],
-					"password": 	["required"],
-					"cpf":			["required", "cpf"]
+					"password": 	["required"]
 				},
 				"method": "post",
 				#"auth": ["manager", "client"]

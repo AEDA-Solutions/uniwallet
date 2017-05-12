@@ -24,7 +24,8 @@ class AccessLevel(std.Treater):
 		return self.rules({
 			"fields": {
 				"start": ["required"],
-				"limit": ["required"]
+				"limit": ["required"],
+				"_":	["optional"]
 			},
 			"method": "get",
 			"auth": ["registered"]

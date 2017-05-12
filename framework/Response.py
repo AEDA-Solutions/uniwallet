@@ -6,7 +6,7 @@ class Response:
 
 	def __init__(self, code = 'OK', body = None, raw = False):
 		self.status = '200 OK'
-		self.headers = [('Content-type', 'application/json; charset=utf-8'), ('Access-Control-Allow-Origin', '*'), ('Cache-Control', 'no-cache')]
+		self.headers = [('Content-type', 'application/json; charset=utf-8'), ('Access-Control-Allow-Origin', '*'), ('Cache-Control', 'public, max-age=31536000')]
 		self.code = code
 		self.body = body
 		self.raw = raw
