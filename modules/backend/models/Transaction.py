@@ -1,6 +1,5 @@
 from framework import Model as std
+from helpers import dictionary
 
 class Transaction(std.Model):
-
-	attributes = ['operation', 'value']
-	#table_name = 'Transaction'
+	attributes = ['value', 'association_to', 'association_from']
