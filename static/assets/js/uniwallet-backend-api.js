@@ -26,6 +26,12 @@ function Auth(){
 				return false
 		}
 	}
+	this.signIn = function(token){
+		this.Token.set(token)
+	}
+	this.signOut =function(){
+		this.Token.destroy()
+	}
 	this.Token = new Token()
 }
 

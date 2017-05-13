@@ -19,8 +19,8 @@ class QueryBuilder:
 		def __init__(self, table_name):
 			self.table_name = table_name
 
-		def select(self, fields = [], start = 0, limit = 18446744073709551615):
-			return (QueryBuilder.Table.Select(self.table_name, fields, start, limit))
+		def select(self, fields = [], start = 0, limit = 18446744073709551615, raw_fields = []):
+			return (QueryBuilder.Table.Select(self.table_name, fields, start, limit, raw_fields))
 
 		def insert(self, list_of_values_dict):
 			return (QueryBuilder.Table.Insert(self.table_name, list_of_values_dict))
@@ -55,7 +55,7 @@ class QueryBuilder:
 
 		class Select(Filter):
 
-			def __init__(self, table_name, fields, start, limit):
+			def __init__(self, table_name, fields, start, limit, raw_fields):
 				self.table_name = table_name
 				self.query = """
 					SELECT
@@ -69,7 +69,7 @@ class QueryBuilder:
 					[condition]
 
 					LIMIT {start},{limit}
-				""".format(fields = '*' if len(fields) is 0 else ", ".join(list("{}.{}".format(table_name, item) for item in fields)),
+				""".format(fields = '*' if len(fields) is 0 else ", ".join(list("{}.{}".format(table_name, item) for item in fields) + raw_fields),
 						   table_name = table_name,
 						   start = start, 
 						   limit = limit)

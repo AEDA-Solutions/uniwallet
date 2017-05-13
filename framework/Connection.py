@@ -1,4 +1,4 @@
-import helpers
+from helpers import dictionary
 """
 Just Models use that class
 """
@@ -21,7 +21,7 @@ class Connection:
 		raw_records = self.cursor.fetchall()
 		records = []
 		for record_tuple in raw_records:
-			records.append(helpers.general.remove_fields_from_dict(dict(zip(self.cursor.column_names, record_tuple)), fields_to_ignore))
+			records.append(dictionary.remove_fields(dict(zip(self.cursor.column_names, record_tuple)), fields_to_ignore))
 		if close_connection:
 			self.close()
 		return records

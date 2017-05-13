@@ -41,7 +41,7 @@ class Company(std.Treater):
 					"_":	["optional"]
 				},
 				"method": "get",
-				"auth": []
+				"auth": ["registered"]
 			})
 
 	def set_accesses(self):

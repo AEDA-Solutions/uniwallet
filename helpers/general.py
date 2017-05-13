@@ -44,14 +44,6 @@ def replace_on_list(list_, target, replace_by):
 	for pos, content in enumerate(list_):
 		list_[pos] = list_[pos].replace(target, replace_by)
 	return list_
-
-def remove_fields_from_dict(dictionary, list_fields):
-	"""
-	remove_fields_from_dict(): It filters a dictionary return the passed dictionary without the referred keys
-	"""
-	for field in list_fields:
-		if field in dictionary.keys():
-			del dictionary[field]
-	return dictionary
+	
 
 
