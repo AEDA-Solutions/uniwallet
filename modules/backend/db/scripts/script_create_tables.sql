@@ -1,6 +1,6 @@
 # Script de criação do banco de dados.
 
-DROP DATABASE Uniwallet;
+DROP DATABASE IF EXISTS Uniwallet;
 CREATE DATABASE Uniwallet;
 
 USE Uniwallet;
@@ -19,10 +19,14 @@ CREATE TABLE AccessLevels (
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+INSERT INTO Users (email, password) VALUES
+('team@team.com', 'uniwallet');
+
 INSERT INTO AccessLevels (name, description) VALUES 
 ('registered', 'Basic access level for everyone logged by default'),
 ('consumer', 'Consumer access level'),
-('company', 'Company access level');
+('company', 'Company access level'),
+('god', 'Unlimited access');
 
 CREATE TABLE User_AccessLevel (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -32,6 +36,11 @@ CREATE TABLE User_AccessLevel (
 	FOREIGN KEY (user_id) REFERENCES Users(id),
 	FOREIGN KEY (accesslevel_id) REFERENCES AccessLevels(id)
 );
+
+INSERT INTO User_AccessLevel (user_id, accesslevel_id) VALUES
+(1, 1),
+(1, 4);
+
 
 CREATE TABLE AuthSession (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
