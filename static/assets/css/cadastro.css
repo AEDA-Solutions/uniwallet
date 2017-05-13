@@ -70,6 +70,7 @@ input[type="password"]{
 }
 
 
+
 .form-input::before{
   content: "\f1fa";
   position: absolute;
@@ -80,34 +81,45 @@ input[type="password"]{
   margin-top: 5px;
 }
 
+.form-input:nth-child(2)::before{
+  content: "\f2bb"; /*nome*/
+  font-size: 25px;
+  margin-top: 5px;
+}
+
+.form-input:nth-child(3)::before{
+  content: "\f2bc"; /*CPF*/
+  font-size: 25px;
+  margin-top: 5px;
+}
+
 .form-input:nth-child(4)::before{
-  content: "\f2bb";
+  content: "\f023"; /*senha*/
   font-size: 25px;
   margin-top: 5px;
 }
-
 .form-input:nth-child(5)::before{
-  content: "\f2bc";
+  content: "\f023"; /*conf senha*/
   font-size: 25px;
   margin-top: 5px;
 }
-
 .form-input:nth-child(6)::before{
-  content: "\f023";
-  font-size: 25px;
-  margin-top: 5px;
-}
-.form-input:nth-child(7)::before{
-  content: "\f023";
-  font-size: 25px;
-  margin-top: 5px;
-}
-.form-input:nth-child(10)::before{
-  content: "\f19c";
+  content: "\f1fa"; /*email*/
   font-size: 25px;
   margin-top: 5px;
 }
 
+.form-input:nth-child(7)::before{
+  content: "\f1fa"; /*email*/
+  font-size: 25px;
+  margin-top: 5px;
+}
+
+.form-input:nth-child(8)::before{
+  content: "\f19c"; /*univ*/
+  font-size: 25px;
+  margin-top: 5px;
+}
 
 .btn-login{
   padding: 15px 30px;
