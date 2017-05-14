@@ -8,3 +8,7 @@ class Support(std.Controller):
 		send(fromemail = "suporte.uniwallet@gmail.com", toemail = "suporte.uniwallet@gmail.com", passw = "Uni123456", content = messagem)
 		return messagem
 
+	def gogo(self):
+		print(self.make_conditions({'hi': 'hello', 'bou': 'nono'}, '<>'))
+		return "hello"
+

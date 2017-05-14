@@ -117,3 +117,14 @@ class Model:
 					to_ignore = 1 if fields_to_ignore is None or len(fields_to_ignore) == 0 else " OR ".join(list((1 if item is None else " AND ".join(list("{}<>{}{}{}".format(elem, "'", item[elem], "'") for elem in item))) for item in fields_to_ignore))))
 			.get())
 		return self.run_query(query)
+
+	def find2(self, conditions = '1', fields = [], start_from = 0, limit = 18446744073709551615):
+		"""
+		find(): It finds records with the specified fields according the referred limits
+		"""
+		query = (self.build_query()
+			.table(self.get_table_name())
+			.select(fields = fields, start = start_from, limit = limit)
+			.where(conditions = conditions, glue = ' AND ')
+			.get())
+		return self.run_query(query)

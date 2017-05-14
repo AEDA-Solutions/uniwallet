@@ -1,6 +1,6 @@
 from framework.Response import Response
 from framework.Database import Database
-from helpers import general as helper
+from helpers import dictionary, general
 import importlib
 import os
 
@@ -75,7 +75,7 @@ class Controller:
 		"""
 		get_file(): Get the file content
 		"""
-		pack = helper.get_package_from_module(self.request.module, "modules")
+		pack = general.get_package_from_module(self.request.module, "modules")
 		with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
 			return file.read()
 
@@ -92,6 +92,9 @@ class Controller:
 		self.response.code = code
 		if message:
 			return message 
+
+	def make_conditions(self, dict, conditional_sign = '='):
+		return dictionary.tuplefy(dict, conditional_sign)
 
 	def register(self):
 		db_id = self.model(self.get_request_parameters()).save().last_id()

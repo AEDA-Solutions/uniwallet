@@ -42,7 +42,7 @@ class QueryBuilder:
 
 		class Filter(Common):
 
-			def where(self, conditions = '', glue = '', raw = None):
+			def where(self, conditions = [], glue = '', raw = None):
 				snippet = """
 					WHERE
 

@@ -16,3 +16,10 @@ def implode(dictionary, separator, glue=', ', key_prefix='', value_prefix=''):
 
 def quote_values(dictionary):
 	return dict( (key, "'{}'".format(elem)) for key, elem in dictionary.items() )
+
+def tuplefy(dictionary, glue = None):
+	tuple_list = []
+	for item in dictionary.items():
+		tuple_list.append(item if glue is None else tuple([item[0], glue, item[1]]))
+	return tuple_list
+
