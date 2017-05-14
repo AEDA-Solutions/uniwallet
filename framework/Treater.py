@@ -27,7 +27,7 @@ class Treater(std.Controller):
 		"""
 		check_authorization(): It checks if the user is allowed to access the resource
 		"""				
-		if self.model_class('AccessLevel')(self.get_db_connection()).user_has(user_id = user_id, credential_list = credential_list):
+		if self.get_model('AccessLevel').user_has(user_id = user_id, credential_list = credential_list):
 			self.request.user_id = user_id
 		else:
 			return self.forbid("You got access fuckin' denied")
@@ -38,7 +38,7 @@ class Treater(std.Controller):
 		"""
 		if len(auth):
 			if self.request.authorization.exists:
-				user_id = self.model_class('Session')(self.get_db_connection()).get_user_id_vinculated(token = self.request.authorization.content, ip = self.request.client_ip)
+				user_id = self.get_model('Session').get_user_id_vinculated(token = self.request.authorization.content, ip = self.request.client_ip)
 				if user_id:
 					return self.check_authorization(user_id, auth)
 				else:
@@ -183,7 +183,7 @@ class Treater(std.Controller):
 		"""
 		if len(meta.params) >= 1:
 			for pos, content in enumerate(meta.content):
-				model = self.model_class(self.__class__.__name__ if len(meta.params) == 1 else meta.params[1])(self.get_db_connection())
+				model = self.get_model(self.__class__.__name__ if len(meta.params) == 1 else meta.params[1])
 				connection = model.find([{meta.params[0]: content}])
 				count = connection.cursor.rowcount
 				connection.close()
@@ -198,7 +198,7 @@ class Treater(std.Controller):
 		"""
 		if len(meta.params) >= 1:
 			for pos, content in enumerate(meta.content):
-				model = self.model_class(self.__class__.__name__ if len(meta.params) == 1 else meta.params[1])(self.get_db_connection())
+				model = self.get_model(self.__class__.__name__ if len(meta.params) == 1 else meta.params[1])
 				connection = model.find([{meta.params[0]: content}], None if meta.identificator is None else [meta.identificator])
 				count = connection.cursor.rowcount
 				connection.close()

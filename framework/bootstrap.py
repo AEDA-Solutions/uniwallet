@@ -7,19 +7,19 @@ Here is where a database object is created to be passed to the system, as well.
 In general the system is built differently for each request to serve exactly what the request is asking for.
 """
 
-from framework.Router import Router
+from framework.Application import Application
 from framework.Request import Request
 from framework.Response import Response
 from helpers import debugger as debugger
 import traceback
 
-def bootstrap(env, meta):
+def bootstrap(environment, meta):
 	try:
-		request = Request(env)
-		response = Router(request).route()
+		response = Application(Request(environment)).run()
 	except Exception as e:
 		debugger.applog(traceback.format_exc())
 		response = Response(code = 'Internal Server Error', body = "I'm sorry Dave, I'm afraid I can't do that ({})".format(str(e)))
+	
 	server_output = response.prepare()
 	meta(response.status, response.headers)
 	return [server_output]

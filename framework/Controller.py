@@ -1,23 +1,13 @@
+from framework.Core import Core
 from framework.Response import Response
-from framework.Database import Database
 from helpers import dictionary, general
 import importlib
-import os
 
-class Controller:
+class Controller(Core):
 
 	def __init__(self, request):
+		super().__init__(request)
 		self.response = Response()
-		self.request = request
-
-	def get_module_nome(self):
-		"""
-		get_module_name(): It gets the module name where controller is located into
-		"""
-		pass
-
-	def build_query(self):
-		return QueryBuilder()
 
 	def action(self, action_name):
 		"""
@@ -30,54 +20,12 @@ class Controller:
 		else:
 			return Response(code = 'Not Found', body = "Action '{}' unavailable".format(action_name))
 
-	def get_db_connection(self):
-		"""
-		get_db_connection(): It returns the database connection
-		"""
-		return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
-
-
-	def model(self, data = None):
-		"""
-		get_model(): It returns a instance a of a correspondent model
-		"""
-		return self.model_class(self.__class__.__name__)(self.get_db_connection(), data)
-
-	def model_class(self, model_name):
-		"""
-		model_class(): It returns a instance a of a correspondent model
-		"""
-		try:
-			return getattr(importlib.import_module("modules.{}.models.{}".format(self.request.module, model_name)), model_name)
-		except Exception as e:
-			raise Exception("Error invoking model '{}': {}".format(model_name, str(e)))
-
-	def get_request_parameters(self):
-		"""
-		get_request_parameters(): It returns the request parameters
-		"""
-		return self.request.get_inputs_from_method()
-
-	def get_input(self, field):
-		"""
-		get_input(): It gets a request paramenter
-		"""
-		return self.request.get_input(field)
-
 	def get_html(self, html_file_name):
 		"""
 		get_html(): It reads and returns the content of some html file placed on modules/{current_module}/html
 		"""
 		self.response_body_directly()
 		return self.get_file("html/{}.html".format(html_file_name))
-
-	def get_file(self, file_path, mode = 'r'):
-		"""
-		get_file(): Get the file content
-		"""
-		pack = general.get_package_from_module(self.request.module, "modules")
-		with open("{}/{}".format(os.path.dirname(pack.__file__), file_path), mode) as file:
-			return file.read()
 
 	def response_body_directly(self):
 		"""
@@ -93,15 +41,15 @@ class Controller:
 		if message:
 			return message 
 
-	def make_conditions(self, dict, conditional_sign = '='):
-		return dictionary.tuplefy(dict, conditional_sign)
+	def model(self, data = None):
+		"""
+		get_model(): It returns a instance a of a correspondent model
+		"""
+		return self.get_model(self.__class__.__name__, data = data)
 
-	def register(self):
-		db_id = self.model(self.get_request_parameters()).save().last_id()
-		return "Done: {} {} created".format(__class__.__name__, db_id)
+	"""def make_conditions(self, dict, conditional_sign = '='):
+		return dictionary.tuplefy(dict, conditional_sign)"""
 
-	def update(self):
-		return "Done: {} rows affected".format(self.model().update(fields = self.get_request_parameters()).count_rows())
 
 	def delete(self):
 		return "Done: {} rows affected".format(self.model().destroy(list({'id': item} for item in self.get_request_parameters()['ids'])).count_rows())

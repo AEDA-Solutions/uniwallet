@@ -1,12 +1,19 @@
-from framework import Response as std
+from framework.Core import Core
+from framework.Response import Response
+from helpers import general
 import importlib
 from modules.aliases import aliases as modules_aliases
-from helpers import general as helper
 
-class Router():
+class Application(Core):
 	def __init__(self, request):
-		self.request = request
-		
+		super().__init__(request)
+	
+	def run(self):
+		"""
+		init(): It inits the application work
+		"""
+		return self.route()
+
 	def route(self):
 		"""
 		route(): It chooses the appropriate controller
@@ -14,7 +21,7 @@ class Router():
 		if self.request.ok:
 			return self.resolve()
 		else:
-			return std.Response(code = 'Not Found', body = "Invalid route", raw = True)
+			return Response(code = 'Not Found', body = "Invalid route")
 
 	def resolve(self):
 		"""
@@ -23,11 +30,11 @@ class Router():
 		if self.request.module in modules_aliases().keys():
 			self.request.module = modules_aliases()[self.request.module]
 
-		treater = self.call_controller(helper.get_package_from_module("controllers.treaters", "modules.{}".format(self.request.module)))
+		treater = self.call_controller(general.get_package_from_module("controllers.treaters", "modules.{}".format(self.request.module)))
 		if treater.code == 'OK' or treater.code == 'Not Found':
-			return self.call_controller(helper.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+			return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
 		else:
-			return std.Response(code = treater.code, body = treater.body)
+			return Response(code = treater.code, body = treater.body)
 
 	def call_controller(self, package):
 		"""
@@ -40,7 +47,7 @@ class Router():
 		if controller_name:
 			return self.instance_controller(package, controller_name)
 		else:
-			return std.Response(code = 'Not Found', body = "Controller '{}' from module '{}' not found".format(self.request.controller, self.request.module))
+			return Response(code = 'Not Found', body = "Controller '{}' from module '{}' not found".format(self.request.controller, self.request.module))
 
 	def instance_controller(self, package, controller_name):
 		"""
@@ -56,7 +63,7 @@ class Router():
 		translate_controller_name(): It translates the passed controller name to the real file/class controller name
 		"""
 		controller_name = None
-		for name in helper.get_package_modules(package):
+		for name in general.get_package_modules(package):
 			if raw_name.lower() == name.lower():
 				controller_name = name
 				break

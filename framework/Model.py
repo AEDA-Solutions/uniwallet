@@ -1,12 +1,13 @@
-from framework import Database as std
+from framework.Core import Core
 from framework.Connection import Connection
 from framework.QueryBuilder import QueryBuilder
 
-class Model:
+class Model(Core):
 	id = None
 
-	def __init__(self, database, data = None, table_name = None):
-		self.db = database
+	def __init__(self, request, data = None):
+		super().__init__(request)
+		self.db = self.get_db_connection()
 		if data:
 			self.define_attributes(data)
 		#else:
