@@ -44,6 +44,19 @@ def replace_on_list(list_, target, replace_by):
 	for pos, content in enumerate(list_):
 		list_[pos] = list_[pos].replace(target, replace_by)
 	return list_
+
+def is_integer(str_input):
+	try:
+		int(str_input)
+		return True
+	except ValueError:
+		return False
 	
+def is_float(str_input):
+	try:
+		float(str_input)
+		return True
+	except ValueError:
+		return False
 
 

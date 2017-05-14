@@ -7,7 +7,7 @@ class User_AccessLevel(std.Model):
 
 	#Special save method for avoiding repeated registers
 	def check_save(self):
-		connection = self.find([self.get_attributes()])
+		connection = self.find(conditions = self.make_where_conditions(self.get_attributes(), '='))
 		if len(connection.fetch(close_connection = False)) > 0:
 			connection.close()
 			return 0;

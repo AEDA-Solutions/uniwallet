@@ -38,6 +38,9 @@ class Model(Core):
 		"""
 		return dict((item, getattr(self, item)) for item in self.attributes)
 
+	def get_fields(self):
+		return self.attributes + ['id', 'created_at']
+
 	def define_attributes(self, data):
 		"""
 		define_attributes(): It assings the attribute values following the atributes set on attributes child attribute
@@ -80,9 +83,8 @@ class Model(Core):
 		query = (self.build_query()
 			.table(self.get_table_name() if table_name is None else table_name)
 			.update(values_dict = data)
-			.where(conditions = [['id', '=', data['id']]])
+			.where(conditions = [('id', '=', data['id'])])
 			.get())
-		print(query)
 		return self.run_query(query)
 
 	def create(self, table_name = None):
@@ -106,26 +108,22 @@ class Model(Core):
 			.get())
 		return self.run_query(query)
 
-	def find(self, fields = None, fields_to_ignore = None, start_from = 0, limit = 18446744073709551615, target_fields = ['*'], table_name = None):
+	def find(self, conditions = '1', fields = [], start_from = 0, limit = 18446744073709551615, join = {}):
 		"""
 		find(): It finds records with the specified fields according the referred limits
 		"""
-		query = (self.build_query()
-			.table(self.get_table_name() if table_name is None else table_name)
-			.select(start = start_from, limit = limit)
-			.where(raw = '{fields} AND {to_ignore}'.format(
-					fields = 1 if fields is None or len(fields) == 0 else " OR ".join(list((1 if item is None else " AND ".join(list("{}={}{}{}".format(elem, "'", item[elem], "'") for elem in item))) for item in fields)),
-					to_ignore = 1 if fields_to_ignore is None or len(fields_to_ignore) == 0 else " OR ".join(list((1 if item is None else " AND ".join(list("{}<>{}{}{}".format(elem, "'", item[elem], "'") for elem in item))) for item in fields_to_ignore))))
-			.get())
-		return self.run_query(query)
-
-	def find2(self, conditions = '1', fields = [], start_from = 0, limit = 18446744073709551615):
-		"""
-		find(): It finds records with the specified fields according the referred limits
-		"""
+		raw_fields = []
+		for model_name in join.keys():
+			raw_fields += list("{} AS {}_{}".format(field if '.' in field else '{}.{}'.format(self.get_model(model_name).get_table_name(), field), model_name.lower(), field) for field in self.get_model(model_name).get_fields())
+		
 		query = (self.build_query()
 			.table(self.get_table_name())
-			.select(fields = fields, start = start_from, limit = limit)
-			.where(conditions = conditions, glue = ' AND ')
-			.get())
-		return self.run_query(query)
+			.select(fields = fields if len(fields) > 0 else self.get_fields(), raw_fields = raw_fields, start = start_from, limit = limit))
+
+		for model_name, field in join.items():
+			join_table = self.get_model(model_name).get_table_name()
+			query.join(table_name = join_table, conditions = [(field if '.' in field else "{}.{}".format(self.get_table_name(), field), '=', '{}.{}'.format(join_table, 'id'))])
+		
+		query.where(conditions = conditions, glue = ' AND ')
+
+		return self.run_query(query.get())

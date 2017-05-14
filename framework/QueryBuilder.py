@@ -22,8 +22,8 @@ class QueryBuilder:
 		def select(self, fields = [], start = 0, limit = 18446744073709551615, raw_fields = []):
 			return (QueryBuilder.Table.Select(self.table_name, fields, start, limit, raw_fields))
 
-		def insert(self, list_of_values_dict):
-			return (QueryBuilder.Table.Insert(self.table_name, list_of_values_dict))
+		def insert(self, list_of_values_dict, ignore = False):
+			return (QueryBuilder.Table.Insert(self.table_name, list_of_values_dict, ignore))
 
 		def update(self, values_dict):
 			return (QueryBuilder.Table.Update(self.table_name, values_dict))
@@ -114,11 +114,11 @@ class QueryBuilder:
 
 		class Insert(Common):
 
-			def __init__(self, table_name, list_of_values_dict):
+			def __init__(self, table_name, list_of_values_dict, ignore):
 				self.table_name = table_name
 				fields = list_of_values_dict[0].keys()
 				self.query = """
-					INSERT INTO
+					INSERT{ignore}INTO
 
 					{table_name}
 						
@@ -127,7 +127,8 @@ class QueryBuilder:
 					VALUES 
 
 					{values}
-				""".format(table_name = table_name,
+				""".format(ignore = ' ' if ignore is False else ' IGNORE ',
+						   table_name = table_name,
 						   fields = (', '.join(list(item for item in fields))),
 						   values = ('\n'.join(list(('({})'.format(', '.join(list("'{}'".format(values_dict[item]) for item in fields)))) for values_dict in list_of_values_dict))))
 

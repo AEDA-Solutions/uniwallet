@@ -16,7 +16,7 @@ class Session(std.Model):
 		"""
 		get_user_id_vinculated(): It gets the user id vinculated to the token
 		"""
-		sessions = self.find([{'token': token}]).fetch()
+		sessions = self.find([('token', '=', token)]).fetch()
 		if len(sessions) > 0:
 			if sessions[0]['ip'] == ip:
 				return sessions[0]['user_id']

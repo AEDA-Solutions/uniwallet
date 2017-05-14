@@ -7,7 +7,7 @@ class Session(std.Controller):
 		return self.model().generate_token()
 
 	def login(self):
-		users = self.get_model('User').find([{'email': self.get_input('email'), 'password': self.get_input('password')}]).fetch()
+		users = self.get_model('User').find([('email', '=', self.get_input('email')), ('password', '=', self.get_input('password'))]).fetch()
 		if len(users) > 0:
 			session = self.model({'user_id': users[0]['id'], 'token': self.get_token(), 'ip': self.request.client_ip})
 			session.make()

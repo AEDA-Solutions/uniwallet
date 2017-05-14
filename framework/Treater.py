@@ -1,5 +1,5 @@
 from framework import Controller as std
-from helpers import cpf
+from helpers import general, cpf
 import re
 
 class Treater(std.Controller):
@@ -184,7 +184,7 @@ class Treater(std.Controller):
 		if len(meta.params) >= 1:
 			for pos, content in enumerate(meta.content):
 				model = self.get_model(self.__class__.__name__ if len(meta.params) == 1 else meta.params[1])
-				connection = model.find([{meta.params[0]: content}])
+				connection = model.find([(meta.params[0], '=', content)])
 				count = connection.cursor.rowcount
 				connection.close()
 				if count == 0:
@@ -199,7 +199,7 @@ class Treater(std.Controller):
 		if len(meta.params) >= 1:
 			for pos, content in enumerate(meta.content):
 				model = self.get_model(self.__class__.__name__ if len(meta.params) == 1 else meta.params[1])
-				connection = model.find([{meta.params[0]: content}], None if meta.identificator is None else [meta.identificator])
+				connection = model.find([(meta.params[0], '=', content)] + (self.make_where_conditions(meta.identificator, '<>') if isinstance(meta.identificator, dict) else []))
 				count = connection.cursor.rowcount
 				connection.close()
 				if count != 0:
@@ -208,24 +208,34 @@ class Treater(std.Controller):
 			return self.forbid("Invalid '{}' rule sintax on Treater for {}".format(meta.name, meta.field_name))
 	
 	def field_integer(self, meta):
-		
-		meta.isdigit()
-		'''
-		Verifica se a string possui apenas numeros
-		'''
-		'''isinstance(meta,int)
-		if meta.isdigit() is False:'''
-		for pos, content in enumerate(meta.content):
-			
-			if content is None or content.isdigit() is False:	
-				return self.forbid("{} is not a number".format(meta.field_name, pos))
-
-	"""
-	def field_integer(self, meta):
-		'''
-		Verifica apenas se a variavel é uma int ou não
-		'''
-		if isinstance(meta,int) is False:
-			return self.forbid("{} is not a number".format(meta.field_name, pos))
 		"""
-	
+		field_integer(): It checks if field is an integer
+		"""
+		for pos, content in enumerate(meta.content):
+			if content is None or not general.is_integer(str(content)):
+				return self.forbid("{} is not an integer".format(meta.field_name, pos))
+			else:
+				if content is not None and 'unsigned' in meta.params and int(str(content)) < 0 or '-' in str(content):
+					return self.forbid("{} is not an unsigned integer".format(meta.field_name, pos))
+
+	def field_float(self, meta):
+		"""
+		field_float(): It checks if field is a float
+		"""
+		for pos, content in enumerate(meta.content):
+			if content is None or not general.is_float(str(content)):
+				return self.forbid("{} is not a float".format(meta.field_name, pos))
+
+	def fetch(self):
+		"""
+		fetch(): It implements a default validator for the fetch request
+		"""
+		return self.rules({
+				"fields": {
+					"start": ["required", "integer:unsigned"],
+					"limit": ["required", "integer:unsigned"],
+					"_":	["optional"]
+				},
+				"method": "get",
+				"auth": []
+			})

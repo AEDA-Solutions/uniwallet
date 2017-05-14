@@ -50,6 +50,8 @@ class Controller(Core):
 	"""def make_conditions(self, dict, conditional_sign = '='):
 		return dictionary.tuplefy(dict, conditional_sign)"""
 
+	def update(self):
+		return "Done: {} rows affected".format(self.model().update(fields = self.get_request_parameters()).count_rows())
 
 	def delete(self):
 		return "Done: {} rows affected".format(self.model().destroy(list({'id': item} for item in self.get_request_parameters()['ids'])).count_rows())

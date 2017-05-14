@@ -8,7 +8,7 @@ It serves as a main provider for all the system.
 from framework.Response import Response
 from framework.Database import Database
 import importlib
-from helpers import general
+from helpers import general, dictionary
 import os
 
 class Core():
@@ -48,7 +48,13 @@ class Core():
 		try:
 			return getattr(importlib.import_module("modules.{}.{}.{}".format(self.request.module, module_dir, class_name)), class_name)
 		except Exception as e:
-			raise Exception("Error invoking class '{}': {}".format(model_name, str(e)))
+			raise Exception("Error invoking class '{}': {}".format(class_name, str(e)))
+
+	def make_where_conditions(self, dict, operator = '='):
+		"""
+		make_where_conditions(): It makes where conditions from a dict
+		"""
+		return dictionary.tuplefy(dict, operator)
 
 	def get_controller(self, name):
 		"""
@@ -61,12 +67,6 @@ class Core():
 		get_model(): It returns a model instance from the current module
 		"""
 		return self.get_class("models", name)(request = self.request, data = data)
-
-	def model_class(self, model_name):
-		"""
-		model_class(): It returns a instance a of a correspondent model
-		"""
-		return self.get_class("models", model_name)
 
 
 

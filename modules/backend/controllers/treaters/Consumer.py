@@ -6,7 +6,7 @@ class Consumer(std.Treater):
 				"fields": {
 					"fullname": 	["required"],
 					"university": 	["required"],
-					"cpf":			["required", "cpf"],
+					"cpf":			["required", "cpf", "unique:cpf"],
 
 					"email": 		["required", "email", "unique:email:User"],
 					"password": 	["required", "maxlength:32", "minlength:8"]
@@ -21,7 +21,7 @@ class Consumer(std.Treater):
 					"id*": 			["required"],
 					"fullname": 	["required"],
 					"university": 	["required"],
-					"cpf":			["required", "cpf"]
+					"cpf":			["required", "cpf", "unique:cpf"]
 				},
 				"method": "post",
 				#"auth": ["manager", "client"]
@@ -33,17 +33,6 @@ class Consumer(std.Treater):
 					"ids[]": ["required"]
 				},
 				"method": "post"
-			})
-
-	def fetch(self):
-		return self.rules({
-				"fields": {
-					"start": ["required"],
-					"limit": ["required"],
-					"_":	["optional"]
-				},
-				"method": "get",
-				"auth": ["registered"]
 			})
 
 	def set_accesses(self):
