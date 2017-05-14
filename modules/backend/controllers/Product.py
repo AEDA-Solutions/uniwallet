@@ -10,3 +10,4 @@ class Product(std.Controller):
 		return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch()
 
 
+

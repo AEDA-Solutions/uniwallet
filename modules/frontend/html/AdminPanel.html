@@ -43,6 +43,9 @@
 				<li>
 					<a href="#" id='b_sessoes' class='botao'>Sessões</a>
 				</li>
+				<li>
+					<a href="#" id='b_lojas' class='botao'>Loja</a>
+				</li>
 			</ul>
 		</div>
 		<!-- /#sidebar-wrapper -->
@@ -125,7 +128,8 @@
 			'b_consumidores': {'parameters': {'limit': 100, 'start': 0}, 'url': 'consumer/fetch', 'method': 'GET', 'title': 'Consumidores'},
 			'b_empresas': {'parameters': {'limit': 100, 'start': 0}, 'url': 'company/fetch', 'method': 'GET', 'title': 'Empresas'},
 			'b_niveisacesso': {'parameters': {'limit': 100, 'start': 0}, 'url': 'accesslevel/fetch', 'method': 'GET', 'title': 'Níveis de Acesso'},
-			'b_sessoes': {'parameters': {'limit': 100, 'start': 0}, 'url': 'session/fetch', 'method': 'GET', 'title': 'Sessões'}
+			'b_sessoes': {'parameters': {'limit': 100, 'start': 0}, 'url': 'session/fetch', 'method': 'GET', 'title': 'Sessões'},
+			'b_lojas': {'parameters': {'limit': 100, 'start': 0}, 'url': 'store/fetch', 'method': 'GET', 'title': 'Loja'}
 		}
 
 		var botoes = document.getElementsByClassName('botao');

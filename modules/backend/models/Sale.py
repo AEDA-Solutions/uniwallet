@@ -1,4 +1,4 @@
-from framework import Session as std
+from framework import Transaction as std
 
 class Sale(std.Transaction):
 	pass

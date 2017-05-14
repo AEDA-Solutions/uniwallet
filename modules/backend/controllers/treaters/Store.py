@@ -10,3 +10,13 @@ class Store(std.Treater):
 				"method": "post",
 				#"auth": ["manager", "client"]
 			})
+
+	def append_product(self):
+		return self.rules({
+				"fields": {
+					"store_id": 	["required", "exists:id:Store"],
+					"product_id": 	["required", "exists:id:Product"]
+				},
+				"method": "post",
+				#"auth": ["manager", "client"]
+			})

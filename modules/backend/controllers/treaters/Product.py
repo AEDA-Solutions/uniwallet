@@ -4,10 +4,11 @@ class Product(std.Treater):
 	def register(self):
 		return self.rules({
 				"fields": {
-					"product_id": 	["required"],
+					"number": 		["required"],
 					"name": 		["required"],
 					"price":		["required"],
-					"description":	["required"]
+					"description":	["required"],
+					"company_id": 	["required", "exists:id:Company"]
 				},
 				"method": "post",
 				#"auth": ["manager", "client"]

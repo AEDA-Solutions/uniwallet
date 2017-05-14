@@ -96,9 +96,21 @@ CREATE TABLE Sales (
 
 CREATE TABLE Products (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-	product_id INT(32) UNSIGNED NOT NULL, '''associa com a loja?/ com o codigo do comerciante?'''
+	number INT(32) UNSIGNED NOT NULL, #associa com a loja? com o codigo do comerciante?
 	name VARCHAR(128) NOT NULL,
 	price DOUBLE UNSIGNED NOT NULL,
 	description VARCHAR(256) NOT NULL,
-	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	company_id INT(32) UNSIGNED NOT NULL,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	FOREIGN KEY (company_id) REFERENCES Companies(id)
+);
+
+CREATE TABLE Product_Store (
+	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	product_id INT(32) UNSIGNED NOT NULL,
+	store_id INT(32) UNSIGNED NOT NULL,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	FOREIGN KEY (product_id) REFERENCES Products(id),
+	FOREIGN KEY (store_id) REFERENCES Stores(id),
+	UNIQUE (product_id, store_id)
 );

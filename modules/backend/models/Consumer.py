@@ -5,7 +5,7 @@ class Consumer(std.Model):
 	
 	attributes = ['user_id', 'fullname', 'university', 'cpf']
 
-	def find(self, fields = None, fields_to_ignore = [], start_from = 0, limit = 18446744073709551615, target_fields = ['*'], table_name = None):
+	def find2(self, fields = None, fields_to_ignore = [], start_from = 0, limit = 18446744073709551615, target_fields = ['*'], table_name = None):
 		query = (self.build_query()
 			.table(self.get_table_name() if table_name is None else table_name)
 			.select(fields = self.attributes, start = start_from, limit = limit, raw_fields = ['Consumers.id AS id', 'Users.email AS email'])
