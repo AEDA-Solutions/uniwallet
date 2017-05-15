@@ -17,91 +17,102 @@
  <body> 
 
         <header class="navbar-fixed">  
-            <nav class="amber darken-2"> 
+            <nav class="blue-grey darken-3">
+                  <div class="navbar-wrapper">
 
-                <!--Colocar todo o conteúdo do painel da nav-bar--> 
+                  <!-- Logo -->
+                    <a href="inicial" class="brand-logo"><img src="{static}assets/images/uwtrans1.png" class="left mini-logo"></img></a>
+                    <a href="#" data-activates="menu-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 
-                 <div class="nav-wrapper container" > 
- 
-                <!--Logo--> 
-              
-                <a href="inicial" class="brand-logo"><img src="{static}assets/images/official.png" class="circle left mini-logo"></img> UniWallet </a> 
+                <!--Para esconder o conteúdo da direita em telas de tabletes e molibe-->
+                    <ul class="right hide-on-med-and-down"> 
+                <!-- Dropdown Trigger -->
 
-                     <!--Para esconder o conteúdo da direita--> 
+                        <li><a class="dropdown-button" href="#" data-activates="dropdown2">Cadastre-se<i class="material-icons left">group</i></a></li>
+                       
+                        <li><a class="dropdown-button margin-login" href="#" data-activates="dropdown1">Login<i class="material-icons left">lock_open</i></a></li>
+                    </ul>
 
-                       <ul id="nav-mobile" class="right hide-on-med-and-down"> 
+                    <!--Botões para o sanduíche-->
+                     <ul class="side-nav" id="menu-mobile">
 
-                 <li><a href="login">
-                 <i class="material-icons left">lock_open</i>
-                 <span>Login</span> 
+                        <li><a href="sobre">Sobre<i class="material-icons left">user</i></a></li>
+                                
+                  
+                        <li><a href="#">CADASTRE-SE<i class="material-icons left">group</i></a></li>
+                                <li><a href="cadastro">Como Usuário</a></li>
+                                <li><a href="empresa">Como Empresa</a></li>
+                               <li class="divider"></li>
 
-                       <li><a href="cadastro">
-                 <i class="material-icons left ">account_circle</i>
-                 <span>Cadastre-se</span>
-                 </a></li> 
-
-                 <li><a href="faleconosco">
-                 <i class="material-icons left ">phone</i>
-                 <span> Fale Conosco</span>
-                 </a></li>
-
-                       </ul> 
-
-                 </div> 
-            </nav>  
+                        <li><a href="#">Login<i class="material-icons left">lock_open</i></a></li>
+                                <li><a href="#">Usuário</a></li>
+                                <li><a href="#">Empresa</a></li>
+                     </ul> 
+                  </div>
+                </nav>
+         </header>
  
         </header> 
 
 <div class="parallax-container">
 
-      <div class="parallax"><img src="{static}assets/images/athos2.jpg"></div>
+      <div class="parallax"><img src="{static}assets/images/sobre1.jpg"></div>
+
+      <h5 align="middle" class="flow-text segundo-h5"><b>Veja como UniWallet pode mudar sua vida. E para melhor!</b></h5> 
 
 </div>
 
-<div class="row">
-<div class="tags">
-      <div class="col s4">
-        <div class="row">
-          <div class="card white">
-            <div class="card-content black-text">
-              <i class="large material-icons" style ="color:#d50000;">query_builder</i>
-              <span class="card-title">Prático</span>
-              <p>Com o UniWallet, as suas compras ficam mais ágeis. Basta um clique.
-              Sem filas nem estresse, ao alcance da sua mão!</p>
-            </div>
-          </div>
+<div class="col s12 m7">
+    <div class="card horizontal">
+      <div class="card-image">
+        <img src="{static}assets/images/ecommerce-mamweb4.jpg">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <p><font size="6">Com o UniWallet, as suas compras ficam mais ágeis. Basta um clique.
+              Sem filas nem estresse, ao alcance da sua mão!</font></p>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
         </div>
       </div>
-
-      <div class="col s4">
-        <div class="row">
-          <div class="card white">
-            <div class="card-content black-text">
-              <i class="large material-icons" style="color:#ffff00;">grade</i>
-              <span class="card-title">Exclusivo</span>
-              <p>Usuários UniWallet recebem promoções exclusivas e créditos extras para usarem da melhor maneira.
-              Tudo online, sem complicações!</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col s4">
-        <div class="row">
-          <div class="card white">
-            <div class="card-content black-text">
-              <i class="large material-icons" style ="color:#32cd32;">visibility</i>
-              <span class="card-title">Seguro</span>
-              <p>Fácil de usar, o UniWallet utiliza os métodos mais recentes de segurança em redes, protegendo seus dados.
-             Sem preocupações!</p>
-            </div>
-          </div>
-        </div>
-      </div>
-</div>
+    </div>
 </div>
 
-<footer class="page-footer amber darken-2">
+<div class="col s12 m7">
+    <div class="card horizontal">
+      <div class="card-image">
+        <img src="{static}assets/images/background.c321e3367.jpg">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <p><font size="6">Fácil de usar, o UniWallet utiliza os métodos mais recentes de segurança em redes, protegendo seus dados. Sem preocupações! E para você empresário, existe um gestor financeiro, para melhor organização, e rentabilidade!</font></p>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="col s12 m7">
+    <div class="card horizontal">
+      <div class="card-image">
+        <img src="{static}assets/images/Background5.png">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <p><font size="6">Usuários UniWallet recebem promoções exclusivas e créditos extras para usarem da melhor maneira.
+              Tudo online, sem complicações!</font></p>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
+</div>
+
+<footer class="page-footer blue-grey darken-3">
     <div class="container">
         <div class="row">
         <div class="col l6 s12">
