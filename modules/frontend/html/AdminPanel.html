@@ -46,6 +46,9 @@
 				<li>
 					<a href="#" id='b_lojas' class='botao'>Loja</a>
 				</li>
+				<li>
+					<a href="#" id='b_product' class='botao'>Produtos</a>
+				</li>
 			</ul>
 		</div>
 		<!-- /#sidebar-wrapper -->
@@ -129,7 +132,8 @@
 			'b_empresas': {'parameters': {'limit': 100, 'start': 0}, 'url': 'company/fetch', 'method': 'GET', 'title': 'Empresas'},
 			'b_niveisacesso': {'parameters': {'limit': 100, 'start': 0}, 'url': 'accesslevel/fetch', 'method': 'GET', 'title': 'Níveis de Acesso'},
 			'b_sessoes': {'parameters': {'limit': 100, 'start': 0}, 'url': 'session/fetch', 'method': 'GET', 'title': 'Sessões'},
-			'b_lojas': {'parameters': {'limit': 100, 'start': 0}, 'url': 'store/fetch', 'method': 'GET', 'title': 'Loja'}
+			'b_lojas': {'parameters': {'limit': 100, 'start': 0}, 'url': 'store/fetch', 'method': 'GET', 'title': 'Loja'},
+			'b_product': {'parameters': {'limit': 100, 'start': 0}, 'url': 'product/fetch', 'method': 'GET', 'title': 'Produtos'}
 		}
 
 		var botoes = document.getElementsByClassName('botao');

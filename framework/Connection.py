@@ -14,14 +14,17 @@ class Connection:
 		self.cursor.close()
 		self.connection.close()
 
-	def fetch(self, fields_to_ignore = [], close_connection = True):
+	def fetch(self, fields = [], fields_to_ignore = [], close_connection = True):
 		"""
 		fetch_records_as_dict(): It returns a list of dict from the got data
 		"""
 		raw_records = self.cursor.fetchall()
 		records = []
 		for record_tuple in raw_records:
-			records.append(dictionary.remove_fields(dict(zip(self.cursor.column_names, record_tuple)), fields_to_ignore))
+			data = dictionary.remove_fields(dict(zip(self.cursor.column_names, record_tuple)), fields_to_ignore)
+			if len(fields) > 0:
+				data = dictionary.select(data, fields)
+			records.append(data)
 		if close_connection:
 			self.close()
 		return records

@@ -7,6 +7,16 @@ def remove_fields(dictionary, list_fields):
 			del dictionary[field]
 	return dictionary
 
+def select(dictionary, list_fields):
+	"""
+	select(): It filters a dictionary return the passed dictionary just with the referred keys
+	"""
+	filtered = []
+	for key, value in dictionary.items():
+		if key in list_fields:
+			filtered.append(tuple([key, value]))
+	return dict(filtered)
+
 def implode(dictionary, separator, glue=', ', key_prefix='', value_prefix=''):
 	"""
 	implode(): It brings together the dict elements into a string and it separates each element with 'glue' attribute
