@@ -25,14 +25,6 @@ class Company(std.Treater):
 				#"auth": ["manager", "client"]
 			})
 
-	def delete(self):
-		return self.rules({
-				"fields": {
-					"ids[]": ["required"]
-				},
-				"method": "post"
-			})
-
 	def fetch(self):
 		return self.rules({
 				"fields": {

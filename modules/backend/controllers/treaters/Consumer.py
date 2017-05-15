@@ -27,14 +27,6 @@ class Consumer(std.Treater):
 				#"auth": ["manager", "client"]
 			})
 
-	def delete(self):
-		return self.rules({
-				"fields": {
-					"ids[]": ["required"]
-				},
-				"method": "post"
-			})
-
 	def set_accesses(self):
 		return self.rules({
 				"private": True

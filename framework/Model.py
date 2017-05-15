@@ -97,16 +97,16 @@ class Model(Core):
 			.get())
 		return self.run_query(query)
 
-	def destroy(self, fields, table_name = None):
+	def destroy(self, conditions = '0'):
 		"""
 		destroy(): It removes records from db from the ids passed (ids must be a list)
 		"""
+		print(conditions)
 		query = (self.build_query()
-			.table(self.get_table_name() if table_name is None else table_name)
+			.table(self.get_table_name())
 			.delete()
-			.where(raw = 0 if fields is None or len(fields) == 0 else " OR ".join(list((0 if item is None else " AND ".join(list("{}={}{}{}".format(elem, "'", item[elem], "'") for elem in item))) for item in fields)))
-			.get())
-		return self.run_query(query)
+			.where(conditions = conditions, glue = ' OR '))
+		return self.run_query(query.get())
 
 	def find(self, conditions = '1', fields = [], start_from = 0, limit = 18446744073709551615, join = {}):
 		"""

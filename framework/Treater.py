@@ -82,7 +82,6 @@ class Treater(std.Controller):
 		"""
 		rule_fields(): It checks the fields especifications
 		"""
-		print(fields, data_path)
 		response = self.check_forbidden_fields(list(field.replace('[]', '').replace('*', '') for field in fields.keys()), data_path)
 		if response:
 			return response
@@ -159,7 +158,6 @@ class Treater(std.Controller):
 		data = dictionary.access_nested_elem_from_list(self.get_request_parameters(), data_path)
 		if isinstance(data, list):
 			for pos, item in enumerate(data):
-				#print(dictionary.access_nested_elem_from_list(self.get_request_parameters(), data_path + [pos]))
 				response = self.rule_fields(field_rule, data_path + [pos])
 				if response:
 					return response
@@ -278,3 +276,16 @@ class Treater(std.Controller):
 				"method": "get",
 				"auth": []
 			})
+
+	def delete(self):
+		"""
+		destroy(): It implements a default validator for the destroy request
+		"""
+		return self.rules({
+				"fields": {
+					"data[]": ["required", {
+						"id": ["required", "integer:unsigned"]
+					}]
+				},
+				"method": "post"
+			}) 

@@ -54,7 +54,7 @@ class Controller(Core):
 		return "Done: {} rows affected".format(self.model().update(fields = self.get_request_parameters()).count_rows())
 
 	def delete(self):
-		return "Done: {} rows affected".format(self.model().destroy(list({'id': item} for item in self.get_request_parameters()['ids'])).count_rows())
+		return "Done: {} rows affected".format(self.model().destroy(list(('id', '=', item['id']) for item in self.get_input('data'))).count_rows())
 
 	def fetch(self):
 		return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
