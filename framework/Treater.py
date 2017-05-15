@@ -1,5 +1,5 @@
 from framework import Controller as std
-from helpers import general, cpf
+from helpers import general, cpf, dictionary
 import re
 
 class Treater(std.Controller):
@@ -60,13 +60,74 @@ class Treater(std.Controller):
 		if is_private:
 			return self.forbid("Access denied. This resource is private".format(self.request.action))
 
-	def check_forbidden_fields(self, fields):
+	"""""""""""""""""""""""""""""""""""""""
+			FIELDS HANDLERS SECTION
+	"""""""""""""""""""""""""""""""""""""""
+
+	class FieldRule():
+		"""
+		class FieldRule: It represents the data passed to the field rule controllers
+		"""
+		def __init__(self, field_name, content, identificator, parameters, data_path):
+			self.name = parameters[0] if len(parameters) > 0 else None
+			self.field_name = field_name
+			self.content = content
+			self.identificator = identificator
+			self.field_path = '.'.join(map(str, data_path))
+			if len(parameters) > 0:
+				del parameters[0]
+			self.params = parameters
+
+	def rule_fields(self, fields, data_path = []):
+		"""
+		rule_fields(): It checks the fields especifications
+		"""
+		print(fields, data_path)
+		response = self.check_forbidden_fields(list(field.replace('[]', '').replace('*', '') for field in fields.keys()), data_path)
+		if response:
+			return response
+		for field_name in fields.keys():
+			path = data_path + [field_name.replace('[]', '').replace('*', '')]
+			response = self.check_listness(field_name, path)
+			if response:
+				return response
+			else:
+				response = self.handle_field_rules(field_name, fields, path)
+				if response:
+					return response
+			
+
+	def handle_field_rules(self, field_name, fields, data_path):
+		"""
+		handle_fields(): It iterates the rules vinculated to the field and it calls the correspondent rule handler if necessary
+		"""
+		for field_rule in fields[field_name]:
+			if isinstance(field_rule, dict):
+				response = self.handle_subfields(field_rule, data_path)
+			else:
+				response = self.call_field_controller(field_rule, field_name.replace('[]', '').replace('*', ''), self.get_id_field(fields), data_path)
+			if response:
+				return response
+
+	def check_listness(self, field_name, data_path):
+		"""
+		check_listness(): It checks if the field can be a list
+		"""
+		field_data = dictionary.access_nested_elem_from_list(self.get_request_parameters(), data_path)
+		if '[]' not in field_name and isinstance(field_data, list):
+			return self.forbid("{} cannot be a list".format('.'.join(map(str, data_path))))
+		elif '[]' in field_name and not isinstance(field_data, list):
+			return self.forbid("{} must be a list".format('.'.join(map(str, data_path))))
+
+	def check_forbidden_fields(self, fields, data_path):
 		"""
 		check_forbidden_fields(): It checks if there is any input that does not correspond to any the defined fields
 		"""
-		for input_name in self.request.get_inputs_from_method().keys():
-			if input_name not in fields:
-				return self.forbid("{} parameter is not acceptable".format(input_name))
+		data = dictionary.access_nested_elem_from_list(self.get_request_parameters(), data_path)
+		if isinstance(data, dict):
+			for input_name in data.keys():
+				if input_name not in fields:
+					return self.forbid("{}.{} parameter is not acceptable".format('.'.join(map(str, data_path)), input_name))
 
 	def get_id_field(self, fields):
 		"""
@@ -76,56 +137,34 @@ class Treater(std.Controller):
 			if '*' in field:
 				return {field.replace('*', ''): self.request.get_input(field.replace('*', ''))}
 
-	def rule_fields(self, fields):
-		"""
-		rule_fields(): It checks the fields especifications
-		"""
-		response = self.check_forbidden_fields(list(field.replace('[]', '').replace('*', '') for field in fields.keys()))
-		if response:
-			return response
-		for field_name in fields.keys():
-			response = self.check_listness(field_name)
-			if response:
-				return response
-			for field_rule in fields[field_name]:
-				response = self.call_field_controller(field_rule, field_name.replace('[]', '').replace('*', ''), self.get_id_field(fields))
-				if response:
-					return response
-				
-	def check_listness(self, field_name):
-		"""
-		check_listness(): It checks if the field can be a list
-		"""
-		if '[]' not in field_name and isinstance(self.request.get_input(field_name), list):
-			return self.forbid("{} cannot be a list".format(field_name))
-		elif '[]' in field_name and not isinstance(self.request.get_input(field_name.replace('[]', '')), list):
-			return self.forbid("{} must be a list".format(field_name.replace('[]', '')))
-
-	class FieldRule():
-		"""
-		class FieldRule: It represents the data passed to the field rule controllers
-		"""
-		def __init__(self, field_name, content, identificator, parameters):
-			self.name = parameters[0] if len(parameters) > 0 else None
-			self.field_name = field_name
-			self.content = content
-			self.identificator = identificator
-			if len(parameters) > 0:
-				del parameters[0]
-			self.params = parameters
-
-	def call_field_controller(self, field_rule, field_name, identificator):
+	def call_field_controller(self, field_rule, field_name, identificator, data_path):
 		"""
 		call_field_controller(): It tries to call an existent field controller
 		"""
 		field_method = getattr(self, "field_{}".format(field_rule.split(':')[0]), None)
 		if callable(field_method):
-			field_content = self.request.get_input(field_name)
+			field_content = dictionary.access_nested_elem_from_list(self.get_request_parameters(), data_path)
 			if not isinstance(field_content, list):
 				field_content = [field_content]
 			if len(field_content) == 0:
 				field_content = [""]
-			response = field_method(self.FieldRule(field_name, field_content, identificator, field_rule.split(':')))
+			response = field_method(self.FieldRule(field_name, field_content, identificator, field_rule.split(':'), data_path))
+			if response:
+				return response
+
+	def handle_subfields(self, field_rule, data_path):
+		"""
+		field_field(): It handles fields that are fields themselves
+		"""
+		data = dictionary.access_nested_elem_from_list(self.get_request_parameters(), data_path)
+		if isinstance(data, list):
+			for pos, item in enumerate(data):
+				#print(dictionary.access_nested_elem_from_list(self.get_request_parameters(), data_path + [pos]))
+				response = self.rule_fields(field_rule, data_path + [pos])
+				if response:
+					return response
+		else:
+			response = self.rule_fields(field_rule, data_path)
 			if response:
 				return response
 
@@ -135,7 +174,7 @@ class Treater(std.Controller):
 		"""
 		for pos, content in enumerate(meta.content):
 			if not content or not re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", str(content)):
-				return self.forbid("{} is not a valid email".format(meta.field_name, pos))
+				return self.forbid("{} is not a valid email".format(meta.field_path, pos))
 				
 
 	def field_required(self, meta):
@@ -144,7 +183,7 @@ class Treater(std.Controller):
 		"""
 		for pos, content in enumerate(meta.content):
 			if content is None or len(str(content)) == 0:
-				return self.forbid("{} parameter is required".format(meta.field_name, pos))
+				return self.forbid("{} parameter is required".format(meta.field_path, pos))
 
 	def field_cpf(self, meta):
 		"""
@@ -152,7 +191,7 @@ class Treater(std.Controller):
 		"""
 		for pos, content in enumerate(meta.content):
 			if content is None or not cpf.is_cpf_valid(str(content)):
-				return self.forbid("{} is an invalid cpf".format(meta.field_name, pos))
+				return self.forbid("{} is an invalid cpf".format(meta.field_path, pos))
 
 	def field_maxlength(self, meta):
 		"""
@@ -161,9 +200,9 @@ class Treater(std.Controller):
 		if len(meta.params) == 1:
 			for pos, content in enumerate(meta.content):
 				if content is not None and len(str(content)) > int(meta.params[0]):
-					return self.forbid("Maximum length for {} is {}".format(meta.field_name, meta.params[0]))
+					return self.forbid("Maximum length for {} is {}".format(meta.field_path, meta.params[0]))
 		else:
-			return self.forbid("Invalid '{}' rule sintax on Treater for {}".format(meta.name, meta.field_name))
+			return self.forbid("Invalid '{}' rule sintax on Treater for {}".format(meta.name, meta.field_path))
 
 	def field_minlength(self, meta):
 		"""
@@ -173,9 +212,9 @@ class Treater(std.Controller):
 			for pos, content in enumerate(meta.content):
 				if content is not None and len(str(content)) < int(meta.params[0]):
 					self.forbid()
-					return "Minimum length for {} is {}".format(meta.field_name, meta.params[0])
+					return "Minimum length for {} is {}".format(meta.field_path, meta.params[0])
 		else:
-			return self.forbid("Invalid '{}' rule sintax on Treater for {}".format(meta.name, meta.field_name))
+			return self.forbid("Invalid '{}' rule sintax on Treater for {}".format(meta.name, meta.field_path))
 
 	def field_exists(self, meta):
 		"""
@@ -188,9 +227,9 @@ class Treater(std.Controller):
 				count = connection.cursor.rowcount
 				connection.close()
 				if count == 0:
-					return self.forbid("{} does not exist as {}:{}".format(meta.field_name, meta.params[0], meta.params[1]))
+					return self.forbid("{} does not exist as {}:{}".format(meta.field_path, meta.params[0], meta.params[1]))
 		else:
-			return self.forbid("Invalid '{}' rule sintax on Treater for {}".format(meta.name, meta.field_name))
+			return self.forbid("Invalid '{}' rule sintax on Treater for {}".format(meta.name, meta.field_path))
 
 	def field_unique(self, meta):
 		"""
@@ -203,9 +242,9 @@ class Treater(std.Controller):
 				count = connection.cursor.rowcount
 				connection.close()
 				if count != 0:
-					return self.forbid("{} is already taken".format(meta.field_name))
+					return self.forbid("{} is already taken".format(meta.field_path))
 		else:
-			return self.forbid("Invalid '{}' rule sintax on Treater for {}".format(meta.name, meta.field_name))
+			return self.forbid("Invalid '{}' rule sintax on Treater for {}".format(meta.name, meta.field_path))
 	
 	def field_integer(self, meta):
 		"""
@@ -213,10 +252,10 @@ class Treater(std.Controller):
 		"""
 		for pos, content in enumerate(meta.content):
 			if content is None or not general.is_integer(str(content)):
-				return self.forbid("{} is not an integer".format(meta.field_name, pos))
+				return self.forbid("{} is not an integer".format(meta.field_path, pos))
 			else:
 				if content is not None and 'unsigned' in meta.params and int(str(content)) < 0 or '-' in str(content):
-					return self.forbid("{} is not an unsigned integer".format(meta.field_name, pos))
+					return self.forbid("{} is not an unsigned integer".format(meta.field_path, pos))
 
 	def field_float(self, meta):
 		"""
@@ -224,7 +263,7 @@ class Treater(std.Controller):
 		"""
 		for pos, content in enumerate(meta.content):
 			if content is None or not general.is_float(str(content)):
-				return self.forbid("{} is not a float".format(meta.field_name, pos))
+				return self.forbid("{} is not a float".format(meta.field_path, pos))
 
 	def fetch(self):
 		"""
