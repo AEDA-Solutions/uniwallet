@@ -14,3 +14,17 @@ class Product(std.Treater):
 				"method": "post",
 				#"auth": ["manager", "client"]
 			})
+
+	def update(self):
+		return self.rules({
+				"fields": {
+					"id":			["required", "exists:id"],
+					"number": 		["required"],
+					"name": 		["required"],
+					"price":	 	["required"],
+					"company_id":	["required", "company_id", "unique:company_id"],
+					"description":	["required"],
+					"category":		["required"]
+				},
+				"method": "post",
+			})
