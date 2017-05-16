@@ -8,6 +8,7 @@ class Product(std.Treater):
 					"name": 		["required"],
 					"price":		["required"],
 					"description":	["required"],
+					"category":		["required"],
 					"company_id": 	["required", "exists:id:Company"]
 				},
 				"method": "post",

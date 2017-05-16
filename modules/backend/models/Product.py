@@ -1,6 +1,6 @@
 from framework import Model as std
 
 class Product(std.Model):
-	attributes = ['number', 'name', 'price', 'description', 'company_id']
+	attributes = ['number', 'name', 'price', 'description', 'category', 'company_id']
 
 	
