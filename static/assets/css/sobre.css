@@ -1,9 +1,11 @@
-.mini-logo{
+body{
+  background-color: #f5f5f5;
+}
 
-  width: 52px; 
-  margin-top: 6px; 
+.mini-logo{
+  width: 250px; 
   margin-right: 15px; 
-  margin-left: 60px; 
+  margin-left: 40px; 
 } 
 
 .tags{
@@ -14,4 +16,13 @@
   border-radius: 10px; 
   margin-left: 250px;
   margin-top: 22px; 
+}
+ 
+.segundo-h5{
+
+
+  font-weight: 400px; 
+  color: white;
+  font-family: Courier; 
+  margin-top: 450px;     
 }
