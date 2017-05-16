@@ -126,6 +126,6 @@ class Model(Core):
 
 		query.where(conditions = conditions, glue = ' AND ')
 
-		print(query.get())
+		#print(query.get())
 
 		return self.run_query(query.get())
