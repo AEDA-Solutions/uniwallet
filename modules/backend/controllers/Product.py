@@ -7,7 +7,8 @@ class Product(std.Controller):
 		return "Done: Store {} created successfully".format(product_id)
 
 	def fetch(self):
-		return self.model().find(join=[('Company', 'company_id')], start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields = ['id', 'description', 'company_name'])
+		return (self.model().find(join=[('Company', 'company_id')], start_from = self.get_input('start'), limit = self.get_input('limit'))
+			.fetch(fields_mask = [('company_name', 'empresa'), ('name', 'nome'), ('description', 'descrição')]))
 
 
 

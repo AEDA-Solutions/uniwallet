@@ -14,7 +14,7 @@ class Connection:
 		self.cursor.close()
 		self.connection.close()
 
-	def fetch(self, fields = [], fields_to_ignore = [], close_connection = True):
+	def fetch(self, fields = [], fields_to_ignore = [], close_connection = True, fields_mask = []):
 		"""
 		fetch_records_as_dict(): It returns a list of dict from the got data
 		"""
@@ -24,6 +24,8 @@ class Connection:
 			data = dictionary.remove_fields(dict(zip(self.cursor.column_names, record_tuple)), fields_to_ignore)
 			if len(fields) > 0:
 				data = dictionary.select(data, fields)
+			if len(fields_mask) > 0:
+				data = dictionary.mask(data, fields_mask)
 			records.append(data)
 		if close_connection:
 			self.close()

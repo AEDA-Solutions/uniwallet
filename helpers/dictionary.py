@@ -17,6 +17,16 @@ def select(dictionary, list_fields):
 			filtered.append(tuple([key, value]))
 	return dict(filtered)
 
+def mask(dictionary, tuple_list_fields):
+	"""
+	mask(): It filters a dictionary return the passed dictionary and it renames the dict keys according the tuple passed
+	"""
+	filtered = []
+	for key, mask in tuple_list_fields:
+		if key in dictionary:
+			filtered.append(tuple([mask, dictionary[key]]))
+	return dict(filtered)
+
 def implode(dictionary, separator, glue=', ', key_prefix='', value_prefix=''):
 	"""
 	implode(): It brings together the dict elements into a string and it separates each element with 'glue' attribute

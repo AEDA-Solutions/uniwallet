@@ -17,6 +17,12 @@
 	<!-- Custom CSS -->
 	<link href="{static}assets/admin/css/simple-sidebar.css" rel="stylesheet">
 
+	<link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet">
+	<link href="https://cdn.datatables.net/select/1.2.2/css/select.dataTables.min.css" rel="stylesheet">
+	<link href="https://cdn.datatables.net/buttons/1.3.1/css/buttons.dataTables.min.css" rel="stylesheet">
+
+	<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -160,25 +166,28 @@
 
 	</script>
 
-	<!--<script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.js"></script>
 	<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.14/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.14/js/dataTables.bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/select/1.2.2/js/dataTables.select.min.js"></script>
-	<script type="text/javascript" src="{static}assets/datatables/extensions/Editor/js/dataTables.editor.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.1/js/responsive.bootstrap.min.js"></script>
+ 
+	<!--<script type="text/javascript" src="{static}assets/datatables/extensions/Editor/js/dataTables.editor.min.js"></script>
 	<script type="text/javascript" src="{static}assets/datatables/extensions/Editor/js/editor.bootstrap.min.js"></script>-->
 
 	<script type="text/javascript">
-		/*var editor; // use a global for the submit and return data rendering in the examples
+		var editor; // use a global for the submit and return data rendering in the examples
 		 
 		$(document).ready(function() {
 			
 			var table = $('#example').DataTable( {
 				lengthChange: false,
 				ajax: {
-					url: "/api/user/fetch",
+					url: "/api/consumer/fetch",
 					data: {
 						"start": 0,
 						"limit": 100
@@ -197,94 +206,51 @@
 				columns: [
 					{ data: "id" },
 					{ data: "fullname" },
-					{ data: "email" },
+					{ data: "user_email" },
 					{ data: "cpf" },
 					{ data: "university" }
 				],
 				initComplete: function(){
-					showButtons();
+					//showButtons();
 				},
+				dom: 'Bfrtip',
+				buttons: [
+					{
+						text: 'Novo',
+						action: function ( e, dt, button, config ) {
+							Page.popup("dsa", "fdsa", "fdsad")
+						}
+					},
+					{
+						extend: 'selected',
+						text: 'Editar',
+						action: function ( e, dt, button, config ) {
+							alert("modal de edição aqui")
+						}
+					},
+					{
+						extend: 'selected',
+						text: 'Remover',
+						action: function ( e, dt, button, config ) {
+							if(confirm("Deseja mesmo remover a seleção?")){
+								data = dt.rows({ selected: true }).data()
+								ids_list = []
+								for (var i = 0; i < data.length; i++) {
+									ids_list[i] = {id: data[i].id}
+								}
+								Request.send({data: ids_list}, 'consumer/delete', 'POST', function(response){
+									dt.rows({ selected: true }).remove().draw()
+									console.log(response)
+								})
+							}	
+						}
+					}
+				],
 				select: true
 			} );
 
-			function showButtons(){
-				// Display the buttons
-				new $.fn.dataTable.Buttons( table, [
-					{ extend: "create", editor: editor },
-					{ extend: "edit",   editor: editor },
-					{ extend: "remove", editor: editor }
-				] );
-				table.buttons().container().appendTo( $('.col-sm-6:eq(0)', table.table().container() ) );
-			}
 		 
-
-			editor = new $.fn.dataTable.Editor( {
-				ajax: {
-					url: "/api/user/fetch",
-					data: {
-						"start": 0, 
-						"limit": 100
-					}
-				},
-				idSrc: 'id',
-				table: "#example",
-				fields: [ 
-					{
-						label: "Fullname:",
-						name: "fullname"
-					}, {
-						label: "Email:",
-						name: "email"
-					}, {
-						label: "CPF:",
-						name: "cpf"
-					}, {
-						label: "University:",
-						name: "university"
-					}
-				],
-
-						
-				i18n: { //https://editor.datatables.net/manual/i18n
-					create: {
-						button: "Novo",
-						title:  "Criar novo registro",
-						submit: "Criar"
-					},
-					edit: {
-						button: "Modificar",
-						title:  "Modificar registro",
-						submit: "Atualizar"
-					},
-					remove: {
-						button: "Remover",
-						title:  "Remover registro",
-						submit: "Remover",
-						confirm: {
-							_: "Tem certeza que quer remover estes %d registros?",
-							1: "Tem certeza que quer remover estes registro?"
-						}
-					},
-					error: {
-						system: "Ops. Identifiquei um erro que não pude tratar. Contate o administrador deste software"
-					},
-					multi: {
-						title: "Vários valores",
-						info: "Os itens selecionados contêm valores diferentes para esta entrada.Para definir esta entrada como um mesmo valor para todos os registros selecionados, clique aqui, caso contrário, eles manterão seus valores individuais.",
-						restore: "Descartar modificações"
-					},
-					datetime: {
-						previous: 'Précédent',
-						next:     'Premier',
-						months:   [ 'Janvier', 'Février', 'Mars', 'Avril', 'peut', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre' ],
-						weekdays: [ 'Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam' ]
-					}
-				}
-
-			} );
-			
-
-		} );*/
+		} );
 	</script>
 
 </body>

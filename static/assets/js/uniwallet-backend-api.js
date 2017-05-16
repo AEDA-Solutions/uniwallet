@@ -76,6 +76,9 @@ function Page(){
 	this.listen = function(id, callback, event_type = "click"){
 		document.getElementById(id).addEventListener(event_type, callback)
 	}
+	this.popup = function(header, body, header){
+		window.alert("hello")
+	}
 }
 
 
