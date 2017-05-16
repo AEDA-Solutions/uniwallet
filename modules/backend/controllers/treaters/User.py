@@ -14,7 +14,7 @@ class User(std.Treater):
 	def update(self):
 		return self.rules({
 				"fields": {
-					"id*": 			["required"],
+					"id": 			["required"],
 					"email": 		["required", "email", "unique:email"],
 					"password": 	["required"]
 				},

@@ -83,9 +83,9 @@ class Model(Core):
 		query = (self.build_query()
 			.table(self.get_table_name() if table_name is None else table_name)
 			.update(values_dict = data)
-			.where(conditions = [('id', '=', data['id'])])
-			.get())
-		return self.run_query(query)
+			.where(conditions = [('id', '=', data['id'])]))
+		#print(query.get())
+		return self.run_query(query.get())
 
 	def create(self, table_name = None):
 		"""
@@ -123,7 +123,9 @@ class Model(Core):
 		for model_name, reference in join:
 			join_table = self.get_model(model_name).get_table_name()
 			query.join(table_name = join_table, conditions = [(reference if '.' in reference else "{}.{}".format(self.get_table_name(), reference), '=', '{}.{}'.format(join_table, 'id'))])
-		
+
 		query.where(conditions = conditions, glue = ' AND ')
+
+		print(query.get())
 
 		return self.run_query(query.get())

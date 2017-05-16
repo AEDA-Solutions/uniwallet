@@ -68,12 +68,12 @@ class Treater(std.Controller):
 		"""
 		class FieldRule: It represents the data passed to the field rule controllers
 		"""
-		def __init__(self, field_name, content, identificator, parameters, data_path):
+		def __init__(self, field_name, content, parameters, data_path):
 			self.name = parameters[0] if len(parameters) > 0 else None
 			self.field_name = field_name
 			self.content = content
-			self.identificator = identificator
-			self.field_path = '.'.join(map(str, data_path))
+			self.data_path = data_path
+			self.field_path = '.'.join(map(str, data_path + [field_name]))
 			if len(parameters) > 0:
 				del parameters[0]
 			self.params = parameters
@@ -82,16 +82,14 @@ class Treater(std.Controller):
 		"""
 		rule_fields(): It checks the fields especifications
 		"""
-		response = self.check_forbidden_fields(list(field.replace('[]', '').replace('*', '') for field in fields.keys()), data_path)
+		response = self.check_forbidden_fields(list(field.replace('[]', '') for field in fields.keys()), data_path)
 		if response:
 			return response
 		for field_name in fields.keys():
-			path = data_path + [field_name.replace('[]', '').replace('*', '')]
-			response = self.check_listness(field_name, path)
 			if response:
 				return response
 			else:
-				response = self.handle_field_rules(field_name, fields, path)
+				response = self.handle_field_rules(field_name, fields, data_path)
 				if response:
 					return response
 			
@@ -102,9 +100,9 @@ class Treater(std.Controller):
 		"""
 		for field_rule in fields[field_name]:
 			if isinstance(field_rule, dict):
-				response = self.handle_subfields(field_rule, data_path)
+				response = self.handle_subfields(field_rule, data_path + [field_name.replace('[]', '')])
 			else:
-				response = self.call_field_controller(field_rule, field_name.replace('[]', '').replace('*', ''), self.get_id_field(fields), data_path)
+				response = self.call_field_controller(field_rule, field_name.replace('[]', ''), data_path)
 			if response:
 				return response
 
@@ -112,11 +110,11 @@ class Treater(std.Controller):
 		"""
 		check_listness(): It checks if the field can be a list
 		"""
-		field_data = dictionary.access_nested_elem_from_list(self.get_request_parameters(), data_path)
-		if '[]' not in field_name and isinstance(field_data, list):
-			return self.forbid("{} cannot be a list".format('.'.join(map(str, data_path))))
-		elif '[]' in field_name and not isinstance(field_data, list):
-			return self.forbid("{} must be a list".format('.'.join(map(str, data_path))))
+		data = dictionary.access_nested_elem_from_list(self.get_request_parameters(), data_path)
+		if '[]' not in field_name and field_name in data and isinstance(data[field_name], list):
+			return self.forbid("{} cannot be a list".format('.'.join(map(str, data_path + [field_name]))))
+		elif '[]' in field_name and field_name in data and not isinstance(data[field_name], list):
+			return self.forbid("{} must be a list".format('.'.join(map(str, data_path + [field_name]))))
 
 	def check_forbidden_fields(self, fields, data_path):
 		"""
@@ -126,28 +124,20 @@ class Treater(std.Controller):
 		if isinstance(data, dict):
 			for input_name in data.keys():
 				if input_name not in fields:
-					return self.forbid("{}.{} parameter is not acceptable".format('.'.join(map(str, data_path)), input_name))
+					return self.forbid("{} parameter is not acceptable".format("{}.{}".format('.'.join(data_path), input_name) if len(data_path) else input_name))
 
-	def get_id_field(self, fields):
-		"""
-		get_id_field(): It gets ids fields
-		"""
-		for field in fields.keys():
-			if '*' in field:
-				return {field.replace('*', ''): self.request.get_input(field.replace('*', ''))}
-
-	def call_field_controller(self, field_rule, field_name, identificator, data_path):
+	def call_field_controller(self, field_rule, field_name, data_path):
 		"""
 		call_field_controller(): It tries to call an existent field controller
 		"""
 		field_method = getattr(self, "field_{}".format(field_rule.split(':')[0]), None)
 		if callable(field_method):
-			field_content = dictionary.access_nested_elem_from_list(self.get_request_parameters(), data_path)
+			field_content = dictionary.access_nested_elem_from_list(self.get_request_parameters(), data_path + [field_name])
 			if not isinstance(field_content, list):
 				field_content = [field_content]
 			if len(field_content) == 0:
 				field_content = [""]
-			response = field_method(self.FieldRule(field_name, field_content, identificator, field_rule.split(':'), data_path))
+			response = field_method(self.FieldRule(field_name, field_content, field_rule.split(':'), data_path))
 			if response:
 				return response
 
@@ -234,9 +224,10 @@ class Treater(std.Controller):
 		field_unique(): It checks if field exists
 		"""
 		if len(meta.params) >= 1:
+			data = dictionary.access_nested_elem_from_list(self.get_request_parameters(), meta.data_path)
 			for pos, content in enumerate(meta.content):
 				model = self.get_model(self.__class__.__name__ if len(meta.params) == 1 else meta.params[1])
-				connection = model.find([(meta.params[0], '=', content)] + (self.make_where_conditions(meta.identificator, '<>') if isinstance(meta.identificator, dict) else []))
+				connection = model.find([(meta.params[0], '=', content)] + [('id', '<>', data['id'])] if 'id' in data else [])
 				count = connection.cursor.rowcount
 				connection.close()
 				if count != 0:

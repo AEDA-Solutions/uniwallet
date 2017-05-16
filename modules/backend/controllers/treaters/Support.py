@@ -20,6 +20,10 @@ class Support(std.Treater):
 							"idade": ["required", "integer"],
 							"lista": ["required", {
 								"ids[]": ["required", "integer"]
+							}],
+							"boo": ["required", {
+								"id": ["required"],
+								"email": ["required", "email", "unique:email:User"]
 							}]
 						}],
 					"q[]": ["required", "cpf"],

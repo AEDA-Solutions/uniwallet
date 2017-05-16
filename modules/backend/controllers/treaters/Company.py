@@ -17,7 +17,7 @@ class Company(std.Treater):
 	def update(self):
 		return self.rules({
 				"fields": {
-					"id*": 			["required"],
+					"id": 			["required"],
 					"name": 		["required"],
 					"cnpj":			["required", "cpf"]
 				},

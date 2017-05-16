@@ -18,7 +18,7 @@ class Consumer(std.Treater):
 	def update(self):
 		return self.rules({
 				"fields": {
-					"id*": 			["required"],
+					"id": 			["required"],
 					"fullname": 	["required"],
 					"university": 	["required"],
 					"cpf":			["required", "cpf", "unique:cpf"]
