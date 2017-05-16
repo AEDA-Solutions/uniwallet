@@ -129,6 +129,20 @@
   })
 
 </script>
+   <!-- Função para comparar conteúdo dos campos de e-mail.-->
+<script type="text/javascript" language="JavaScript">
+
+function checkEmail(theForm) {
+	if (theForm.email.value != theForm.emailconf.value)
+	{
+		alert('E-mails informados são diferetes!');
+		return false;
+	} else {
+		return true;
+	}
+}
+//-->
+</script> 
 
 </body>
 
