@@ -25,14 +25,3 @@ class Session(std.Treater):
 		return self.rules({
 				"private": True
 			})
-
-	def fetch(self):
-		return self.rules({
-			"fields": {
-				"start": ["required"],
-				"limit": ["required"],
-				"_":	["optional"]
-			},
-			"method": "get",
-			"auth": ["registered"]
-		})

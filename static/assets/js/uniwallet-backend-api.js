@@ -81,8 +81,65 @@ function Page(){
 	}
 }
 
-
 function HTML_Factory(){
+
+	Data_Table = function(table_id, columns, resource_name, data, method = "GET"){
+		table_columns = []
+		for (var i = 0; i < columns.length; i++) {
+			table_columns[i] = { "data": columns[i] }
+		}
+		console.log(table_columns)
+		this.make = function(func_new, func_edit, func_delete){
+			var table = $(table_id).DataTable( {
+				lengthChange: false,
+				ajax: {
+					url: "/api/" + resource_name + "/fetch",
+					data: data,
+					dataFilter: function(data){
+						var json = jQuery.parseJSON( data );
+						json.recordsTotal = json.content.length;
+						json.recordsFiltered = json.content.length;
+						json.data = json.content;
+						return JSON.stringify( json ); // return JSON string
+					},
+					cache: false,
+					beforeSend: function(xhr) {
+						if (Auth.Token.exists()){
+							xhr.setRequestHeader('Authorization', 'Basic ' + Auth.Token.get())
+						}
+					},
+					method: method
+				},
+				language: {
+					url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Portuguese-Brasil.json",
+				},
+				columns: table_columns,
+				initComplete: function(){
+					//showButtons();
+				},
+				dom: 'Bfrtip',
+				buttons: [
+					{
+						text: 'Novo',
+						action: func_new
+					},
+					{
+						extend: 'selectedSingle',
+						text: 'Editar',
+						action: func_edit
+					},
+					{
+						extend: 'selected',
+						text: 'Remover',
+						action: func_delete
+					}
+				],
+				select: true
+			} );
+		}
+	}
+
+
 	this.make_table = function(fields, data, title){
 		ths = ''
 		for (var i = 0; i < fields.length; i++) ths += this.make_tag('th', fields[i])
@@ -94,16 +151,21 @@ function HTML_Factory(){
 			for (var j = 0; j < fields.length; j++) tds += this.make_tag('td', data[i][fields[j]])
 			trs += this.make_tag('tr', tds)
 		}
-		tbody = this.make_tag('tbody', trs)
+
+		if (trs.length){
+			tbody = this.make_tag('tbody', trs)
+		} else {
+			tbody = ''
+		}
 
 		return this.get_snippet()['table'].replace('{{thead}}', thead).replace('{{tbody}}', tbody).replace('{{title}}', title)
 	}
 
-	this.get_snippet = function(){
+	this.get_snippet = function(id = "tablecrud"){
 		return {
 			'table':'<div class="table-responsive">' +
 						'<h2>{{title}}</h2>' +       
-						'<table class="table table-striped">' +
+						'<table id="' + id + '" class="table table-striped table-bordered" width="100%" cellspacing="0">' +
 						'{{thead}}' +
 						'{{tbody}}' +
 						'</table>' +
@@ -114,8 +176,33 @@ function HTML_Factory(){
 	this.make_tag = function(tag_name, content){
 		return ('<' + tag_name + '>' + content + '</' + tag_name + '>')
 	}
-}
 
+	this.make_datatable = function(columns, resource_name, data, method){
+
+		console.log(columns, resource_name, data, method)
+		create = function(){
+			alert("modal de criação aqui")
+		}
+		edit = function(){
+			alert("modal de edição aqui")
+		}
+		del = function(e, dt, button, config){
+
+			if(confirm("Deseja mesmo remover a seleção?")){
+				data = dt.rows({ selected: true }).data()
+				ids_list = []
+				for (var i = 0; i < data.length; i++) {
+					ids_list[i] = {id: data[i].id}
+				}
+				Request.send({data: ids_list}, resource_name + '/delete', 'POST', function(response){
+					window.alert(response.content)
+					dt.rows({ selected: true }).remove().draw()
+				})
+			}
+		}
+		datatable = new Data_Table('#tablecrud', columns, resource_name, data, method).make(create, edit, del)
+	}
+}
 
 
 var Page = new Page()

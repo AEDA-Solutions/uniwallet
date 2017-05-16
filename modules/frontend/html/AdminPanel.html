@@ -77,33 +77,14 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div id="maincontent">
-							<!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+							<!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>-->
 
 
 							<h1>Área dos desenvolvedores</h1>
-							<center><img src="{static}assets/images/uwlogo.gif"></center>-->
 
-							<table id="example" class="table table-striped table-bordered" width="100%" cellspacing="0">
-								<thead>
-									<tr>
-										<th>Id</th>
-										<th>Fullname</th>
-										<th>Email</th>
-										<th>CPF</th>
-										<th>University</th>
-									</tr>
-								</thead>
-								<tfoot>
-									<tr>
-										<th>Id</th>
-										<th>Fullname</th>
-										<th>Email</th>
-										<th>CPF</th>
-										<th>University</th>
-									</tr>
-								</tfoot>
-							</table>
-						</div>
+							É necessário estar autenticado para acessar os dados dessa área.<br /><br /><br />
+
+							
 						<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Mover barra lateral</a>
 					</div>
 				</div>
@@ -128,44 +109,6 @@
 	});
 	</script>
 
-
-	<script src="{static}assets/js/uniwallet-backend-api.js"></script>
-
-	<script type="text/javascript">
-
-		var targets = {
-			'b_consumidores': {'parameters': {'limit': 100, 'start': 0}, 'url': 'consumer/fetch', 'method': 'GET', 'title': 'Consumidores'},
-			'b_empresas': {'parameters': {'limit': 100, 'start': 0}, 'url': 'company/fetch', 'method': 'GET', 'title': 'Empresas'},
-			'b_niveisacesso': {'parameters': {'limit': 100, 'start': 0}, 'url': 'accesslevel/fetch', 'method': 'GET', 'title': 'Níveis de Acesso'},
-			'b_sessoes': {'parameters': {'limit': 100, 'start': 0}, 'url': 'session/fetch', 'method': 'GET', 'title': 'Sessões'},
-			'b_lojas': {'parameters': {'limit': 100, 'start': 0}, 'url': 'store/fetch', 'method': 'GET', 'title': 'Loja'},
-			'b_product': {'parameters': {'limit': 100, 'start': 0}, 'url': 'product/fetch', 'method': 'GET', 'title': 'Produtos'}
-		}
-
-		var botoes = document.getElementsByClassName('botao');
-		for (var i = 0; i < botoes.length; i++) {
-			botoes[i].addEventListener('click', function(event){
-				target = targets[this.id]
-				Request.send(target.parameters, target.url, target.method, function(response){
-					console.log(response)
-					if (response.code == 200){
-						if (response.content.length > 0){
-							var table = HTML_Factory.make_table(Object.keys(response.content[0]), response.content, target.title)
-							document.getElementById('maincontent').innerHTML = table
-						} else {
-							window.alert("Ué. :/ Acho q não tem nada aqui por enquanto.")
-						}
-						
-					} else {
-						window.alert(response.content)
-					}
-					
-				})
-			})
-		}
-
-	</script>
-
 	<script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.js"></script>
 	<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.14/js/jquery.dataTables.min.js"></script>
@@ -175,86 +118,47 @@
 	<script type="text/javascript" src="https://cdn.datatables.net/select/1.2.2/js/dataTables.select.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.1/js/responsive.bootstrap.min.js"></script>
- 
-	<!--<script type="text/javascript" src="{static}assets/datatables/extensions/Editor/js/dataTables.editor.min.js"></script>
-	<script type="text/javascript" src="{static}assets/datatables/extensions/Editor/js/editor.bootstrap.min.js"></script>-->
+
+	<script src="{static}assets/js/uniwallet-backend-api.js"></script>
 
 	<script type="text/javascript">
-		var editor; // use a global for the submit and return data rendering in the examples
-		 
-		$(document).ready(function() {
-			
-			var table = $('#example').DataTable( {
-				lengthChange: false,
-				ajax: {
-					url: "/api/consumer/fetch",
-					data: {
-						"start": 0,
-						"limit": 100
-					},
-					dataFilter: function(data){
-						var json = jQuery.parseJSON( data );
-						json.recordsTotal = json.content.length;
-						json.recordsFiltered = json.content.length;
-						json.data = json.content;
-						return JSON.stringify( json ); // return JSON string
-					}
-				},
-				language: {
-					url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Portuguese-Brasil.json",
-				},
-				columns: [
-					{ data: "id" },
-					{ data: "fullname" },
-					{ data: "user_email" },
-					{ data: "cpf" },
-					{ data: "university" }
-				],
-				initComplete: function(){
-					//showButtons();
-				},
-				dom: 'Bfrtip',
-				buttons: [
-					{
-						text: 'Novo',
-						action: function ( e, dt, button, config ) {
-							Page.popup("dsa", "fdsa", "fdsad")
-						}
-					},
-					{
-						extend: 'selected',
-						text: 'Editar',
-						action: function ( e, dt, button, config ) {
-							alert("modal de edição aqui")
-						}
-					},
-					{
-						extend: 'selected',
-						text: 'Remover',
-						action: function ( e, dt, button, config ) {
-							if(confirm("Deseja mesmo remover a seleção?")){
-								data = dt.rows({ selected: true }).data()
-								ids_list = []
-								for (var i = 0; i < data.length; i++) {
-									ids_list[i] = {id: data[i].id}
-								}
-								Request.send({data: ids_list}, 'consumer/delete', 'POST', function(response){
-									dt.rows({ selected: true }).remove().draw()
-									console.log(response)
-								})
-							}	
-						}
-					}
-				],
-				select: true
-			} );
 
-		 
-		} );
+		var targets = {
+			'b_consumidores': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'consumer', 'method': 'GET', 'title': 'Consumidores'},
+			'b_empresas': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'company', 'method': 'GET', 'title': 'Empresas'},
+			'b_niveisacesso': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'accesslevel', 'method': 'GET', 'title': 'Níveis de Acesso'},
+			'b_sessoes': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'session', 'method': 'GET', 'title': 'Sessões'},
+			'b_lojas': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'store', 'method': 'GET', 'title': 'Loja'},
+			'b_product': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'product', 'method': 'GET', 'title': 'Produtos'}
+		}
+
+		
+
+		var botoes = document.getElementsByClassName('botao')
+		for (var i = 0; i < botoes.length; i++) {
+			botoes[i].addEventListener('click', function(event){
+				target = targets[this.id]
+				Request.send(target.parameters, target.entity + '/fetch', target.method, function(response){
+					console.log(response)
+					if (response.code == 200){
+						if (response.content.length > 0){
+							var fields = Object.keys(response.content[0])
+							var table = HTML_Factory.make_table(fields, {}, target.title)
+							Page.fill('maincontent', table)
+							HTML_Factory.make_datatable(fields, target.entity, target.parameters, target.method)
+						} else {
+							window.alert("Ué. :/ Acho q não tem nada aqui por enquanto.")
+						}
+					} else {
+						window.alert(response.content)
+					}
+
+				})
+			})
+		}
+
 	</script>
 
 </body>
 
 </html>
-
-

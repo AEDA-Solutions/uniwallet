@@ -265,7 +265,7 @@ class Treater(std.Controller):
 					"_":	["optional"]
 				},
 				"method": "get",
-				"auth": []
+				"auth": ["registered"]
 			})
 
 	def delete(self):
@@ -278,5 +278,6 @@ class Treater(std.Controller):
 						"id": ["required", "integer:unsigned"]
 					}]
 				},
-				"method": "post"
+				"method": "post",
+				"auth": ["registered"]
 			}) 

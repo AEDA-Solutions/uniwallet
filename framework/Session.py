@@ -9,7 +9,7 @@ class Session(std.Model):
 		return str(uuid.uuid4())
 
 	def make(self):
-		self.destroy([{'user_id': self.user_id}]) #It removes previous user's session
+		self.destroy([('user_id', '=', self.user_id)]) #It removes previous user's session
 		return self.save().close()
 
 	def get_user_id_vinculated(self, token, ip):
@@ -21,7 +21,7 @@ class Session(std.Model):
 			if sessions[0]['ip'] == ip:
 				return sessions[0]['user_id']
 			else:
-				self.destroy([{'user_id': sessions[0]['user_id']}])
+				self.destroy([('user_id', '=', sessions[0]['user_id'])])
 				return None
 		else:
 			return None
