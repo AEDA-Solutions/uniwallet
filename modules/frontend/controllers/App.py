@@ -38,3 +38,5 @@ class App(std.Controller):
 	def referencias(self):
 		return self.prepare_static(self.get_html("referencias").replace("{{tassila}}","Guilherme"))
 
+	def produtos(self):
+		return self.prepare_static(self.get_html("listaprodutos"))
