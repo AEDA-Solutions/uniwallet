@@ -60,6 +60,9 @@ CREATE TABLE Consumers (
 	FOREIGN KEY (user_id) REFERENCES Users(id)
 );
 
+INSERT INTO Consumers (user_id, fullname, university, cpf) VALUES
+('1', 'Uniwallet da Silva', 'UnB', 'Sim');
+
 CREATE TABLE Companies (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	user_id INT(32) UNSIGNED NOT NULL,
@@ -69,6 +72,9 @@ CREATE TABLE Companies (
 	FOREIGN KEY (user_id) REFERENCES Users(id)
 );
 
+INSERT INTO Companies (user_id, name, cnpj) VALUES
+('1', 'Uniwallet_Corporation', 'SIM');
+
 CREATE TABLE Wallets (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	user_id INT(32) UNSIGNED NOT NULL,
@@ -77,6 +83,9 @@ CREATE TABLE Wallets (
 	FOREIGN KEY (user_id) REFERENCES Users(id)
 );
 
+INSERT INTO Wallets (user_id, balance) VALUES
+('1', '1000');
+
 CREATE TABLE Stores (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	name VARCHAR(128) NOT NULL,
@@ -84,6 +93,9 @@ CREATE TABLE Stores (
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	FOREIGN KEY (company_id) REFERENCES Companies(id)
 );
+
+INSERT INTO Stores (name, company_id) VALUES
+('Uni_store', '1');
 
 CREATE TABLE Sales (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -94,17 +106,21 @@ CREATE TABLE Sales (
 	FOREIGN KEY (association_from) REFERENCES Stores(id)
 );
 
+
 CREATE TABLE Products (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	company_id INT(32) UNSIGNED NOT NULL,
 	number INT(32) UNSIGNED NOT NULL, #associa com a loja? com o codigo do comerciante?
 	name VARCHAR(128) NOT NULL,
 	price DOUBLE UNSIGNED NOT NULL,
 	description VARCHAR(256) NOT NULL,
 	category VARCHAR(128) NOT NULL,
-	company_id INT(32) UNSIGNED NOT NULL,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	FOREIGN KEY (company_id) REFERENCES Companies(id)
 );
+
+INSERT INTO Products (company_id, number, name, price, description, category) VALUES
+('1', '123', 'Pão Gostoso', '250', 'Gostoso', 'Alimentos');
 
 CREATE TABLE Product_Store (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -115,3 +131,4 @@ CREATE TABLE Product_Store (
 	FOREIGN KEY (store_id) REFERENCES Stores(id),
 	UNIQUE (product_id, store_id)
 );
+
