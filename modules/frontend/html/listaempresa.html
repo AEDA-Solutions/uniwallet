@@ -1,0 +1,155 @@
+<!DOCTYPE html> 
+
+<html lang="pt-br"> 
+
+<head>  
+      <meta charset="utf-8"> 
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"> 		 
+      <title> UniWallet </title>  
+      <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="{static}assets/css/usuario.css">
+</head> 
+
+<header class="navbar">  
+	<nav class="N/A transparent"> 
+	 			   <!--Colocar todo o conteúdo do painel da nav-bar--> 
+        <div class="nav-wrapper container" > 
+
+          <!--Logo--> 
+	 			  <a href="file:///C:/Users/rmora/Desktop/materialize/web%20pag/index1.html" class="brand-logo"><img src="{static}assets/images/oficial.png" class="circle left mini-logo"></img></a> 
+	 			  <div class="nav-wrapper">
+
+	 			  <div class="nav-wrapper">
+      				<div class = "barra N/A transparent">
+      				<form>
+        				<div class="input-field">
+          					<input id="search" type="search" required placeholder="O que está procurando?" >
+          					<label class="label-icon" for="search" ><i class="material-icons">search</i></label>
+          					<i class="material-icons">close</i>
+        				</div>
+      				</form>
+      				</div>
+    				</div>
+      
+	 				 <!--Para esconder o conteúdo da direita--> 
+	 				<div class = "informacoes">
+      				<ul id="nav-mobile" class="right hide-on-med-and-down"> 
+
+                       <li><a href="faleconosco">
+                       <i class="material-icons left ">phone</i>
+                       <span> Fale Conosco</span>
+                       </a></li>
+
+
+                       <li><a class="margin-login" href ="inicial">
+                       <i class="material-icons left ">input</i>
+
+                       <span> Sair</span>
+                       </a></li>
+                    </ul>
+                    </div>
+                   	</div>
+      				</ul>
+	 			</div> 
+	</nav>
+</header>
+<body>
+
+      <table class="white centered">
+      <div class="col s6">
+        <thead>
+          <tr>
+              <th> 
+              <li>
+                <a href="#" id='b_empresas' class='botao'>Empresas</a>
+              </li>
+              </th>
+
+          </tr>
+        </thead>
+        <tbody>
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal indigo lighten-5">
+            <div class="modal-content blue-grey darken-3 white-text">
+                <h4>Produtos à Venda</h4>
+                </div>
+            </div>
+            </div>
+          <li>
+              <a href="#" id='b_product' class='botao'>Produtos</a>
+          </li>
+        </tbody>
+      </table>
+</div>
+            
+<script src="{static}assets/admin/js/jquery.js"></script>
+
+  <!-- Bootstrap Core JavaScript -->
+  <script src="{static}assets/admin/js/bootstrap.min.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+  $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+  });
+  </script>
+  
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.14/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.14/js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/select/1.2.2/js/dataTables.select.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.1/js/responsive.bootstrap.min.js"></script>
+
+  <script src="{static}assets/js/uniwallet-backend-api.js"></script>
+
+  <script type="text/javascript">
+
+    var targets = {
+      'b_consumidores': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'consumer', 'method': 'GET', 'title': 'Consumidores'},
+      'b_empresas': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'company', 'method': 'GET', 'title': 'Empresas'},
+      'b_niveisacesso': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'accesslevel', 'method': 'GET', 'title': 'Níveis de Acesso'},
+      'b_sessoes': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'session', 'method': 'GET', 'title': 'Sessões'},
+      'b_lojas': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'store', 'method': 'GET', 'title': 'Loja'},
+      'b_product': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'product', 'method': 'GET', 'title': 'Produtos'}
+    }
+
+    
+
+    var botoes = document.getElementsByClassName('botao')
+    for (var i = 0; i < botoes.length; i++) {
+      botoes[i].addEventListener('click', function(event){
+        target = targets[this.id]
+        Request.send(target.parameters, target.entity + '/fetch', target.method, function(response){
+          console.log(response)
+          if (response.code == 200){
+            if (response.content.length > 0){
+              var fields = Object.keys(response.content[0])
+              var table = HTML_Factory.make_table(fields, {}, target.title)
+              Page.fill('maincontent', table)
+              HTML_Factory.make_datatable(fields, target.entity, target.parameters, target.method)
+            } else {
+              window.alert("Ué. :/ Acho q não tem nada aqui por enquanto.")
+            }
+          } else {
+            window.alert(response.content)
+          }
+
+        })
+      })
+    }
+
+  </script>
+
+</body>
+
+</html>
+
+</body>
+</html>
