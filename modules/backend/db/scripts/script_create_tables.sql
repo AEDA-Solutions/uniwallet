@@ -98,16 +98,6 @@ CREATE TABLE Stores (
 INSERT INTO Stores (name, company_id) VALUES
 ('Uni_store', '1');
 
-CREATE TABLE Sales (
-	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-	association_to INT(32) UNSIGNED NOT NULL,
-	association_from INT(32) UNSIGNED NOT NULL,
-	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	FOREIGN KEY (association_to) REFERENCES Users(id),
-	FOREIGN KEY (association_from) REFERENCES Stores(id)
-);
-
-
 CREATE TABLE Products (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	company_id INT(32) UNSIGNED NOT NULL,
@@ -118,6 +108,24 @@ CREATE TABLE Products (
 	category VARCHAR(128) NOT NULL,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	FOREIGN KEY (company_id) REFERENCES Companies(id)
+);
+
+CREATE TABLE Sales (
+	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	consumer_id INT(32) UNSIGNED NOT NULL,
+	company_id INT(32) UNSIGNED NOT NULL,
+	FOREIGN KEY (consumer_id) REFERENCES Consumers(id),
+	FOREIGN KEY (company_id) REFERENCES Companies(id)
+);
+
+CREATE TABLE Sale_Product (
+	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	product_id INT(32) UNSIGNED NOT NULL,
+	sale_id INT(32) UNSIGNED NOT NULL,
+	quantity INT(128) UNSIGNED NOT NULL,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	FOREIGN KEY (product_id) REFERENCES Products(id),
+	FOREIGN KEY (sale_id) REFERENCES Sales(id)
 );
 
 INSERT INTO Products (company_id, number, name, price, description, category) VALUES
