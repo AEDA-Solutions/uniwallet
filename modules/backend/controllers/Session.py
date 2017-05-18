@@ -16,7 +16,7 @@ class Session(std.Controller):
 			return self.forbid("Incorrect email or password")		
 
 	def logout(self):
-		return "ok"
+		return "Done: {} session destroyed".format(self.model().close())
 
 	def fetch(self):
 		return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch()

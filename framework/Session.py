@@ -12,6 +12,9 @@ class Session(std.Model):
 		self.destroy([('user_id', '=', self.user_id)]) #It removes previous user's session
 		return self.save().close()
 
+	def close(self):
+		return self.destroy(conditions = [('token', '=', self.request.authorization.content)]).count_rows()
+
 	def get_user(self):
 		current_session = self.get_current()
 		if current_session is not None:

@@ -101,7 +101,6 @@ class Model(Core):
 		"""
 		destroy(): It removes records from db from the ids passed (ids must be a list)
 		"""
-		print(conditions)
 		query = (self.build_query()
 			.table(self.get_table_name())
 			.delete()
