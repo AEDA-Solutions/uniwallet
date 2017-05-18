@@ -12,18 +12,14 @@ class Session(std.Model):
 		self.destroy([('user_id', '=', self.user_id)]) #It removes previous user's session
 		return self.save().close()
 
-	def get_user_id_vinculated(self, token, ip):
-		"""
-		get_user_id_vinculated(): It gets the user id vinculated to the token
-		"""
-		sessions = self.find([('token', '=', token)]).fetch()
-		if len(sessions) > 0:
-			if sessions[0]['ip'] == ip:
-				return sessions[0]['user_id']
-			else:
-				self.destroy([('user_id', '=', sessions[0]['user_id'])])
-				return None
+	def get_user(self):
+		current_session = self.get_current()
+		if current_session is not None:
+			return self.get_model('User').find([('id', '=', current_session['user_id'])]).fetchone(fields_to_ignore = ['password'])
 		else:
 			return None
+
+	def get_current(self):
+		return self.find([('token', '=', self.request.authorization.content)]).fetchone()
 
 

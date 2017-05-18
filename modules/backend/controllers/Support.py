@@ -10,3 +10,6 @@ class Support(std.Controller):
 
 	def foo(self):
 		return "Ok"
+
+	def baz(self):
+		return self.get_model('Session').get_logged_user()

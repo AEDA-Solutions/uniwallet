@@ -3,11 +3,6 @@ from framework import Model as std
 class AccessLevel(std.Model):
 
 	attributes = ['name', 'description']
-	#table_name = 'AccessLevels'
-	pivot_table_name = 'User_AccessLevel'
-
-	def get_pivot_table_name(self):
-		return self.pivot_table_name
 
 	def make_name_list(self, records):
 		"""
@@ -17,21 +12,20 @@ class AccessLevel(std.Model):
 			return list(item['name'] for item in records)
 		else:
 			return []
-		
+	
+	def get_user_credentials(self, user_id):
+		user_accesslevels = self.get_model('User_AccessLevel').find(join = [('AccessLevel', 'accesslevel_id'), ('User', 'User_AccessLevel.user_id')], conditions = [('User_AccessLevel.user_id', '=', user_id)])
+		user_credentials = self.make_name_list(user_accesslevels.fetch(fields_mask = [('accesslevel_name', 'name')]))
+		return user_credentials
+
 	def user_has(self, user_id, credential_list):
 		"""
 		user_has(): It checks if the user has at least one access level in common with credential_list
 		"""
-		query = (self.build_query()
-			.table(self.get_table_name())
-			.select()
-			.join(table_name = self.get_pivot_table_name(), conditions = ['{}.id'.format(self.get_table_name()), '=', '{}.accesslevel_id'.format(self.get_pivot_table_name())])
-			.join(table_name = 'Users', conditions = [['{}.user_id'.format(self.get_pivot_table_name()), '=', 'Users.id']])
-			.where(raw = "Users.id = '{}'".format(user_id))
-			.get())
+		user_credentials = self.get_model('User').get_accesslevels(user_id)
 
-		if len(credential_list) > 0:
-			if len(set(self.make_name_list(self.run_query(query).fetch())).intersection(credential_list)) > 0: 
+		if len(user_credentials) > 0:
+			if len(set(user_credentials).intersection(credential_list)) > 0: 
 				return True
 			else:
 				return False

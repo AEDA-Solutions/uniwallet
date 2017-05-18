@@ -26,11 +26,11 @@ class Treater(std.Controller):
 	def check_authorization(self, user_id, credential_list):
 		"""
 		check_authorization(): It checks if the user is allowed to access the resource
-		"""				
+		"""	
 		if self.get_model('AccessLevel').user_has(user_id = user_id, credential_list = credential_list):
 			self.request.user_id = user_id
 		else:
-			return self.forbid("You got access fuckin' denied")
+			return self.forbid("You got access fuckin' denied (1)")
 
 	def rule_auth(self, auth):
 		"""
@@ -38,13 +38,13 @@ class Treater(std.Controller):
 		"""
 		if len(auth):
 			if self.request.authorization.exists:
-				user_id = self.get_model('Session').get_user_id_vinculated(token = self.request.authorization.content, ip = self.request.client_ip)
-				if user_id:
-					return self.check_authorization(user_id, auth)
+				user = self.get_model('Session').get_current()
+				if user is not None:
+					return self.check_authorization(user['user_id'], auth)
 				else:
-					return self.forbid("You got access fuckin' denied")
+					return self.forbid("You got access fuckin' denied (2)")
 			else:
-				return self.forbid("You got access fuckin' denied")
+				return self.forbid("You got access fuckin' denied (3)")
 
 	def rule_method(self, method):
 		"""
@@ -260,9 +260,9 @@ class Treater(std.Controller):
 		"""
 		return self.rules({
 				"fields": {
-					"start": ["required", "integer:unsigned"],
-					"limit": ["required", "integer:unsigned"],
-					"_":	["optional"]
+					"start": 	["required", "integer:unsigned"],
+					"limit": 	["required", "integer:unsigned"],
+					"_":		["optional"]
 				},
 				"method": "get",
 				"auth": ["registered"]

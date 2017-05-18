@@ -16,7 +16,7 @@ class Connection:
 
 	def fetch(self, fields = [], fields_to_ignore = [], close_connection = True, fields_mask = []):
 		"""
-		fetch_records_as_dict(): It returns a list of dict from the got data
+		fetch(): It returns a list of dict from the got data
 		"""
 		raw_records = self.cursor.fetchall()
 		records = []
@@ -30,6 +30,22 @@ class Connection:
 		if close_connection:
 			self.close()
 		return records
+
+	def fetchone(self, fields = [], fields_to_ignore = [], close_connection = True, fields_mask = []):
+		"""
+		fetchone(): It returns a single record from the DB
+		"""
+		raw_record = self.cursor.fetchone()
+		record = None
+		if raw_record is not None:
+			record = dictionary.remove_fields(dict(zip(self.cursor.column_names, raw_record)), fields_to_ignore)
+			if len(fields) > 0:
+				record = dictionary.select(record, fields)
+			if len(fields_mask) > 0:
+				record = dictionary.mask(record, fields_mask)
+		if close_connection:
+			self.close()
+		return record
 
 	def get_cursor_attr(self, attr_name, close_connection):
 		"""
