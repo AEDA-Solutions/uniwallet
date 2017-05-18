@@ -50,7 +50,7 @@ class QueryBuilder:
 
 					[condition]
 				"""
-				self.query = self.query.replace('[condition]', snippet.format(conditions = raw if raw is not None else "{}".format(glue).join( list(item if isinstance(item, str) else "{}.{}{}'{}'".format(self.table_name, item[0], item[1], item[2]) for item in conditions))))
+				self.query = self.query.replace('[condition]', snippet.format(conditions = raw if raw is not None else "{}".format(glue).join( list(item if isinstance(item, str) else "{}{}{}'{}'".format('' if '.' in item[0] else "{}.".format(self.table_name), item[0], item[1], item[2]) for item in conditions))))
 				return self
 
 		class Select(Filter):

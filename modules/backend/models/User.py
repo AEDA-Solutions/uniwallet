@@ -1,5 +1,4 @@
-from framework import Model as std
+from framework import User as std
 
-class User(std.Model):
-
-	attributes = ['email', 'password']
+class User(std.User):
+	pass

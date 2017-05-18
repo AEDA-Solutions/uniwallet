@@ -6,6 +6,7 @@ CREATE DATABASE Uniwallet;
 USE Uniwallet;
 CREATE TABLE Users (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(64) NOT NULL,
 	email VARCHAR(64) NOT NULL,
 	password VARCHAR(128) NOT NULL,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -18,8 +19,8 @@ CREATE TABLE AccessLevels (
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO Users (email, password) VALUES
-('team@team.com', 'uniwallet');
+INSERT INTO Users (name, email, password) VALUES
+('Uniwallet team', 'team@team.com', 'uniwallet');
 
 INSERT INTO AccessLevels (name, description) VALUES 
 ('registered', 'Basic access level for everyone logged by default'),

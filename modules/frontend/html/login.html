@@ -1,14 +1,14 @@
 <!DOCTYPE html> 
 <html lang="pt-br"> 
 <head> 
-     <meta charset="utf-8"> 
-     <meta name="viewport" connt="width=device-width, initial-scale=1.0"> 
-     <title> Acesso </title> 
-     <link rel="stylesheet" href="materialize.css"> 
-     
-     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     <link rel="stylesheet" type="text/css" href="{static}assets/css/login.css">
-     <link rel="shortcut icon" href="official.ico" type="image/x-icon" />
+		 <meta charset="utf-8"> 
+		 <meta name="viewport" connt="width=device-width, initial-scale=1.0"> 
+		 <title> Acesso </title> 
+		 <link rel="stylesheet" href="materialize.css"> 
+		 
+		 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		 <link rel="stylesheet" type="text/css" href="{static}assets/css/login.css">
+		 <link rel="shortcut icon" href="official.ico" type="image/x-icon" />
  </head> 
 
 <body> 
@@ -18,17 +18,17 @@
 
 
 <div class="containerlogin"> 
-  <div class="floating-box">
-          <form>
-                <input type="text" name="email" placeholder="E-mail" class="input-form">
-      
-                <input type="password" name="password" size="30" minlength="6" maxlength="30" placeholder="Senha" class="input-form"> 
-                
-               <input type="button" name = "submit" value="Continuar" class="btn-continuar" id="botao_submit">
+	<div class="floating-box">
+					<form>
+								<input type="text" name="email" placeholder="E-mail" class="input-form">
+			
+								<input type="password" name="password" size="30" minlength="6" maxlength="30" placeholder="Senha" class="input-form"> 
+								
+							 <input type="button" name = "submit" value="Continuar" class="btn-continuar" id="botao_submit">
 
-          </form> 
+					</form> 
 
-  </div>
+	</div>
 
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -38,23 +38,38 @@
 <script src="{static}assets/js/uniwallet-backend-api.js"></script>
 
 <script type="text/javascript">
-  //Adiciona um evento no botão de enviar dados
-  Page.listen("botao_submit", function(e){
-    e.preventDefault() //Impede a atualização da página
-    //Pega os dados inseridos nos campos de input
-    data = Page.get_input("input-form")
-    //Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
-    Request.send(data, "session/login", "POST", function(response){
-      console.log(response)
-      if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
-        Auth.signIn(response.content.token)
-        Page.redirect("usuario")
-      } else {
-        window.alert(response.content)
-        //Page.fill("div_mensagem_retorno", response.content) //Insere a mensagem na div
-      }
-    })
-  })
+	//Adiciona um evento no botão de enviar dados
+	Page.listen("botao_submit", function(e){
+		e.preventDefault() //Impede a atualização da página
+		//Pega os dados inseridos nos campos de input
+		data = Page.get_input("input-form")
+		//Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
+		Request.send(data, "session/login", "POST", function(response){
+			console.log(response)
+			if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
+				Auth.signIn(response.content.token)
+
+				Request.send(data, "user/access_levels", "POST", function(response){
+					if(response.code == 200){
+						access_levels = response.content
+						if (access_levels.includes('company')){
+							Page.redirect("usuarioempresa")
+						} else
+						if (access_levels.includes('consumer')){
+							Page.redirect("usuario")
+						} else
+						if (access_levels.includes('god')){
+							Page.redirect("gerenciamento")
+						}
+					}
+				})
+			
+			} else {
+				window.alert(response.content)
+				//Page.fill("div_mensagem_retorno", response.content) //Insere a mensagem na div
+			}
+		})
+	})
 </script>
 
 
