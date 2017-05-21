@@ -40,3 +40,10 @@ class Company(std.Treater):
 		return self.rules({
 				"private": True
 			})
+
+	def showall(self):
+		return self.rules({
+
+
+			"auth": ["god"]
+			})
