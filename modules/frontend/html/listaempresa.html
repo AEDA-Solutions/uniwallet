@@ -56,32 +56,14 @@
 	</nav>
 </header>
 <body>
-
-      <table class="white centered">
-      <div class="col s6">
+      <table class="white highlight centered">
         <thead>
           <tr>
-              <th> 
-              <li>
-                <a href="#" id='b_empresas' class='botao'>Empresas</a>
-              </li>
-              </th>
-
+              <th>Company</th>
+              <th>Product</th>
           </tr>
         </thead>
-        <tbody>
-            <!-- Modal Structure -->
-            <div id="modal1" class="modal indigo lighten-5">
-            <div class="modal-content blue-grey darken-3 white-text">
-                <h4>Produtos à Venda</h4>
-                </div>
-            </div>
-            </div>
-          <li>
-              <a href="#" id='b_product' class='botao'>Produtos</a>
-          </li>
-        </tbody>
-      </table>
+
 </div>
             
 <script src="{static}assets/admin/js/jquery.js"></script>
@@ -96,16 +78,21 @@
     $("#wrapper").toggleClass("toggled");
   });
   </script>
-  
-  <script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.js"></script>
-  <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/1.10.14/js/jquery.dataTables.min.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/1.10.14/js/dataTables.bootstrap.min.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.bootstrap.min.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/select/1.2.2/js/dataTables.select.min.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.1/js/responsive.bootstrap.min.js"></script>
+<!-- Teste -->
+  <script>
+    $.getJSON("{static}assets/js/data.json", function(data){
+      var lista[];
+      $.each(data, function(key, val)){
+        // body...
+        lista.push("<tr>");
+        lista.push("<td id ='' "+key+"''>"+val.Company"</td>");
+        lista.push("<td id ='' "+key+"''>"+val.Product"</td>");
+        lista.push("</tr");
+      });
+    $('<tbody/>', {html: lista.join()}).appendto("table");    
+  });
+
+  </script>
 
   <script src="{static}assets/js/uniwallet-backend-api.js"></script>
 
