@@ -3,13 +3,15 @@
  /*PANIEL DE LOGIN*/
 
  body{ 
-   background-image: url("../images/index.png");
+   /*background-image: url("../images/index.png");*/
    max-width: 1080px;   /* Máximo da largura da imagem */
    width: auto;
    max-height: auto;  /* Máximo da altura da imagem */
    min-height: auto;      
    background-size:100%;
    background-repeat: no-repeat; 
+ }
+
  }
 
 .margin-login{
@@ -57,5 +59,12 @@
   margin-top: 670px;
 
 }
+
+/*.btn{
+  width: 350px;
+  border-radius: 6px;
+  margin-left: 80px;
+  margin-top: 250px;
+}*/
 
 
