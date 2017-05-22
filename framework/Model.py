@@ -107,7 +107,7 @@ class Model(Core):
 			.where(conditions = conditions, glue = ' OR '))
 		return self.run_query(query.get())
 
-	def find(self, conditions = '1', fields = [], start_from = 0, limit = 18446744073709551615, join = []):
+	def find(self, conditions = '1', fields = [], start_from = 0, limit = 18446744073709551615, join = [], order_by = 'created_at DESC'):
 		"""
 		find(): It finds records with the specified fields according the referred limits
 		"""
@@ -123,7 +123,7 @@ class Model(Core):
 			join_table = self.get_model(model_name).get_table_name()
 			query.join(table_name = join_table, conditions = [(reference if '.' in reference else "{}.{}".format(self.get_table_name(), reference), '=', '{}.{}'.format(join_table, 'id'))])
 
-		query.where(conditions = conditions, glue = ' AND ')
+		query.where(conditions = conditions, glue = ' AND ').orderBy(order_by)
 
 		#print(query.get())
 

@@ -98,22 +98,47 @@ CREATE TABLE Stores (
 INSERT INTO Stores (name, company_id) VALUES
 ('Uni_store', '1');
 
+CREATE TABLE Categories (
+	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	company_id INT(32) UNSIGNED NOT NULL,
+	name VARCHAR(128) NOT NULL,
+	description VARCHAR(256) NOT NULL,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE Products (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	company_id INT(32) UNSIGNED NOT NULL,
 	number INT(32) UNSIGNED NOT NULL, #associa com a loja? com o codigo do comerciante?
 	name VARCHAR(128) NOT NULL,
-	price DOUBLE UNSIGNED NOT NULL,
 	description VARCHAR(256) NOT NULL,
 	category VARCHAR(128) NOT NULL,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	FOREIGN KEY (company_id) REFERENCES Companies(id)
 );
 
+CREATE TABLE Product_Category (
+	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	product_id INT(32) UNSIGNED NOT NULL,
+	category_id INT(32) UNSIGNED NOT NULL,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	FOREIGN KEY (product_id) REFERENCES Products(id),
+	FOREIGN KEY (category_id) REFERENCES Categories(id)
+);
+
+CREATE TABLE Product_Prices (
+	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	product_id INT(32) UNSIGNED NOT NULL,
+	price DOUBLE UNSIGNED NOT NULL,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	FOREIGN KEY (product_id) REFERENCES Products(id)
+);
+
 CREATE TABLE Sales (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	consumer_id INT(32) UNSIGNED NOT NULL,
 	company_id INT(32) UNSIGNED NOT NULL,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	FOREIGN KEY (consumer_id) REFERENCES Consumers(id),
 	FOREIGN KEY (company_id) REFERENCES Companies(id)
 );
@@ -128,8 +153,11 @@ CREATE TABLE Sale_Product (
 	FOREIGN KEY (sale_id) REFERENCES Sales(id)
 );
 
-INSERT INTO Products (company_id, number, name, price, description, category) VALUES
-('1', '123', 'Pão Gostoso', '250', 'Gostoso', 'Alimentos');
+INSERT INTO Products (company_id, number, name, description, category) VALUES
+('1', '123', 'Pão Gostoso', 'Gostoso', 'Alimentos');
+
+INSERT INTO Product_Prices (product_id, price) VALUES
+('1', '65.50');
 
 CREATE TABLE Product_Store (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,

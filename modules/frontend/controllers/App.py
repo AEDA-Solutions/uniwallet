@@ -40,3 +40,8 @@ class App(std.Controller):
 
 	def produtos(self):
 		return self.prepare_static(self.get_html("listaempresa"))
+
+	def teste(self):
+		return self.prepare_static(self.get_html("testedados"))
+
+
