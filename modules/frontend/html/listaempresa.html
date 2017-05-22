@@ -56,83 +56,13 @@
 	</nav>
 </header>
 <body>
-      <table class="white highlight centered">
-        <thead>
-          <tr>
-              <th>Company</th>
-              <th>Product</th>
-          </tr>
-        </thead>
-
+      
 </div>
             
 <script src="{static}assets/admin/js/jquery.js"></script>
 
   <!-- Bootstrap Core JavaScript -->
   <script src="{static}assets/admin/js/bootstrap.min.js"></script>
-
-  <!-- Menu Toggle Script -->
-  <script>
-  $("#menu-toggle").click(function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
-  });
-  </script>
-<!-- Teste -->
-  <script>
-    $.getJSON("{static}assets/js/data.json", function(data){
-      var lista[];
-      $.each(data, function(key, val)){
-        // body...
-        lista.push("<tr>");
-        lista.push("<td id ='' "+key+"''>"+val.Company"</td>");
-        lista.push("<td id ='' "+key+"''>"+val.Product"</td>");
-        lista.push("</tr");
-      });
-    $('<tbody/>', {html: lista.join()}).appendto("table");    
-  });
-
-  </script>
-
-  <script src="{static}assets/js/uniwallet-backend-api.js"></script>
-
-  <script type="text/javascript">
-
-    var targets = {
-      'b_consumidores': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'consumer', 'method': 'GET', 'title': 'Consumidores'},
-      'b_empresas': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'company', 'method': 'GET', 'title': 'Empresas'},
-      'b_niveisacesso': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'accesslevel', 'method': 'GET', 'title': 'Níveis de Acesso'},
-      'b_sessoes': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'session', 'method': 'GET', 'title': 'Sessões'},
-      'b_lojas': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'store', 'method': 'GET', 'title': 'Loja'},
-      'b_product': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'product', 'method': 'GET', 'title': 'Produtos'}
-    }
-
-    
-
-    var botoes = document.getElementsByClassName('botao')
-    for (var i = 0; i < botoes.length; i++) {
-      botoes[i].addEventListener('click', function(event){
-        target = targets[this.id]
-        Request.send(target.parameters, target.entity + '/fetch', target.method, function(response){
-          console.log(response)
-          if (response.code == 200){
-            if (response.content.length > 0){
-              var fields = Object.keys(response.content[0])
-              var table = HTML_Factory.make_table(fields, {}, target.title)
-              Page.fill('maincontent', table)
-              HTML_Factory.make_datatable(fields, target.entity, target.parameters, target.method)
-            } else {
-              window.alert("Ué. :/ Acho q não tem nada aqui por enquanto.")
-            }
-          } else {
-            window.alert(response.content)
-          }
-
-        })
-      })
-    }
-
-  </script>
 
 </body>
 

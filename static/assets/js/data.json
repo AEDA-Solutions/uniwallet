@@ -1,7 +1,0 @@
-def showall(self):
-		lista = []
-		company_showall = self.model().find().fetch()
-		product_showall = self.get_model('Product').find().fetch()
-		for company in company_showall:
-			lista.append({'Company':company,'Products':self.get_model('Product').find([('company_id','=',company['id'])]).fetch()})
-		return (lista)
