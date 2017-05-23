@@ -45,5 +45,5 @@ class App(std.Controller):
 		return self.prepare_static(self.get_html("testedados"))
 
 	def produtos(self):
-		return self.prepare_static(self.get_html("listaeprodutos"))
+		return self.prepare_static(self.get_html("listaprodutos"))
 
