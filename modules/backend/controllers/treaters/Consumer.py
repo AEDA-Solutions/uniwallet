@@ -7,7 +7,6 @@ class Consumer(std.Treater):
 					"fullname": 	["required"],
 					"university": 	["required"],
 					"cpf":			["required", "cpf", "unique:cpf"],
-
 					"email": 		["required", "email", "unique:email:User"],
 					"password": 	["required", "maxlength:32", "minlength:8"]
 				},
