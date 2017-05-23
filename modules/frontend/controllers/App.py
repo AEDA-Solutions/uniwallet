@@ -38,10 +38,12 @@ class App(std.Controller):
 	def referencias(self):
 		return self.prepare_static(self.get_html("referencias").replace("{{tassila}}","Guilherme"))
 
-	def produtos(self):
+	def empresa(self):
 		return self.prepare_static(self.get_html("listaempresa"))
 
 	def teste(self):
 		return self.prepare_static(self.get_html("testedados"))
 
+	def produtos(self):
+		return self.prepare_static(self.get_html("listaeprodutos"))
 
