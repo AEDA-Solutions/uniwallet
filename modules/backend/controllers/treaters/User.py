@@ -40,3 +40,14 @@ class User(std.Treater):
 				"method": "get",
 				"auth": []
 			})
+
+	def changeselfpassword(self):
+		return self.rules({
+				"fields": {
+					"password": ["required", "maxlength:32", "minlength:8"]
+				},
+				"method": "post",
+				"auth": ["registered"]
+			})
+
+		

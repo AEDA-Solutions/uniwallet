@@ -6,6 +6,9 @@ body{
   background-size: cover;
   background-color: #37474f; 
 }
+h6{
+  
+}
 
 .header {
    width: 100%;
@@ -144,6 +147,7 @@ input[type="file"]{
   margin-bottom: 20px;
   margin-left: 140px;
   margin-top: 30px;
+
 }
 
 }
