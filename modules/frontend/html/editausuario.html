@@ -1,0 +1,125 @@
+
+
+<html>
+
+<head>
+         <meta charset="utf-8"> 
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>cadastro</title>
+
+	<!-- Referentes ao nav-bar -->
+	<link rel="stylesheet" href="{static}assets/css/materialize.css"> 
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+				<link rel="stylesheet" type="text/css" href="{static}assets/css/cadastro.css">
+				</link>
+
+				<link rel="stylesheet" type="text/css" href="{static}assets/css/font-awesome.css">
+
+				<link rel="shortcut icon" href="official.ico" type="image/x-icon" />
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+
+    <a href="inicial" class="brand-logo"><img src="{static}assets/images/uwtrans1.png" class="mini-logo1"></img></a>
+	
+	<div class="containercadastro">
+		<!-- <img src="{static}assets/images/uwlogo.gif"> -->
+		<form>
+			<div id="div_mensagem_retorno" style="font-size: 30px; color: red">
+
+			</div>
+
+
+			<div class="form-input">
+				<input class="input-form" type="password" name="password" size="30" minlength="6"  placeholder="Senha">
+			</div>
+
+			<div class="form-input">
+				<input class="input-form" type="password" size="30" minlength="6" placeholder="Confirme sua senha">
+			</div>
+		
+			<!-- FUNÇÃO NÃO ESTÁ FUNCIONANDO CORRETAMENTE, INDICA ERRO MESMO SEM ENVIAR FORMULÁRIO, INDICA ERRO AO CLICAR NA TELA, ALÉM DE ALTERAR OS ICONES
+
+			
+			<div class="form-input"> 
+				<form method="post" action="" onSubmit="return ( verifica() )" name="frmEnvia">
+				   <input class="input-form" type="text" name="email" placeholder="E-mail" onblur="checarEmail();">
+				</form>
+			</div>
+			-->
+
+
+			<!--<div class="form-input">
+				<input class="input-form" type="text" name="university" placeholder="Universidade">
+			</div>
+			-->
+
+			<!-- Foi retirado pois ocorreram mudanas nos direcionamentos das telas
+			<br>
+			<a href="empresa">Cadastre-se como empresa</a>
+		</form> -->
+		<button class="btn-login" id="botao_submit">Atualizar</button>
+	</div>
+
+<script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.2.0.min.js"> </script> 
+
+<script src="{static}assets/js/uniwallet-backend-api.js"></script>
+
+<script type="text/javascript">
+
+  //Adiciona um evento no botão de enviar dados
+  Page.listen("botao_submit", function(e){
+    e.preventDefault() //Impede a atualização da página
+    //Pega os dados inseridos nos campos de input
+    data = Page.get_input("input-form")
+
+    //Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
+    Request.send(data, "user/changeselfpassword", "POST", function(response){
+
+      if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
+        Page.redirect("inicial")
+      } else {
+        Page.fill("div_mensagem_retorno", response.content) //Insere a mensagem na div
+      }
+
+    })
+
+  })
+
+  Request.send('', "User/current", "GET", function(response){
+
+  if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
+    alert("veja ios logs")
+    console.log(response)
+  } else {
+    Page.fill("div_mensagem_retorno", response.content) //Insere a mensagem na div
+  }
+
+})
+
+</script>
+   <!-- Função para comparar conteúdo dos campos de e-mail.-->
+<script type="text/javascript" language="JavaScript">
+
+function checkEmail(theForm) {
+	if (theForm.email.value != theForm.emailconf.value)
+	{
+		alert('E-mails informados são diferentes!');
+		return false;
+	} else {
+		return true;
+	}
+}
+//-->
+</script> 
+
+</body>
+
+</html>
