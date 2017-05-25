@@ -140,6 +140,7 @@
             <div id="modal1" class="modal indigo lighten-2">
             <div class="modal-content blue-grey darken-3 white-text">
                 <h4>Cadastro de Produtos</h4>
+                <div id="div_mensagem_retorno"></div>
                 </div>
 
                 <div class = "row">
@@ -148,17 +149,21 @@
             <div></div>
 
             <div class="form-input">
-            <input class="input-form" type="text" name="fullname" placeholder="Nome do Produto">
+            <input class="input-form" type="text" name="name" placeholder="Nome do Produto">
             </div>
 
             <div class="form-input">
 
-              <input class="input-form" type="text" name="tipo" placeholder="Tipo">
+              <input class="input-form" type="text" name="category" placeholder="Tipo">
 
             </div>
+             <div class="form-input">
+            <input class="input-form" type="text" name="description" placeholder="Descrição marota">
+            </div>
+
 
             <div class="form-input">
-            <input class="input-form" type="text" name="valor" placeholder="Preco">
+            <input class="input-form" type="text" name="price" placeholder="Preco">
             </div>
 
             <div class="form-input">
@@ -224,10 +229,7 @@
 <script src="{static}assets/js/uniwallet-backend-api.js"></script>
 
 <script>
-  document.getElementById("botao-continuar").addEventListener("click", function(){
-    window.location = 'file:///home/aluno/Downloads/uniwallet-master/frontend/materialize/TeladeLogin.html';
-    //window.alert("fioajisdojafipo")
-  })
+  
     $(document).ready(function(){
       $('.parallax').parallax();
     });
@@ -253,7 +255,12 @@
     //Pega os dados inseridos nos campos de input
     data = Page.get_input("input-form")
     //Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
+<<<<<<< HEAD
+    Request.send(data, "product/register", "POST", function(response){
+
+=======
     Request.send(data, "product/register", "POST" function(response){
+>>>>>>> a104c380aa74d4cfa3464fa235295c86f52b107a
       if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
         Page.redirect("listaprodutos")
       } else {
