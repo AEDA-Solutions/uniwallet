@@ -57,7 +57,14 @@
 </header>
 <body>
 
-<div id = "lista">
+
+  <ul class="collapsible" data-collapsible="accordion">
+    <li>
+        <div id = "lista"></div> 
+    </li>
+    
+  </ul>
+        
 
 </div>
 
@@ -87,6 +94,13 @@ Request.send('', 'company/showall', 'POST', function(server_response){
 })
 
 </script>
+
+<script>
+  $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+</script>
+
 <!-- -->
 </body>
 
