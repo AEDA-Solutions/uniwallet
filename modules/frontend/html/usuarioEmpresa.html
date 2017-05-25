@@ -86,7 +86,7 @@
   <div class="menuprincipal">
     <div class="col s8 offset-s2">
     <div class="arruma">
-    <ul class="collapsible indigo lighten-4" data-collapsible="accordion">
+    <ul class="collapsible indigo lighten-5" data-collapsible="accordion"> 
       <li>
           <div class="collapsible-header"><i class="material-icons">trending_up</i>Extratos</div>
           <div class="collapsible-body"><span></span></div>
@@ -146,11 +146,23 @@
             </div>
 
             <div class="form-input">
+<<<<<<< HEAD
               <input class="input-form" type="text" name="tipo" placeholder="Tipo">
+=======
+              <input class="input-form" type="text" name="price" placeholder="Tipo">
+>>>>>>> 85cb7c591017d416c216dcf9fa83961e3e24e46a
             </div>
 
             <div class="form-input">
             <input class="input-form" type="text" name="valor" placeholder="Preco">
+            </div>
+
+            <div class="form-input">
+            <input class="input-form" type="text" name="number" size=30 minlength=6 maxlength=10 placeholder="Número">
+            </div>
+
+            <div class="form-input">
+            <input class="input-form" type="text" name="company_id" size=30 minlength=6 maxlength=10 placeholder="ID da Companhia">
             </div>
 
             <div class = "row">
@@ -208,6 +220,7 @@
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
 
+<script src="{static}assets/js/uniwallet-backend-api.js"></script>
 
 <script>
   document.getElementById("botao-continuar").addEventListener("click", function(){
@@ -227,18 +240,31 @@
 </script>
 
 <script>
-  
-  $(document).ready(function(){
-    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal();
-  });       
-
-</script>
-
-<script>
   $(document).ready(function(){
     $('.collapsible').collapsible();
   });
+</script>
+
+<script type="text/javascript">
+
+  //Adiciona um evento no botão de enviar dados
+  Page.listen("botao_submit", function(e){
+    e.preventDefault() //Impede a atualização da página
+    //Pega os dados inseridos nos campos de input
+    data = Page.get_input("input-form")
+
+    //Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
+    Request.send(data, "product/register", "POST" function(response){
+
+      if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
+        Page.redirect("listaprodutos")
+      } else {
+        Page.fill("div_mensagem_retorno", response.content) //Insere a mensagem na div
+      }
+
+    })
+  })
+
 </script>
 
 </body>

@@ -25,7 +25,7 @@
       				<div class = "barra N/A transparent">
       				<form>
         				<div class="input-field">
-          					<input id="search" type="search" required placeholder="O que está procurando?" >
+          					<input class="blue-grey darken-5 white-text" id="search" type="search" required placeholder="O que está procurando?" >
           					<label class="label-icon" for="search" ><i class="material-icons">search</i></label>
           					<i class="material-icons">close</i>
         				</div>
@@ -36,6 +36,11 @@
 	 				 <!--Para esconder o conteúdo da direita--> 
 	 				<div class = "informacoes">
       				<ul id="nav-mobile" class="right hide-on-med-and-down"> 
+
+                      <li><a href="informacoesusuario">
+                       <i class="material-icons left ">perm_identity</i>
+                       <span> Perfil</span>
+                       </a></li>
 
                        <li><a href="faleconosco">
                        <i class="material-icons left ">phone</i>
@@ -130,20 +135,40 @@
       		<div class="collapsible-header"><i class="material-icons">store</i>Loja Virtual</div>
       		<div class="collapsible-body"><span>
       			<div class="row">
-      			<div class="col s6"><input type="submit" name="submit" value="Alimentos" class="btn-conFace"></div>
-      			<div class="col s6"><input type="submit" name="submit" value="Outros" class="btn-conFace"></div>
-    			</div>
+            <li><a href= "listaempresas" >
+      			<div class="col s6"><input type="submit" name="submit"  value="Empresas" class="btn-conFace"></div>
+            </a></li>
+            <li><a href= "#" >
+      			<div class="col s6"><input type="submit" name="submit" value="Produtos" class="btn-conFace"></div>
+            </a></li>  			
+          </div>
       		</span></div>
     	</li>
     	<li>
-      		<div class="collapsible-header"><i class="material-icons">swap_vertical_circle</i>Converta seus Créditos</div>
-      		<div class="collapsible-body"><span>
-            
+          <div class="collapsible-header"><i class="material-icons">store</i>Converta seus Créditos</div>
+          <div class="collapsible-body"><span>
+            <div class="row">
+            <div class="col s6"><a class="btn-login1 blue-grey darken-3" href="#modal1">Adquira UniCoins</a>
+
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal indigo lighten-5">
+            <div class="modal-content blue-grey darken-3 white-text">
+                <h4>Conversor de Moedas</h4>
+                </div>
+            <div class="form-input">
+            <input class="input-form" type="text" name="fullname" size=30 minlenght=3 maxlength=50 placeholder="Insira seu Investimento">
+            </div>
+
+            <div class="form-input">
+              <input class="input-form" type="text" name="price" placeholder="Arrecadado">
+            </div>
+
+            <div class="col s6"><input type="submit" name="submit" value="Converter" class="btn-login2"></div>
+
           </span></div>
-    	</li>
-    	<li>
+      </li>
       		<div class="collapsible-header"><i class="material-icons">new_releases</i>Compras Pendentes</div>
-      		<div class="collapsible-body"><span>Voce deixou de retirar o item X na loja tal</span></div>
+      		<div class="collapsible-body"><span>Voce deixou de retirar o item X na loja tal</span></div> 
     	</li>
   		</ul>
   		</div>

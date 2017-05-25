@@ -8,7 +8,7 @@ class App(std.Controller):
 	def cadastro(self):
 		return self.prepare_static(self.get_html("cadastro"))
 
-	def empresa(self):
+	def cadastroempresa(self):
 		return self.prepare_static(self.get_html("cadastroEmpresa"))
 
 	def inicial(self):
@@ -19,6 +19,9 @@ class App(std.Controller):
 
 	def usuario(self):
 		return self.prepare_static(self.get_html("usuario"))
+
+	def usuarioempresa(self):
+		return self.prepare_static(self.get_html("usuarioEmpresa"))
 
 	def transaction(self):
 		return self.prepare_static(self.get_html("CreateTransaction"))
@@ -32,16 +35,9 @@ class App(std.Controller):
 	def sobre(self):
 		return self.prepare_static(self.get_html("sobre"))
 
-	def usuarioempresa(self):
-		return self.prepare_static(self.get_html("usuarioEmpresa"))
+	def listaempresas(self):
+		return self.prepare_static(self.get_html("listaempresas"))
 
-	def referencias(self):
-		return self.prepare_static(self.get_html("referencias").replace("{{tassila}}","Guilherme"))
-
-	def produtos(self):
-		return self.prepare_static(self.get_html("listaempresa"))
-
-	def teste(self):
-		return self.prepare_static(self.get_html("testedados"))
-
+	def listaprodutos(self):
+		return self.prepare_static(self.get_html("listaprodutos"))
 

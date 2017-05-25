@@ -45,5 +45,5 @@ class Company(std.Treater):
 		return self.rules({
 
 
-			"auth": []
+			#"auth": []
 			})

@@ -113,3 +113,39 @@ input[type="search"]{
   margin-top:-68px;  
 
 }
+
+input[type="text"]{
+  height: 45px;
+  width: 300px;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 13px;
+  margin-top: 17px;
+  background-color: #fff;
+  padding-left: 50px;
+
+}
+
+.btn-login1{
+  padding: 15px 30px;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 6px;
+  border: none;
+  background-color: #37474f ;
+  margin-bottom: 20px;
+  margin-left: 150px;
+}
+
+.btn-login2{
+  padding: 15px 30px;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 6px;
+  border: none;
+  background-color: #37474f ;
+  margin-bottom: 20px;
+  margin-left: 300px;
+  margin-top: 10px;
+}
