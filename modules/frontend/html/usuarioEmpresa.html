@@ -86,7 +86,7 @@
   <div class="menuprincipal">
     <div class="col s8 offset-s2">
     <div class="arruma">
-    <ul class="collapsible indigo lighten-5" data-collapsible="accordion"> 
+    <ul class="collapsible indigo lighten-2" data-collapsible="accordion"> 
       <li>
           <div class="collapsible-header"><i class="material-icons">trending_up</i>Extratos</div>
           <div class="collapsible-body"><span></span></div>
@@ -137,20 +137,28 @@
             <div class="col s6"><a class="btn-login1 blue-grey darken-3" href="#modal1">Cadastrar</a>
 
             <!-- Modal Structure -->
-            <div id="modal1" class="modal indigo lighten-5">
+            <div id="modal1" class="modal indigo lighten-2">
             <div class="modal-content blue-grey darken-3 white-text">
                 <h4>Cadastro de Produtos</h4>
                 </div>
+
+                <div class = "row">
+            <h6 font-size="1">Insira a imagem do produto abaixo:</h6>
+            <input type="file" accept=".jpg,.png,.jpeg"></input>
+            <div></div>
+
             <div class="form-input">
-            <input class="input-form" type="text" name="fullname" size=30 minlenght=3 maxlength=50 placeholder="Nome do Produto">
+            <input class="input-form" type="text" name="fullname" placeholder="Nome do Produto">
             </div>
 
             <div class="form-input">
-              <input class="input-form" type="text" name="price" placeholder="Tipo">
+
+              <input class="input-form" type="text" name="tipo" placeholder="Tipo">
+
             </div>
 
             <div class="form-input">
-            <input class="input-form" type="text" name="password" size=30 minlength=6 maxlength=10 placeholder="Preco">
+            <input class="input-form" type="text" name="valor" placeholder="Preco">
             </div>
 
             <div class="form-input">
@@ -161,9 +169,8 @@
             <input class="input-form" type="text" name="company_id" size=30 minlength=6 maxlength=10 placeholder="ID da Companhia">
             </div>
 
-            <div class = "row">
             <button class="btn-login" id="botao_submit">Cadastrar Produto</button>
-            <div><a href="empresa">Catálogo Completo</a></div>
+            <div><a href="">Catálogo Completo</a></div>
             <div class="modal-footer indigo lighten-5">
             <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Fechar</a>
             </div>
@@ -240,25 +247,20 @@
 </script>
 
 <script type="text/javascript">
-
   //Adiciona um evento no botão de enviar dados
   Page.listen("botao_submit", function(e){
     e.preventDefault() //Impede a atualização da página
     //Pega os dados inseridos nos campos de input
     data = Page.get_input("input-form")
-
     //Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
     Request.send(data, "product/register", "POST" function(response){
-
       if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
         Page.redirect("listaprodutos")
       } else {
         Page.fill("div_mensagem_retorno", response.content) //Insere a mensagem na div
       }
-
     })
   })
-
 </script>
 
 </body>

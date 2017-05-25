@@ -6,6 +6,9 @@ body{
   background-size: cover;
   background-color: #37474f; 
 }
+h6{
+  
+}
 
 .header {
    width: 100%;
@@ -132,6 +135,31 @@ input[type="text"]{
   background-color: #fff;
   padding-left: 50px;
 
+}
+input[type="file"]{
+  display: block;
+  padding: 15px 30px;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 6px;
+  border: none;
+  background-color: #37474f ;
+  margin-bottom: 20px;
+  margin-left: 140px;
+  margin-top: 30px;
+
+}
+
+}
+
+.btn-img{
+  padding: 5px 10px;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 6px;
+  border: none;
+  background-color: #37474f;
+ 
 }
 
 .btn-login{
