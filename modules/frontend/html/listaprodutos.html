@@ -4,7 +4,7 @@
 
 <head>  
       <meta charset="utf-8"> 
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"> 		 
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">     
       <title> UniWallet </title>  
       <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
@@ -13,29 +13,34 @@
 </head> 
 
 <header class="navbar">  
-	<nav class="N/A transparent"> 
-	 			   <!--Colocar todo o conteúdo do painel da nav-bar--> 
+  <nav class="N/A transparent"> 
+           <!--Colocar todo o conteúdo do painel da nav-bar--> 
         <div class="nav-wrapper container" > 
 
           <!--Logo--> 
-	 			  <a href="file:///C:/Users/rmora/Desktop/materialize/web%20pag/index1.html" class="brand-logo"><img src="{static}assets/images/oficial.png" class="circle left mini-logo"></img></a> 
-	 			  <div class="nav-wrapper">
+          <a href="file:///C:/Users/rmora/Desktop/materialize/web%20pag/index1.html" class="brand-logo"><img src="{static}assets/images/oficial.png" class="circle left mini-logo"></img></a> 
+          <div class="nav-wrapper">
 
-	 			  <div class="nav-wrapper">
-      				<div class = "barra N/A transparent">
-      				<form>
-        				<div class="input-field">
-          					<input id="search" type="search" required placeholder="O que está procurando?" >
-          					<label class="label-icon" for="search" ><i class="material-icons">search</i></label>
-          					<i class="material-icons">close</i>
-        				</div>
-      				</form>
-      				</div>
-    				</div>
+          <div class="nav-wrapper">
+              <div class = "barra N/A transparent">
+              <form>
+                <div class="input-field">
+                    <input class="blue-grey darken-5 white-text" id="search" type="search" required placeholder="O que está procurando?" >
+                    <label class="label-icon" for="search" ><i class="material-icons">search</i></label>
+                    <i class="material-icons">close</i>
+                </div>
+              </form>
+              </div>
+            </div>
       
-	 				 <!--Para esconder o conteúdo da direita--> 
-	 				<div class = "informacoes">
-      				<ul id="nav-mobile" class="right hide-on-med-and-down"> 
+           <!--Para esconder o conteúdo da direita--> 
+          <div class = "informacoes">
+              <ul id="nav-mobile" class="right hide-on-med-and-down"> 
+
+                      <li><a href="informacoesusuario">
+                       <i class="material-icons left ">perm_identity</i>
+                       <span> Perfil</span>
+                       </a></li>
 
                        <li><a href="faleconosco">
                        <i class="material-icons left ">phone</i>
@@ -50,49 +55,287 @@
                        </a></li>
                     </ul>
                     </div>
-                   	</div>
-      				</ul>
-	 			</div> 
-	</nav>
-</header>
+                    </div>
+              </ul>
+        </div> 
+  </nav>  
+ 
+</header> 
 <body>
 
-
-  <ul class="collapsible" data-collapsible="accordion">
-    <li>
-        <div id = "lista"></div> 
+<div class="row">
+<ul class="collection">
+    <li class="collection-item avatar">
+      <i class="material-icons circle">perm_identity</i>
+      <span class="title">Produtos</span>
+      <p> Última atualização 25/05/2017<br>
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
     </li>
-    
   </ul>
-        
-
 </div>
 
-<script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
-<script src="{static}assets/js/uniwallet-backend-api.js"></script>
 
-<script type="text/javascript">
-    
-Request.send('', 'company/showall', 'POST', function(server_response){
-  console.log(server_response)
 
-  var empresas = ""
+<div class="row">
+  <div class="menuprincipal">
+    <div class="col s8 offset-s2">
+    <div class="arruma">
+    <ul class="collapsible indigo lighten-5" data-collapsible="accordion">
+      <li>
+          <div class="collapsible-header"><i class="material-icons">store</i>Salgados</div>
+          <div class="collapsible-body"><span>
+        <table>
+        <thead>
+          <tr>
+              <th>Produto</th>
+              <th>Loja</th>
+              <th>Preço</th>
+          </tr>
+        </thead>
 
-  for (var i = 0; i < server_response.content.length; i++) {
-    var produtos = ""
+        <tbody>
+          <tr>
+            
+            <td>Salgados</td>
+            <td>Maria da Marmita</td>
+            <td>R$3.00</td>
+          </tr>
+          <tr>
+       
+            <td>Salgados</td>
+            <td>João do Pão</td>
+            <td>R$2.50</td>
+          </tr>
+          <tr>
+          
+            <td>Salgados</td>
+            <td>Renata Ingrata</td>
+            <td>R$2.50</td>
+          </tr>
+          <tr>
+            
+            <td>Salgados</td>
+            <td>Maria Juana</td>
+            <td>R$3.00</td>
+          </tr>
+        </tbody>
+      </table></span></div>
+      </li>
+      <li>
+          <div class="collapsible-header"><i class="material-icons">store</i>Marmita</div>
+          <div class="collapsible-body"><span>
+        <table>
+        <thead>
+          <tr>
+              <th>Produto</th>
+              <th>Loja</th>
+              <th>Preço</th>
+          </tr>
+        </thead>
 
-    for (var j = 0; j < server_response.content[i].Products.length; j++) {
-      produtos += HTML_Factory.make_tag('li', server_response.content[i].Products[j].name)
-    }
-    
-    var lista_produtos = HTML_Factory.make_tag('ul', produtos)
-    empresas += HTML_Factory.make_tag('li', server_response.content[i].Company.name + lista_produtos)
-  }
-  var lista_empresas = HTML_Factory.make_tag('ul', empresas)
+        <tbody>
+          <tr>
+            
+            <td>Marmita</td>
+            <td>Maria da Marmita</td>
+            <td>R$7.00</td>
+          </tr>
+          <tr>
+       
+            <td>Marmita</td>
+            <td>João do Pão</td>
+            <td>R$12.50</td>
+          </tr>
+          <tr>
+          
+            <td>Marmita</td>
+            <td>Renata Ingrata</td>
+            <td>R$10.00</td>
+          </tr>
+          <tr>
+          
+            <td>Marmita</td>
+            <td>Maria Juana</td>
+            <td>R$2.50</td>
+          </tr>
+
+        </tbody>
+      </table></span></div>
+      </li>
+
+
+      <li>
+          <div class="collapsible-header"><i class="material-icons">store</i>Café</div>
+          <div class="collapsible-body"><span>
+        <table>
+        <thead>
+          <tr>
+              <th>Produto</th>
+              <th>Loja</th>
+              <th>Preço</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            
+            <td>Pingado</td>
+            <td>Maria da Marmita</td>
+            <td>R$2.00</td>
+          </tr>
+          <tr>
+       
+            <td>Café Preto</td>
+            <td>João do Pão</td>
+            <td>R$1.00</td>
+          </tr>
+          <tr>
+          
+            <td>Cappuccino</td>
+            <td>Renata Ingrata</td>
+            <td>R$2.50</td>
+          </tr>
+          <tr>
+          
+            <td>Pingado</td>
+            <td>Maria Juana</td>
+            <td>R$2.50</td>
+          </tr>
+
+
+        </tbody>
+      </table></span></div>
+      </li>
+
+      <li>
+          <div class="collapsible-header"><i class="material-icons">store</i>Brigadeiro</div>
+          <div class="collapsible-body"><span>
+        <table>
+        <thead>
+          <tr>
+              <th>Produto</th>
+              <th>Loja</th>
+              <th>Preço</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            
+            <td>Brigadeiro</td>
+            <td>Maria da Marmita</td>
+            <td>R$3.00</td>
+          </tr>
+          <tr>
+       
+            <td>Brigadeiro</td>
+            <td>João do Pão</td>
+            <td>R$2.50</td>
+          </tr>
+          <tr>
+          
+            <td>Brigadeiro</td>
+            <td>Renata Ingrata</td>
+            <td>R$2.50</td>
+          </tr>
+          <tr>
+          
+            <td>Brigadeiro</td>
+            <td>Maria Juana</td>
+            <td>R$2.50</td>
+          </tr>
+
+        </tbody>
+      </table></span></div>
+      </li>
+
+      <li>
+          <div class="collapsible-header"><i class="material-icons">store</i>Converta seus Créditos</div>
+          <div class="collapsible-body"><span>
+            <div class="row">
+            <div class="col s6"><a class="btn-login1 blue-grey darken-3" href="#modal1">Adquira UniCoins</a>
+
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal indigo lighten-5">
+            <div class="modal-content blue-grey darken-3 white-text">
+                <h4>Conversor de Moedas</h4>
+                </div>
+            <div class="form-input">
+            <input class="input-form" type="text" name="fullname" size=30 minlenght=3 maxlength=50 placeholder="Insira seu Investimento">
+            </div>
+
+            <div class="form-input">
+              <input class="input-form" type="text" name="price" placeholder="Arrecadado">
+            </div>
+
+            <div class="col s6"><input type="submit" name="submit" value="Converter" class="btn-login2"></div>
+
+          </span></div>
+      </li>
+          <div class="collapsible-header"><i class="material-icons">new_releases</i>Compras Pendentes</div>
+          <div class="collapsible-body"><span>Voce deixou de retirar o item X na loja tal</span></div> 
+      </li>
+      </ul>
+      </div>
+      </div>
+      </div>
+    </div>
+</div>
+
+<footer class="page-footer blue-grey">
+    <div class="container">
+        <div class="row">
+        <div class="col l6 s12">
+            <h5 class="white-text">Saiba Mais</h5>
+            <p class="grey-text text-lighten-4"></p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Mais de UniWallet</h5>
+            <ul>
+                <li><a class="grey-text text-lighten-3" href="#!">Dúvidas Frequentes</a></li>
+                <li><a class="grey-text text-lighten-3" href="#!">Promoções Exclusivas</a></li>
+                <!--  <li><a class="grey-text text-lighten-3" href="TeladeCadastro.html">Cadastre-se</a></li> -->
+            </ul>
+        </div>
+        </div>
+        </div>
+        <div class="footer-copyright">
+        <div class="container">
+            © 2017 Copyright
+            <a class="grey-text text-lighten-4 right" href="#!">Equipe UniWallet</a>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+
+
+<script>
+  document.getElementById("botao-continuar").addEventListener("click", function(){
+    window.location = 'file:///home/aluno/Downloads/uniwallet-master/frontend/materialize/TeladeLogin.html';
+    //window.alert("fioajisdojafipo")
+  })
+    $(document).ready(function(){
+      $('.parallax').parallax();
+    });
+</script>
+
+<script>
+  $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+    });
+</script>
+
+<script>
   
-  document.getElementById("lista").innerHTML = lista_empresas
-})
-
+  $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });       
 </script>
 
 <script>
@@ -101,10 +344,6 @@ Request.send('', 'company/showall', 'POST', function(server_response){
   });
 </script>
 
-<!-- -->
 </body>
 
-</html>
-
-</body>
-</html>
+</html> 
