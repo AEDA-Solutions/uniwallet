@@ -4,15 +4,15 @@ class Product(std.Treater):
 	def register(self):
 		return self.rules({
 				"fields": {
-					"company_id": 	["required", "exists:id:Company"]
+					"company_id": 	["required", "exists:id:Company"],
 					"number": 		["required"],
 					"name": 		["required"],
 					"description":	["required"],
 					"category":		["required"],
-					
+					"price":	    ["required"],
 				},
 				"method": "post",
-				#"auth": ["manager", "client"]
+				#"auth": ["manager", "client"],
 			})
 
 	def update(self):
@@ -24,7 +24,7 @@ class Product(std.Treater):
 					"price":	 	["required"],
 					"company_id":	["required", "company_id", "unique:company_id"],
 					"description":	["required"],
-					"category":		["required"]
+					"category":		["required"],
 				},
 				"method": "post",
 			})
