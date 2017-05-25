@@ -246,25 +246,20 @@
 </script>
 
 <script type="text/javascript">
-
   //Adiciona um evento no botão de enviar dados
   Page.listen("botao_submit", function(e){
     e.preventDefault() //Impede a atualização da página
     //Pega os dados inseridos nos campos de input
     data = Page.get_input("input-form")
-
     //Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
     Request.send(data, "product/register", "POST" function(response){
-
       if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
         Page.redirect("listaprodutos")
       } else {
         Page.fill("div_mensagem_retorno", response.content) //Insere a mensagem na div
       }
-
     })
   })
-
 </script>
 
 </body>
