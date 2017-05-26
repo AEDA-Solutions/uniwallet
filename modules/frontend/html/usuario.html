@@ -59,9 +59,18 @@
               </ul>
         </div> 
   </nav>  
+<style>
+       #map {
+        height: 400px;
+        width: 50%;
+        margin-left:350px;
+       }
+    </style>
+
  
 </header> 
 <body>
+
 
 <div class="row">
 <ul class="collection">
@@ -132,16 +141,6 @@
       </table></span></div>
 
     	</li>
-    	<li>
-      		<div class="collapsible-header"><i class="material-icons">store</i>Loja Virtual</div>
-      		<div class="collapsible-body"><span>
-      			<div class="row">
-            
-      			<div class="col s6"><input type="submit" name="submit"  value="Empresas" class="btn-conFace"></div>
-      			<div class="col s6"><input type="submit" name="submit" value="Produtos" class="btn-conFace"></div>
-            			
-
-      </li>
       <li>
           <div class="collapsible-header"><i class="material-icons">store</i>Loja Virtual</div>
           <div class="collapsible-body"><span>
@@ -179,15 +178,19 @@
 
           </span></div>
       </li>
+      <li>
           <div class="collapsible-header"><i class="material-icons">new_releases</i>Compras Pendentes</div>
           <div class="collapsible-body"><span>Voce deixou de retirar o item X na loja tal</span></div> 
-      </li>
+      </li>           
       </ul>
       </div>
       </div>
       </div>
     </div>
 </div>
+
+<h5 align="middle" class="flow-text mar primeiro-h5">Encontre aqui a loja mais perto de você</h5>
+<div id="map"></div>
 
 <footer class="page-footer blue-grey">
     <div class="container">
@@ -241,6 +244,24 @@
     $('.collapsible').collapsible();
   });
 </script>
+
+<script>
+      function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbh9MITmHbr0XUipGytaIA0lRPo21flVM&callback=initMap">
+</script>
+
 
 </body>
 

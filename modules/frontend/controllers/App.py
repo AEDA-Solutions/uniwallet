@@ -44,6 +44,4 @@ class App(std.Controller):
 	def editausuario(self):
 		return self.prepare_static(self.get_html("editausuario"))
 
-	def testetabela(self):
-		return self.prepare_static(self.get_html("testetabela"))
 
