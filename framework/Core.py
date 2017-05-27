@@ -9,6 +9,7 @@ from framework.Response import Response
 from framework.Database import Database
 import importlib
 from helpers import general, dictionary
+import html
 import os
 
 class Core():
@@ -23,13 +24,34 @@ class Core():
 
 	def get_request_parameters(self):
 		"""
-		get_request_parameters(): It returns the request parameters
+		get_request_parameters(): It returns the request parameters in safe mode
+		"""
+		parameters = []
+		for key, value in self.request.get_inputs_from_method().items():
+			if isinstance(value, str):
+				parameters.append(tuple([html.escape(key), html.escape(value)]))
+			else:
+				parameters.append(tuple([html.escape(key), value]))
+		return dict(parameters)
+
+	def get_raw_request_parameters(self):
+		"""
+		get_raw_request_parameters(): It returns the request parameters
 		"""
 		return self.request.get_inputs_from_method()
 
 	def get_input(self, field):
 		"""
-		get_input(): It gets a request paramenter
+		get_input(): It gets a request paramenter in safe mode
+		"""
+		if isinstance(self.request.get_input(field), str):
+			return html.escape(self.request.get_input(field))
+		else:
+			return self.request.get_input(field)
+
+	def get_raw_input(self, field):
+		"""
+		get_raw_input(): It gets a request paramenter
 		"""
 		return self.request.get_input(field)
 
