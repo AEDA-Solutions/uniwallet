@@ -170,7 +170,7 @@ function HTML_Factory(){
 				value = ""
 			form_fields += this.get_snippet()['form-field'].replace('{{label}}', fields[i]).replace('{{type}}', 'text').replace('{{name}}', fields[i]).replace('{{value}}', value)
 		}
-		var form = this.make_tag('form', form_fields)
+		var form = this.get_snippet()['form'].replace('{{fields}}', form_fields)
 		return form
 	}
 
@@ -186,9 +186,18 @@ function HTML_Factory(){
 			'form-field': '<div class="form-group">' +
 								'<label>{{label}}</label>' +
 								'<input type="{{type}}" class="form-control" name={{name}} value={{value}}>' +
-							'</div>'
+							'</div>',
+			'form': '<table>' +
+						'{{fields}}' +
+						'<div class="btn-group">' +
+							'<a href="#" class="btn btn-primary">Salvar</a>' +
+							'<a href="#" class="btn btn-default">Cancelar</a>' +
+						'</div>' +
+					'</table>'
 		}
 	}
+
+
 
 	this.make_tag = function(tag_name, content){
 		return ('<' + tag_name + '>' + content + '</' + tag_name + '>')

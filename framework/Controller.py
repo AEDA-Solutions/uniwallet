@@ -41,14 +41,13 @@ class Controller(Core):
 		if message:
 			return message 
 
-	def model(self, data = None):
+	def view(self, name = None, raw = True):
 		"""
-		get_model(): It returns a instance a of a correspondent model
+		view(): It returns a instance a of a model. If name is None the it will call the view with the current controller's name
 		"""
-		return self.get_model(self.__class__.__name__, data = data)
-
-	"""def make_conditions(self, dict, conditional_sign = '='):
-		return dictionary.tuplefy(dict, conditional_sign)"""
+		if raw:
+			self.response_body_directly()
+		return self.view(name = self.__class__.__name__ if name is None else name)
 
 	def update(self):
 		return "Done: {} rows affected".format(self.model().update(fields = self.get_request_parameters()).count_rows())

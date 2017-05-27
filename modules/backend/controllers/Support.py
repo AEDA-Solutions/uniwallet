@@ -8,8 +8,5 @@ class Support(std.Controller):
 		send(fromemail = "suporte.uniwallet@gmail.com", toemail = "suporte.uniwallet@gmail.com", passw = "Uni123456", content = messagem)
 		return messagem
 
-	def foo(self):
-		return "Ok"
-
 	def baz(self):
-		return self.get_model('Session').get_logged_user()
+		return self.view('General').format("Hello")

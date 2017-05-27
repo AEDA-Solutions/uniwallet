@@ -78,17 +78,23 @@ class Core():
 		"""
 		return dictionary.tuplefy(dict, operator)
 
-	def get_controller(self, name):
+	def controller(self, name = None):
 		"""
-		get_controller(): It returns a controller instance from the current module
+		controller(): It returns a controller instance from the current module
 		"""
-		return self.get_class("controllers", name)(request = self.request)
+		return self.get_class("controllers", self.__class__.__name__ if name is None else name)(request = self.request)
 
-	def get_model(self, name, data = None):
+	def model(self, name = None, data = None):
 		"""
-		get_model(): It returns a model instance from the current module
+		model(): It returns a model instance from the current module
 		"""
-		return self.get_class("models", name)(request = self.request, data = data)
+		return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+
+	def view(self, name = None):
+		"""
+		view(): It returns a view instance from the current module
+		"""
+		return self.get_class("views", self.__class__.__name__ if name is None else name)(request = self.request)
 
 
 
