@@ -9,7 +9,7 @@ class Product(std.Controller):
 
 	def fetch(self):
 		return (self.model().find(join=[('Company', 'company_id')], start_from = self.get_input('start'), limit = self.get_input('limit'))
-			.fetch(fields_mask = [('company_name', 'empresa'), ('name', 'nome'), ('description', 'descrição'), ('id', 'identificador')]))
+			.fetch(fields_mask = [('name', 'Nome'), ('price', 'Preço'), ('company_name', 'Empresa'), ('description', 'Descrição')]))
 
 
 

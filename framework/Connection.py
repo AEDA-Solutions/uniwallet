@@ -19,10 +19,12 @@ class Connection:
 		"""
 		unescape_record(): It unescapes escaped records
 		"""
-		for item in dict_record:
-			if isinstance(dict_record[item], str):
-				dict_record[item] = html.unescape(dict_record[item])
-		return dict_record
+		if dict_record is not None:
+			for item in dict_record:
+				if isinstance(dict_record[item], str):
+					dict_record[item] = html.unescape(dict_record[item])
+			return dict_record
+		return None
 
 	def fetch(self, fields = [], fields_to_ignore = [], close_connection = True, fields_mask = []):
 		"""
