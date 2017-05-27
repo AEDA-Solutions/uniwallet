@@ -161,6 +161,19 @@ function HTML_Factory(){
 		return this.get_snippet()['table'].replace('{{thead}}', thead).replace('{{tbody}}', tbody).replace('{{title}}', title)
 	}
 
+	this.make_form = function(fields, data){
+		form_fields = ""
+		for (var i = 0; i < fields.length; i++) {
+			if (data[fields[i]])
+				value = data[fields[i]]
+			else
+				value = ""
+			form_fields += this.get_snippet()['form-field'].replace('{{label}}', fields[i]).replace('{{type}}', 'text').replace('{{name}}', fields[i]).replace('{{value}}', value)
+		}
+		var form = this.make_tag('form', form_fields)
+		return form
+	}
+
 	this.get_snippet = function(id = "tablecrud"){
 		return {
 			'table':'<div class="table-responsive">' +
@@ -169,7 +182,11 @@ function HTML_Factory(){
 						'{{thead}}' +
 						'{{tbody}}' +
 						'</table>' +
-					'</div>'
+					'</div>',
+			'form-field': '<div class="form-group">' +
+								'<label>{{label}}</label>' +
+								'<input type="{{type}}" class="form-control" name={{name}} value={{value}}>' +
+							'</div>'
 		}
 	}
 
@@ -180,11 +197,14 @@ function HTML_Factory(){
 	this.make_datatable = function(columns, resource_name, data, method){
 
 		console.log(columns, resource_name, data, method)
-		create = function(){
-			alert("modal de criação aqui")
+		create = function(e, dt, button, config){
+			Page.fill('mainform', HTML_Factory.make_form(columns, {}))
 		}
-		edit = function(){
-			alert("modal de edição aqui")
+		edit = function(e, dt, button, config){
+			//alert("modal de edição aqui")
+			var data = dt.rows({ selected: true }).data()
+			console.log(data[0])
+			Page.fill('mainform', HTML_Factory.make_form(columns, data[0]))
 		}
 		del = function(e, dt, button, config){
 
