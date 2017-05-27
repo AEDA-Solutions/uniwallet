@@ -26,7 +26,7 @@ class Connection:
 			return dict_record
 		return None
 
-	def fetch(self, fields = [], fields_to_ignore = [], close_connection = True, fields_mask = []):
+	def fetch(self, fields = [], fields_to_ignore = [], close_connection = True, fields_mask = [], aliases = []):
 		"""
 		fetch(): It returns a list of dict from the got data
 		"""
@@ -38,12 +38,14 @@ class Connection:
 				data = dictionary.select(data, fields)
 			if len(fields_mask) > 0:
 				data = dictionary.mask(data, fields_mask)
+			if len(aliases) > 0:
+				data = dictionary.alias(data, aliases)
 			records.append(self.unescape_record(data))
 		if close_connection:
 			self.close()
 		return records
 
-	def fetchone(self, fields = [], fields_to_ignore = [], close_connection = True, fields_mask = []):
+	def fetchone(self, fields = [], fields_to_ignore = [], close_connection = True, fields_mask = [], aliases = []):
 		"""
 		fetchone(): It returns a single record from the DB
 		"""
@@ -55,6 +57,8 @@ class Connection:
 				record = dictionary.select(record, fields)
 			if len(fields_mask) > 0:
 				record = dictionary.mask(record, fields_mask)
+			if len(aliases) > 0:
+				record = dictionary.alias(record, aliases)
 		if close_connection:
 			self.close()
 		return self.unescape_record(record)

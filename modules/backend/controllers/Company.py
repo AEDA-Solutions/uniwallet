@@ -22,6 +22,8 @@ class Company(std.Controller):
 							
 
 	def fetch(self):
-		return self.model().find(join = [('User', 'user_id')], start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['user_password', 'created_at', 'user_created_at'])
+		fields_to_ignore = ['user_password', 'created_at', 'user_created_at', 'user_id', 'user_name']
+		aliases = [('user_email', 'email'), ('user_name', 'user_name')]
+		return self.model().find(join = [('User', 'user_id')], start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = fields_to_ignore, aliases = aliases)
 
 

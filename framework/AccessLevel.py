@@ -15,7 +15,7 @@ class AccessLevel(std.Model):
 	
 	def get_user_credentials(self, user_id):
 		user_accesslevels = self.model(name = 'User_AccessLevel').find(join = [('AccessLevel', 'accesslevel_id'), ('User', 'User_AccessLevel.user_id')], conditions = [('User_AccessLevel.user_id', '=', user_id)])
-		user_credentials = self.make_name_list(user_accesslevels.fetch(fields_mask = [('accesslevel_name', 'name')]))
+		user_credentials = self.make_name_list(user_accesslevels.fetch())
 		return user_credentials
 
 	def user_has(self, user_id, credential_list):

@@ -14,5 +14,3 @@ class Consumer(std.Controller):
 
 	def fetch(self):
 		return self.model().find(join = [('User', 'user_id')], start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['user_password', 'created_at', 'user_created_at', 'user_id'])
-
-

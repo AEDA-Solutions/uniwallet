@@ -19,5 +19,5 @@ class Sale(std.Controller):
 							
 
 	def fetch(self):
-		return self.model(name = 'Sale_Product').find(join = [('Product', 'product_id'), ('Company', 'Products.company_id'), ('Sale', 'sale_id'), ('Consumer', 'Sales.consumer_id')]).fetch(fields_mask = [('consumer_fullname', 'mané quue comprou'), ('company_name', 'Capitalista opressor patriarcal'), ('product_name', 'Fruto do capitalismo')])
+		return self.model(name = 'Sale_Product').find(join = [('Product', 'product_id'), ('Company', 'Products.company_id'), ('Sale', 'sale_id'), ('Consumer', 'Sales.consumer_id')]).fetch()
 		
