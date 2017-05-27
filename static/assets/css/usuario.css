@@ -133,7 +133,7 @@ input[type="text"]{
   color: #fff;
   border-radius: 6px;
   border: none;
-  background-color: #37474f ;
+  background-color: #607d8b;
   margin-bottom: 20px;
   margin-left: 150px;
 }
@@ -144,8 +144,15 @@ input[type="text"]{
   color: #fff;
   border-radius: 6px;
   border: none;
-  background-color: #37474f ;
+  background-color: #607d8b;
   margin-bottom: 20px;
   margin-left: 300px;
   margin-top: 10px;
+}
+
+.h5{
+  font-weight: 400px; 
+  color: white;
+  font-family: Courier; 
+  margin-top: 40px;
 }

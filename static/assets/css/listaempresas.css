@@ -1,7 +1,7 @@
 body{
 
   margin: 0 auto; 
-  background-image: url("../images/sky5.jpg"); 
+  background-image: url("../images/listaempresas.jpg"); 
   background-repeat: no-repeat; 
   background-size: cover; 
 }
@@ -45,4 +45,17 @@ body{
 	font-family: "Times New Roman", Times, serif;
 	font-size: 150%;
  
+}
+
+.arruma{
+  width:860px; 
+    height: 200px; 
+    text-align: center; 
+    border-radius: 15px;  
+    margin-left: 5px;
+    margin-top: 25px; 
+}
+
+.page-footer{
+  margin-top: 500px;
 }

@@ -57,6 +57,27 @@
 </header> 
 <body>
 
+<div class="row">
+  <div class="menuprincipal">
+    <div class="col s8 offset-s2">
+    <div class="arruma">
+<ul class=" collapsible popout white" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+      <div class="collapsible-body"><span>
+
+      <div id="lista">
+  
+</div>
+
+      </span></div>
+    </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
 <footer class="page-footer blue-grey">
     <div class="container">
         <div class="row">
@@ -81,10 +102,6 @@
         </div>
     </div>
 </footer>
-
-<div id = "lista">
-
-</div>
 
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
 <script src="{static}assets/js/uniwallet-backend-api.js"></script>
@@ -113,6 +130,19 @@ Request.send('', 'company/showall', 'POST', function(server_response){
 })
 
 </script>
+
+<script>
+  $('.collapsible').collapsible({
+    accordion: false, // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    onOpen: function(el) { alert('Open'); }, // Callback for Collapsible open
+    onClose: function(el) { alert('Closed'); } // Callback for Collapsible close
+  });
+</script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+
 
 </body>
 
