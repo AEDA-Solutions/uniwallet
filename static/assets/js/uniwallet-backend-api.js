@@ -36,12 +36,13 @@ function Auth(){
 }
 
 function Request(domain = "http://localhost:8000", module_name = "api"){
-	this.send = function(data, route, method, callback){
-		$.ajax({
+	this.send = function(data, route, method, callback, async = true){
+		return $.ajax({
 			type: method,
 			url: domain + "/" + module_name  + "/" + route,
 			data: (method == "POST") ? JSON.stringify(data) : data,
 			success: callback,
+			async: async,
 			cache: false,
 			beforeSend: function(xhr) {
 				if (Auth.Token.exists()){
@@ -186,17 +187,6 @@ function HTML_Factory(){
 		return this.get_snippet()['table'].replace('{{thead}}', thead).replace('{{tbody}}', tbody).replace('{{title}}', title)
 	}
 
-	//Catch from https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
-	this.makeid = function(){
-		var text = "";
-		var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-		for( var i=0; i < 5; i++ )
-			text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-		return text;
-	}
-
 	this.make_form = function(fields, data){
 		var form_fields = ""
 		for (var i = 0; i < fields.length; i++) {
@@ -208,9 +198,8 @@ function HTML_Factory(){
 			alias = HTML_Factory.parse_field(fields[i]).alias
 			name = HTML_Factory.parse_field(fields[i]).name
 			if (resource_name){
-				//form_fields += HTML_Factory.make_ajax_select(alias, name, resource_name)
-				var id = this.makeid()
-				form_fields += this.get_snippet()['select'].replace("{{label}}", alias).replace("{{name}}", name).replace("{{id}}", id)
+				options = HTML_Factory.make_ajax_options(resource_name)
+				form_fields += this.get_snippet()['select'].replace("{{label}}", alias).replace("{{name}}", name).replace("{{options}}", options)
 			} else
 				form_fields += this.get_snippet()['form-field'].replace('{{label}}', alias).replace('{{type}}', 'text').replace('{{name}}', name).replace('{{value}}', value)
 		}
@@ -218,17 +207,14 @@ function HTML_Factory(){
 		return form
 	}
 
-	this.make_ajax_select = function(label, name, resource_name, container_id){
-		Request.send('', resource_name + "/select", 'GET', function(response){
-			if(response.code == 200){
-				records = response.content
-				options = ""
-				for (var i = 0; i < records.length; i++) {
-					options += HTML_Factory.make_tag('option', records[i].content, {'value': records[i].value})
-				}
-				document.getElementById(container_id).innerHTML = options
-			}
-		})
+	this.make_ajax_options = function(resource_name){
+		var response = Request.send('', resource_name + "/select", 'GET', function(){}, false)
+		records = response.responseJSON.content
+		options = ""
+		for (var i = 0; i < records.length; i++) {
+			options += HTML_Factory.make_tag('option', records[i].content, {'value': records[i].value})
+		}
+		return options
 	}
 
 	this.get_snippet = function(id = "tablecrud"){
@@ -253,7 +239,8 @@ function HTML_Factory(){
 					'</table>',	
 			'select': '<div class="form-group">' +
 						'<label>{{label}}</label>' +
-						'<select class="form-control" name="{{name}}" id={{id}}>' +
+						'<select class="form-control" name="{{name}}">' +
+						'{{options}}' +
 						'</select>' +
 					'</div>'
 		}
