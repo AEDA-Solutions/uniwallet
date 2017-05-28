@@ -268,6 +268,20 @@ class Treater(std.Controller):
 				"auth": ["registered"]
 			})
 
+	def fetchadmin(self):
+		"""
+		fetchadmin(): It implements a default validator for the fetch request
+		"""
+		return self.rules({
+				"fields": {
+					"start": 	["required", "integer:unsigned"],
+					"limit": 	["required", "integer:unsigned"],
+					"_":		["optional"]
+				},
+				"method": "get",
+				"auth": ["registered"]
+			})
+
 	def delete(self):
 		"""
 		destroy(): It implements a default validator for the destroy request

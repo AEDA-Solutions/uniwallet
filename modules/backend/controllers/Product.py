@@ -8,6 +8,10 @@ class Product(std.Controller):
 		return "Done: Store {} created successfully".format(product_id)
 
 	def fetch(self):
-		mask = self.metadata([('number', 'Número'), ('price', 'Preço'), ('company_id', 'Empresa:Company'), ('company_name', 'Empresa::noneditable')])
+		return (self.model().find(join=[('Company', 'company_id')], start_from = self.get_input('start'), limit = self.get_input('limit'))
+			.fetch())
+
+	def fetchadmin(self):
+		mask = self.metadata([('id', 'id'), ('name', ':Nome'), ('description', ':Descrição'), ('category', ':Categoria'), ('number', ':Número'), ('price', ':Preço'), ('company_id', ':Empresa:Company'), ('company_name', ':Empresa::noneditable')])
 		return (self.model().find(join=[('Company', 'company_id')], start_from = self.get_input('start'), limit = self.get_input('limit'))
 			.fetch(fields_mask = mask))

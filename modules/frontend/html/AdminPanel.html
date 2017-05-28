@@ -88,6 +88,7 @@
 							É necessário estar autenticado para acessar os dados dessa área.<br /><br /><br />
 
 						</div>
+						<br>
 						<div id="mainform">
 							
 						</div>
@@ -147,7 +148,7 @@
 			botoes[i].addEventListener('click', function(event){
 				Page.fill('mainform', '')
 				target = targets[this.id]
-				Request.send(target.parameters, target.entity + '/fetch', target.method, function(response){
+				Request.send(target.parameters, target.entity + '/fetchadmin', target.method, function(response){
 					console.log(response)
 					if (response.code == 200){
 						if (response.content.length > 0){

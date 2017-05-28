@@ -55,11 +55,11 @@ function Request(domain = "http://localhost:8000", module_name = "api"){
 }
 
 function Page(){
-	this.get_input = function(class_name){
+	this.get_input = function(class_name, ignore = []){
 		var inputs = document.getElementsByClassName(class_name)
 		var input_dict = {}
 		for (var i = 0; i < inputs.length; i++) {
-			if (inputs[i].name) {
+			if ((inputs[i].name) && (ignore.indexOf(inputs[i].name) == -1)) {
 				input_dict[inputs[i].name] = inputs[i].value
 			}
 		}
@@ -96,7 +96,7 @@ function HTML_Factory(){
 			var table = $(table_id).DataTable( {
 				lengthChange: false,
 				ajax: {
-					url: "/api/" + resource_name + "/fetch",
+					url: "/api/" + resource_name + "/fetchadmin",
 					data: data_to_send,
 					dataFilter: function(data){
 						var json = jQuery.parseJSON( data );
@@ -197,8 +197,11 @@ function HTML_Factory(){
 			resource_name = HTML_Factory.parse_field(fields[i]).resource_name
 			alias = HTML_Factory.parse_field(fields[i]).alias
 			name = HTML_Factory.parse_field(fields[i]).name
+			if (name == 'id'){
+				form_fields += this.get_snippet()['hidden-input'].replace("{{value}}", data[fields[i]]).replace("{{name}}", 'id')
+			} else
 			if (resource_name){
-				options = HTML_Factory.make_ajax_options(resource_name)
+				options = HTML_Factory.make_ajax_options(resource_name, data[fields[i]])
 				form_fields += this.get_snippet()['select'].replace("{{label}}", alias).replace("{{name}}", name).replace("{{options}}", options)
 			} else
 				form_fields += this.get_snippet()['form-field'].replace('{{label}}', alias).replace('{{type}}', 'text').replace('{{name}}', name).replace('{{value}}', value)
@@ -207,14 +210,18 @@ function HTML_Factory(){
 		return form
 	}
 
-	this.make_ajax_options = function(resource_name){
+	this.make_ajax_options = function(resource_name, first_elem){
 		var response = Request.send('', resource_name + "/select", 'GET', function(){}, false)
 		records = response.responseJSON.content
 		options = ""
+		first_option = ""
 		for (var i = 0; i < records.length; i++) {
-			options += HTML_Factory.make_tag('option', records[i].content, {'value': records[i].value})
+			if (String(records[i].value) == String(first_elem))
+				first_option = HTML_Factory.make_tag('option', records[i].content, {'value': records[i].value})
+			else
+				options += HTML_Factory.make_tag('option', records[i].content, {'value': records[i].value})
 		}
-		return options
+		return first_option + options
 	}
 
 	this.get_snippet = function(id = "tablecrud"){
@@ -228,21 +235,22 @@ function HTML_Factory(){
 					'</div>',
 			'form-field': '<div class="form-group">' +
 								'<label>{{label}}</label>' +
-								'<input type="{{type}}" class="form-control" name={{name}} value={{value}}>' +
+								'<input type="{{type}}" class="form-control crud" name={{name}} value={{value}}>' +
 							'</div>',
 			'form': '<table>' +
 						'{{fields}}' +
 						'<div class="btn-group">' +
-							'<a href="#" class="btn btn-primary">Salvar</a>' +
-							'<a href="#" class="btn btn-default">Cancelar</a>' +
+							'<a href="#" class="btn btn-primary" id="save-button">Salvar</a>' +
+							'<a href="#" class="btn btn-default" id="cancel-button">Cancelar</a>' +
 						'</div>' +
 					'</table>',	
 			'select': '<div class="form-group">' +
 						'<label>{{label}}</label>' +
-						'<select class="form-control" name="{{name}}">' +
+						'<select class="form-control crud" name="{{name}}">' +
 						'{{options}}' +
 						'</select>' +
-					'</div>'
+					'</div>',
+			'hidden-input': '<input type="hidden" class="crud" value="{{value}}" name="{{name}}"></input>'
 		}
 	}
 
@@ -257,15 +265,35 @@ function HTML_Factory(){
 	}
 
 	this.make_datatable = function(columns, resource_name, data, method){
-		console.log(columns, resource_name, data, method)
 		create = function(e, dt, button, config){
 			Page.fill('mainform', HTML_Factory.make_form(HTML_Factory.get_editable_fields(columns), {}))
+			document.getElementById("save-button").addEventListener("click", function(){
+				var datafields = Page.get_input("crud", ['id'])
+				Request.send(datafields, resource_name + "/register", "POST", function(response){
+					console.log(response)
+					if (response.code == 200){
+						Page.fill('mainform', '')
+						dt.ajax.reload();
+					} else {
+						alert(response.content)
+					}
+				})
+			})
 		}
 		edit = function(e, dt, button, config){
-			//alert("modal de edição aqui")
 			var data = dt.rows({ selected: true }).data()
-			console.log(data[0])
 			Page.fill('mainform', HTML_Factory.make_form(HTML_Factory.get_editable_fields(columns), data[0]))
+			document.getElementById("save-button").addEventListener("click", function(){
+				var datafields = Page.get_input("crud")
+				Request.send(datafields, resource_name + "/update", "POST", function(response){
+					if (response.code == 200){
+						Page.fill('mainform', '')
+						dt.ajax.reload();
+					} else {
+						alert(response.content)
+					}
+				})
+			})
 		}
 		del = function(e, dt, button, config){
 
