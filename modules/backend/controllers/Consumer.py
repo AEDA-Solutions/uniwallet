@@ -13,7 +13,11 @@ class Consumer(std.Controller):
 		return "Done: Consumer {} created with 'registered' and 'consumer' access level".format(user_id)
 
 	def update(self):
-		pass
+		consumer = self.model().load(self.get_input('id'))
+		user = self.model(name = 'User').load(consumer.user_id)
+		user.fill({'name': self.get_input('fullname'), 'email': self.get_input('email')}).save().close()
+		rows = consumer.fill(self.get_request_parameters()).save().count_rows()
+		return "Done: {} rows affected".format(rows)
 
 	def fetch(self):
 		return self.model().find(join = [('User', 'user_id')], start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['user_password', 'created_at', 'user_created_at', 'user_id'])
