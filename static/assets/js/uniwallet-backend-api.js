@@ -35,7 +35,6 @@ function Auth(){
 	this.Token = new Token()
 }
 
-
 function Request(domain = "http://localhost:8000", module_name = "api"){
 	this.send = function(data, route, method, callback){
 		$.ajax({
@@ -53,8 +52,6 @@ function Request(domain = "http://localhost:8000", module_name = "api"){
 		})
 	}
 }
-
-
 
 function Page(){
 	this.get_input = function(class_name){
@@ -81,12 +78,17 @@ function Page(){
 	}
 }
 
+
 function HTML_Factory(){
 
-	Data_Table = function(table_id, columns, resource_name, data, method = "GET"){
+	Data_Table = function(table_id, columns, resource_name, data_to_send, method = "GET"){
 		table_columns = []
 		for (var i = 0; i < columns.length; i++) {
-			table_columns[i] = { "data": columns[i] }
+			table_columns[i] = { 
+				"title": HTML_Factory.parse_field(columns[i]).alias,
+				"data": HTML_Factory.parse_field(columns[i]).entire,
+				"visible": !(HTML_Factory.parse_field(columns[i]).hide)
+			}
 		}
 		console.log(table_columns)
 		this.make = function(func_new, func_edit, func_delete){
@@ -94,7 +96,7 @@ function HTML_Factory(){
 				lengthChange: false,
 				ajax: {
 					url: "/api/" + resource_name + "/fetch",
-					data: data,
+					data: data_to_send,
 					dataFilter: function(data){
 						var json = jQuery.parseJSON( data );
 						json.recordsTotal = json.content.length;
@@ -139,6 +141,29 @@ function HTML_Factory(){
 		}
 	}
 
+	this.get_editable_fields = function(fields){
+		filtered = []
+		for (var i = 0; i < fields.length; i++) {
+			if (this.parse_field(fields[i]).editable)
+				filtered.push(fields[i])
+		}
+		return filtered
+	}
+
+	this.parse_field = function(field){	
+		pieces = field.split(':')
+		name = pieces[0]
+		alias = pieces.length > 1 &&  pieces[1].length > 0 ? pieces[1] : name;
+		resource_name = pieces.length > 2 && pieces[2].length > 0 ? pieces[2] : null;
+		return {
+			entire: field,
+			name: name,
+			alias: alias,
+			editable: (pieces.indexOf('noneditable') == -1),
+			resource_name: resource_name,
+			hide: (resource_name != null)
+		}
+	}
 
 	this.make_table = function(fields, data, title){
 		ths = ''
@@ -161,17 +186,49 @@ function HTML_Factory(){
 		return this.get_snippet()['table'].replace('{{thead}}', thead).replace('{{tbody}}', tbody).replace('{{title}}', title)
 	}
 
+	//Catch from https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
+	this.makeid = function(){
+		var text = "";
+		var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+		for( var i=0; i < 5; i++ )
+			text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+		return text;
+	}
+
 	this.make_form = function(fields, data){
-		form_fields = ""
+		var form_fields = ""
 		for (var i = 0; i < fields.length; i++) {
 			if (data[fields[i]])
 				value = data[fields[i]]
 			else
-				value = ""
-			form_fields += this.get_snippet()['form-field'].replace('{{label}}', fields[i]).replace('{{type}}', 'text').replace('{{name}}', fields[i]).replace('{{value}}', value)
+				value = ''
+			resource_name = HTML_Factory.parse_field(fields[i]).resource_name
+			alias = HTML_Factory.parse_field(fields[i]).alias
+			name = HTML_Factory.parse_field(fields[i]).name
+			if (resource_name){
+				//form_fields += HTML_Factory.make_ajax_select(alias, name, resource_name)
+				var id = this.makeid()
+				form_fields += this.get_snippet()['select'].replace("{{label}}", alias).replace("{{name}}", name).replace("{{id}}", id)
+			} else
+				form_fields += this.get_snippet()['form-field'].replace('{{label}}', alias).replace('{{type}}', 'text').replace('{{name}}', name).replace('{{value}}', value)
 		}
 		var form = this.get_snippet()['form'].replace('{{fields}}', form_fields)
 		return form
+	}
+
+	this.make_ajax_select = function(label, name, resource_name, container_id){
+		Request.send('', resource_name + "/select", 'GET', function(response){
+			if(response.code == 200){
+				records = response.content
+				options = ""
+				for (var i = 0; i < records.length; i++) {
+					options += HTML_Factory.make_tag('option', records[i].content, {'value': records[i].value})
+				}
+				document.getElementById(container_id).innerHTML = options
+			}
+		})
 	}
 
 	this.get_snippet = function(id = "tablecrud"){
@@ -193,27 +250,35 @@ function HTML_Factory(){
 							'<a href="#" class="btn btn-primary">Salvar</a>' +
 							'<a href="#" class="btn btn-default">Cancelar</a>' +
 						'</div>' +
-					'</table>'
+					'</table>',	
+			'select': '<div class="form-group">' +
+						'<label>{{label}}</label>' +
+						'<select class="form-control" name="{{name}}" id={{id}}>' +
+						'</select>' +
+					'</div>'
 		}
 	}
 
-
-
-	this.make_tag = function(tag_name, content){
-		return ('<' + tag_name + '>' + content + '</' + tag_name + '>')
+	this.make_tag = function(tag_name, content, meta){
+		metaitems = []
+		if(meta){
+			for (var key in meta) {
+				metaitems.push(key + "=" + '"' + meta[key] + '"')
+			}
+		}
+		return ('<' + tag_name + ' ' + metaitems.join(' ') + '>' + content + '</' + tag_name + '>')
 	}
 
 	this.make_datatable = function(columns, resource_name, data, method){
-
 		console.log(columns, resource_name, data, method)
 		create = function(e, dt, button, config){
-			Page.fill('mainform', HTML_Factory.make_form(columns, {}))
+			Page.fill('mainform', HTML_Factory.make_form(HTML_Factory.get_editable_fields(columns), {}))
 		}
 		edit = function(e, dt, button, config){
 			//alert("modal de edição aqui")
 			var data = dt.rows({ selected: true }).data()
 			console.log(data[0])
-			Page.fill('mainform', HTML_Factory.make_form(columns, data[0]))
+			Page.fill('mainform', HTML_Factory.make_form(HTML_Factory.get_editable_fields(columns), data[0]))
 		}
 		del = function(e, dt, button, config){
 

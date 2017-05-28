@@ -26,4 +26,5 @@ class Company(std.Controller):
 		aliases = [('user_email', 'email'), ('user_name', 'user_name')]
 		return self.model().find(join = [('User', 'user_id')], start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = fields_to_ignore, aliases = aliases)
 
-
+	def select(self):
+		return self.model().find().fetch(fields_mask = [('id', 'value'), ('name', 'content')])
