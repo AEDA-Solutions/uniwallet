@@ -43,7 +43,7 @@
                        </a></li>
 
 
-                       <li><a class="margin-login" href ="inicial">
+                       <li><a id="logout" class="margin-login" href ="#">
                        <i class="material-icons left ">input</i>
 
                        <span> Sair</span>
@@ -62,9 +62,9 @@
 <ul class="collection">
     <li class="collection-item avatar">
       <i class="material-icons circle">perm_identity</i>
-      <span class="title">Cliente</span>
-      <p> Último Acesso<br>
-      </p>
+      <!--Aqui fica o nome da empresa -->
+      <span id="nomeempresa" class="title">Cliente</span>
+      <p> Último Acesso<br></p>
       <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
     </li>
   </ul>
@@ -163,11 +163,11 @@
 
 
             <div class="form-input">
-            <input class="input-form" type="text" name="price" placeholder="Preco">
+            <input class="input-form" type="text" name="price" placeholder="Preço">
             </div>
 
             <div class="form-input">
-            <input class="input-form" type="text" name="number" size=30 minlength=6 maxlength=10 placeholder="Número">
+            <input class="input-form" type="text" name="number" size=30 minlength=6 maxlength=10 placeholder="Quantidade">
             </div>
 
             <div class="form-input">
@@ -210,7 +210,7 @@
             <ul>
                 <li><a class="grey-text text-lighten-3" href="#!">Dúvidas Frequentes</a></li>
                 <li><a class="grey-text text-lighten-3" href="#!">Promoções Exclusivas</a></li>
-                <!--  <li><a class="grey-text text-lighten-3" href="TeladeCadastro.html">Cadastre-se</a></li> -->
+                
             </ul>
         </div>
         </div>
@@ -223,50 +223,65 @@
     </div>
 </footer>
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<!-- Compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-<script src="{static}assets/js/uniwallet-backend-api.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
 
-<script>
-  
-    $(document).ready(function(){
-      $('.parallax').parallax();
-    });
-</script>
+  <!--Banco de funções de JS criadas pelo back-end -->
+  <script src="{static}assets/js/uniwallet-backend-api.js"></script>
 
-<script>
-  $(document).ready(function(){
-    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal();
-    });
-</script>
+  <script>
+    
+      $(document).ready(function(){
+        $('.parallax').parallax();
+      });
 
-<script>
-  $(document).ready(function(){
-    $('.collapsible').collapsible();
-  });
-</script>
+//Para deslogar da tela
+    document.getElementById("logout").addEventListener("click",function(){
+     Auth.signOut()
+     Page.redirect("inicial") 
+})
 
-<script type="text/javascript">
-  //Adiciona um evento no botão de enviar dados
-  Page.listen("botao_submit", function(e){
-    e.preventDefault() //Impede a atualização da página
-    //Pega os dados inseridos nos campos de input
-    data = Page.get_input("input-form")
-    //Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
-
-    Request.send(data, "product/register", "POST", function(response){
-
-      if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
-        Page.redirect("listaprodutos")
-      } else {
-        Page.fill("div_mensagem_retorno", response.content) //Insere a mensagem na div
-      }
+//Mostrar o nome que está logado
+    Request.send('', 'company/current', 'POST', function(server_response){
+    console.log(server_response)
+    document.getElementById("nomeempresa").innerHTML = server_response.content.name
     })
-  })
-</script>
+
+  </script>
+
+  <script> 
+    $(document).ready(function(){
+      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+      $('.modal').modal();
+      });
+  </script>
+
+  <script>
+    $(document).ready(function(){
+      $('.collapsible').collapsible();
+    });
+  </script>
+
+  <script type="text/javascript">
+    //Adiciona um evento no botão de enviar dados
+    Page.listen("botao_submit", function(e){
+      e.preventDefault() //Impede a atualização da página
+      //Pega os dados inseridos nos campos de input
+      data = Page.get_input("input-form")
+      //Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
+
+      Request.send(data, "product/register", "POST", function(response){
+
+        if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
+          Page.redirect("listaprodutos")
+        } else {
+          Page.fill("div_mensagem_retorno", response.content) //Insere a mensagem na div
+        }
+      })
+    }) 
+  </script>
 
 
 </body>
