@@ -113,6 +113,7 @@ CREATE TABLE Products (
 	name VARCHAR(128) NOT NULL,
 	description VARCHAR(256) NOT NULL,
 	category VARCHAR(128) NOT NULL,
+	price DOUBLE UNSIGNED NOT NULL,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	FOREIGN KEY (company_id) REFERENCES Companies(id)
 );
@@ -153,8 +154,8 @@ CREATE TABLE Sale_Product (
 	FOREIGN KEY (sale_id) REFERENCES Sales(id)
 );
 
-INSERT INTO Products (company_id, number, name, description, category) VALUES
-('1', '123', 'Pão Gostoso', 'Gostoso', 'Alimentos');
+INSERT INTO Products (company_id, number, name, price, description, category) VALUES
+('1', '123', 'Pão Gostoso', '75.50', 'Gostoso', 'Alimentos');
 
 INSERT INTO Product_Prices (product_id, price) VALUES
 ('1', '65.50');
@@ -168,4 +169,3 @@ CREATE TABLE Product_Store (
 	FOREIGN KEY (store_id) REFERENCES Stores(id),
 	UNIQUE (product_id, store_id)
 );
-

@@ -1,4 +1,5 @@
 from helpers import dictionary
+import html
 """
 Just Models use that class
 """
@@ -14,7 +15,18 @@ class Connection:
 		self.cursor.close()
 		self.connection.close()
 
-	def fetch(self, fields = [], fields_to_ignore = [], close_connection = True, fields_mask = []):
+	def unescape_record(self, dict_record):
+		"""
+		unescape_record(): It unescapes escaped records
+		"""
+		if dict_record is not None:
+			for item in dict_record:
+				if isinstance(dict_record[item], str):
+					dict_record[item] = html.unescape(dict_record[item])
+			return dict_record
+		return None
+
+	def fetch(self, fields = [], fields_to_ignore = [], close_connection = True, fields_mask = [], aliases = []):
 		"""
 		fetch(): It returns a list of dict from the got data
 		"""
@@ -26,12 +38,14 @@ class Connection:
 				data = dictionary.select(data, fields)
 			if len(fields_mask) > 0:
 				data = dictionary.mask(data, fields_mask)
-			records.append(data)
+			if len(aliases) > 0:
+				data = dictionary.alias(data, aliases)
+			records.append(self.unescape_record(data))
 		if close_connection:
 			self.close()
 		return records
 
-	def fetchone(self, fields = [], fields_to_ignore = [], close_connection = True, fields_mask = []):
+	def fetchone(self, fields = [], fields_to_ignore = [], close_connection = True, fields_mask = [], aliases = []):
 		"""
 		fetchone(): It returns a single record from the DB
 		"""
@@ -43,9 +57,11 @@ class Connection:
 				record = dictionary.select(record, fields)
 			if len(fields_mask) > 0:
 				record = dictionary.mask(record, fields_mask)
+			if len(aliases) > 0:
+				record = dictionary.alias(record, aliases)
 		if close_connection:
 			self.close()
-		return record
+		return self.unescape_record(record)
 
 	def get_cursor_attr(self, attr_name, close_connection):
 		"""

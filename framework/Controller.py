@@ -41,14 +41,27 @@ class Controller(Core):
 		if message:
 			return message 
 
-	def model(self, data = None):
+	def view(self, name = None, raw = True):
 		"""
-		get_model(): It returns a instance a of a correspondent model
+		view(): It returns a instance a of a model. If name is None the it will call the view with the current controller's name
 		"""
-		return self.get_model(self.__class__.__name__, data = data)
+		if raw:
+			self.response_body_directly()
+		return self.view(name = self.__class__.__name__ if name is None else name)
 
-	"""def make_conditions(self, dict, conditional_sign = '='):
-		return dictionary.tuplefy(dict, conditional_sign)"""
+	def metadata(self, tuple_list):
+		"""
+		field(): It stringifies the dict attr
+		"""
+		fields = []
+		for item in tuple_list:
+			pieces = item[1].split(':')
+			if len(pieces[0]) > 0:
+				label = item[1]
+			else:
+				label = "{}{}".format(item[0], item[1])
+			fields.append(tuple([item[0], "{}".format(label)]))
+		return fields
 
 	def update(self):
 		return "Done: {} rows affected".format(self.model().update(fields = self.get_request_parameters()).count_rows())

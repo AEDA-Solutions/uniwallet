@@ -18,7 +18,7 @@ class Session(std.Model):
 	def get_user(self):
 		current_session = self.get_current()
 		if current_session is not None:
-			return self.get_model('User').find([('id', '=', current_session['user_id'])]).fetchone(fields_to_ignore = ['password'])
+			return self.model(name = 'User').find([('id', '=', current_session['user_id'])]).fetchone(fields_to_ignore = ['password'])
 		else:
 			return None
 

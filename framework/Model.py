@@ -53,6 +53,16 @@ class Model(Core):
 			else:
 				raise Exception("Error calling model '{}'. Attribute '{}' is missing on the passed data.".format(self.__class__.__name__, attr))
 
+	
+	def fill(self, data):
+		"""
+		fill(): It fills the current object with the passed data dictionary
+		"""
+		for item in data:
+			if item != 'id' and item in self.attributes:
+				setattr(self, item, data[item])
+		return self
+
 	def run_query(self, query, data = None):
 		"""
 		run_standard_query(): It executes scripts placed on framework/db/scripts 
@@ -72,8 +82,12 @@ class Model(Core):
 
 		return connection
 
-	def load(self):
-		pass
+	def load(self, id):
+		"""
+		load(): It returns a filled object from the id
+		"""
+		data = self.find(conditions = [('id', '=', id)]).fetchone()
+		return self.model(data = data)
 
 	def update(self, fields = None, table_name = None):
 		"""
@@ -113,14 +127,14 @@ class Model(Core):
 		"""
 		raw_fields = []
 		for model_name, reference in join:
-			raw_fields += list("{} AS {}_{}".format(field if '.' in field else '{}.{}'.format(self.get_model(model_name).get_table_name(), field), model_name.lower(), field) for field in self.get_model(model_name).get_fields())
+			raw_fields += list("{} AS {}_{}".format(field if '.' in field else '{}.{}'.format(self.model(name = model_name).get_table_name(), field), model_name.lower(), field) for field in self.model(name = model_name).get_fields())
 		
 		query = (self.build_query()
 			.table(self.get_table_name())
 			.select(fields = fields if len(fields) > 0 else self.get_fields(), raw_fields = raw_fields, start = start_from, limit = limit))
 
 		for model_name, reference in join:
-			join_table = self.get_model(model_name).get_table_name()
+			join_table = self.model(name = model_name).get_table_name()
 			query.join(table_name = join_table, conditions = [(reference if '.' in reference else "{}.{}".format(self.get_table_name(), reference), '=', '{}.{}'.format(join_table, 'id'))])
 
 		query.where(conditions = conditions, glue = ' AND ').orderBy(order_by)

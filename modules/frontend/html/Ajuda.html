@@ -38,6 +38,6 @@ console.log(server_response)
     empresas += HTML_Factory.make_tag('li', server_response.content[i].Company.name + lista_produtos)
   }
 
-  var lista_empresas = HTML_Factory.make_tag('ul', empresas)
+  var lista_empresas = HTML_Factory.make_tag('ul', empresas) 
   
   document.getElementById("moises").innerHTML = lista_empresas

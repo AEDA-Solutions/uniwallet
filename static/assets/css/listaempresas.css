@@ -52,6 +52,10 @@ body{
     height: 200px; 
     text-align: center; 
     border-radius: 15px;  
-    margin-left: -155px;
+    margin-left: 5px;
     margin-top: 25px; 
+}
+
+.page-footer{
+  margin-top: 500px;
 }

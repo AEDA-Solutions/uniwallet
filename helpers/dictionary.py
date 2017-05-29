@@ -27,6 +27,19 @@ def mask(dictionary, tuple_list_fields):
 			filtered.append(tuple([mask, dictionary[key]]))
 	return dict(filtered)
 
+def alias(dictionary, tuple_list_fields):
+	"""
+	alias(): It give aliases to the dict keys
+	"""
+	filtered = []
+	aliases = dict(tuple_list_fields)
+	for key, value in dictionary.items():
+		if key in aliases:
+			filtered.append(tuple([aliases[key], value]))
+		else:
+			filtered.append(tuple([key, value]))
+	return dict(filtered)
+
 def implode(dictionary, separator, glue=', ', key_prefix='', value_prefix=''):
 	"""
 	implode(): It brings together the dict elements into a string and it separates each element with 'glue' attribute

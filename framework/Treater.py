@@ -27,7 +27,7 @@ class Treater(std.Controller):
 		"""
 		check_authorization(): It checks if the user is allowed to access the resource
 		"""	
-		if self.get_model('AccessLevel').user_has(user_id = user_id, credential_list = credential_list):
+		if self.model(name = 'AccessLevel').user_has(user_id = user_id, credential_list = credential_list):
 			self.request.user_id = user_id
 		else:
 			return self.forbid("You got access fuckin' denied (1)")
@@ -38,7 +38,7 @@ class Treater(std.Controller):
 		"""
 		if len(auth):
 			if self.request.authorization.exists:
-				user = self.get_model('Session').get_current()
+				user = self.model(name = 'Session').get_current()
 				if user is not None:
 					return self.check_authorization(user['user_id'], auth)
 				else:
@@ -210,7 +210,7 @@ class Treater(std.Controller):
 		"""
 		if len(meta.params) >= 1:
 			for pos, content in enumerate(meta.content):
-				model = self.get_model(self.__class__.__name__ if len(meta.params) == 1 else meta.params[1])
+				model = self.model(name = self.__class__.__name__ if len(meta.params) == 1 else meta.params[1])
 				connection = model.find([(meta.params[0], '=', content)])
 				count = connection.cursor.rowcount
 				connection.close()
@@ -226,7 +226,7 @@ class Treater(std.Controller):
 		if len(meta.params) >= 1:
 			data = dictionary.access_nested_elem_from_list(self.get_request_parameters(), meta.data_path)
 			for pos, content in enumerate(meta.content):
-				model = self.get_model(self.__class__.__name__ if len(meta.params) == 1 else meta.params[1])
+				model = self.model(name = self.__class__.__name__ if len(meta.params) == 1 else meta.params[1])
 				connection = model.find([(meta.params[0], '=', content)] + ([('id', '<>', data['id'])] if 'id' in data else []))
 				count = connection.cursor.rowcount
 				connection.close()
@@ -257,6 +257,20 @@ class Treater(std.Controller):
 	def fetch(self):
 		"""
 		fetch(): It implements a default validator for the fetch request
+		"""
+		return self.rules({
+				"fields": {
+					"start": 	["required", "integer:unsigned"],
+					"limit": 	["required", "integer:unsigned"],
+					"_":		["optional"]
+				},
+				"method": "get",
+				"auth": ["registered"]
+			})
+
+	def fetchadmin(self):
+		"""
+		fetchadmin(): It implements a default validator for the fetch request
 		"""
 		return self.rules({
 				"fields": {
