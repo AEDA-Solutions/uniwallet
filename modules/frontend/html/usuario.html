@@ -171,12 +171,7 @@
 						<div class="form-input">
 						<input class="input-form" type="text" name="price" placeholder="Arrecadado">
 						</div>
-
-<<<<<<< HEAD
-<h5 align="middle" class="flow-text mar primeiro-h5">Encontre aqui a loja mais perto de você</h5>
-<div id="mapa" style="height: 500px; width: 700px">
-</div>
-=======
+						
 						<div class="col s6"><input type="submit" name="submit" value="Converter" class="btn-login2"></div>
 
 			</span></div>
@@ -193,8 +188,8 @@
  </div>
 </div>
 						<h5 align="middle" class="flow-text mar primeiro-h5">Encontre aqui a loja mais perto de você</h5>
-						<div id="map"></div>
->>>>>>> d4a58f5eeff6277b5dba0af35b27f0c9836087d5
+						<div id="map" style="height: 500px; width: 700px">
+						</div>
 
 <footer class="page-footer blue-grey">
 	<div class="container">
@@ -228,11 +223,6 @@
 
 	<!--Banco de funções de JS criadas pelo back-end -->
 	<script src="{static}assets/js/uniwallet-backend-api.js"></script>
-
-    <!-- Script para o mapa do google -->
-	<script async defer
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbh9MITmHbr0XUipGytaIA0lRPo21flVM&callback=initMap">
-	</script>
 
 	<script>
 		document.getElementById("botao-continuar").addEventListener("click", function(){
@@ -273,63 +263,11 @@ document.getElementById("nomeusuario").innerHTML = server_response.content.name
 </script>
 				
  <!-- Maps API Javascript -->
- <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9-lANVlX8cM8dQdXRuku4u9-ktyH_bNA&callback=initMap">
-        	
-        </script>
+<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbh9MITmHbr0XUipGytaIA0lRPo21flVM&callback=initMap">
+	</script>
  <!-- Arquivo de inicialização do mapa -->
-        <script src="{static}assets/js/mapa.js"></script>
-=======
-	Request.send('', 'user/current', 'POST', function(server_response){
-	console.log(server_response)
-	document.getElementById("nomeusuario").innerHTML = server_response.content.name
-		})
-
-//Mapa de localização das empresas
-	  function initMap() {
-		var uluru = {lat: -15.767867, lng: -47.865731};
-		var map = new google.maps.Map(document.getElementById('map'), {
-				zoom: 16,
-				center: uluru
-				});
-		var marker = new google.maps.Marker({
-				position: uluru,
-				map: map
-						});
-				}
-	</script>
-
-	<script>
-		var marcadores = [];
-		var criaMarcador = function(marcador, mapa) {
-		var posicao = new google.maps.LatLng(marcador.latitude, marcador.longitude);
-		var opcoes = {
-		  position: posicao
-		  title: marcador.titulo
-		  animation: google.maps.Animation.DROP
-		  icon:{
-			url: marcador.imagem || 'http://i.imgur.com/eNAvIvr.png'
-			scaledSize: new google.maps.Size(50, 50)
-				}
-		  map: mapa
-			}
-		var novoMarcador = new google.maps.Marker(opcoes);
-			marcadores.push(novoMarcador);
-			map.setCenter(novoMarcador.position)
-			}
-	</script>
-
-	<script>
-		function adiciona(){
-		  var marcador = {
-		      latitude: -15.764227
-		      longitude: -47.870437	
-		      titulo: 'Novo marcador'
-		  }
-		  	criaMarcador(marcador, map);
-		}
-	</script>
->>>>>>> d4a58f5eeff6277b5dba0af35b27f0c9836087d5
+        <script src="{static}assets/js/map.js"></script>
 
 </body>
 </html> 

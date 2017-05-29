@@ -16,7 +16,7 @@ initialize();
 
 function carregarPontos() {
  
-    $.getJSON('js/pontos.json', function(pontos) {
+    $.getJSON('{static}assets/js/pontos.json', function(pontos) {
  
         $.each(pontos, function(index, ponto) {
  
