@@ -32,7 +32,7 @@
       				</form>
       				</div>
     				</div>
-      
+       
 	 				 <!--Para esconder o conteúdo da direita--> 
 	 				<div class = "informacoes">
       				<ul id="nav-mobile" class="right hide-on-med-and-down"> 
@@ -60,19 +60,8 @@
 <div class="row">
   <div class="menuprincipal">
     <div class="col s8 offset-s2">
-    <div class="arruma">
-<ul class=" collapsible popout white" data-collapsible="accordion">
-    <li>
-      <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-      <div class="collapsible-body"><span>
+    <div id="asempresasvaoaqui" class="arruma">
 
-      <div id="lista">
-  
-</div>
-
-      </span></div>
-    </li>
-</ul>
 </div>
 </div>
 </div>
@@ -107,28 +96,32 @@
 <script src="{static}assets/js/uniwallet-backend-api.js"></script>
 
 <script type="text/javascript">
-    
+    function Collap(){
+      var tassila = '<ul class=" collapsible popout white" data-collapsible="accordion">'+
+    '<li>'+
+      '<div class="collapsible-header"><i class="material-icons">filter_drama</i>{{Compania}}</div>'+
+      '<div class="collapsible-body"><span>'+
+        '{{Produtos}}'+
+      '</span></div>'+
+    '</li>'+
+'</ul>';
+return tassila
+    }
+
 Request.send('', 'company/showall', 'POST', function(server_response){
-  console.log(server_response)
-
-  var empresas = ""
-
+  var collapsis = ""
   for (var i = 0; i < server_response.content.length; i++) {
     var produtos = ""
-
-    for (var j = 0; j < server_response.content[i].Products.length; j++) {
-      produtos += HTML_Factory.make_tag('li', server_response.content[i].Products[j].name)
-    }
-    
-    var lista_produtos = HTML_Factory.make_tag('ul', produtos)
-    empresas += HTML_Factory.make_tag('li', server_response.content[i].Company.name + lista_produtos)
+    var registros = server_response.content[i]
+        for (var j = 0; j < registros.Products.length; j++) {
+          var produto = registros.Products[j]
+      produtos += produto.name + "<br>"
+      }
+  collapsis += Collap().replace("{{Compania}}",registros.Company.name).replace("{{Produtos}}",produtos)
   }
-
-  var lista_empresas = HTML_Factory.make_tag('ul', empresas)
-  
-  document.getElementById("lista").innerHTML = lista_empresas
+  document.getElementById("asempresasvaoaqui").innerHTML = collapsis
 })
-
+ 
 </script>
 
 <script>
