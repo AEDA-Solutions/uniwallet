@@ -10,3 +10,13 @@ class Wallet(std.Treater):
 				"method": "get",
 				#"auth": ["manager", "client"]
 			})
+
+	def check(self):
+		return self.rules({
+				"fields": {
+					"value": 	["required"],
+					
+				},
+				"method": "get",
+				#"auth": ["manager", "client"]
+			})

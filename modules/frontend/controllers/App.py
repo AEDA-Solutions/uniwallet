@@ -47,3 +47,6 @@ class App(std.Controller):
 	def xuxu(self):
 		return self.prepare_static(self.get_html("Ajuda"))
 
+	def teste(self):
+		return self.prepare_static(self.get_html("Teste"))
+

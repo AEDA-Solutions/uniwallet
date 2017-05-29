@@ -169,3 +169,13 @@ CREATE TABLE Product_Store (
 	FOREIGN KEY (store_id) REFERENCES Stores(id),
 	UNIQUE (product_id, store_id)
 );
+
+CREATE TABLE Transactions (
+	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	destiny INT(32) UNSIGNED NOT NULL,
+	operation VARCHAR(32) NOT NULL,
+	value INT(32),
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	FOREIGN KEY (consumer_id) REFERENCES Consumers(id),
+	FOREIGN KEY (company_id) REFERENCES Companies(id)
+);
