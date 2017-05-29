@@ -37,34 +37,34 @@
 										<div class = "informacoes">
 														<ul id="nav-mobile" class="right hide-on-med-and-down"> 
 
-																						<li><a href="informacoesusuario">
-																							<i class="material-icons left ">perm_identity</i>
-																							<span> Perfil</span>
-																							</a></li>
+		<li><a href="informacoesusuario">
+			<i class="material-icons left ">perm_identity</i>
+			<span> Perfil</span>
+			</a></li>
 
-																							<li><a href="faleconosco">
-																							<i class="material-icons left ">phone</i>
-																							<span> Fale Conosco</span>
-																							</a></li>
+			<li><a href="faleconosco">
+			<i class="material-icons left ">phone</i>
+			<span> Fale Conosco</span>
+			</a></li>
 
 
-																							<li><a class="margin-login" href ="inicial">
-																							<i class="material-icons left ">input</i>
+			<li><a id="logout" class="margin-login" href ="#">
+			<i class="material-icons left ">input</i>
 
-																							<span> Sair</span>
-																							</a></li>
-																				</ul>
+			<span> Sair</span>
+			</a></li>
+</ul>
 																				</div>
 																				</div>
 														</ul>
 								</div> 
 		</nav>  
 <style>
-							#map {
-								height: 400px;
-								width: 50%;
-								margin-left:350px;
-							}
+	#map {
+		height: 400px;
+		width: 50%;
+		margin-left:350px;
+	}
 				</style>
 
 	
@@ -76,7 +76,7 @@
 <ul class="collection">
 				<li class="collection-item avatar">
 						<i class="material-icons circle">perm_identity</i>
-						<span class="title">Cliente</span>
+						<span id="nomeusuario" class="title">Cliente</span>
 						<p> Último Acesso<br>
 						</p>
 						<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
@@ -87,11 +87,11 @@
 
 <div class="row">
 <div class="botao-sup">
-												<div class="col s6"><input type="submit" name="submit" value="Saldo" class="btn-conFace"></div>
+	<div class="col s6"><input type="submit" name="submit" value="Saldo" class="btn-conFace"></div>
 </div>
 </div>
 <div class="botao-sup1">
-												<div class="col s6"><input type="submit" name="submit" value="Espaço do Empreendedor" class="btn-conFace"></div>
+		<div class="col s6"><input type="submit" name="submit" value="Espaço do Empreendedor" class="btn-conFace"></div>
 </div>
 </div>
 
@@ -193,28 +193,28 @@
 <div id="map"></div>
 
 <footer class="page-footer blue-grey">
-				<div class="container">
-								<div class="row">
-								<div class="col l6 s12">
-												<h5 class="white-text">Saiba Mais</h5>
-												<p class="grey-text text-lighten-4"></p>
-								</div>
-								<div class="col l4 offset-l2 s12">
-												<h5 class="white-text">Mais de UniWallet</h5>
-												<ul>
-																<li><a class="grey-text text-lighten-3" href="#!">Dúvidas Frequentes</a></li>
-																<li><a class="grey-text text-lighten-3" href="#!">Promoções Exclusivas</a></li>
-																<!--  <li><a class="grey-text text-lighten-3" href="TeladeCadastro.html">Cadastre-se</a></li> -->
-												</ul>
-								</div>
-								</div>
-								</div>
-								<div class="footer-copyright">
-								<div class="container">
-												© 2017 Copyright
-												<a class="grey-text text-lighten-4 right" href="#!">Equipe UniWallet</a>
-								</div>
-				</div>
+<div class="container">
+<div class="row">
+<div class="col l6 s12">
+				<h5 class="white-text">Saiba Mais</h5>
+				<p class="grey-text text-lighten-4"></p>
+</div>
+<div class="col l4 offset-l2 s12">
+				<h5 class="white-text">Mais de UniWallet</h5>
+				<ul>
+	<li><a class="grey-text text-lighten-3" href="#!">Dúvidas Frequentes</a></li>
+	<li><a class="grey-text text-lighten-3" href="#!">Promoções Exclusivas</a></li>
+	<!--  <li><a class="grey-text text-lighten-3" href="TeladeCadastro.html">Cadastre-se</a></li> -->
+</ul>
+	</div>
+	</div>
+	</div>
+	<div class="footer-copyright">
+	<div class="container">
+					© 2017 Copyright
+					<a class="grey-text text-lighten-4 right" href="#!">Equipe UniWallet</a>
+	</div>
+</div>
 </footer>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -223,20 +223,20 @@
 
 
 <script>
-		document.getElementById("botao-continuar").addEventListener("click", function(){
-				window.location = 'file:///home/aluno/Downloads/uniwallet-master/frontend/materialize/TeladeLogin.html';
-				//window.alert("fioajisdojafipo")
-		})
-				$(document).ready(function(){
-						$('.parallax').parallax();
-				});
+document.getElementById("botao-continuar").addEventListener("click", function(){
+window.location = 'file:///home/aluno/Downloads/uniwallet-master/frontend/materialize/TeladeLogin.html';
+//window.alert("fioajisdojafipo")
+})
+	$(document).ready(function(){
+		$('.parallax').parallax();
+});
 </script>
 
 <script>
-		$(document).ready(function(){
-				// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-				$('.modal').modal();
-				});
+	$(document).ready(function(){
+		// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+		$('.modal').modal();
+		});
 </script>
 
 <script>
@@ -244,8 +244,22 @@
 				$('.collapsible').collapsible();
 		});
 </script>
-
+<script src="{static}assets/js/uniwallet-backend-api.js"></script>
 <script>
+
+//Para deslogar da tela
+document.getElementById("logout").addEventListener("click",function(){
+	Auth.signOut()
+	Page.redirect("inicial") 
+})
+
+//Mostrar o nome que está logado
+Request.send('', 'user/current', 'POST', function(server_response){
+
+console.log(server_response)
+
+document.getElementById("nomeusuario").innerHTML = server_response.content.name
+	})
 						function initMap() {
 								var uluru = {lat: -15.767867, lng: -47.865731};
 								var map = new google.maps.Map(document.getElementById('map'), {
@@ -295,3 +309,4 @@
 </body>
 
 </html> 
+
