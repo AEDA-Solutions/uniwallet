@@ -1,18 +1,8 @@
 from framework import Treater as std
 
-class AccessLevel(std.Treater):
+class User_AccessLevel(std.Treater):
 	
 	def register(self):
-		return self.rules({
-				"fields": {
-					"name": 		["required", "unique:name"],
-					"description": 	["required"]
-				},
-				"method": "post",
-				"auth": ["god"]
-			})
-
-	def empower(self):
 		return self.rules({
 				"fields": {
 					"user_id": 			["required", "exists:id:User"],
@@ -21,6 +11,4 @@ class AccessLevel(std.Treater):
 				"method": "post",
 				"auth": ["god"]
 			})
-
-
 

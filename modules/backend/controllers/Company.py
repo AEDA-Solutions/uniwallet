@@ -1,4 +1,4 @@
-from framework import Controller as std
+from . import Controller as std
 
 class Company(std.Controller):
 
@@ -7,11 +7,19 @@ class Company(std.Controller):
 		self.model(name = 'User_AccessLevel', data = {'user_id': user_id, 'accesslevel_id': 3}).check_save()
 		
 	def register(self):
-		user_id = self.model(name = 'User', data = {'name': self.get_input('name'), 'email': self.get_input('email'), 'password': self.get_input('password')}).save().last_id()
+		password = self.get_input('password') if self.get_input('password') is not None else '12345678'
+		user_id = self.model(name = 'User', data = {'name': self.get_input('name'), 'email': self.get_input('email'), 'password': password}).save().last_id()
 		company_id = self.model(data = dict(list(self.get_request_parameters().items()) + list({"user_id": user_id}.items()))).save().last_id()
 		self.set_accesses(user_id)
 		return "Done: Company {} created with 'registered' and 'company' access levels".format(user_id)
 	
+	def update(self):
+		company = self.model().load(self.get_input('id'))
+		user = self.model(name = 'User').load(company.user_id)
+		user.fill({'name': self.get_input('name'), 'email': self.get_input('email')}).save().close()
+		rows = company.fill(self.get_request_parameters()).save().count_rows()
+		return "Done: {} rows affected".format(rows)
+
 	def showall(self):
 		lista = []
 		company_showall = self.model().find().fetch()
@@ -28,3 +36,8 @@ class Company(std.Controller):
 
 	def select(self):
 		return self.model().find().fetch(fields_mask = [('id', 'value'), ('name', 'content')])
+
+	def fetchadmin(self):
+		mask = self.metadata([('id', ':::hide'), ('user_id', ':::hide'), ('user_email', 'email:Email'), ('name', ':Nome'), ('cnpj', ':CNPJ')])
+		return (self.model().find(join=[('User', 'user_id')], start_from = self.get_input('start'), limit = self.get_input('limit'))
+			.fetch(fields_mask = mask))

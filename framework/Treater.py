@@ -215,7 +215,7 @@ class Treater(std.Controller):
 				count = connection.cursor.rowcount
 				connection.close()
 				if count == 0:
-					return self.forbid("{} does not exist as {}:{}".format(meta.field_path, meta.params[0], meta.params[1]))
+					return self.forbid("{} does not exist as {}:{}".format(meta.field_path, meta.params[0], self.__class__.__name__ if len(meta.params) == 1 else meta.params[1]))
 		else:
 			return self.forbid("Invalid '{}' rule sintax on Treater for {}".format(meta.name, meta.field_path))
 
@@ -292,5 +292,5 @@ class Treater(std.Controller):
 					}]
 				},
 				"method": "post",
-				"auth": ["registered"]
+				"auth": ["god"]
 			}) 

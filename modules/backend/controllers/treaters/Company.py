@@ -8,7 +8,7 @@ class Company(std.Treater):
 					"cnpj":			["required", "cpf"],
 
 					"email": 		["required", "email", "unique:email:User"],
-					"password": 	["required", "maxlength:32", "minlength:8"]
+					"password": 	["optional", "maxlength:32", "minlength:8"]
 				},
 				"method": "post",
 				#"auth": ["manager", "client"]
@@ -19,7 +19,10 @@ class Company(std.Treater):
 				"fields": {
 					"id": 			["required"],
 					"name": 		["required"],
-					"cnpj":			["required", "cpf"]
+					"cnpj":			["required", "cpf"],
+
+					"user_id": 		["required", "exists:id:User"],
+					"email":		["required", "email", "unique:email:User:user_id"]
 				},
 				"method": "post",
 				#"auth": ["manager", "client"]

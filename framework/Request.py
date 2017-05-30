@@ -18,7 +18,7 @@ class Request:
 		self.method = env.get('REQUEST_METHOD')
 		self.authorization = self.get_authorization(env)
 		self.client_ip = self.get_client_ip(env)
-		print("[module: {}] [controller: {}] [action: {}]".format(self.module, self.controller, self.action) if self.ok else self.urn_list)
+		#print("[module: {}] [controller: {}] [action: {}]".format(self.module, self.controller, self.action) if self.ok else self.urn_list)
 
 	def get_GET(self):
 		"""
