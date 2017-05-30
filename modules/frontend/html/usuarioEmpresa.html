@@ -244,7 +244,7 @@
 })
 
 //Mostrar o nome que está logado
-    Request.send('', 'company/current', 'POST', function(server_response){
+    Request.send('', 'user/current', 'POST', function(server_response){
     console.log(server_response)
     document.getElementById("nomeempresa").innerHTML = server_response.content.name
     })
