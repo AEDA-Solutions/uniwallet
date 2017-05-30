@@ -22,7 +22,7 @@ class Product(std.Treater):
 					"number": 		["required"],
 					"name": 		["required"],
 					"price":	 	["required"],
-					"company_id":	["required", "company_id", "unique:company_id"],
+					"company_id":	["required", "exists:id:Company"],
 					"description":	["required"],
 					"category":		["required"],
 				},

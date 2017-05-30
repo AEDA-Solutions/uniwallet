@@ -12,6 +12,9 @@ class User(std.Controller):
 	def current(self):
 		return self.model(name = 'Session').get_user()
 
+	def select(self):
+		return self.model().find().fetch(fields_mask = [('id', 'value'), ('name', 'content')])
+
 	def changeselfpassword(self):
 		current_user = self.current()
 		user_data = self.model(name = 'User').find({('id', '=', current_user['id'])}).fetchone()

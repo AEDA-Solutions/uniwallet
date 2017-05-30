@@ -154,5 +154,12 @@ input[type="text"]{
   font-weight: 400px; 
   color: white;
   font-family: Courier; 
-  margin-top: 40px;
+  margin-top: 10px;
 }
+      
+ #map {
+  height: 400px;
+  width: 50%;
+  margin-left:310px;
+}
+       

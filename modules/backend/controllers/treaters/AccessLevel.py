@@ -8,7 +8,8 @@ class AccessLevel(std.Treater):
 					"name": 		["required", "unique:name"],
 					"description": 	["required"]
 				},
-				"method": "post"
+				"method": "post",
+				"auth": ["god"]
 			})
 
 	def empower(self):
@@ -17,7 +18,8 @@ class AccessLevel(std.Treater):
 					"user_id": 			["required", "exists:id:User"],
 					"accesslevel_id": 	["required", "exists:id:AccessLevel"]
 				},
-				"method": "post"
+				"method": "post",
+				"auth": ["god"]
 			})
 
 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+Teste		
+
+	</title>
+</head>
+<body>
+			<div class="form-input">
+				<input class="input-form" type="text" name="value" placeholder="VALUE">
+			</div>
+			<button class="btn" id="botao_submit">VAI</button>
+
+<script src="https://code.jquery.com/jquery-3.2.0.min.js"> </script> 
+
+<script src="{static}assets/js/uniwallet-backend-api.js"></script>
+<script type="text/javascript">
+
+  
+  Page.listen("botao_submit", function(e){
+    e.preventDefault() 
+    data = Page.get_input("input-form")
+
+    
+    Request.send(data, "wallet/check", "get", function(response){
+
+      if (response.code == 200){ 
+        Page.redirect("inicial")
+      } else {
+        Page.fill("div_mensagem_retorno", response.content) 
+      }
+
+    })
+  })
+
+</script>
+</body>
+</html>

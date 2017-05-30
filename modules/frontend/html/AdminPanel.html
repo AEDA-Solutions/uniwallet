@@ -5,17 +5,25 @@
 
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Gerenciamento Uniwallet</title>
+	<title>Gerenciamento</title>
 
 	<!-- Bootstrap Core CSS -->
 	<link href="{static}assets/admin/css/bootstrap.min.css" rel="stylesheet">
 
 	<!-- Custom CSS -->
-	<link href="{static}assets/admin/css/simple-sidebar.css" rel="stylesheet">
+	<link href="{static}assets/admin/css/sb-admin.css" rel="stylesheet">
+
+	<!-- Morris Charts CSS -->
+	<link href="{static}assets/admin/css/plugins/morris.css" rel="stylesheet">
+
+	<!-- Custom Fonts -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf" rel="stylesheet" type="text/css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff" rel="stylesheet" type="text/css">
 
 	<link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet">
 	<link href="https://cdn.datatables.net/select/1.2.2/css/select.dataTables.min.css" rel="stylesheet">
@@ -23,66 +31,87 @@
 
 	<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet">
 
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
 </head>
 
 <body>
 
-	<div id="wrapper" class="toggled">
+	<div id="wrapper">
 
-		<!-- Sidebar -->
-		<div id="sidebar-wrapper">
-			<ul class="sidebar-nav">
-				<li class="sidebar-brand">
-					<a href="#">
-						Gerenciamento Uniwallet
-					</a>
-				</li>
-				<li>
-					<a href="#" id='b_consumidores' class='botao'>Consumidores</a>
-				</li>
-				<li>
-					<a href="#" id='b_empresas' class='botao'>Empresas</a>
-				</li>
-				<li>
-					<a href="#" id='b_niveisacesso' class='botao'>Níveis de acesso</a>
-				</li>
-				<li>
-					<a href="#" id='b_sessoes' class='botao'>Sessões</a>
-				</li>
-				<li>
-					<a href="#" id='b_lojas' class='botao'>Loja</a>
-				</li>
-				<li>
-					<a href="#" id='b_product' class='botao'>Produtos</a>
-				</li>
-				<li>
-					<a href="#" id='b_sale' class='botao'>Vendas</a>
+		<!-- Navigation -->
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">Gerenciamento Uniwallet</a>
+			</div>
+			<!-- Top Menu Items -->
+			<ul class="nav navbar-right top-nav">     
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><span id="nomeusuario"> {{user_name}}</span><b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#"><i class="fa fa-fw fa-user"></i> Perfil</a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-fw fa-power-off"></i> Sair</a>
+						</li>
+					</ul>
 				</li>
 			</ul>
-		</div>
-		<!-- /#sidebar-wrapper -->
+			<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
 
-		<!-- Page Content -->
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav side-nav">
 
-				
-
-		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-		  <div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-			 ...
+					<li>
+						<a href="#" id='b_consumidores' class='botao'><i class="fa fa-fw fa-user-circle"></i> Consumidores</a>
+					</li>
+					<li>
+						<a href="#" id='b_empresas' class='botao'><i class="fa fa-fw fa-user-circle-o"></i> Empresas</a>
+					</li>
+					<li>
+						<a href="#" id='b_niveisacesso' class='botao'><i class="fa fa-fw fa-lock"></i> Níveis de acesso</a>
+					</li>
+					<li>
+						<a href="#" id='b_permissoes' class='botao'><i class="fa fa-fw fa-key"></i> Permissões</a>
+					</li>
+					<li>
+						<a href="#" id='b_sessoes' class='botao'><i class="fa fa-fw fa-laptop"></i> Sessões</a>
+					</li>
+					<li>
+						<a href="#" id='b_lojas' class='botao'><i class="fa fa-fw fa-building"></i> Lojas</a>
+					</li>
+					<li>
+						<a href="#" id='b_product' class='botao'><i class="fa fa-fw fa-soccer-ball-o"></i> Produtos</a>
+					</li>
+					<li>
+						<a href="#" id='b_sale' class='botao'><i class="fa fa-fw fa-shopping-cart"></i> Vendas</a>
+					</li>
+				</ul>
 			</div>
-		  </div>
-		</div>
 
+			<!-- /.navbar-collapse -->
+		</nav>
 
-		<div id="page-content-wrapper">
+		<div id="page-wrapper">
+
 			<div class="container-fluid">
+
 				<div class="row">
 					<div class="col-lg-12">
 						<div id="maincontent">
-							<!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>-->
-
-
 							<h1>Área dos desenvolvedores</h1>
 
 							É necessário estar autenticado para acessar os dados dessa área.<br /><br /><br />
@@ -93,15 +122,27 @@
 							
 						</div>
 						<br>
-						<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Mover barra lateral</a>
 					</div>
 				</div>
 			</div>
+			<!-- /.container-fluid -->
+
 		</div>
-		<!-- /#page-content-wrapper -->
+		<!-- /#page-wrapper -->
 
 	</div>
 	<!-- /#wrapper -->
+
+	<!-- jQuery -->
+	<script src="{static}assets/admin/js/jquery.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="{static}assets/admin/js/bootstrap.min.js"></script>
+
+	<!-- Morris Charts JavaScript -->
+	<script src="{static}assets/admin/js/plugins/morris/raphael.min.js"></script>
+	<script src="{static}assets/admin/js/plugins/morris/morris.min.js"></script>
+	<script src="{static}assets/admin/js/plugins/morris/morris-data.js"></script>
 
 	<!-- jQuery -->
 	<script src="{static}assets/admin/js/jquery.js"></script>
@@ -117,8 +158,6 @@
 	});
 	</script>
 
-	<script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.js"></script>
-	<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.14/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.14/js/dataTables.bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
@@ -135,6 +174,7 @@
 			'b_consumidores': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'consumer', 'method': 'GET', 'title': 'Consumidores'},
 			'b_empresas': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'company', 'method': 'GET', 'title': 'Empresas'},
 			'b_niveisacesso': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'accesslevel', 'method': 'GET', 'title': 'Níveis de Acesso'},
+			'b_permissoes': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'user_accesslevel', 'method': 'GET', 'title': 'Permissões'},
 			'b_sessoes': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'session', 'method': 'GET', 'title': 'Sessões'},
 			'b_lojas': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'store', 'method': 'GET', 'title': 'Loja'},
 			'b_product': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'product', 'method': 'GET', 'title': 'Produtos'},
@@ -166,6 +206,10 @@
 				})
 			})
 		}
+
+		Request.send('', 'user/current', 'POST', function(server_response){
+			document.getElementById("nomeusuario").innerHTML = server_response.content.name
+		})
 
 	</script>
 

@@ -55,12 +55,14 @@ function Request(domain = "http://localhost:8000", module_name = "api"){
 }
 
 function Page(){
-	this.get_input = function(class_name, ignore = []){
+	this.get_input = function(class_name, ignore = [], exclude_hidden = false){
 		var inputs = document.getElementsByClassName(class_name)
 		var input_dict = {}
 		for (var i = 0; i < inputs.length; i++) {
 			if ((inputs[i].name) && (ignore.indexOf(inputs[i].name) == -1)) {
-				input_dict[inputs[i].name] = inputs[i].value
+				if (!(exclude_hidden && inputs[i].type == 'hidden')){
+					input_dict[inputs[i].name] = inputs[i].value
+				}
 			}
 		}
 		return input_dict
@@ -88,10 +90,9 @@ function HTML_Factory(){
 			table_columns[i] = { 
 				"title": HTML_Factory.parse_field(columns[i]).alias,
 				"data": HTML_Factory.parse_field(columns[i]).entire,
-				"visible": !(HTML_Factory.parse_field(columns[i]).hide)
+				"visible": (HTML_Factory.parse_field(columns[i]).resource_name == null) && !(HTML_Factory.parse_field(columns[i]).hide)
 			}
 		}
-		console.log(table_columns)
 		this.make = function(func_new, func_edit, func_delete){
 			var table = $(table_id).DataTable( {
 				lengthChange: false,
@@ -161,8 +162,8 @@ function HTML_Factory(){
 			name: name,
 			alias: alias,
 			editable: (pieces.indexOf('noneditable') == -1),
-			resource_name: resource_name,
-			hide: (resource_name != null)
+			hide: (pieces.indexOf('hide') >= 0),
+			resource_name: resource_name
 		}
 	}
 
@@ -197,8 +198,9 @@ function HTML_Factory(){
 			resource_name = HTML_Factory.parse_field(fields[i]).resource_name
 			alias = HTML_Factory.parse_field(fields[i]).alias
 			name = HTML_Factory.parse_field(fields[i]).name
-			if (name == 'id'){
-				form_fields += this.get_snippet()['hidden-input'].replace("{{value}}", data[fields[i]]).replace("{{name}}", 'id')
+			hide = HTML_Factory.parse_field(fields[i]).hide
+			if ((name == 'id') || (hide)){
+				form_fields += this.get_snippet()['hidden-input'].replace("{{value}}", data[fields[i]]).replace("{{name}}", name)
 			} else
 			if (resource_name){
 				options = HTML_Factory.make_ajax_options(resource_name, data[fields[i]])
@@ -235,15 +237,15 @@ function HTML_Factory(){
 					'</div>',
 			'form-field': '<div class="form-group">' +
 								'<label>{{label}}</label>' +
-								'<input type="{{type}}" class="form-control crud" name={{name}} value={{value}}>' +
+								'<input type="{{type}}" class="form-control crud" name="{{name}}" value="{{value}}">' +
 							'</div>',
-			'form': '<table>' +
+			'form': '<div><table>' +
 						'{{fields}}' +
 						'<div class="btn-group">' +
 							'<a href="#" class="btn btn-primary" id="save-button">Salvar</a>' +
 							'<a href="#" class="btn btn-default" id="cancel-button">Cancelar</a>' +
 						'</div>' +
-					'</table>',	
+					'</table></div>',	
 			'select': '<div class="form-group">' +
 						'<label>{{label}}</label>' +
 						'<select class="form-control crud" name="{{name}}">' +
@@ -267,10 +269,10 @@ function HTML_Factory(){
 	this.make_datatable = function(columns, resource_name, data, method){
 		create = function(e, dt, button, config){
 			Page.fill('mainform', HTML_Factory.make_form(HTML_Factory.get_editable_fields(columns), {}))
+			document.getElementById("cancel-button").addEventListener("click", function(){Page.fill('mainform', '')})
 			document.getElementById("save-button").addEventListener("click", function(){
-				var datafields = Page.get_input("crud", ['id'])
+				var datafields = Page.get_input("crud", ['id'], true)
 				Request.send(datafields, resource_name + "/register", "POST", function(response){
-					console.log(response)
 					if (response.code == 200){
 						Page.fill('mainform', '')
 						dt.ajax.reload();
@@ -283,6 +285,7 @@ function HTML_Factory(){
 		edit = function(e, dt, button, config){
 			var data = dt.rows({ selected: true }).data()
 			Page.fill('mainform', HTML_Factory.make_form(HTML_Factory.get_editable_fields(columns), data[0]))
+			document.getElementById("cancel-button").addEventListener("click", function(){Page.fill('mainform', '')})
 			document.getElementById("save-button").addEventListener("click", function(){
 				var datafields = Page.get_input("crud")
 				Request.send(datafields, resource_name + "/update", "POST", function(response){
@@ -301,11 +304,19 @@ function HTML_Factory(){
 				data = dt.rows({ selected: true }).data()
 				ids_list = []
 				for (var i = 0; i < data.length; i++) {
-					ids_list[i] = {id: data[i].id}
+					for (var key in data[i]) {
+						var field = HTML_Factory.parse_field(key)
+						if (field.name == 'id'){
+							ids_list[i] = {id: data[i][key]}
+						}
+					}
 				}
 				Request.send({data: ids_list}, resource_name + '/delete', 'POST', function(response){
-					window.alert(response.content)
-					dt.rows({ selected: true }).remove().draw()
+					if(response.code == 200){
+						dt.rows({ selected: true }).remove().draw()
+					} else {
+						window.alert(response.content)
+					}
 				})
 			}
 		}
