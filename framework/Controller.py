@@ -49,20 +49,6 @@ class Controller(Core):
 			self.response_body_directly()
 		return self.view(name = self.__class__.__name__ if name is None else name)
 
-	def metadata(self, tuple_list):
-		"""
-		field(): It stringifies the dict attr
-		"""
-		fields = []
-		for item in tuple_list:
-			pieces = item[1].split(':')
-			if len(pieces[0]) > 0:
-				label = item[1]
-			else:
-				label = "{}{}".format(item[0], item[1])
-			fields.append(tuple([item[0], "{}".format(label)]))
-		return fields
-
 	def update(self):
 		return "Done: {} rows affected".format(self.model().update(fields = self.get_request_parameters()).count_rows())
 

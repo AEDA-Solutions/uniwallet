@@ -21,7 +21,8 @@ class Consumer(std.Treater):
 					"fullname": 	["required"],
 					"university": 	["required"],
 					"cpf":			["required", "cpf", "unique:cpf"],
-					"email": 		["required", "email", "unique:email:User"]
+					"email": 		["required", "email", "unique:email:User:user_id"],
+					"user_id": 		["required"]
 				},
 				"method": "post",
 				#"auth": ["manager", "client"]

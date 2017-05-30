@@ -1,4 +1,4 @@
-from framework import Controller as std
+from . import Controller as std
 
 class Consumer(std.Controller):
 
@@ -23,7 +23,7 @@ class Consumer(std.Controller):
 		return self.model().find(join = [('User', 'user_id')], start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['user_password', 'created_at', 'user_created_at', 'user_id'])
 
 	def fetchadmin(self):
-		mask = self.metadata([('id', 'id'), ('user_email', 'email:Email'), ('fullname', ':Nome'), ('cpf', ':CPF'), ('university', ':Universidade')])
+		mask = self.metadata([('id', ':::hide'), ('user_id', ':::hide'), ('user_email', 'email:Email'), ('fullname', ':Nome'), ('cpf', ':CPF'), ('university', ':Universidade')])
 		print(mask)
 		return (self.model().find(join=[('User', 'user_id')], start_from = self.get_input('start'), limit = self.get_input('limit'))
 			.fetch(fields_mask = mask))

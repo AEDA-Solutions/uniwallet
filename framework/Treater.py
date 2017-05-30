@@ -226,10 +226,9 @@ class Treater(std.Controller):
 		if len(meta.params) >= 1:
 			data = dictionary.access_nested_elem_from_list(self.get_request_parameters(), meta.data_path)
 			for pos, content in enumerate(meta.content):
+				id_to_ignore = meta.params[2] if len(meta.params) > 2 else 'id'
 				model = self.model(name = self.__class__.__name__ if len(meta.params) == 1 else meta.params[1])
-				connection = model.find([(meta.params[0], '=', content)] + ([('id', '<>', data['id'])] if 'id' in data else []))
-				count = connection.cursor.rowcount
-				connection.close()
+				count = model.find([(meta.params[0], '=', content)] + ([('id', '<>', data[id_to_ignore])] if id_to_ignore in data else [])).count_rows()
 				if count != 0:
 					return self.forbid("{} is already taken".format(meta.field_path))
 		else:
