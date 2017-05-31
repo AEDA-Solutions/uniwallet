@@ -194,7 +194,7 @@ var targets = {
               var fields = Object.keys(response.content[0])
               var table = HTML_Factory.make_table(fields, {}, target.title)
               Page.fill('maincontent', table)
-              HTML_Factory.make_datatable(fields, target.entity, target.parameters, target.method)
+              HTML_Factory.make_datatable(fields, target.entity, target.parameters, target.method, [])
             } else {
               window.alert("Não há nada aqui por enquanto.")
             }

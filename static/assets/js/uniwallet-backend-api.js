@@ -82,66 +82,51 @@ function Page(){
 }
 
 
-function HTML_Factory(){
-
-	Data_Table = function(table_id, columns, resource_name, data_to_send, method = "GET"){
-		table_columns = []
-		for (var i = 0; i < columns.length; i++) {
-			table_columns[i] = { 
-				"title": HTML_Factory.parse_field(columns[i]).alias,
-				"data": HTML_Factory.parse_field(columns[i]).entire,
-				"visible": (HTML_Factory.parse_field(columns[i]).resource_name == null) && !(HTML_Factory.parse_field(columns[i]).hide)
-			}
-		}
-		this.make = function(func_new, func_edit, func_delete){
-			var table = $(table_id).DataTable( {
-				lengthChange: false,
-				ajax: {
-					url: "/api/" + resource_name + "/fetchadmin",
-					data: data_to_send,
-					dataFilter: function(data){
-						var json = jQuery.parseJSON( data );
-						json.recordsTotal = json.content.length;
-						json.recordsFiltered = json.content.length;
-						json.data = json.content;
-						return JSON.stringify( json ); // return JSON string
-					},
-					cache: false,
-					beforeSend: function(xhr) {
-						if (Auth.Token.exists()){
-							xhr.setRequestHeader('Authorization', 'Basic ' + Auth.Token.get())
-						}
-					},
-					method: method
-				},
-				language: {
-					url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Portuguese-Brasil.json",
-				},
-				columns: table_columns,
-				initComplete: function(){
-					//showButtons();
-				},
-				dom: 'Bfrtip',
-				buttons: [
-					{
-						text: 'Novo',
-						action: func_new
-					},
-					{
-						extend: 'selectedSingle',
-						text: 'Editar',
-						action: func_edit
-					},
-					{
-						extend: 'selected',
-						text: 'Remover',
-						action: func_delete
-					}
-				],
-				select: true
-			} );
+function DataTable(table_id, columns = [], resource_name, data_to_send, method = "GET"){
+	table_columns = []
+	for (var i = 0; i < columns.length; i++) {
+		table_columns[i] = { 
+			"title": HTML_Factory.parse_field(columns[i]).alias,
+			"data": HTML_Factory.parse_field(columns[i]).entire,
+			"visible": (HTML_Factory.parse_field(columns[i]).resource_name == null) && !(HTML_Factory.parse_field(columns[i]).hide)
 		}
 	}
+	this.make = function(buttons){
+		var table = $(table_id).DataTable( {
+			lengthChange: false,
+			ajax: {
+				url: "/api/" + resource_name + "/fetchadmin",
+				data: data_to_send,
+				dataFilter: function(data){
+					var json = jQuery.parseJSON( data );
+					json.recordsTotal = json.content.length;
+					json.recordsFiltered = json.content.length;
+					json.data = json.content;
+					return JSON.stringify( json ); // return JSON string
+				},
+				cache: false,
+				beforeSend: function(xhr) {
+					if (Auth.Token.exists()){
+						xhr.setRequestHeader('Authorization', 'Basic ' + Auth.Token.get())
+					}
+				},
+				method: method
+			},
+			language: {
+				url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Portuguese-Brasil.json",
+			},
+			columns: table_columns,
+			initComplete: function(){
+				//showButtons();
+			},
+			dom: 'Bfrtip',
+			buttons: buttons,
+			select: true
+		} );
+	}
+}
+
+function HTML_Factory(){
 
 	this.get_editable_fields = function(fields){
 		filtered = []
@@ -266,61 +251,8 @@ function HTML_Factory(){
 		return ('<' + tag_name + ' ' + metaitems.join(' ') + '>' + content + '</' + tag_name + '>')
 	}
 
-	this.make_datatable = function(columns, resource_name, data, method){
-		create = function(e, dt, button, config){
-			Page.fill('mainform', HTML_Factory.make_form(HTML_Factory.get_editable_fields(columns), {}))
-			document.getElementById("cancel-button").addEventListener("click", function(){Page.fill('mainform', '')})
-			document.getElementById("save-button").addEventListener("click", function(){
-				var datafields = Page.get_input("crud", ['id'], true)
-				Request.send(datafields, resource_name + "/register", "POST", function(response){
-					if (response.code == 200){
-						Page.fill('mainform', '')
-						dt.ajax.reload();
-					} else {
-						alert(response.content)
-					}
-				})
-			})
-		}
-		edit = function(e, dt, button, config){
-			var data = dt.rows({ selected: true }).data()
-			Page.fill('mainform', HTML_Factory.make_form(HTML_Factory.get_editable_fields(columns), data[0]))
-			document.getElementById("cancel-button").addEventListener("click", function(){Page.fill('mainform', '')})
-			document.getElementById("save-button").addEventListener("click", function(){
-				var datafields = Page.get_input("crud")
-				Request.send(datafields, resource_name + "/update", "POST", function(response){
-					if (response.code == 200){
-						Page.fill('mainform', '')
-						dt.ajax.reload();
-					} else {
-						alert(response.content)
-					}
-				})
-			})
-		}
-		del = function(e, dt, button, config){
-
-			if(confirm("Deseja mesmo remover a seleção?")){
-				data = dt.rows({ selected: true }).data()
-				ids_list = []
-				for (var i = 0; i < data.length; i++) {
-					for (var key in data[i]) {
-						var field = HTML_Factory.parse_field(key)
-						if (field.name == 'id'){
-							ids_list[i] = {id: data[i][key]}
-						}
-					}
-				}
-				Request.send({data: ids_list}, resource_name + '/delete', 'POST', function(response){
-					if(response.code == 200){
-						dt.rows({ selected: true }).remove().draw()
-					} else {
-						window.alert(response.content)
-					}
-				})
-			}
-		}
-		datatable = new Data_Table('#tablecrud', columns, resource_name, data, method).make(create, edit, del)
+	this.make_datatable = function(columns, resource_name, data, method, buttons){
+		datatable = new DataTable('#tablecrud', columns, resource_name, data, method).make(buttons)
 	}
 }
 
