@@ -32,4 +32,4 @@ class Consumer(std.Controller):
 	def extrato(self):
 		user_id = 1
 		wall_id = self.model("Wallet").find([('user_id', '=', user_id)]).fetchone("id")["id"]
-		return self.model("Transaction").find([("wallet_from", '=', wall_id)]).fetch(fields_mask = [("wallet_to", "loko")])
+		return self.model("Transaction").find([("wallet_from", '=', wall_id)]).fetch()
