@@ -183,6 +183,11 @@
 
 		
 		create = function(e, dt, button, config){
+			var data = dt.rows().data()
+			columns = []
+			for (var prop in data[0]) {
+				columns.push(prop)
+			}
 			Page.fill('mainform', HTML_Factory.make_form(HTML_Factory.get_editable_fields(columns), {}))
 			document.getElementById("cancel-button").addEventListener("click", function(){Page.fill('mainform', '')})
 			document.getElementById("save-button").addEventListener("click", function(){
@@ -199,6 +204,10 @@
 		}
 		edit = function(e, dt, button, config){
 			var data = dt.rows({ selected: true }).data()
+			columns = []
+			for (var prop in data[0]) {
+				columns.push(prop)
+			}
 			Page.fill('mainform', HTML_Factory.make_form(HTML_Factory.get_editable_fields(columns), data[0]))
 			document.getElementById("cancel-button").addEventListener("click", function(){Page.fill('mainform', '')})
 			document.getElementById("save-button").addEventListener("click", function(){

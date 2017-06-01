@@ -115,6 +115,7 @@ function DataTable(table_id, columns = [], resource_name, data_to_send, method =
 			language: {
 				url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Portuguese-Brasil.json",
 			},
+			injected_columns: columns,
 			columns: table_columns,
 			initComplete: function(){
 				//showButtons();

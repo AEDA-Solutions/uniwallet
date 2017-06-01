@@ -6,7 +6,6 @@ class Transaction(std.Model):
 
 	def perform(self):
 		if self.model('Wallet').transfer(self.value, self.wallet_from, self.wallet_to):
-			self.save().close()
-			return True
+			return self.save().last_id()
 		else:
-			return False #It happens when value is not authorized to be transferred
+			return None #It happens when value is not authorized to be transferred

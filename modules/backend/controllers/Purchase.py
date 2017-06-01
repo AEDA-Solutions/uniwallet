@@ -1,4 +1,4 @@
-from framework import Controller as std
+from . import Controller as std
 
 class Purchase(std.Controller):
 
@@ -15,19 +15,11 @@ class Purchase(std.Controller):
 		wallet_from = self.model('Wallet').find(conditions = [('user_id', '=', self.model('Consumer').load(consumer_id).user_id)]).fetchone()['id']
 		wallet_to = self.model('Wallet').find(conditions = [('user_id', '=', self.model('Company').load(company_id).user_id)]).fetchone()['id']
 
-		transaction_data = {'wallet_from': wallet_from, 'wallet_to': wallet_to, 'value': total_price, 'operation': 'purchase'}
-		
-		return self.model(name = 'Transaction', data = transaction_data).perform()
-
-		#c = self.model("Company").load(id = self.get_input('company_id'))
-		#return c.name
-		#if not self.model("Wallet").check(total_price):
-		#	return "Não há saldo"
-		return total_price
-		"""purchase_id = self.model(data = {"company_id": self.get_input("company_id"), "consumer_id": consumer_id}).create().last_id()
-		for product in self.get_input("products"):
-			self.model(name = 'Purchase_Product', data = {"purchase_id": sale_id, "product_id": product['id'], "quantity": product['quantity']}).save().close()
-		return "Espero que dê certo PORRW@!"""
+		transaction_id = None #Create transaction here!!
+		if transaction_id is not None:
+			return "Purchase completed"
+		else:
+			return "Purchase not authorized"
 
 	def showall(self):
 		lista = []
@@ -40,7 +32,12 @@ class Purchase(std.Controller):
 
 	def fetch(self):
 		return self.model(name = 'Sale_Product').find(join = [('Product', 'product_id'), ('Company', 'Products.company_id'), ('Sale', 'sale_id'), ('Consumer', 'Sales.consumer_id')]).fetch()
-		
+
+	def fetchadmin(self):
+		mask = self.metadata([('id', ':::hide'), ('consumer_fullname', ':Comprador::noneditable'), ('company_name', ':Empresa::noneditable'), ('transaction_value', ':Valor::noneditable')])
+		return (self.model().find(join=[('Transaction', 'transaction_id'), ('Consumer', 'consumer_id'), ('Company', 'company_id')], start_from = self.get_input('start'), limit = self.get_input('limit'))
+			.fetch(fields_mask = mask))
+
 	def total(self, sale_id):
 		#retorna o valor total da SALE
 		valor = None
