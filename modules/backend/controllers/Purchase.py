@@ -24,10 +24,10 @@ class Purchase(std.Controller):
 
 	def showall(self):
 		lista = []
-		sale_showall = self.model().find().fetch()
-		#product_showall = self.model(name = 'Product').find().fetch()
-		for sale in sale_showall:
-			lista.append({'Sale':Sale,'Products':self.model(name = 'Product').find([('product_id','=',product['id'])]).fetch()})
+		purchase_showall = self.model().find().fetch()
+		transaction_showall = self.model(name = 'Transaction').find().fetch()
+		for purchase in purchase_showall:
+			lista.append({'Purchase':purchase,'Transaction':self.model(name = 'Transaction').find([('user_id','=',user['id'])]).fetch()})
 		return (lista)
 							
 
