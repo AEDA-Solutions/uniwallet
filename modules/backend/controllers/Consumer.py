@@ -28,3 +28,8 @@ class Consumer(std.Controller):
 		mask = self.metadata([('id', ':::hide'), ('user_id', ':::hide'), ('user_email', 'email:Email'), ('fullname', ':Nome'), ('cpf', ':CPF'), ('university', ':Universidade')])
 		return (self.model().find(join=[('User', 'user_id')], start_from = self.get_input('start'), limit = self.get_input('limit'))
 			.fetch(fields_mask = mask))
+
+	def extrato(self):
+		user_id = 1
+		wall_id = self.model("Wallet").find([('user_id', '=', user_id)]).fetchone("id")["id"]
+		return self.model("Transaction").find([("wallet_from", '=', wall_id)]).fetch(fields_mask = [("wallet_to", "loko")])
