@@ -97,7 +97,10 @@
 						<a href="#" id='b_product' class='botao'><i class="fa fa-fw fa-soccer-ball-o"></i> Produtos</a>
 					</li>
 					<li>
-						<a href="#" id='b_sale' class='botao'><i class="fa fa-fw fa-shopping-cart"></i> Vendas</a>
+						<a href="#" id='b_purchase' class='botao'><i class="fa fa-fw fa-shopping-cart"></i> Compras</a>
+					</li>
+					<li>
+						<a href="#" id='b_wallet' class='botao'><i class="fa fa-fw fa-shopping-cart"></i> Carteiras</a>
 					</li>
 				</ul>
 			</div>
@@ -178,88 +181,9 @@
 			'b_sessoes': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'session', 'method': 'GET', 'title': 'Sessões'},
 			'b_lojas': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'store', 'method': 'GET', 'title': 'Loja'},
 			'b_product': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'product', 'method': 'GET', 'title': 'Produtos'},
-			'b_sale': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'sale', 'method': 'GET', 'title': 'Vendas'}
+			'b_purchase': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'purchase', 'method': 'GET', 'title': 'Compras'},
+			'b_wallet': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'wallet', 'method': 'GET', 'title': 'Carteiras'}
 		}
-
-		
-		create = function(e, dt, button, config){
-			var data = dt.rows().data()
-			columns = []
-			for (var prop in data[0]) {
-				columns.push(prop)
-			}
-			Page.fill('mainform', HTML_Factory.make_form(HTML_Factory.get_editable_fields(columns), {}))
-			document.getElementById("cancel-button").addEventListener("click", function(){Page.fill('mainform', '')})
-			document.getElementById("save-button").addEventListener("click", function(){
-				var datafields = Page.get_input("crud", ['id'], true)
-				Request.send(datafields, resource_name + "/register", "POST", function(response){
-					if (response.code == 200){
-						Page.fill('mainform', '')
-						dt.ajax.reload();
-					} else {
-						alert(response.content)
-					}
-				})
-			})
-		}
-		edit = function(e, dt, button, config){
-			var data = dt.rows({ selected: true }).data()
-			columns = []
-			for (var prop in data[0]) {
-				columns.push(prop)
-			}
-			Page.fill('mainform', HTML_Factory.make_form(HTML_Factory.get_editable_fields(columns), data[0]))
-			document.getElementById("cancel-button").addEventListener("click", function(){Page.fill('mainform', '')})
-			document.getElementById("save-button").addEventListener("click", function(){
-				var datafields = Page.get_input("crud")
-				Request.send(datafields, resource_name + "/update", "POST", function(response){
-					if (response.code == 200){
-						Page.fill('mainform', '')
-						dt.ajax.reload();
-					} else {
-						alert(response.content)
-					}
-				})
-			})
-		}
-		del = function(e, dt, button, config){
-
-			if(confirm("Deseja mesmo remover a seleção?")){
-				data = dt.rows({ selected: true }).data()
-				ids_list = []
-				for (var i = 0; i < data.length; i++) {
-					for (var key in data[i]) {
-						var field = HTML_Factory.parse_field(key)
-						if (field.name == 'id'){
-							ids_list[i] = {id: data[i][key]}
-						}
-					}
-				}
-				Request.send({data: ids_list}, resource_name + '/delete', 'POST', function(response){
-					if(response.code == 200){
-						dt.rows({ selected: true }).remove().draw()
-					} else {
-						window.alert(response.content)
-					}
-				})
-			}
-		}
-		var buttons = [
-			{
-				text: 'Novo',
-				action: create
-			},
-			{
-				extend: 'selectedSingle',
-				text: 'Editar',
-				action: edit
-			},
-			{
-				extend: 'selected',
-				text: 'Remover',
-				action: del
-			}
-		]
 
 		var botoes = document.getElementsByClassName('botao')
 		for (var i = 0; i < botoes.length; i++) {
@@ -273,7 +197,7 @@
 							var fields = Object.keys(response.content[0])
 							var table = HTML_Factory.make_table(fields, {}, target.title)
 							Page.fill('maincontent', table)
-							HTML_Factory.make_datatable(fields, target.entity, target.parameters, target.method, buttons)
+							HTML_Factory.make_datatable(fields, target.entity, target.parameters, target.method, true)
 						} else {
 							window.alert("Ué. :/ Acho q não tem nada aqui por enquanto.")
 						}

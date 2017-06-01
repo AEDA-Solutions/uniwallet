@@ -252,7 +252,88 @@ function HTML_Factory(){
 		return ('<' + tag_name + ' ' + metaitems.join(' ') + '>' + content + '</' + tag_name + '>')
 	}
 
-	this.make_datatable = function(columns, resource_name, data, method, buttons){
+	this.make_datatable = function(columns, resource_name, data, method, has_buttons){
+		create = function(e, dt, button, config){
+			var data = dt.rows().data()
+			columns = []
+			for (var prop in data[0]) {
+				columns.push(prop)
+			}
+			Page.fill('mainform', HTML_Factory.make_form(HTML_Factory.get_editable_fields(columns), {}))
+			document.getElementById("cancel-button").addEventListener("click", function(){Page.fill('mainform', '')})
+			document.getElementById("save-button").addEventListener("click", function(){
+				var datafields = Page.get_input("crud", ['id'], true)
+				Request.send(datafields, resource_name + "/register", "POST", function(response){
+					if (response.code == 200){
+						Page.fill('mainform', '')
+						dt.ajax.reload();
+					} else {
+						alert(response.content)
+					}
+				})
+			})
+		}
+		edit = function(e, dt, button, config){
+			var data = dt.rows({ selected: true }).data()
+			columns = []
+			for (var prop in data[0]) {
+				columns.push(prop)
+			}
+			Page.fill('mainform', HTML_Factory.make_form(HTML_Factory.get_editable_fields(columns), data[0]))
+			document.getElementById("cancel-button").addEventListener("click", function(){Page.fill('mainform', '')})
+			document.getElementById("save-button").addEventListener("click", function(){
+				var datafields = Page.get_input("crud")
+				Request.send(datafields, resource_name + "/update", "POST", function(response){
+					if (response.code == 200){
+						Page.fill('mainform', '')
+						dt.ajax.reload();
+					} else {
+						alert(response.content)
+					}
+				})
+			})
+		}
+		del = function(e, dt, button, config){
+
+			if(confirm("Deseja mesmo remover a seleção?")){
+				data = dt.rows({ selected: true }).data()
+				ids_list = []
+				for (var i = 0; i < data.length; i++) {
+					for (var key in data[i]) {
+						var field = HTML_Factory.parse_field(key)
+						if (field.name == 'id'){
+							ids_list[i] = {id: data[i][key]}
+						}
+					}
+				}
+				Request.send({data: ids_list}, resource_name + '/delete', 'POST', function(response){
+					if(response.code == 200){
+						dt.rows({ selected: true }).remove().draw()
+					} else {
+						window.alert(response.content)
+					}
+				})
+			}
+		}
+		if(has_buttons){
+			var buttons = [
+				{
+					text: 'Novo',
+					action: create
+				},
+				{
+					extend: 'selectedSingle',
+					text: 'Editar',
+					action: edit
+				},
+				{
+					extend: 'selected',
+					text: 'Remover',
+					action: del
+				}
+			]
+		}
+			
 		datatable = new DataTable('#tablecrud', columns, resource_name, data, method).make(buttons)
 	}
 }

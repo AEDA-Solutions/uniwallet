@@ -11,6 +11,16 @@ class Wallet(std.Treater):
 				#"auth": ["manager", "client"]
 			})
 
+	def update(self):
+		return self.rules({
+				"fields": {
+					"id": 			["required", "exists:id:Wallet"],
+					"balance":		["required", "float"]
+				},
+				"method": "post",
+				"auth": ["god"]
+			})
+
 	def check(self):
 		return self.rules({
 				"fields": {
