@@ -14,12 +14,11 @@ class Wallet(std.Model):
 
 	def transfer(self, value, wallet_from, wallet_to):
 		w_from = self.model().load(wallet_from)
-		w_to = self.model().load(wallet_to)
 		if w_from.check(value):
 			w_from.balance -= value #It decrements the wallet balance with the value
-			w_to.balance += value #It increments the wallet balance with the value
-			#It saves the changes and closes de db connection
 			w_from.save().close() 
+			w_to = self.model().load(wallet_to)
+			w_to.balance += value #It increments the wallet balance with the value
 			w_to.save().close()
 			return True
 		else:
