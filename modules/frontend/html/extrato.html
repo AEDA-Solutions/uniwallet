@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Qualquer coisa</title>
+	<title>Suas Transações</title>
 </head>
 <body>
-coisas
 
-<div id="mextrato">
+
+<div id="extrato">
 	
 </div>
 
+
+
+
+<!-- Falta adicionar novos parâmentros : Tipo de transação, valor, data! e pegar a rota do backend-->
 
 
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
@@ -23,11 +27,12 @@ Request.send('', 'company/showall', 'POST', function(server_response){
 	var empresas = ""
 
 	for (var i = 0; i < server_response.content.length; i++) {
-		var produtos = ""
+		
+	var produtos = ""
 
-		for (var j = 0; j < server_response.content[i].Products.length; j++) {
+	for (var j = 0; j < server_response.content[i].Products.length; j++) {
 			produtos += HTML_Factory.make_tag('li', server_response.content[i].Products[j].name)
-		}
+	}
 		
 		var lista_produtos = HTML_Factory.make_tag('ul', produtos)
 		empresas += HTML_Factory.make_tag('li', server_response.content[i].Company.name + lista_produtos)
@@ -37,6 +42,8 @@ Request.send('', 'company/showall', 'POST', function(server_response){
 	
 	document.getElementById("extrato").innerHTML = lista_empresas
 })
+
+
 
 </script>
 	

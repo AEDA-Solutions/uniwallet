@@ -140,7 +140,7 @@
 			<span>
 			  <div class="row">
 
-				<div><input type="submit" name="submit" value="Comprar Produtos" class="btn-conFace"></div>
+				<div><input type="submit" name="submit" value="Comprar Produtos" class="btn-conFace" onClick="Nova()"></div>
 
 			  </div>
 			</span>
@@ -299,6 +299,12 @@ document.getElementById("nomeusuario").innerHTML = server_response.content.name
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1aty6pgPGN8S7JewldIw0r30OuKQK0_s&callback=initMap">
     </script>
 
+<script type="text/javascript">
+function Nova()
+{
+  location.href="listaempresas"
+}
+</script>
 </body>
 </html> 
 
