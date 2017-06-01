@@ -1,13 +1,33 @@
 from framework import Controller as std
 
-class Sale(std.Controller):
+class Purchase(std.Controller):
 
 	def create(self):
-		company_id = self.model(name = 'Session').get_user()['id']
-		sale_id = self.model(data = {"company_id": company_id, "consumer_id": self.get_input("consumer_id")}).create().last_id()
+		consumer_id = self.model(name = 'Session').get_user()['id']
+		total_price = 0
+		for item in self.get_request_parameters()["products"]:
+			if not self.model('Product').check_product_available(item["id"], item["quantity"]):
+				return "Proibido"
+			total_price = total_price + self.model('Product').get_price(item["id"], item["quantity"])
+
+		company_id = self.get_input('company_id')
+
+		wallet_from = self.model('Wallet').find(conditions = [('user_id', '=', self.model('Consumer').load(consumer_id).user_id)]).fetchone()['id']
+		wallet_to = self.model('Wallet').find(conditions = [('user_id', '=', self.model('Company').load(company_id).user_id)]).fetchone()['id']
+
+		transaction_data = {'wallet_from': wallet_from, 'wallet_to': wallet_to, 'value': total_price, 'operation': 'purchase'}
+		
+		return self.model(name = 'Transaction', data = transaction_data).perform()
+
+		#c = self.model("Company").load(id = self.get_input('company_id'))
+		#return c.name
+		#if not self.model("Wallet").check(total_price):
+		#	return "Não há saldo"
+		return total_price
+		"""purchase_id = self.model(data = {"company_id": self.get_input("company_id"), "consumer_id": consumer_id}).create().last_id()
 		for product in self.get_input("products"):
-			self.model(name = 'Sale_Product', data = {"sale_id": sale_id, "product_id": product['id'], "quantity": product['quantity']}).save().close()
-		return "Espero que dê certo PORRW@!"
+			self.model(name = 'Purchase_Product', data = {"purchase_id": sale_id, "product_id": product['id'], "quantity": product['quantity']}).save().close()
+		return "Espero que dê certo PORRW@!"""
 
 	def showall(self):
 		lista = []
@@ -23,7 +43,7 @@ class Sale(std.Controller):
 		
 	def total(self, sale_id):
 		#retorna o valor total da SALE
-		valor = 
+		valor = None
 
 		self.model(name = 'Sale').find([ ('id', '=', sale_id)]).fetchone(fields = ['products'])
 		#somatorio(ids * quantity)
@@ -50,7 +70,7 @@ class Sale(std.Controller):
 		operation = 'sale'
 		value1 = total(sale_id)
 		value2 = -total(sale_id)
-		if wallet.check = ok #importar as funçoes
+		if wallet.check == ok: #importar as funçoes
 			transaction.save(destiny1, operation, value1)
 			transaction.save(destiny2, operation, value2) 
 			self.model(name = 'Wallet').find([ ('user_id', '=', sale_id)]).fetchone(fields = ['id'])

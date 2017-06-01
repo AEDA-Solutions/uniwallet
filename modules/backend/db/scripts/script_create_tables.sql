@@ -39,6 +39,8 @@ CREATE TABLE User_AccessLevel (
 
 INSERT INTO User_AccessLevel (user_id, accesslevel_id) VALUES
 (1, 1),
+(1, 2),
+(1, 3),
 (1, 4);
 
 
@@ -61,9 +63,6 @@ CREATE TABLE Consumers (
 	FOREIGN KEY (user_id) REFERENCES Users(id)
 );
 
-INSERT INTO Consumers (user_id, fullname, university, cpf) VALUES
-('1', 'Uniwallet da Silva', 'UnB', 'Sim');
-
 CREATE TABLE Companies (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	user_id INT(32) UNSIGNED NOT NULL,
@@ -73,8 +72,11 @@ CREATE TABLE Companies (
 	FOREIGN KEY (user_id) REFERENCES Users(id)
 );
 
+INSERT INTO Consumers (user_id, fullname, university, cpf) VALUES
+('1', 'Uniwallet team', 'UnB', '68535997725');
+
 INSERT INTO Companies (user_id, name, cnpj) VALUES
-('1', 'Uniwallet_Corporation', 'SIM');
+('1', 'Uniwallet team', '68535997725');
 
 CREATE TABLE Wallets (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -109,11 +111,12 @@ CREATE TABLE Categories (
 CREATE TABLE Products (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	company_id INT(32) UNSIGNED NOT NULL,
-	number INT(32) UNSIGNED NOT NULL, #associa com a loja? com o codigo do comerciante?
+	number INT(32) UNSIGNED NOT NULL, #associa com a loja OU com o codigo do comerciante
 	name VARCHAR(128) NOT NULL,
 	description VARCHAR(256) NOT NULL,
 	category VARCHAR(128) NOT NULL,
 	price DOUBLE UNSIGNED NOT NULL,
+	quantity INT(32) NOT NULL,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	FOREIGN KEY (company_id) REFERENCES Companies(id)
 );
@@ -135,25 +138,6 @@ CREATE TABLE Product_Prices (
 	FOREIGN KEY (product_id) REFERENCES Products(id)
 );
 
-CREATE TABLE Sales (
-	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-	consumer_id INT(32) UNSIGNED NOT NULL,
-	company_id INT(32) UNSIGNED NOT NULL,
-	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	FOREIGN KEY (consumer_id) REFERENCES Consumers(id),
-	FOREIGN KEY (company_id) REFERENCES Companies(id)
-);
-
-CREATE TABLE Sale_Product (
-	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-	product_id INT(32) UNSIGNED NOT NULL,
-	sale_id INT(32) UNSIGNED NOT NULL,
-	quantity INT(128) UNSIGNED NOT NULL,
-	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	FOREIGN KEY (product_id) REFERENCES Products(id),
-	FOREIGN KEY (sale_id) REFERENCES Sales(id)
-);
-
 INSERT INTO Products (company_id, number, name, price, description, category) VALUES
 ('1', '123', 'Pão Gostoso', '75.50', 'Gostoso', 'Alimentos');
 
@@ -172,10 +156,32 @@ CREATE TABLE Product_Store (
 
 CREATE TABLE Transactions (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-	destiny INT(32) UNSIGNED NOT NULL,
-	operation VARCHAR(32) NOT NULL,
-	value INT(32),
+	wallet_from INT(32) UNSIGNED NOT NULL,
+	wallet_to INT(32) UNSIGNED NOT NULL,
+	value DOUBLE UNSIGNED NOT NULL,
+	operation VARCHAR(256) NOT NULL,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	FOREIGN KEY (wallet_from) REFERENCES Wallets(id),
+	FOREIGN KEY (wallet_to) REFERENCES Wallets(id)
+);
+
+CREATE TABLE Purchases (
+	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	transaction_id INT(32) UNSIGNED NOT NULL,
+	consumer_id INT(32) UNSIGNED NOT NULL,
+	company_id INT(32) UNSIGNED NOT NULL,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	FOREIGN KEY (transaction_id) REFERENCES Transactions(id),
 	FOREIGN KEY (consumer_id) REFERENCES Consumers(id),
 	FOREIGN KEY (company_id) REFERENCES Companies(id)
+);
+
+CREATE TABLE Purchase_Product (
+	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	purchase_id INT(32) UNSIGNED NOT NULL,
+	product_id INT(32) UNSIGNED NOT NULL,
+	quantity INT(128) UNSIGNED NOT NULL,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	FOREIGN KEY (purchase_id) REFERENCES Purchases(id),
+	FOREIGN KEY (product_id) REFERENCES Products(id)
 );

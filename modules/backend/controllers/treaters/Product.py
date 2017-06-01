@@ -10,6 +10,7 @@ class Product(std.Treater):
 					"description":	["required"],
 					"category":		["required"],
 					"price":	    ["required"],
+					"quantity": 	["required", "integer"]
 				},
 				"method": "post",
 				#"auth": ["manager", "client"],
