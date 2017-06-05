@@ -1,7 +1,7 @@
 from framework import Model as std
 
 class Product(std.Model):
-	attributes = ['number', 'name', 'description', 'category', 'company_id', 'price', 'quantity']
+	attributes = ['name', 'description', 'category', 'company_id', 'price', 'quantity']
 
 	def check_product_available(self, id, quantity):
 
