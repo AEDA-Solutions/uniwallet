@@ -50,3 +50,6 @@ class App(std.Controller):
 	def teste(self):
 		return self.prepare_static(self.get_html("Teste"))
 
+	def tteste(self):
+		return self.prepare_static(self.get_html("tteste"))
+

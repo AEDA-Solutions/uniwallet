@@ -10,3 +10,12 @@ class Support(std.Controller):
 
 	def baz(self):
 		return self.view('General').format("Hello")
+
+	def mulheres(self):
+		return "Este conteúdo está aqui no backend"
+
+	def dados(self):
+		return {
+			"nome": "Caio Silva",
+			"idade": 29
+		}
