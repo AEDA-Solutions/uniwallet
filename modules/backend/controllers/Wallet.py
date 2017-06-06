@@ -20,4 +20,11 @@ class Wallet(std.Controller):
 		balance = self.model().find([("user_id", "=", 1)]).fetchone()["balance"]
 		return balance
 
+	def user(self):
+		return self.get_input("wallet_idw")
+		"""user_id = self.model().load(self.get_request_parameters()['wallet_id'])
+		i_d = self.model(data = 
+		user = self.model("User").find([("id", "=", i_d)]).fetchone()["name"]
+		return user"""
+
 
