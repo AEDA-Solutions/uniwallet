@@ -44,8 +44,8 @@ class App(std.Controller):
 	def editausuario(self):
 		return self.prepare_static(self.get_html("editausuario"))
 
-	def xuxu(self):
-		return self.prepare_static(self.get_html("Ajuda"))
+	def perfiledit(self):
+		return self.prepare_static(self.get_html("perfiledit"))
 
 	def teste(self):
 		return self.prepare_static(self.get_html("Teste"))

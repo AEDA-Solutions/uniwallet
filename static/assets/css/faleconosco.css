@@ -1,25 +1,24 @@
 
-.mini-logo{ 
+.margin-login{
+  margin-right: 30px;
+}
 
-
-	width: 52px; 
-	margin-top: 6px; 
-	margin-right: 15px; 
-	margin-left: 60px; 
+.mini-logo{
+  width: 250px; 
+  margin-right: 15px; 
+  margin-left: 40px; 
 } 
 
  /*PANIEL DE CADASTRO*/
 body{ 
 
   margin: 0 auto; 
-  background-image: url("../images/fale.jpg"); 
+  background-image: url("../images/talkTOus.jpg"); 
   background-repeat: no-repeat; 
   background-size: cover; 
 } 
 
- 
  h4{ 
- 
 	margin-left: 30px; 
 	margin-right: 400px; 
 	font-weight: 400px; 
@@ -27,14 +26,9 @@ body{
 	font-family: sans-serif; 
 	margin-top: 40px; 
 	width: 500px;
- 
 } 
 
-
-
- 
 h6{ 
-
 	margin-left: 15px; 
 	margin-right: 400px; 
 	font-weight: 500px; 
@@ -42,7 +36,6 @@ h6{
 	font-family: sans-serif; 
 	margin-top: 90px; 
 	width: 500px;
-
 } 
  
 .containerlogin{ 
@@ -53,21 +46,17 @@ h6{
   border-radius: 40px; 
   margin: 0 auto; 
   margin-top: 150px; 
-
 } 
 
- 
-.containerlogin img{ 
-
+/*.containerlogin img{ 
   width: 120px; 
   height: 120px; 
   margin-top:-60px;
   margin-right: 400px; 
-} 
+}*/ 
 
  
 input[type="text"]{ 
-
   height: 45px; 
   width: 300px; 
   font-size: 18px; 
@@ -77,11 +66,9 @@ input[type="text"]{
   margin-top: 17px; 
   background-color: #fff; 
   margin-left: 350px; 
-
 } 
 
 textarea{ 
-
   height: 120px; 
   width: 350px; 
   font-size: 18px; 
@@ -91,7 +78,6 @@ textarea{
   margin-top: 10px; 
   background-color: #fff; 
   margin-left: 350px; 
-
 } 
 
 .floating-box{
@@ -103,7 +89,6 @@ textarea{
 	margin: 20px;
 	margin-top: 45px;
 }
-
  
 .btn-continuar{ 
   width: 300px;
@@ -115,7 +100,6 @@ textarea{
   background-color: #000000; 
   margin-left: 350px;  
 } 
-
 
 .btn-conFace{ 
   width: 300px;
