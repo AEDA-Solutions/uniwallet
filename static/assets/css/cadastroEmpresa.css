@@ -23,7 +23,7 @@ body{
  
 .containercadastro{
   width:500px;
-  height: 590px;
+  height: 430px;
   text-align: center;
   background-color: rgba(52, 73, 94,0.7);
   border-radius: 10px;
@@ -83,35 +83,18 @@ input[type="password"]{
 }
 
 .form-input:nth-child(3)::before{
-  content: "\f1fa";
+  content: "\f023";
   font-size: 25px;
   margin-top: 5px;
 }
 
 .form-input:nth-child(4)::before{
-  content: "\f041";
+  content: "\f2c3";
   font-size: 25px;
   margin-top: 5px;
 }
 
-.form-input:nth-child(5)::before{
-  content: "\f023";
-  font-size: 25px;
-  margin-top: 5px;
-}
 
- 
-.form-input:nth-child(6)::before{
-  content: "\f023";
-  font-size: 25px;
-  margin-top: 5px;
-}
-
-.form-input:nth-child(7)::before{
-  content: "\f022";
-  font-size: 25px;
-  margin-top: 5px;
-}
 
 .btn-login{
   padding: 15px 30px;
