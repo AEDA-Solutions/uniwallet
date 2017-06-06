@@ -104,7 +104,7 @@
 	<li>
 			<div class="collapsible-header"><i class="material-icons">view_list</i>Histórico de Compras</div>
 			<div class="collapsible-body"><span>
-			<table>
+			<table id ="Histórico">
 			        <thead>
 			          <tr>
 			              <th>Data</th>
@@ -115,7 +115,7 @@
 			          </tr>
 			        </thead>
 
-			        <tbody>
+			        <tbody id="body">
 			          <tr>
 			            <td>21/04/2017</td>
 			            <td>Alvin</td>
@@ -312,12 +312,61 @@ function Nova()
 }
 </script>
 
+<<<<<<< HEAD
 <script type="text/javascript">
   Request.send('', 'consumer/extrato', 'POST', function(server_response){
   console.log(server_response)
 
 })
 </script>
+=======
+
+<script type="text/javascript">
+	
+
+
+
+
+Request.get("consumer/extrato" , function(extrato){
+		
+		
+		
+		var modelo = 	"<tr>\
+			            <td>created_at</td>\
+			            <td>wallet_to</td>\
+			            <td>product</td>\
+			            <td>value</td>\
+			            <td>code</td>\
+			        </tr>\ "
+		var all = ""
+		for (var i = extrato.content.length - 1; i >= 0; i--) {
+			var at = extrato.content[i].created_at
+			var to = extrato.content[i].user_name
+			var mod = "$$ "
+			var val = mod.concat(extrato.content[i].value.toString())
+
+			var coin = " UniCoins" 
+			var val = val.concat(coin)
+			
+			var gold = modelo.replace("created_at", at)
+			var gold2 = gold.replace("wallet_to", to)
+			var gold3 = gold2.replace("value", val)
+			var all = all.concat(gold3)
+			}
+
+		document.getElementById("body").innerHTML = all
+			
+		
+	})
+
+
+</script>
+
+
+
+
+
+>>>>>>> f87fa8c0d90113375b4b4d505d50a018d3c6c7ad
 </body>
 </html> 
 
