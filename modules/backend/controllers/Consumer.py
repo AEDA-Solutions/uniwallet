@@ -34,13 +34,6 @@ class Consumer(std.Controller):
 	def extrato(self):
 		user_id = self.model(name = 'Session').get_user()['id']
 		wall_id = self.model("Wallet").find([('user_id', '=', user_id)]).fetchone("id")["id"]
-<<<<<<< HEAD
 		return self.model("Transaction").find(conditions = [("wallet_from", '=', wall_id)], join = [("Wallet", "wallet_from"), ("User", "Wallets.user_id")]).fetch()
 
-		
-
-	def teste(self):
-		return self.model("Transaction").find(join = [("Wallet", "Transactions.wallet_from"), ("User", "Wallets.user_id")]).fetch(aliases = [("wallet_balance", "saldo")])
-=======
-		return self.model("Transaction").find([("wallet_from", '=', wall_id)]).fetch()
->>>>>>> 8a98e9faa995463aef59d1b51270d6ae445c40cd
+	
