@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 
 <html lang="pt-br"> 
-
+ 
 <head>  
       <meta charset="utf-8"> 
       <meta name="viewport" content="width=device-width, initial-scale=1.0"> 		 
@@ -114,37 +114,6 @@
 
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
 <script src="{static}assets/js/uniwallet-backend-api.js"></script>
-<!--
-<script type="text/javascript">
-    function Collap(){
-      var tassila = '<ul class=" collapsible popout white" data-collapsible="accordion">'+
-    '<li>'+
-      '<div class="collapsible-header"><i class="material-icons">filter_drama</i>{{Compania}}</div>'+
-      '<div class="collapsible-body"><span>'+
-        '{{Produtos}}'+
-      '</span></div>'+
-    '</li>'+
-'</ul>';
-return tassila
-    }
-
-Request.send('', 'company/showall', 'POST', function(server_response){
-  var collapsis = ""
-  for (var i = 0; i < server_response.content.length; i++) {
-    var produtos = ""
-    var registros = server_response.content[i]
-        for (var j = 0; j < registros.Products.length; j++) {
-          var produto = registros.Products[j]
-      produtos += produto.name + "<br>"
-      }
-  collapsis += Collap().replace("{{Compania}}",registros.Company.name).replace("{{Produtos}}",produtos)
-  }
-  document.getElementById("asempresasvaoaqui").innerHTML = collapsis
-})
- 
-</script> -->
-
-  <!-- /#wrapper -->
 
   <!-- jQuery -->
   <script src="{static}assets/admin/js/jquery.js"></script>
@@ -207,18 +176,9 @@ var targets = {
     }
 </script>
 
-<!--
-<script>
-  $('.collapsible').collapsible({
-    accordion: false, // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-    onOpen: function(el) { alert('Open'); }, // Callback for Collapsible open
-    onClose: function(el) { alert('Closed'); } // Callback for Collapsible close
-  });
-</script>
-
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<!-- Compiled and minified JavaScript -->
 
+<!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
 
 
@@ -227,4 +187,4 @@ var targets = {
 </html>
 
 </body>
-</html>
+</html> 

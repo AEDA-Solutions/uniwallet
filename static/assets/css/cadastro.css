@@ -26,7 +26,7 @@ body{
 
 .containercadastro{
   width:500px;
-  height: 630px;
+  height: 500px;
   text-align: center;
   background-color: rgba(52, 73, 94,0.7);
   border-radius: 10px;
@@ -98,24 +98,14 @@ input[type="password"]{
   font-size: 25px;
   margin-top: 5px;
 }
+
 .form-input:nth-child(5)::before{
-  content: "\f023"; /*conf senha*/
+  content: "\f1fa"; /*email*/
   font-size: 25px;
   margin-top: 5px;
 }
+
 .form-input:nth-child(6)::before{
-  content: "\f1fa"; /*email*/
-  font-size: 25px;
-  margin-top: 5px;
-}
-
-.form-input:nth-child(7)::before{
-  content: "\f1fa"; /*email*/
-  font-size: 25px;
-  margin-top: 5px;
-}
-
-.form-input:nth-child(8)::before{
   content: "\f19c"; /*univ*/
   font-size: 25px;
   margin-top: 5px;

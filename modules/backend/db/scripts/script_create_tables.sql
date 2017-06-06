@@ -22,7 +22,7 @@ CREATE TABLE AccessLevels (
 INSERT INTO Users (name, email, password) VALUES
 ('Uniwallet team', 'team@team.com', 'uniwallet');
 
-INSERT INTO AccessLevels (name, description) VALUES 
+INSERT INTO AccessLevels (name, description) VALUES
 ('registered', 'Basic access level for everyone logged by default'),
 ('consumer', 'Consumer access level'),
 ('company', 'Company access level'),
@@ -117,6 +117,7 @@ CREATE TABLE Products (
 	price DOUBLE UNSIGNED NOT NULL,
 	quantity INT(32) NOT NULL,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	available BIT(1) DEFAULT 1 NOT NULL,
 	FOREIGN KEY (company_id) REFERENCES Companies(id)
 );
 
