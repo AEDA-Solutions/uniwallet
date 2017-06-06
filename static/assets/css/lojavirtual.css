@@ -1,7 +1,7 @@
 body{
 
   margin: 0 auto; 
-  background-image: url("../images/sky5.jpg"); 
+  background-color: white;
   background-repeat: no-repeat; 
   background-size: cover; 
 }
@@ -38,4 +38,18 @@ body{
   margin-left: -90px;
   margin-top: 7px; 
 
+}
+
+input[type="search"]{
+
+  height: 50px; 
+    width: 20px; 
+    font-size: 18px; 
+    border: none; 
+    border-radius: 10px; 
+    margin-bottom: 20px; 
+    margin-top: 0px; 
+    background-color: #fff; 
+    margin-left: 8px; 
+    margin-top: -8px;
 }

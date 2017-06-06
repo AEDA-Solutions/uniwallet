@@ -13,7 +13,7 @@
 </head> 
 
 <header class="navbar">  
-	<nav class="N/A transparent"> 
+	<nav class="blue-grey darken-5"> 
 			<!--Colocar todo o conteúdo do painel da nav-bar--> 
 		<div class="nav-wrapper container" > 
 
@@ -25,7 +25,7 @@
 				<div class = "barra N/A transparent">
 				<form>
 					<div class="input-field">
-						<input class="blue-grey darken-5 white-text" id="search" type="search" required placeholder="O que está procurando?" >
+						<input class="white black-text" id="search" type="search" required placeholder="O que está procurando?" >
 						<label class="label-icon" for="search" ><i class="material-icons">search</i></label>
 						<i class="material-icons">close</i>
 						</div>
@@ -62,27 +62,103 @@
 </header> 
 <body>
 
-      <div class="row">
-        <div class="col s2 m7">
-        
-  		<div class="card sticky-action">
-    	<div class="card-image waves-effect waves-block waves-light">
-      		<img class="activator" src="{static}assets/images/background.c321e3367.jpg">
-    	</div>
-    	<div class="card-content">
-      		<span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-      		<p><a href="#">This is a link</a></p>
-    	</div>
-    	<div class="card-reveal">
-      		<span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-      		<p>Here is some more information about this product that is only revealed once clicked on.</p>
-    	</div>
-  </div>
-  </div>
-  </div>
+<div class="row">
 
-            
-                        
+    <div class="col s3">
+        
+        <div class="input-field col s12">
+    		<select>
+      			<option value="" disabled selected></option>
+      			<option value="1">Alimentos</option>
+      			<option value="2">Papelaria</option>
+      			<option value="3">Outros</option>
+    		</select>
+    	<label><br>Categoria<br</label>
+  		</div>
+
+  		<div class="input-field col s12">
+    		<select>
+      			<option value="" disabled selected></option>
+      			<option value="1">ICC Norte</option>
+      			<option value="2">ICC Sul</option>
+      			<option value="3">Amarelinho BSAN</option>
+    		</select>
+    	<label><br>Localização<br></label>
+  		</div>
+		
+		<div class="input-field col s12">
+    		<select>
+      			<option value="" disabled selected></option>
+      			<option value="1">R$0,01 - R$5,00</option>
+      			<option value="2">R$5,01 - R$20,00</option>
+      			<option value="3">R$20,01 ou mais</option>
+    		</select>
+    	<label><br>Preço<br></label>
+  		</div>  		
+
+    </div>
+ 
+  <div class="row">
+    <div class="col s3">
+      <div class="card small">
+        <div class="card-image">
+          <img src="{static}assets/images/coxinha.jpg">
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons"></i></a>
+        </div>
+        <div class="card-content">
+          <p>Recheio de frango com catupiry</p>
+          <p>R$3,00</p>
+          <p>Zé da Coxinha - ICC Norte</p>
+        </div>
+      </div>
+    </div>
+
+  <div class="col s3">
+      <div class="card small">
+        <div class="card-image">
+          <img src="{static}assets/images/doce.jpg">
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons"></i></a>
+        </div>
+        <div class="card-content">
+          <p>Diversos</p>
+          <p>R$1,50</p>
+          <p>Só Doces - RU</p>
+        </div>
+      </div>
+    </div>
+
+  <div class="col s3">
+      <div class="card small">
+        <div class="card-image">
+          <img src="{static}assets/images/marmitas.jpg">
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons"></i></a>
+        </div>
+        <div class="card-content">
+          <p>Várias combinações</p>
+          <p>R$8,00</p1>
+          <p>Maria da Marmita - FT</p>
+        </div>
+      </div>
+    </div>
+   </div>
+                 
+</div>
+ 
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+
+	<!--Banco de funções de JS criadas pelo back-end -->
+	<script src="{static}assets/js/uniwallet-backend-api.js"></script> 
+
+<script>
+$(document).ready(function() {
+    $('select').material_select();
+  });	
+</script>           
+
+
 </body>
 
 </html>
