@@ -53,3 +53,7 @@ class App(std.Controller):
 	def tteste(self):
 		return self.prepare_static(self.get_html("tteste"))
 
+	def loja(self):
+		return self.prepare_static(self.get_html("lojavirtual"))
+
+		

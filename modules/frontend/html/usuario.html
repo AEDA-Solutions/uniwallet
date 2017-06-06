@@ -92,7 +92,13 @@
 		<ul class="collapsible indigo lighten-5" data-collapsible="accordion">
 	<li>
 		<div class="collapsible-header"><i class="material-icons">trending_up</i>Extratos</div>
-		<div class="collapsible-body"><span></span></div>
+		<div class="collapsible-body"><span>
+    
+    <div id ="extrato_bancario">
+      
+    </div>
+
+    </span></div>
 	</li>
 
 	<li>
@@ -304,6 +310,13 @@ function Nova()
 {
   location.href="listaempresas"
 }
+</script>
+
+<script type="text/javascript">
+  Request.send('', 'consumer/extrato', 'POST', function(server_response){
+  console.log(server_response)
+
+})
 </script>
 </body>
 </html> 
