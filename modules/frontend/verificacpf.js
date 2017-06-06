@@ -2,7 +2,7 @@ var foco = "";
 var msgstatus = "";
 
 /*************************************************
-	Função que permitir digitar numeros 
+	Função que permitir digitar numeros
 **************************************************/
 function EntradaNumerico(evt) {
 
@@ -10,7 +10,7 @@ function EntradaNumerico(evt) {
                    evt.charCode ? evt.charCode :
                    evt.which    ? evt.which    : void 0;
 
-                   
+
         // Habilita teclas <DEL>, <TAB>, <ENTER>, <ESC> e <BACKSPACE>
         if (key_code == 8  ||  key_code == 9  ||  key_code == 13  ||  key_code == 27  ||  key_code == 46) {
             return true;
@@ -33,7 +33,7 @@ function Alertar(strMsg) {
 }
 
 function aviso (campo, msg)
-{   
+{
     alert(msg);
     campo.focus();
     campo.select();
@@ -43,9 +43,9 @@ function aviso (campo, msg)
 
 //-------------------------------
 function isDigit (c)
-{     
+{
    return ((c >= "0") && (c <= "9"))
-}  
+}
 
 //-------------------------------
 function isEmpty(s)
@@ -57,14 +57,14 @@ function isEmpty(s)
 function TestaCPF(strCPF) {
     var Soma;
     var Resto;
-    Soma = 0;   
+    Soma = 0;
     //strCPF  = RetiraCaracteresInvalidos(strCPF,11);
     if (strCPF == "00000000000")
 	return false;
     for (i=1; i<=9; i++)
-	Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i); 
+	Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i);
     Resto = (Soma * 10) % 11;
-    if ((Resto == 10) || (Resto == 11)) 
+    if ((Resto == 10) || (Resto == 11))
 	Resto = 0;
     if (Resto != parseInt(strCPF.substring(9, 10)) )
 	return false;
@@ -72,7 +72,7 @@ function TestaCPF(strCPF) {
     for (i = 1; i <= 10; i++)
        Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i);
     Resto = (Soma * 10) % 11;
-    if ((Resto == 10) || (Resto == 11)) 
+    if ((Resto == 10) || (Resto == 11))
 	Resto = 0;
     if (Resto != parseInt(strCPF.substring(10, 11) ) )
         return false;
@@ -104,19 +104,19 @@ function ajustar_numero(input, e) {
 		k = e.which;
 	else
 		k = e.keyCode;
-				
+
 	// No IE não essa função não consegue cancelar tabs, BS, DEL, etc, mas no mozilla sim,
 	// por isso precisamos deixar passar as teclas de edição.
 	// Somente aceita os caracteres 0-9, tab, enter, del e BS
 	if ( ((k<48)||(k>57)) && k != 8 && k != 9 && k != 127 && k != 13 && !((k>34)&&(k<41)) && k != 46) {
         if(e.ctrlKey && (k == 118 ||k == 99)) {
             return true;
-        }	
+        }
         else
         {
             e.returnValue = false;
 		    return false;
-        }	
+        }
 	}
 
 	return true;
@@ -131,7 +131,7 @@ function ajustar_numeroie() {
 	input = pegaObj( e.srcElement.id );
 
 	return ajustar_numero( input, e );
-	
+
 }
 
 function pular_campoie() {
@@ -140,7 +140,7 @@ function pular_campoie() {
 	input = pegaObj( e.srcElement.id );
 
 	return pular_campo( input, e );
-	
+
 }
 
 // Função que registra os inputs que precisam ser numéricos e que têm
@@ -161,7 +161,7 @@ function registraInput( id, tamanhoMaximo, proximoId ) {
 	// portanto precisamos setar uma função diferente para ele
 	pegaObj(id).onkeyup = pular_campoie;
 	pegaObj(id).onkeypress = ajustar_numeroie;
-	
+
 	// O mozilla também aceita a linha anterior, mas aqui nós passamos por cima e
 	// chamamos a função diretamente
 	pegaObj(id).setAttribute( 'onKeyUp', 'pular_campo(this, event)');
@@ -173,7 +173,7 @@ function registraInput( id, tamanhoMaximo, proximoId ) {
 function validarCPF(cpf) {
 	var form = pegaObj("theForm");
 	if (pegaObj("id_cpf").value == "") {
-	    alert("Por favor, preencha o cpf a ser consultado");	
+	    alert("Por favor, preencha o cpf a ser consultado");
 		pegaObj("id_cpf").focus();
 	    return;
 	}
@@ -245,22 +245,22 @@ function ValidarDados(){
 		pegaObj("txtCPF").focus();
 		return false;
 	}
-	
+
 	if (pegaObj("txtDataNascimento").value.length != 10 || pegaObj("txtDataNascimento").value == "00/00/0000") {
 	    alert("Informe a data de nascimento do titular do CPF a ser consultado, com dois dígitos para o DIA e para o MÊS e quatro dígitos para o ANO. Formato: dd/mm/aaaa.");
 		pegaObj("txtDataNascimento").focus();
 		return false;
 	}
-	
+
 	mostraEscondeAntirobo();
 }
 
 
 function mostraEscondeAntirobo() {
-    if ($("#antirobo").css("display") == "block") {        
-        $("#antirobo").css("display", "none");        
+    if ($("#antirobo").css("display") == "block") {
+        $("#antirobo").css("display", "none");
     }
-    else {        
+    else {
         $("#antirobo").css("display", "block");
         ReloadAntiRobo();
     }
@@ -271,7 +271,7 @@ function CancelarAntiRobo() {
     mostraEscondeAntirobo();
 }
 
-function Consultar() {   
+function Consultar() {
     $("#tempTxtCPF").val($("#txtCPF").val());
     $("#tempTxtNascimento").val($("#txtDataNascimento").val());
     $("#temptxtToken_captcha_serpro_gov_br").val($("input[name*='Token_captcha_serpro_gov_br']").val());
@@ -292,5 +292,5 @@ function ApagarCamposRobo(){
 function ReloadAntiRobo() {
     if ($("#antirobo").add("display") != "none") {
         $("#btnRecarregar_captcha_serpro_gov_br").click();
-    }
+    } 
 }
