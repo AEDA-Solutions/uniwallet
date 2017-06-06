@@ -111,7 +111,6 @@ CREATE TABLE Categories (
 CREATE TABLE Products (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	company_id INT(32) UNSIGNED NOT NULL,
-	number INT(32) UNSIGNED NOT NULL, #associa com a loja OU com o codigo do comerciante
 	name VARCHAR(128) NOT NULL,
 	description VARCHAR(256) NOT NULL,
 	category VARCHAR(128) NOT NULL,

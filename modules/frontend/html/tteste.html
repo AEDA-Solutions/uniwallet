@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>olá mundo</title>
+</head>
+<body>
+<div id="container">
+	
+	<table border=1>
+		<th>nome</th>
+		<th>idade</th>
+		<th>balance</th>
+		<tr>
+			<td>Arthur</td>
+			<td>19</td>
+		</tr>
+		<tr>
+			<td>Guilherme</td>
+			<td>25</td>
+		</tr>
+		<tr>
+			<td id="nome"></td>
+			<td id="idade"></td>
+			<td id="balance"></td>
+		</tr>
+	</table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.0.min.js"> </script> 
+<script src="{static}assets/js/uniwallet-backend-api.js"></script>
+
+<script type="text/javascript">
+
+	Request.get("support/dados", function(a){
+		document.getElementById("nome").innerHTML = a.content.nome
+		document.getElementById("idade").innerHTML = a.content.idade
+
+
+
+	})
+
+	Request.get("wallet/balance", function(b){
+		document.getElementById("balance").innerHTML = b.content
+	})
+
+</script>
+</body>
+</html>

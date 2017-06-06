@@ -5,7 +5,6 @@ class Product(std.Treater):
 		return self.rules({
 				"fields": {
 					"company_id": 	["required", "exists:id:Company"],
-					"number": 		["required"],
 					"name": 		["required"],
 					"description":	["required"],
 					"category":		["required"],

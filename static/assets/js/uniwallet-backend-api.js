@@ -52,6 +52,22 @@ function Request(domain = "http://localhost:8000", module_name = "api"){
 			dataType: 'json'
 		})
 	}
+
+	this.get = function(route, callback, async = true){
+		return $.ajax({
+			type: "GET",
+			url: domain + "/" + module_name  + "/" + route,
+			success: callback,
+			async: async,
+			cache: false,
+			beforeSend: function(xhr) {
+				if (Auth.Token.exists()){
+					xhr.setRequestHeader('Authorization', 'Basic ' + Auth.Token.get())
+				}
+			},
+			dataType: 'json'
+		})
+	}
 }
 
 function Page(){
