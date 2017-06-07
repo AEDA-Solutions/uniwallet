@@ -14,8 +14,12 @@ body{
 
   margin: 0 auto; 
   background-image: url("../images/talktous.jpg"); 
+  max-width: 1080px;   
+  width: auto;
+  max-height: auto;  
+  min-height: auto;      
+  background-size:100%;
   background-repeat: no-repeat; 
-  background-size: cover; 
 } 
 
  h4{ 
