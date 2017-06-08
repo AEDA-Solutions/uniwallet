@@ -38,12 +38,17 @@
 			</div>
 
 			<div class="form-input">
-				<input class="input-form" type="text" name="cpf" placeholder="CPF">
+				<input class="input-form" type="text" name="cpf" placeholder="CPF">			
 			</div>
 
 			<div class="form-input">
-				<input class="input-form" type="password" name="password" size="30" minlength="6"  placeholder="Senha">
-			</div>
+			<!-- <label for="pwd0">Password:</label> -->
+				<input id ="pwd" class="input-form" type="password" name="password" size="30" minlength="6"  placeholder="Senha" /> 
+				<button type="button" id="eye">
+    			<img src="{static}assets/images/eye.png" class="eye" />
+				</button>
+				
+				
 
 			<!-- FUNÇÃO NÃO ESTÁ FUNCIONANDO CORRETAMENTE, INDICA ERRO MESMO SEM ENVIAR FORMULÁRIO, INDICA ERRO AO CLICAR NA TELA, ALÉM DE ALTERAR OS ICONES
 
@@ -73,6 +78,9 @@
 
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
 
+
+
+
 <script type="text/javascript">
 	//Função JavaScript para validação de e-mail 
 	function verifica() {
@@ -94,6 +102,34 @@
 		}
 	}
 </script>
+
+<script type="text/javascript">
+
+function show() {
+    var p = document.getElementById('pwd');
+    p.setAttribute('type', 'text');
+}
+
+function hide() {
+    var p = document.getElementById('pwd');
+    p.setAttribute('type', 'password');
+}
+
+var pwShown = 0;
+
+document.getElementById("eye").addEventListener("click", function () {
+    if (pwShown == 0) {
+        pwShown = 1;
+        show();
+    } else {
+        pwShown = 0;
+        hide();
+    }
+}, false);
+</script>
+
+
+
 
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"> </script> 
 
