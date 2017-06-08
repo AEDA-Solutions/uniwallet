@@ -124,7 +124,10 @@
 
     </div>
  
-  <div class="row">
+  <div class="row" id="margem">
+    
+
+
     <div class="col s3">
       <div class="card small">
         <div class="card-image">
@@ -166,23 +169,96 @@
         </div>
       </div>
     </div>
+      
+
+      <div class="col s3">
+      <div class="card small">
+        <div class="card-image">
+          <img src="{static}assets/images/coxinha.jpg">
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons"></i></a>
+        </div>
+        <div class="card-content">
+          <p>Recheio de frango com catupiry</p>
+          <p>R$3,00</p>
+          <p>Zé da Coxinha - ICC Norte</p>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
    </div>
                  
 </div>
  
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-	<!-- Compiled and minified JavaScript -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
 
-	<!--Banco de funções de JS criadas pelo back-end -->
-	<script src="{static}assets/js/uniwallet-backend-api.js"></script> 
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+
+  <!--Banco de funções de JS criadas pelo back-end -->
+  <script src="{static}assets/js/uniwallet-backend-api.js"></script>
+
 
 <script>
 $(document).ready(function() {
     $('select').material_select();
   });	
 </script>           
+
+
+
+
+<script type="text/javascript">
+  
+
+
+
+
+Request.get("product/show_all" , function(all){
+    
+    
+    console.log(all)
+    var modelo =  " <div class= \"col s3\" > \
+                      <div class=\"card small\"/> \
+                        <div class=\"card-image\"> \
+                          <img src=\"fotinha\"> \
+                          <a class=\"btn-floating halfway-fab waves-effect waves-light red\"><i class=\"material-icons\"></i></a> \
+                        </div> \
+                        <div class=\"card-content\"> \
+                          <p>nome</p>\
+                          <p>$ price UniCoins</p> \
+                          <p>company</p> \
+                        </div> \
+                      </div> \
+                    </div> \ "
+    console.log(modelo)
+    
+    var pagina = ""
+    for (var i = all.content.length - 1; i >= 0; i--) {
+      var nome = all.content[i].name
+      var price = all.content[i].price
+      var company = all.content[i].company_name
+      
+      var replace = modelo.replace("nome", nome)
+      var replace2 = replace.replace("price", price)
+      var replace3 = replace2.replace("company", company)
+      var pagina = pagina.concat(replace3)
+      }
+
+    document.getElementById("margem").innerHTML = pagina
+      
+    
+  })
+
+
+</script>
 
 
 </body>
