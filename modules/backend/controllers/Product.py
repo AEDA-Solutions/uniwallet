@@ -21,8 +21,9 @@ class Product(std.Controller):
 		return (self.model().find(join=[('Company', 'company_id')], start_from = self.get_input('start'), limit = self.get_input('limit'))
 			.fetch(fields_mask = mask))
 
-	
-
+	def pega(self):
+		return (self.model().find()
+			.fetch())
 
 	def show_all(self):
 		user_id = self.model(name = 'Session').get_user()['id']
