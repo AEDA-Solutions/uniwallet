@@ -15,3 +15,16 @@ class Product(std.Controller):
 		mask = self.metadata([('id', 'id:::hide'), ('quantity', ':Quantidade'), ('name', ':Nome'), ('description', ':Descrição'), ('category', ':Categoria'), ('price', ':Preço'), ('company_id', ':Empresa:Company'), ('company_name', ':Empresa::noneditable')])
 		return (self.model().find(join=[('Company', 'company_id')], start_from = self.get_input('start'), limit = self.get_input('limit'))
 			.fetch(fields_mask = mask))
+
+	def fetchall(self):
+		mask = self.metadata([('id', 'id:::hide'), ('quantity', ':Quantidade'), ('name', ':Nome'), ('description', ':Descrição'), ('category', ':Categoria'), ('price', ':Preço'), ('company_id', ':Empresa:Company'), ('company_name', ':Empresa::noneditable')])
+		return (self.model().find(join=[('Company', 'company_id')], start_from = self.get_input('start'), limit = self.get_input('limit'))
+			.fetch(fields_mask = mask))
+
+	
+
+
+	def show_all(self):
+		user_id = self.model(name = 'Session').get_user()['id']
+		company = self.model("Company").find([('user_id', '=', user_id)]).fetchone("id")["id"]
+		return self.model("Product").find(conditions = [("company_id", '=', company)], join = [("Company", "company_id")]).fetch()
