@@ -39,6 +39,4 @@ class Consumer(std.Controller):
 		wall_id = self.model("Wallet").find([('user_id', '=', user_id)]).fetchone("id")["id"]
 		return self.model("Transaction").find(conditions = [("wallet_from", '=', wall_id)], join = [("Wallet", "wallet_from"), ("User", "Wallets.user_id")]).fetch()
 
-	def security(self):
-		password = self.get_input('password') if self.get_input('password') is not None else '12345678'
 
