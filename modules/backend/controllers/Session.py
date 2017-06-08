@@ -1,5 +1,6 @@
 from . import Controller as std
 from framework.Session import Session
+import hashlib
 
 class Session(std.Controller):
 	
@@ -7,13 +8,17 @@ class Session(std.Controller):
 		return self.model().generate_token()
 
 	def login(self):
-		users = self.model(name = 'User').find([('email', '=', self.get_input('email')), ('password', '=', self.get_input('password'))]).fetch()
+		ppassword = self.get_input('password') if self.get_input('password') is not None else '12345678'
+		newpassword = hashlib.sha256(ppassword.encode('utf-8')).hexdigest()
+		users = self.model(name = 'User').find([('email', '=', self.get_input('email')), ('password', '=', newpassword)]).fetch()
+
 		if len(users) > 0:
 			session = self.model(data = {'user_id': users[0]['id'], 'token': self.get_token(), 'ip': self.request.client_ip})
 			session.make()
 			return {"token": session.token}
 		else:
-			return self.forbid("Incorrect email or password")		
+			return self.forbid(newpassword)
+
 
 	def logout(self):
 		return "Done: {} session destroyed".format(self.model().close())

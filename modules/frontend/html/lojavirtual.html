@@ -1,0 +1,266 @@
+<!DOCTYPE html> 
+
+<html lang="pt-br"> 
+
+<head>  
+		<meta charset="utf-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">     
+		<title> UniWallet </title>  
+		<link rel="stylesheet" href="{static}assets/css/materialize.css"> 
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="{static}assets/css/lojavirtual.css">
+</head> 
+
+<header class="navbar">  
+	<nav class="blue-grey darken-5"> 
+			<!--Colocar todo o conteúdo do painel da nav-bar--> 
+		<div class="nav-wrapper container" > 
+
+			<!--Logo--> 
+			<a href="file:///C:/Users/rmora/Desktop/materialize/web%20pag/index1.html" class="brand-logo"><img src="{static}assets/images/oficial.png" class="circle left mini-logo"></img></a> 
+			<div class="nav-wrapper">
+
+			<div class="nav-wrapper">
+				<div class = "barra N/A transparent">
+				<form>
+					<div class="input-field">
+						<input class="white black-text" id="search" type="search" required placeholder="O que está procurando?" >
+						<label class="label-icon" for="search" ><i class="material-icons">search</i></label>
+						<i class="material-icons">close</i>
+						</div>
+					</form>
+				  </div>
+				</div>
+
+				<!--Para esconder o conteúdo da direita--> 
+			 <div class = "informacoes">
+				<ul id="nav-mobile" class="right hide-on-med-and-down"> 
+
+						<li><a href="informacoesusuario">
+						<i class="material-icons left ">perm_identity</i>
+						<span> Perfil</span>
+						</a></li>
+
+						<li><a href="faleconosco">
+						<i class="material-icons left ">phone</i>
+						<span> Fale Conosco</span>
+						</a></li>
+
+
+						<li><a id="logout" class="margin-login" href ="#">
+						<i class="material-icons left ">input</i>
+						<span> Sair</span>
+                        </a></li>
+                 </ul>
+              </div>
+           </div>
+      </ul>
+    </div> 
+  </nav>  
+  
+</header> 
+<body>
+
+<div class="row">
+
+    <div class="col s3">
+
+    <div class="row">
+	<div class="botao-sup">
+			<div class="col s6"><input type="submit" name="submit" value="Saldo" class="btn-conFace"></div>
+	</div>
+	</div>
+        
+        <div class="input-field col s12">
+    		<select>
+      			<option value="" disabled selected></option>
+      			<option value="1">Alimentos</option>
+      			<option value="2">Papelaria</option>
+      			<option value="3">Outros</option>
+    		</select>
+    	<label><br>Categoria<br</label>
+  		</div>
+
+  		<div class="input-field col s12">
+    		<select>
+      			<option value="" disabled selected></option>
+      			<option value="1">ICC Norte</option>
+      			<option value="2">ICC Sul</option>
+      			<option value="3">Amarelinho BSAN</option>
+    		</select>
+    	<label><br>Localização<br></label>
+  		</div>
+
+  		<div class="input-field col s12">
+    		<select>
+      			<option value="" disabled selected></option>
+      			<option value="1">Maria da Marmita</option>
+      			<option value="2">Zé da Coxinha</option>
+      			<option value="3">Caio da Feijoada</option>
+    		</select>
+    	<label><br>Empresa<br></label>
+  		</div>
+
+  		<div class="input-field col s12">
+    		<select>
+      			<option value="" disabled selected></option>
+      			<option value="1">Coxinha</option>
+      			<option value="2">Doce</option>
+      			<option value="3">Marmitas</option>
+    		</select>
+    	<label><br>Produto<br></label>
+  		</div>
+		
+		<div class="input-field col s12">
+    		<select>
+      			<option value="" disabled selected></option>
+      			<option value="1">R$0,01 - R$5,00</option>
+      			<option value="2">R$5,01 - R$20,00</option>
+      			<option value="3">R$20,01 ou mais</option>
+    		</select>
+    	<label><br>Preço<br></label>
+  		</div>  		
+
+    </div>
+ 
+  <div class="row" id="margem">
+    
+
+
+    <div class="col s3">
+      <div class="card small">
+        <div class="card-image">
+          <img src="{static}assets/images/coxinha.jpg">
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons"></i></a>
+        </div>
+        <div class="card-content">
+          <p>Recheio de frango com catupiry</p>
+          <p>R$3,00</p>
+          <p>Zé da Coxinha - ICC Norte</p>
+        </div>
+      </div>
+    </div>
+
+  <div class="col s3">
+      <div class="card small">
+        <div class="card-image">
+          <img src="{static}assets/images/doce.jpg">
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons"></i></a>
+        </div>
+        <div class="card-content">
+          <p>Diversos</p>
+          <p>R$1,50</p>
+          <p>Só Doces - RU</p>
+        </div>
+      </div>
+    </div>
+
+  <div class="col s3">
+      <div class="card small">
+        <div class="card-image">
+          <img src="{static}assets/images/marmitas.jpg">
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons"></i></a>
+        </div>
+        <div class="card-content">
+          <p>Várias combinações</p>
+          <p>R$8,00</p1>
+          <p>Maria da Marmita - FT</p>
+        </div>
+      </div>
+    </div>
+      
+
+      <div class="col s3">
+      <div class="card small">
+        <div class="card-image">
+          <img src="{static}assets/images/coxinha.jpg">
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons"></i></a>
+        </div>
+        <div class="card-content">
+          <p>Recheio de frango com catupiry</p>
+          <p>R$3,00</p>
+          <p>Zé da Coxinha - ICC Norte</p>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+   </div>
+                 
+</div>
+ 
+
+
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+
+  <!--Banco de funções de JS criadas pelo back-end -->
+  <script src="{static}assets/js/uniwallet-backend-api.js"></script>
+
+
+<script>
+$(document).ready(function() {
+    $('select').material_select();
+  });	
+</script>           
+
+
+
+
+<script type="text/javascript">
+  
+
+
+
+
+Request.get("product/show_all" , function(all){
+    
+    
+    console.log(all)
+    var modelo =  " <div class= \"col s3\" > \
+                      <div class=\"card small\"/> \
+                        <div class=\"card-image\"> \
+                          <img src=\"fotinha\"> \
+                          <a class=\"btn-floating halfway-fab waves-effect waves-light red\"><i class=\"material-icons\"></i></a> \
+                        </div> \
+                        <div class=\"card-content\"> \
+                          <p>nome</p>\
+                          <p>$ price UniCoins</p> \
+                          <p>company</p> \
+                        </div> \
+                      </div> \
+                    </div> \ "
+    console.log(modelo)
+    
+    var pagina = ""
+    for (var i = all.content.length - 1; i >= 0; i--) {
+      var nome = all.content[i].name
+      var price = all.content[i].price
+      var company = all.content[i].company_name
+      
+      var replace = modelo.replace("nome", nome)
+      var replace2 = replace.replace("price", price)
+      var replace3 = replace2.replace("company", company)
+      var pagina = pagina.concat(replace3)
+      }
+
+    document.getElementById("margem").innerHTML = pagina
+      
+    
+  })
+
+
+</script>
+
+
+</body>
+
+</html>

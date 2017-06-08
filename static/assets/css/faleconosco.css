@@ -14,8 +14,12 @@ body{
 
   margin: 0 auto; 
   background-image: url("../images/talk.jpg"); 
+  max-width: 1080px;   
+  width: auto;
+  max-height: auto;  
+  min-height: auto;      
+  background-size:100%;
   background-repeat: no-repeat; 
-  background-size: cover; 
 } 
 
  h4{ 
@@ -47,14 +51,6 @@ h6{
   margin: 0 auto; 
   margin-top: 150px; 
 } 
-
-/*.containerlogin img{ 
-  width: 120px; 
-  height: 120px; 
-  margin-top:-60px;
-  margin-right: 400px; 
-}*/ 
-
  
 input[type="text"]{ 
   height: 45px; 
