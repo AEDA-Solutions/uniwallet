@@ -64,7 +64,7 @@ class QueryBuilder:
 
 					FROM {table_name}
 
-					[inner]
+					[join]
 
 					[condition]
 
@@ -76,15 +76,15 @@ class QueryBuilder:
 
 			def join(self, table_name, conditions = []):
 				snippet = """
-					INNER JOIN
+					JOIN
 
 					{table_name} AS {table_name}
 
 					{conditions}
 
-					[inner]
+					[join]
 				"""
-				self.query = self.query.replace('[inner]', snippet.format(table_name = table_name,
+				self.query = self.query.replace('[join]', snippet.format(table_name = table_name,
 															 			  conditions = 'ON {}'.format(' '.join(list(item if isinstance(item, str) else '{}{}{}'.format(item[0], item[1], item[2]) for item in conditions)))))
 				return self
 

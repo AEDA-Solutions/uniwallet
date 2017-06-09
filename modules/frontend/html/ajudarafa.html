@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ajuda seu merda</title>
+</head>
+<body>
+<select id="LISTA">
+	<option>a</option>
+	<option>b</option>
+	<option>c</option>
+	<option>d</option>
+	<option>e</option>
+</select>
+
+<div id="porra">
+	gfdsgfdsgfd
+	gfdsgfdsgd
+	gfdsgfd
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="{static}assets/js/uniwallet-backend-api.js"></script>
+
+<script type="text/javascript">
+	/*(var lista = ["rafael", "tássila", "danidani", "lenzi"]
+	 var a = document.getElementById('LISTA')
+	 var modelo = "<option>{{conteudoaki}}</option>"
+
+	 var stringzona = ""
+	 for (var i = 0; i < lista.length; i++) {
+	 	stringzona = stringzona + modelo.replace("{{conteudoaki}}", lista[i])   
+	 }
+
+	 console.log(stringzona)
+
+	 a.innerHTML = stringzona
+
+	 // = "<option>rafael</option><option>tássila</option>"*/
+
+	 Request.get("product/pega", function(f){
+
+	 	console.log(f)
+	 	var lojas = document.getElementById("LISTA")
+	 	var modelo = "<option>conteudoaki</option>"
+	 	lojas.innerHTML=""
+	 	for (var i = 0; i < f.content.length; i++) {
+	 		lojas.innerHTML = lojas.innerHTML + modelo.replace("conteudoaki", f.content[i].company_name) 
+	 		
+	 	}
+
+	 })
+</script>
+</body>
+</html>
