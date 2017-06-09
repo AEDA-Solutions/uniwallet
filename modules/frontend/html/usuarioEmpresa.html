@@ -153,7 +153,13 @@
             </div>
 
             <div class="form-input">
-              <input class="input-form" type="text" name="category" placeholder="Tipo">
+              <select>
+                <option value="" disabled selected>Escolha uma opção</option>
+                <option value="1">Salgado</option>
+                <option value="2">Bebidas</option>
+                <option value="3">Almoço</option>
+              </select>
+            <label>Tipo</label>
             </div>
 
             </div>
@@ -282,6 +288,12 @@
       })
     }) 
   </script>
+
+  <script>
+$(document).ready(function() {
+    $('select').material_select();
+  }); 
+</script>     
 
 
 </body>

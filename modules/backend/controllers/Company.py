@@ -1,5 +1,4 @@
 from . import Controller as std
-import hashlib
 
 class Company(std.Controller):
 
@@ -9,8 +8,7 @@ class Company(std.Controller):
 		
 	def register(self):
 		password = self.get_input('password') if self.get_input('password') is not None else '12345678'
-		newpassword = hashlib.sha256(password.encode('utf-8')).hexdigest()
-		user_id = self.model(name = 'User', data = {'name': self.get_input('name'), 'email': self.get_input('email'), 'password': newpassword}).save().last_id()
+		user_id = self.model(name = 'User', data = {'name': self.get_input('name'), 'email': self.get_input('email'), 'password': password}).save().last_id()
 		company_id = self.model(data = dict(list(self.get_request_parameters().items()) + list({"user_id": user_id}.items()))).save().last_id()
 		self.model(name = 'Wallet', data = {'user_id': user_id, 'balance': 100}).save().close()
 		self.set_accesses(user_id)

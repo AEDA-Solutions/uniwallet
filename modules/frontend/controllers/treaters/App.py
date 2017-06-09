@@ -9,6 +9,7 @@ class App(std.Treater):
 
 	"""def usuarioempresa(self):
 		return self.rules({
+
 				"auth": ["company"]
 			})
 			"""

@@ -1,4 +1,5 @@
 from framework import Model as std
+from helpers import crypt
 
 class User(std.Model):
 
@@ -12,3 +13,12 @@ class User(std.Model):
 		else:
 			return []
 
+	def save(self):
+		self.password = crypt.make_hash(self.password)
+		return super().save()
+
+	def checkout(self, email, passw):
+		return self.model().find([('email', '=', email), ('password', '=', crypt.make_hash(passw))]).fetchone()
+
+
+	
