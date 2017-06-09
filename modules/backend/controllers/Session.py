@@ -1,6 +1,6 @@
 from . import Controller as std
 from framework.Session import Session
-import hashlib
+from helpers import crypt
 
 class Session(std.Controller):
 	
@@ -8,16 +8,13 @@ class Session(std.Controller):
 		return self.model().generate_token()
 
 	def login(self):
-		ppassword = self.get_input('password') if self.get_input('password') is not None else '12345678'
-		newpassword = hashlib.sha256(ppassword.encode('utf-8')).hexdigest()
-		users = self.model(name = 'User').find([('email', '=', self.get_input('email')), ('password', '=', newpassword)]).fetch()
-
-		if len(users) > 0:
-			session = self.model(data = {'user_id': users[0]['id'], 'token': self.get_token(), 'ip': self.request.client_ip})
+		user = self.model(name = 'User').checkout(self.get_input('email'), self.get_input('password'))
+		if user is not None:
+			session = self.model(data = {'user_id': user['id'], 'token': self.get_token(), 'ip': self.request.client_ip})
 			session.make()
 			return {"token": session.token}
 		else:
-			return self.forbid(newpassword)
+			return self.forbid("Incorrect email or password")
 
 
 	def logout(self):
