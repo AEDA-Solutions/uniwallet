@@ -308,27 +308,13 @@ document.getElementById("nomeusuario").innerHTML = server_response.content.name
 <script type="text/javascript">
 function Nova()
 {
-  location.href="listaempresas"
+  location.href="loja"
 }
 </script>
 
-<<<<<<< HEAD
-<script type="text/javascript">
-  Request.send('', 'consumer/extrato', 'POST', function(server_response){
-  console.log(server_response)
-
-})
-</script>
-=======
-
 <script type="text/javascript">
 	
-
-
-
-
 Request.get("consumer/extrato" , function(extrato){
-		
 		
 		
 		var modelo = 	"<tr>\
@@ -361,12 +347,6 @@ Request.get("consumer/extrato" , function(extrato){
 
 
 </script>
-
-
-
-
-
->>>>>>> f87fa8c0d90113375b4b4d505d50a018d3c6c7ad
 </body>
 </html> 
 

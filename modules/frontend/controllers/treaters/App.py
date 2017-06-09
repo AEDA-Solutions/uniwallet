@@ -7,7 +7,8 @@ class App(std.Treater):
 				"private": True
 			})
 
-	def usuarioempresa(self):
+	"""def usuarioempresa(self):
 		return self.rules({
 				"auth": ["company"]
 			})
+			"""
