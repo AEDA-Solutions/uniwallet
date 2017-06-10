@@ -27,8 +27,8 @@ class Consumer(std.Controller):
 		return self.model().find(join = [('User', 'user_id')], start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['user_password', 'created_at', 'user_created_at', 'user_id'])
 
 	def fetchadmin(self):
-		mask = self.metadata([('id', ':::hide'), ('user_id', ':::hide'), ('user_email', 'email:Email'), ('fullname', ':Nome'), ('cpf', ':CPF'), ('university', ':Universidade')])
-		return (self.model().find(join=[('User', 'user_id')], start_from = self.get_input('start'), limit = self.get_input('limit'))
+		mask = self.metadata([('id', ':::hide'), ('user_id', ':::hide'), ('user_email', 'email:Email'), ('fullname', ':Nome'), ('cpf', ':CPF'), ('university_name', ':Universidade::noneditable'), ('university_id', ':Universidade:University')])
+		return (self.model().find(join=[('User', 'user_id'), ('University', 'university_id')], start_from = self.get_input('start'), limit = self.get_input('limit'))
 			.fetch(fields_mask = mask))
 
 	def extrato(self):

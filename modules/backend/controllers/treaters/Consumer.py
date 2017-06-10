@@ -5,7 +5,7 @@ class Consumer(std.Treater):
 		return self.rules({
 				"fields": {
 					"fullname": 	["required"],
-					"university": 	["required"],
+					"university_id": 	["required", "exists:id:University"],
 					"cpf":			["required", "cpf", "unique:cpf"],
 					"email": 		["required", "email", "unique:email:User"],
 					"password": 	["optional", "maxlength:32", "minlength:8"]
@@ -19,7 +19,7 @@ class Consumer(std.Treater):
 				"fields": {
 					"id": 			["required"],
 					"fullname": 	["required"],
-					"university": 	["required"],
+					"university_id": 	["required", "exists:id:University"],
 					"cpf":			["required", "cpf", "unique:cpf"],
 					"email": 		["required", "email", "unique:email:User:user_id"],
 					"user_id": 		["required"]

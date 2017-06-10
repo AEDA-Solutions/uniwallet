@@ -74,7 +74,9 @@
 
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav side-nav">
-
+					<li>
+						<a href="#" id='b_universidades' class='botao'><i class="fa fa-fw fa-university"></i> Universidades</a>
+					</li>
 					<li>
 						<a href="#" id='b_consumidores' class='botao'><i class="fa fa-fw fa-user-circle"></i> Consumidores</a>
 					</li>
@@ -174,6 +176,7 @@
 	<script type="text/javascript">
 
 		var targets = {
+			'b_universidades': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'university', 'method': 'GET', 'title': 'Universidades'},
 			'b_consumidores': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'consumer', 'method': 'GET', 'title': 'Consumidores'},
 			'b_empresas': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'company', 'method': 'GET', 'title': 'Empresas'},
 			'b_niveisacesso': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'accesslevel', 'method': 'GET', 'title': 'Níveis de Acesso'},
