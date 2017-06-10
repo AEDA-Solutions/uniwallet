@@ -30,7 +30,7 @@
 		<!-- <img src="{static}assets/images/uwlogo.gif"> -->
 		<form>
 
-		
+
 			<div id="div_mensagem_retorno" style="font-size: 30px; color: red">
 
 			</div>
@@ -49,20 +49,9 @@
 				<!--<a class="button" href="#" id="eye"><i class="material-icons left">visibility</i></a> -->
 			</div>
 
-				
-
 			<div class="form-input">
 				<input class="input-form" type="text" name="email"  placeholder="Insira seu E-mail">
 			</div>
-
-
-			<div class="form-input">
-				<select class="input-form" name="university_id" id="university_select">
-					
-				</select>
-			</div>
-
-
 
 			<button class="btn-login" id="botao_submit">CADASTRE-SE</button>
 	</form>
@@ -127,15 +116,6 @@ document.getElementById("eye").addEventListener("click", function () {
 <script src="{static}assets/js/uniwallet-backend-api.js"></script>
 
 <script type="text/javascript">
-
-	Request.send({start:0, limit:1000000}, "university/fetch", "GET", function(response){
-		console.log(response)
-		var options = ""
-		for (var i = 0; i < response.content.length; i++) {
-			options += HTML_Factory.make_tag('option', response.content[i].name, {'value': response.content[i].id}) 
-		}
-		Page.fill("university_select", options)
-	})
 
 	//Adiciona um evento no botão de enviar dados
   	Page.listen("botao_submit", function(e){
