@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registre-se</title>
+	<link rel="stylesheet" href="{static}assets/css/materialize.css"> 
+	<link rel="stylesheet" href="{static}assets/css/neo/cadastro.css"> 
+</head>
+<body>
+ <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+      </ul>
+    </div>
+  </nav>
+	<!--Template obtido de https://codepen.io/vaskopetrov/pen/amxvrY-->
+	<div class="container">
+	<div class="row">
+		<form class="col s12" id="reg-form" onsubmit="return false">
+		  <div class="row">
+			<div class="input-field col s6">
+			  <input class="input-form" name="fullname" id="first_name" type="text" class="validate" required>
+			  <label for="first_name">Nome</label>
+			</div>
+			<div class="input-field col s6">
+			  <input class="input-form" name="cpf" id="last_name" type="text" class="validate" required>
+			  <label for="last_name">CPF</label>
+			</div>
+		  </div>
+		  <div class="row">
+			<div class="input-field col s12">
+			  <input class="input-form" name="email" id="email" type="email" class="validate" required>
+			  <label for="email">Email</label>
+			</div>
+		  </div>
+		  <div class="row">
+			<div class="input-field col s12">
+			  <input class="input-form" name="password" id="password" type="password" class="validate" minlength="8" required>
+			  <label for="password">Senha</label>
+			</div>
+		  </div>
+		  <div class="row">
+			  <div class="input-field col s6">
+				<select class="input-form" name="university_id" id="university_select">
+				  <option value="" disabled selected>Escolha uma opção</option>
+				</select>
+				<label>Universidade</label>
+			  </div>
+		  </div>
+		  <div class="row">
+			<div class="input-field col s6">
+			  <button class="btn btn-large btn-register waves-effect waves-light" type="submit" name="action" id="botao_submit">Ok. Estou pronto
+			  </button>
+			</div>
+		  </div>
+		</form>
+	  </div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+	<script src="{static}assets/js/materialize.min.js"></script>
+	<script src="{static}assets/js/uniwallet-backend-api.js"></script>
+
+	<script type="text/javascript">
+
+		//Adiciona um evento no botão de enviar dados
+		Page.listen("botao_submit", function(e){
+			//Pega os dados inseridos nos campos de input
+			data = Page.get_input("input-form")
+
+			//Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
+			Request.send(data, "consumer/register", "POST", function(response){
+
+				if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
+					Page.redirect("app/inicial")
+				} else {
+					Materialize.toast(response.content, 4000)
+				}
+
+			})
+		})
+
+		function render_select(callback){
+			//Faz uma requisição para a rota especificada com o objetivo de renderizar uma tag select
+			Request.send({start:0, limit:1000000}, "university/fetch", "GET", function(response){
+				var options = ""
+				for (var i = 0; i < response.content.length; i++) {//Gera as tags option com os valores obtidos da requisição
+					options += HTML_Factory.make_tag('option', response.content[i].name, {'value': response.content[i].id})
+				}
+				Page.fill("university_select", options, true) //Injeta as tags option concatenadas na iteração anterior
+				callback()
+			})
+		}
+
+	</script>
+
+	<script type="text/javascript">
+
+		$(document).ready(function() {
+			render_select(function(){
+				$('select').material_select()
+			})
+		});
+		 
+	</script>
+</body>
+</html>
