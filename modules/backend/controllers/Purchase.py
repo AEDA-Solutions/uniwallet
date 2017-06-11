@@ -7,7 +7,7 @@ class Purchase(std.Controller):
 		total_price = 0
 		for item in self.get_request_parameters()["products"]:
 			if not self.model('Product').check_product_available(item["id"], item["quantity"]):
-				return "Proibido"
+				return "Quantidade Indisponivel"
 			total_price = total_price + self.model('Product').get_price(item["id"], item["quantity"])
 
 		company_id = self.get_input('company_id')
