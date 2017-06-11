@@ -72,8 +72,8 @@
 	</div>
 	</div>
         
-        <div class="input-field col s12">
-    		<select>
+        <div class="input-field col s12" id="category">
+    		<select id="categoria">
       			<option value="" disabled selected></option>
       			<option value="1">Alimentos</option>
       			<option value="2">Papelaria</option>
@@ -93,7 +93,7 @@
   		</div>
 
   		<div class="input-field col s12">
-    		<select>
+    		<select id="nome_empresa">
       			<option value="" disabled selected></option>
       			<option value="1">Maria da Marmita</option>
       			<option value="2">Zé da Coxinha</option>
@@ -103,7 +103,7 @@
   		</div>
 
   		<div class="input-field col s12">
-    		<select>
+    		<select id="nome_produto">
       			<option value="" disabled selected></option>
       			<option value="1">Coxinha</option>
       			<option value="2">Doce</option>
@@ -254,6 +254,45 @@ Request.get("product/show_all" , function(all){
 
     document.getElementById("margem").innerHTML = pagina
       
+    Request.get("product/pega", function(l){
+
+    console.log(l)
+    var lojas = document.getElementById("nome_empresa")
+    var modelo = "<option>conteudoaki</option>"
+    lojas.innerHTML=""
+    for (var i = 0; i < l.content.length; i++) {
+      lojas.innerHTML = lojas.innerHTML + modelo.replace("conteudoaki", l.content[i].company_name) 
+      
+    }
+
+   })
+
+    Request.get("product/pega", function(j){
+
+    console.log(j)
+    var produto_categoria = document.getElementById("categoria")
+    var modelo = "<option>conteudoaki</option>"
+    produto_categoria.innerHTML=""
+    for (var i = 0; i < j.content.length; i++) {
+      produto_categoria.innerHTML = produto_categoria.innerHTML + modelo.replace("conteudoaki", j.content[i].category) 
+      
+    }
+
+   })
+
+     Request.get("product/pega", function(n){
+
+    console.log(n)
+    var produto = document.getElementById("nome_produto")
+    var modelo = "<option>conteudoaki</option>"
+    produto.innerHTML=""
+    for (var i = 0; i < n.content.length; i++) {
+      produto.innerHTML = produto.innerHTML + modelo.replace("conteudoaki", n.content[i].name) 
+      
+    }
+
+   })
+
     
   })
 
