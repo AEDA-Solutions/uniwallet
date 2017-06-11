@@ -28,7 +28,7 @@
 	
 	<div class="containercadastro">
 		<!-- <img src="{static}assets/images/uwlogo.gif"> -->
-		<form>
+		<form onsubmit="return false">
 
 
 			<div id="div_mensagem_retorno" style="font-size: 30px; color: red">
@@ -43,45 +43,27 @@
 				<input class="input-form" type="text" name="cpf" placeholder="CPF">			
 			</div>
 
-			<div class="form-input" >
+			<div class="form-input">
 				<!-- <label for="pwd0">Password:</label> -->
-				<input class="input-form" type="password" name="password" size="30" minlength="6"  placeholder="Senha" class="button" href="#" id="eye"><i class="material-icons left">visibility</i>
+				<input class="input-form" type="password" name="password" size="30" minlength="6"  placeholder="Senha">
+				<!--<input class="input-form" type="password" name="password" size="30" minlength="6"  placeholder="Senha" class="button" href="#" id="eye"><<i class="material-icons left">visibility</i>-->
 				<!--<a class="button" href="#" id="eye"><i class="material-icons left">visibility</i></a> -->
 			</div>
 
 			<div class="form-input">
-				<input class="input-form" type="text" name="email"  placeholder="Insira seu E-mail">
+				<input class="input-form" type="text" name="email" placeholder="Insira seu E-mail">
+			</div>
+
+			<div class="form-input">
+				<select class="input-form" name="university_id" id="university_select">
+					<option value="" disabled selected>Universidade</option>
+				</select>
 			</div>
 
 			<button class="btn-login" id="botao_submit">CADASTRE-SE</button>
 	</form>
 
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
-
-
-
-
-<script type="text/javascript">
-	//Função JavaScript para validação de e-mail 
-	function verifica() {
-	  if (document.forms[0].email.value.length == 0) {
-		alert('Por favor, informe o seu EMAIL.');
-		document.frmEnvia.email.focus();
-		return false;
-	  }
-	  return true;
-	}
-	 
-	function checarEmail(){
-	if( document.forms[0].email.value=="0" 
-	   || document.forms[0].email.value.indexOf('@')==-1 
-		 || document.forms[0].email.value.indexOf('.')==-1 )
-		{
-		   alert( "Por favor, informe um E-MAIL válido!" );
-		   return false;
-		}
-	}
-</script>
 
 <script type="text/javascript">
 
@@ -115,11 +97,13 @@ document.getElementById("eye").addEventListener("click", function () {
 
 <script src="{static}assets/js/uniwallet-backend-api.js"></script>
 
+<script src="{static}assets/js/materialize.min.js"></script>
+
 <script type="text/javascript">
 
 	//Adiciona um evento no botão de enviar dados
   	Page.listen("botao_submit", function(e){
-		e.preventDefault() //Impede a atualização da página
+		//e.preventDefault() //Impede a atualização da página
 		//Pega os dados inseridos nos campos de input
 		data = Page.get_input("input-form")
 
@@ -135,21 +119,29 @@ document.getElementById("eye").addEventListener("click", function () {
 		})
   	})
 
-</script>
-   <!-- Função para comparar conteúdo dos campos de e-mail.-->
-<script type="text/javascript" language="JavaScript">
-
-function checkEmail(theForm) {
-	if (theForm.email.value != theForm.emailconf.value)
-	{
-		alert('E-mails informados são diferentes!');
-		return false;
-	} else {
-		return true;
+  	function render_select(callback){
+		//Faz uma requisição para a rota especificada com o objetivo de renderizar uma tag select
+		Request.send({start:0, limit:1000000}, "university/fetch", "GET", function(response){
+			var options = ""
+			for (var i = 0; i < response.content.length; i++) {//Gera as tags option com os valores obtidos da requisição
+				options += HTML_Factory.make_tag('option', response.content[i].name, {'value': response.content[i].id})
+			}
+			Page.fill("university_select", options, true) //Injeta as tags option concatenadas na iteração anterior
+			callback()
+		})
 	}
-}
-//-->
-</script> 
+
+</script>
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		render_select(function(){
+			$('select').material_select()
+		})
+	});
+	 
+</script>
 
 </body>
 
