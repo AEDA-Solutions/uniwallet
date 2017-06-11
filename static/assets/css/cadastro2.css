@@ -1,0 +1,47 @@
+body{ 
+   background-image: url("../images/cadastro.jpg");
+   max-width: 1080px;   /* Máximo da largura da imagem */
+   width: auto;
+   max-height: auto;  /* Máximo da altura da imagem */
+   min-height: auto;      
+   background-size:100%;
+   background-repeat: no-repeat; 
+ }
+
+ .quadrado{
+ 	width: 700px;
+ 	height: 500px;
+ 	background-color: white;
+ 	margin-top: 130px;
+ 	margin-left: 310px;
+ 	border-color: blue;
+ 	border-spacing: 100px;
+ }
+ 
+ /* label color */
+   .input-field label {
+     color: #000;
+   }
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color: #000;
+   }
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
+   }
+   /* valid color */
+   .input-field input[type=text].valid {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
+   }
+   /* invalid color */
+   .input-field input[type=text].invalid {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
+   }
+   /* icon prefix focus color */
+   .input-field .prefix.active {
+     color: #000;
+   }

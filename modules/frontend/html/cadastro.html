@@ -1,24 +1,20 @@
-
-
 <html>
 
 <head>
-		 <meta charset="utf-8"> 
-		 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>cadastro</title>
 
 	<!-- Referentes ao nav-bar -->
 	<link rel="stylesheet" href="{static}assets/css/materialize.css"> 
-	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
-	 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-				<link rel="stylesheet" type="text/css" href="{static}assets/css/cadastro.css">
-				</link>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{static}assets/css/cadastro.css"></link>
+	<link rel="stylesheet" type="text/css" href="{static}assets/css/font-awesome.css">
+	<link rel="shortcut icon" href="official.ico" type="image/x-icon" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-				<link rel="stylesheet" type="text/css" href="{static}assets/css/font-awesome.css">
-
-				<link rel="shortcut icon" href="official.ico" type="image/x-icon" />
-				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
 
@@ -28,38 +24,32 @@
 	
 	<div class="containercadastro">
 		<!-- <img src="{static}assets/images/uwlogo.gif"> -->
-		<form>
+	<form>
+		
+		<div id="div_mensagem_retorno" style="font-size: 30px; color: red"></div>
 
+		<div class="form-input">
+			<input class="input-form" type="text" name="fullname" size="30" minlenght="3" maxlength="50" placeholder="Nome Completo">
+		</div>
 
-			<div id="div_mensagem_retorno" style="font-size: 30px; color: red">
+		<div class="form-input">
+			<input class="input-form" type="text" name="cpf" placeholder="CPF">			
+		</div>
 
-			</div>
+		<div class="form-input" >
+			<!-- <label for="pwd0">Password:</label> -->
+			<input class="input-form" type="password" name="password" size="30" minlength="6"  placeholder="Senha" class="button" href="#" id="eye"><i class="material-icons left">visibility</i>
+			<!--<a class="button" href="#" id="eye"><i class="material-icons left">visibility</i></a> -->
+		</div>
 
-			<div class="form-input">
-					<input class="input-form" type="text" name="fullname" size="30" minlenght="3" maxlength="50" placeholder="Nome Completo">
-			</div>
+		<div class="form-input">
+			<input class="input-form" type="text" name="email"  placeholder="Insira seu E-mail">
+		</div>
 
-			<div class="form-input">
-				<input class="input-form" type="text" name="cpf" placeholder="CPF">			
-			</div>
-
-			<div class="form-input" >
-				<!-- <label for="pwd0">Password:</label> -->
-				<input class="input-form" type="password" name="password" size="30" minlength="6"  placeholder="Senha" class="button" href="#" id="eye"><i class="material-icons left">visibility</i>
-				<!--<a class="button" href="#" id="eye"><i class="material-icons left">visibility</i></a> -->
-			</div>
-
-			<div class="form-input">
-				<input class="input-form" type="text" name="email"  placeholder="Insira seu E-mail">
-			</div>
-
-			<button class="btn-login" id="botao_submit">CADASTRE-SE</button>
+		<button class="btn-login" id="botao_submit">CADASTRE-SE</button>
 	</form>
 
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
-
-
-
 
 <script type="text/javascript">
 	//Função JavaScript para validação de e-mail 
@@ -107,9 +97,6 @@ document.getElementById("eye").addEventListener("click", function () {
 	}
 }, false);
 </script>
-
-
-
 
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"> </script> 
 
