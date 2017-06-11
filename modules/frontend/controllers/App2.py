@@ -6,7 +6,7 @@ class App2(std.Controller):
 		return html.replace("{static}", "http://localhost:8008/")
 
 	def cadastro(self):
-		return self.prepare_static(self.get_html("cadastro_new"))
+		return self.prepare_static(self.get_html("neo/cadastro"))
 
 	def usuarioempresa(self):
 		return self.prepare_static(self.get_html("usuarioEmpresa"))
