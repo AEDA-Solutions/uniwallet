@@ -113,9 +113,7 @@ INSERT INTO Stores (name, company_id) VALUES
 
 CREATE TABLE Categories (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-	company_id INT(32) UNSIGNED NOT NULL,
-	name VARCHAR(128) NOT NULL,
-	description VARCHAR(256) NOT NULL,
+	type VARCHAR(128) NOT NULL,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -131,6 +129,12 @@ CREATE TABLE Products (
 	available BIT(1) DEFAULT 1 NOT NULL,
 	FOREIGN KEY (company_id) REFERENCES Companies(id)
 );
+
+INSERT INTO Products (company_id, name, description, category, price, quantity) VALUES
+('1', 'salada', 'Vegana', 'Refeicao', 300, 10);
+
+INSERT INTO Products (company_id, name, description, category, price, quantity) VALUES
+('1', 'cheese burguer', 'Vegana', 'Refeicao', 500, 8);
 
 CREATE TABLE Product_Category (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
