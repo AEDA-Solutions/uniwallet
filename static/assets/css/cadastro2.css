@@ -10,9 +10,9 @@ body{
 
  .quadrado{
  	width: 704px;
- 	height: 500px;
+ 	height: 478px;
  	background-color: white;
- 	margin-top: 130px;
+ 	margin-top: -20px;
  	margin-left: 310px;
  	border-color: blue;
  	border-spacing: 100px;
@@ -26,6 +26,16 @@ body{
   border: none;
   background-color: #37474f;
   margin-bottom: 20px;
-  margin-top:45px;
+  margin-top:29px;
   margin-left: 275px;
+}
+
+.mini-logo{
+  
+  height: 130px;
+  margin-left: 445px; 
+  margin-top:60px; 
+  width: 411px; 
+  margin-top:60px;
+ 
 }
