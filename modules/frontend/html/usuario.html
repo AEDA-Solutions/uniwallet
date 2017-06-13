@@ -67,7 +67,7 @@
 	   <li class="collection-item avatar">
 		<i class="material-icons circle">perm_identity</i>
 		<span id="nomeusuario" class="title">Cliente</span>
-		<p> Último Acesso<br></p>
+		
 		<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
 	   </li>
 	</ul>
@@ -253,12 +253,12 @@
 })
 
 //Mostrar o nome que está logado
+    Request.send('', 'user/current', 'POST', function(server_response){
+    console.log(server_response)
+    document.getElementById("nomeusuario").innerHTML = server_response.content.name
+    })
 
-Request.send('', 'user/current', 'POST', function(server_response){
 
-console.log(server_response)
-
-document.getElementById("nomeusuario").innerHTML = server_response.content.name
 </script>
 
  <script>

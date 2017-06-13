@@ -37,14 +37,14 @@
 
 	 // = "<option>rafael</option><option>tássila</option>"*/
 
-	 Request.get("company/showall", function(f){
+	 Request.get("product/pega", function(f){
 
 	 	console.log(f)
 	 	var lojas = document.getElementById("LISTA")
 	 	var modelo = "<option>conteudoaki</option>"
 	 	lojas.innerHTML=""
 	 	for (var i = 0; i < f.content.length; i++) {
-	 		lojas.innerHTML = lojas.innerHTML + modelo.replace("conteudoaki", f.content[i].company_name) 
+	 		lojas.innerHTML = lojas.innerHTML + modelo.replace("conteudoaki", f.content[i].price) 
 	 		
 	 	}
 
