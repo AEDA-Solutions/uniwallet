@@ -65,3 +65,8 @@ input[type="search"]{
   margin-left: -10px;  
   margin-top: 10px;
 } 
+
+.btn-floating{
+  margin-top:10px;
+  margin-left:20px;
+}

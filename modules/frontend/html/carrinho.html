@@ -1,0 +1,85 @@
+<!DOCTYPE html> 
+<html lang="pt-br"> 
+<head> 
+     <meta charset="utf-8"> 
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title> Carrinho de Compras </title> 
+     <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" href="{static}assets/css/carrinho.css">
+     <link rel="shortcut icon" href="official.ico" type="image/x-icon" />
+ </head> 
+
+ <body>
+
+ <header class="navbar-fixed">
+    <!-- Dropdown Structure cadastro de empresa ou usuário -->
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="cadastro2">Como Usuário</a></li>
+        <li class="divider"></li>
+        <li><a href="empresario">Como Empresa</a></li>
+    </ul>
+
+	<nav class="black">
+       <div class="navbar-wrapper">
+       <!-- Logo -->
+         <a href="inicial" class="brand-logo"><img src="{static}assets/images/uwtrans1.png" class="left mini-logo"></img></a>
+    </nav>
+</header>
+
+      <table>
+        <thead>
+          <tr>
+              <th>Produto</th>
+              <th>Descrição</th>
+              <th>Preço</th>
+              <th>Quantidade</th>
+              <th>Total</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+            	<img src="{static}assets/images/coxinha.jpg" class="left produto-logo"></img>
+            	<p>Coxinha</p>
+            	<p>Distribuído por Zé da Coxinha</p>
+            </td>
+            <td>Coxinha muito boa!!!</td>
+            <td>U$300,00</td>
+            <td>
+            	
+            	<div class="input-field col s6">
+    				<select>
+      					<option value="" disabled selected>Escolha a Quantidade</option>
+      					<option value="1">1</option>
+      					<option value="2">2</option>
+      					<option value="3">3</option>
+    				</select>
+    			<label>Quantidade</label>
+  				</div>
+
+            </td>
+            <td>U$900,00</td>
+          </tr>
+        </tbody>
+      </table>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+<!--Banco de funções de JS criadas pelo back-end -->
+<script src="{static}assets/js/uniwallet-backend-api.js"></script>
+
+<script>
+
+$(document).ready(function() {
+    $('select').material_select();
+  });
+	
+</script>         
+  
+</body>
+
+</html>
