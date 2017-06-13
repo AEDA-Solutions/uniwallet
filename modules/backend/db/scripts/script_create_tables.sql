@@ -153,8 +153,7 @@ CREATE TABLE Product_Prices (
 	FOREIGN KEY (product_id) REFERENCES Products(id)
 );
 
-INSERT INTO Products (company_id, number, name, price, description, category) VALUES
-('1', '123', 'Pão Gostoso', '75.50', 'Gostoso', 'Alimentos');
+
 
 INSERT INTO Product_Prices (product_id, price) VALUES
 ('1', '65.50');

@@ -72,14 +72,10 @@
 	</div>
 	</div>
         
-        <div class="input-field col s12" id="category">
+      <div class="input-field col s12" id="category">
     		<select id="categoria">
-      			<option value="" disabled selected></option>
-      			<option value="1">Alimentos</option>
-      			<option value="2">Papelaria</option>
-      			<option value="3">Outros</option>
+      			<option value="" disabled selected>Categoria</option>
     		</select>
-    	<label><br>Categoria<br</label>
   		</div>
 
   		<div class="input-field col s12">
@@ -94,23 +90,12 @@
 
   		<div class="input-field col s12">
     		<select id="nome_empresa">
-      			<option value="" disabled selected></option>
-      			<option value="1">Maria da Marmita</option>
-      			<option value="2">Zé da Coxinha</option>
-      			<option value="3">Caio da Feijoada</option>
+      			<option value="" disabled selected>Empresa</option>
     		</select>
-    	<label><br>Empresa<br></label>
+
   		</div>
 
-  		<div class="input-field col s12">
-    		<select id="nome_produto">
-      			<option value="" disabled selected></option>
-      			<option value="1">Coxinha</option>
-      			<option value="2">Doce</option>
-      			<option value="3">Marmitas</option>
-    		</select>
-    	<label><br>Produto<br></label>
-  		</div>
+  	
 		
 		<div class="input-field col s12">
     		<select>
@@ -207,9 +192,7 @@
 
 
 <script>
-$(document).ready(function() {
-    $('select').material_select();
-  });	
+	
 </script>           
 
 
@@ -217,8 +200,6 @@ $(document).ready(function() {
 
 <script type="text/javascript">
   
-
-
 
 
 Request.get("product/show_all" , function(all){
@@ -254,47 +235,37 @@ Request.get("product/show_all" , function(all){
 
     document.getElementById("margem").innerHTML = pagina
       
-    Request.get("company/showall", function(l){
 
-    console.log(l)
-    var lojas = document.getElementById("nome_empresa")
-    var modelo = "<option>conteudoaki</option>"
-    lojas.innerHTML=""
-    for (var i = 0; i < l.content.length; i++) {
-      lojas.innerHTML = lojas.innerHTML + modelo.replace("conteudoaki", l.content[i].company_name) 
-      
-    }
+    Request.get("category/list", function(l){
+      console.log(l)
+      var category = document.getElementById("categoria")
+      for (var i = 0; i < l.content.length; i++) {
+        category.innerHTML += HTML_Factory.make_tag('option', l.content[i].type, {"value": l.content[i].id})            
+      }
 
-   })
+      Request.get("company/list", function(l){
 
-    Request.get("product/show_all", function(j){
+        var lojas = document.getElementById("nome_empresa")
 
-    console.log(j)
-    var produto_categoria = document.getElementById("categoria")
-    var modelo = "<option>conteudoaki</option>"
-    produto_categoria.innerHTML=""
-    for (var i = 0; i < j.content.length; i++) {
-      produto_categoria.innerHTML = produto_categoria.innerHTML + modelo.replace("conteudoaki", j.content[i].category) 
-      
-    }
+        for (var i = 0; i < l.content.length; i++) {
+          lojas.innerHTML += HTML_Factory.make_tag('option', l.content[i].name, {"value": l.content[i].id})            
+        }
 
-   })
+        $(document).ready(function() {
+          $('select').material_select();
+        }); 
 
-     Request.get("product/show_all", function(n){
-
-    console.log(n)
-    var produto = document.getElementById("nome_produto")
-    var modelo = "<option>conteudoaki</option>"
-    produto.innerHTML=""
-    for (var i = 0; i < n.content.length; i++) {
-      produto.innerHTML = produto.innerHTML + modelo.replace("conteudoaki", n.content[i].name) 
-      
-    }
+      })
 
    })
 
     
   })
+
+
+
+
+
 
 
 </script>

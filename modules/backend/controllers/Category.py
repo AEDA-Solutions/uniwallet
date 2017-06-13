@@ -16,3 +16,6 @@ class Category(std.Controller):
 	def update(self):
 		count = self.model(data = self.get_request_parameters()).save().count_rows()
 		return "Done: Category updated {} rows affected".format(count)
+
+	def list(self):
+		return self.model().find().fetch("type")

@@ -14,10 +14,11 @@ from helpers import debugger as debugger
 import traceback
 
 def bootstrap(environment, meta):
+	request = Request(environment)
 	try:
-		response = Application(Request(environment)).run()
+		response = Application(request).run()
 	except Exception as e:
-		debugger.applog(traceback.format_exc())
+		debugger.applog('/'.join(request.urn_list) + "\n" + traceback.format_exc())
 		response = Response(code = 'Internal Server Error', body = "I'm sorry Dave, I'm afraid I can't do that ({})".format(str(e)))
 	
 	server_output = response.prepare()

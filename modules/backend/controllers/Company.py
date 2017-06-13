@@ -42,3 +42,6 @@ class Company(std.Controller):
 		mask = self.metadata([('id', ':::hide'), ('user_id', ':::hide'), ('user_email', 'email:Email'), ('name', ':Nome'), ('cnpj', ':CNPJ')])
 		return (self.model().find(join=[('User', 'user_id')], start_from = self.get_input('start'), limit = self.get_input('limit'))
 			.fetch(fields_mask = mask))
+	
+	def list(self):
+		return self.model().find().fetch(fields=["name", "id"])
