@@ -1,24 +1,20 @@
-
-
 <html>
 
 <head>
-		 <meta charset="utf-8"> 
-		 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>cadastro</title>
 
 	<!-- Referentes ao nav-bar -->
 	<link rel="stylesheet" href="{static}assets/css/materialize.css"> 
-	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
-	 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-				<link rel="stylesheet" type="text/css" href="{static}assets/css/cadastro.css">
-				</link>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{static}assets/css/cadastro.css"></link>
+	<link rel="stylesheet" type="text/css" href="{static}assets/css/font-awesome.css">
+	<link rel="shortcut icon" href="official.ico" type="image/x-icon" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-				<link rel="stylesheet" type="text/css" href="{static}assets/css/font-awesome.css">
-
-				<link rel="shortcut icon" href="official.ico" type="image/x-icon" />
-				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
 
@@ -28,37 +24,58 @@
 	
 	<div class="containercadastro">
 		<!-- <img src="{static}assets/images/uwlogo.gif"> -->
-		<form>
+	<form>
+		
+		<div id="div_mensagem_retorno" style="font-size: 30px; color: red"></div>
+
+		<form onsubmit="return false">
 
 
 			<div id="div_mensagem_retorno" style="font-size: 30px; color: red">
 
 			</div>
 
-			<div class="form-input">
-					<input class="input-form" type="text" name="fullname" size="30" minlenght="3" maxlength="50" placeholder="Nome Completo">
-			</div>
+
+		<div class="form-input">
+			<input class="input-form" type="text" name="fullname" size="30" minlenght="3" maxlength="50" placeholder="Nome Completo">
+		</div>
+
+		<div class="form-input">
+			<input class="input-form" type="text" name="cpf" placeholder="CPF">			
+		</div>
+
+		<div class="form-input" >
+			<!-- <label for="pwd0">Password:</label> -->
+			<input class="input-form" type="password" name="password" size="30" minlength="6"  placeholder="Senha" class="button" href="#" id="eye"><i class="material-icons left">visibility</i>
+			<!--<a class="button" href="#" id="eye"><i class="material-icons left">visibility</i></a> -->
+		</div>
+
+		<div class="form-input">
+			<input class="input-form" type="text" name="email"  placeholder="Insira seu E-mail">
+		</div>
 
 			<div class="form-input">
-				<input class="input-form" type="text" name="cpf" placeholder="CPF">			
-			</div>
-
-			<div class="form-input" >
 				<!-- <label for="pwd0">Password:</label> -->
-				<input class="input-form" type="password" name="password" size="30" minlength="6"  placeholder="Senha" class="button" href="#" id="eye"><i class="material-icons left">visibility</i>
+				<input class="input-form" type="password" name="password" size="30" minlength="6"  placeholder="Senha">
+				<!--<input class="input-form" type="password" name="password" size="30" minlength="6"  placeholder="Senha" class="button" href="#" id="eye"><<i class="material-icons left">visibility</i>-->
 				<!--<a class="button" href="#" id="eye"><i class="material-icons left">visibility</i></a> -->
 			</div>
 
 			<div class="form-input">
-				<input class="input-form" type="text" name="email"  placeholder="Insira seu E-mail">
+				<input class="input-form" type="text" name="email" placeholder="Insira seu E-mail">
 			</div>
 
-			<button class="btn-login" id="botao_submit">CADASTRE-SE</button>
+			<div class="form-input">
+				<select class="input-form" name="university_id" id="university_select">
+					<option value="" disabled selected>Universidade</option>
+				</select>
+			</div>
+
+
+		<button class="btn-login" id="botao_submit">CADASTRE-SE</button>
 	</form>
 
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
-
-
 
 
 <script type="text/javascript">
@@ -108,18 +125,17 @@ document.getElementById("eye").addEventListener("click", function () {
 }, false);
 </script>
 
-
-
-
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"> </script> 
 
 <script src="{static}assets/js/uniwallet-backend-api.js"></script>
+
+<script src="{static}assets/js/materialize.min.js"></script>
 
 <script type="text/javascript">
 
 	//Adiciona um evento no botão de enviar dados
   	Page.listen("botao_submit", function(e){
-		e.preventDefault() //Impede a atualização da página
+		//e.preventDefault() //Impede a atualização da página
 		//Pega os dados inseridos nos campos de input
 		data = Page.get_input("input-form")
 
@@ -135,21 +151,29 @@ document.getElementById("eye").addEventListener("click", function () {
 		})
   	})
 
-</script>
-   <!-- Função para comparar conteúdo dos campos de e-mail.-->
-<script type="text/javascript" language="JavaScript">
-
-function checkEmail(theForm) {
-	if (theForm.email.value != theForm.emailconf.value)
-	{
-		alert('E-mails informados são diferentes!');
-		return false;
-	} else {
-		return true;
+  	function render_select(callback){
+		//Faz uma requisição para a rota especificada com o objetivo de renderizar uma tag select
+		Request.send({start:0, limit:1000000}, "university/fetch", "GET", function(response){
+			var options = ""
+			for (var i = 0; i < response.content.length; i++) {//Gera as tags option com os valores obtidos da requisição
+				options += HTML_Factory.make_tag('option', response.content[i].name, {'value': response.content[i].id})
+			}
+			Page.fill("university_select", options, true) //Injeta as tags option concatenadas na iteração anterior
+			callback()
+		})
 	}
-}
-//-->
-</script> 
+
+</script>
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		render_select(function(){
+			$('select').material_select()
+		})
+	});
+	 
+</script>
 
 </body>
 

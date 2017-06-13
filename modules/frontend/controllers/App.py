@@ -59,4 +59,7 @@ class App(std.Controller):
 	def rafa(self):
 		return self.prepare_static(self.get_html("ajudarafa"))
 
+	def cadastro2(self):
+		return self.prepare_static(self.get_html("cadastro2"))
+
 		
