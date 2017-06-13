@@ -23,31 +23,31 @@
 		<form onsubmit="return false">
 			<div class="input-field col s6 m6">
 					<i class="material-icons prefix">account_circle</i>
-					<input name="fullname" id="icon_prefix" type="text" class="validate">
+					<input name="fullname" id="icon_prefix" type="text" class="input-form validate">
 					<label for="icon_prefix">Nome Completo</label>
 			</div>
 					
 			<div class="input-field col s6 m6">
 					<i class="material-icons prefix">code</i>
-					<input name="cpf" id="icon_telephone" type="tel" class="validate">
+					<input name="cpf" id="icon_telephone" type="tel" class="input-form validate">
 					<label for="icon_telephone">CPF</label>
 			</div>
 
 			<div class="input-field col s12">
 				<i class="material-icons prefix">verified_user</i>
-					<input name="email" id="email" type="email" class="validate">
+					<input name="email" id="email" type="email" class="input-form validate">
 					<label for="email" data-error="wrong" data-success="right">Email</label>
 			</div>
 
 			<div class="input-field col s12">
 				<i class="material-icons prefix">phonelink_lock</i>
-						<input name="password" id="password" type="password" class="validate">
+						<input name="password" id="password" type="password" class="input-form validate">
 						<label for="password">Senha</label>
 			</div>
 
 			<div class="input-field col s6 offset-s3">
 				<i class="material-icons prefix">room</i>
-				<select name="university_id" id="university_select">
+				<select name="university_id" id="university_select" class="input-form">
 						<option value="" disabled selected>Escolha sua Universidade</option>
 				</select>
 				<label>Universidade</label>
@@ -75,7 +75,7 @@
 			Request.send(data, "consumer/register", "POST", function(response){
 
 				if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
-					Page.redirect("app/inicial")
+					Page.redirect("/app/inicial")
 				} else {
 					Materialize.toast(response.content, 4000)
 				}
