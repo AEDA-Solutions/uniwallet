@@ -254,7 +254,7 @@ Request.get("product/show_all" , function(all){
 
     document.getElementById("margem").innerHTML = pagina
       
-    Request.get("product/pega", function(l){
+    Request.get("company/showall", function(l){
 
     console.log(l)
     var lojas = document.getElementById("nome_empresa")
@@ -267,7 +267,7 @@ Request.get("product/show_all" , function(all){
 
    })
 
-    Request.get("product/pega", function(j){
+    Request.get("product/show_all", function(j){
 
     console.log(j)
     var produto_categoria = document.getElementById("categoria")
@@ -280,7 +280,7 @@ Request.get("product/show_all" , function(all){
 
    })
 
-     Request.get("product/pega", function(n){
+     Request.get("product/show_all", function(n){
 
     console.log(n)
     var produto = document.getElementById("nome_produto")
