@@ -62,4 +62,7 @@ class App(std.Controller):
 	def cadastro2(self):
 		return self.prepare_static(self.get_html("cadastro2"))
 
+	def empresario(self):
+		return self.prepare_static(self.get_html("empresario"))
+		
 		
