@@ -54,7 +54,7 @@ class App(std.Controller):
 		return self.prepare_static(self.get_html("tteste"))
 
 	def loja(self):
-		return self.prepare_static(self.get_html("lojavirtual"))
+		return self.prepare_static(self.get_html("carrinho"))
 
 	def rafa(self):
 		return self.prepare_static(self.get_html("ajudarafa"))
@@ -65,7 +65,5 @@ class App(std.Controller):
 	def empresario(self):
 		return self.prepare_static(self.get_html("empresario"))
 
-	def carrinho(self):
-		return self.prepare_static(self.get_html("carrinho"))
 		
 		
