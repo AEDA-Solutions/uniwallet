@@ -12,52 +12,26 @@
 		<link rel="stylesheet" type="text/css" href="{static}assets/css/lojavirtual.css">
 </head> 
 
-<header class="navbar">  
-	<nav class="blue-grey darken-5"> 
-			<!--Colocar todo o conteúdo do painel da nav-bar--> 
-		<div class="nav-wrapper container" > 
+<header class="navbar-fixed">
+  <nav class="blue-grey darken-1">
+       <div class="navbar-wrapper">
 
-			<!--Logo--> 
-			<a href="inicial" class="brand-logo"><img src="{static}assets/images/oficial.png" class="circle left mini-logo"></img></a> 
-			
-			<div class="nav-wrapper">
-				<div class = "barra N/A transparent">
-				  <form>
-					  <div class="input-field">
-						  <input class="white black-text" id="search" type="search" placeholder="O que está procurando?"></input>
-						  <label class="label-icon" ><i class="material-icons">search</i></label>
-						  <i class="material-icons">close</i>
-			      </div>
-          </form>
+       <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="carrinho">Ver Carrinho<i class="material-icons left">shopping_cart</a></li>
+      </ul>
+       <!-- Logo -->
+        <a href="inicial" class="brand-logo"><img src="{static}assets/images/uwtrans1.png" class="left mini-logo"></img></a>
+        <div class="nav-wrapper">
+        <form>
+        <div class="input-field">
+          <input id="search" type="search" placeholder = "O que está procurando?" required>
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
         </div>
-      </div>
-
-				<!--Para esconder o conteúdo da direita--> 
-			 <div class = "informacoes">
-				  <ul id="nav-mobile" class="right hide-on-med-and-down"> 
-
-						<li><a href="informacoesusuario">
-						<i class="material-icons left ">perm_identity</i>
-						<span> Perfil</span>
-						</a></li>
-
-						<li><a href="faleconosco">
-						<i class="material-icons left ">phone</i>
-						<span> Fale Conosco</span>
-						</a></li>
-
-
-						<li><a id="logout" class="margin-login" href ="#">
-						<i class="material-icons left ">input</i>
-						<span> Sair</span>
-            </a></li>
-
-
-          </ul>
+        </form>
         </div>
-    </div>
   </nav>
-</header> 
+</header>
 
 <body>
 
@@ -169,38 +143,18 @@
       </div>
     </div>
 
-
-
-
-
-
-   </div>
+</div>
                  
 </div>
- 
 
-
-
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
-
-  <!--Banco de funções de JS criadas pelo back-end -->
-  <script src="{static}assets/js/uniwallet-backend-api.js"></script>
-
-
-<script>
-	
-</script>           
-
-
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+<!--Banco de funções de JS criadas pelo back-end -->
+<script src="{static}assets/js/uniwallet-backend-api.js"></script>
 
 <script type="text/javascript">
   
-
-
 Request.get("product/show_all" , function(all){
     
     
@@ -260,15 +214,7 @@ Request.get("product/show_all" , function(all){
 
     
   })
-
-
-
-
-
-
-
 </script>
-
 
 </body>
 
