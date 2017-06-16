@@ -1,0 +1,233 @@
+<!DOCTYPE html> 
+<html lang="pt-br"> 
+<head> 
+     <meta charset="utf-8"> 
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title> Loja Virtual </title> 
+     <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" href="{static}assets/css/carrinho.css">
+     <link rel="shortcut icon" href="official.ico" type="image/x-icon" />
+ </head> 
+
+ <body>
+
+<header class="navbar-fixed">
+    <!-- Dropdown Structure cadastro de empresa ou usuário -->
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="cadastro2">Como Usuário</a></li>
+        <li class="divider"></li>
+        <li><a href="empresario">Como Empresa</a></li>
+    </ul>
+
+	<nav class="blue-grey darken-2">
+       <div class="navbar-wrapper">
+       <!-- Logo -->
+        <a href="inicial" class="brand-logo"><img src="{static}assets/images/uwtrans1.png" class="left mini-logo"></img></a>
+ 
+        <ul class="right hide-on-med-and-down">
+        <li><a href="sobre">Carrinho<i class="material-icons left">shopping_cart</i></a></li>
+        </ul>
+        </div>
+  </nav>
+</header>
+
+    <div class="row">
+    <div class="col s12 m4 l3"> 
+        <div class="row">
+        <div class="botao-sup">
+        <div class="col s6"><input type="submit" name="submit" value="Saldo" class="btn-conFace"></div>
+        </div>
+        </div>
+        
+    <div class="input-field col s12" id="category">
+    <select id="categoria">
+        <option value="" disabled selected>Categoria</option>
+    </select>
+    </div>
+
+    <div class="input-field col s12">
+    <select>
+        <option value="" disabled selected></option>
+        <option value="1">ICC Norte</option>
+        <option value="2">ICC Sul</option>
+        <option value="3">Amarelinho BSAN</option>
+    </select>
+    <label><br>Localização<br></label>
+    </div>
+
+    <div class="input-field col s12">
+    <select id="nome_empresa">
+        <option value="" disabled selected>Empresa</option>
+    </select>
+    </div>
+    </div>
+
+    <div class="col s12 m8 l9"> 
+
+    <ul class="collapsible popout" data-collapsible="accordion">
+    <li>
+    <div class="collapsible-header"><i class="material-icons">shopping_cart</i>Carrinho de Compras</div>
+    <div class="collapsible-body"><span>
+      <table class="centered">
+        <thead>
+          <tr>
+              <th>Produto</th>
+              <th>Total</th>
+              
+          </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+        </table>
+        <div class="col s6 offset-s4"><input type="submit" name="submit" value="Finalizar Compra" class="btn-conFace"></div>
+
+    </span>
+    </li>
+    </ul>
+
+    <table class="centered">
+        <thead>
+          <tr>
+              <th>Produto</th>
+              <th>Descrição</th>
+              <th>Preço</th>
+              <th>Quantidade</th>
+              <th>Total</th>
+              <th>Comprar</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              <img src="{static}assets/images/coxinha.jpg" class="left produto-logo"></img>
+              <p>Coxinha</p>
+              <p>Distribuído por Zé da Coxinha</p>
+            </td>
+            <td>Coxinha muito boa!!!</td>
+            <td>U$300,00</td>
+            <td>
+              
+              <div class="input-field col s6">
+            <select>
+                <option value="" disabled selected>Quantidade</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+          <label>Quantidade</label>
+          </div>
+
+            </td>
+            <td>U$900,00</td>
+            <td>
+              <p>
+              <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
+              <label for="filled-in-box"></label>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img src="{static}assets/images/coxinha.jpg" class="left produto-logo"></img>
+              <p>Coxinha</p>
+              <p>Distribuído por Zé da Coxinha</p>
+            </td>
+            <td>Coxinha muito boa!!!</td>
+            <td>U$300,00</td>
+            <td>
+              
+              <div class="input-field col s6">
+            <select>
+                <option value="" disabled selected>Quantidade</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+          <label>Quantidade</label>
+          </div>
+
+            </td>
+            <td>U$900,00</td>
+
+            <td>
+              <p>
+              <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
+              <label for="filled-in-box"></label>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img src="{static}assets/images/coxinha.jpg" class="left produto-logo"></img>
+              <p>Coxinha</p>
+              <p>Distribuído por Zé da Coxinha</p>
+            </td>
+            <td>Coxinha muito boa!!!</td>
+            <td>U$300,00</td>
+            <td>
+              
+              <div class="input-field col s6">
+            <select>
+                <option value="" disabled selected>Quantidade</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+          <label>Quantidade</label>
+          </div>
+
+            </td>
+            <td>U$900,00</td>
+            <td>
+              <p>
+              <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
+              <label for="filled-in-box"></label>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+    </div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+<!--Banco de funções de JS criadas pelo back-end -->
+<script src="{static}assets/js/uniwallet-backend-api.js"></script>
+
+<script>
+
+$(document).ready(function() {
+    $('select').material_select();
+  });
+	
+</script> 
+
+<script>
+  
+
+  $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
+          
+
+</script> 
+
+<script>
+    
+    $(document).ready(function(){
+        $('.collapsible').collapsible();
+    });
+
+</script>       
+  
+</body>
+
+</html>

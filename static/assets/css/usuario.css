@@ -64,21 +64,21 @@ input[type="search"]{
 }
 
 .arruma{
-	width:860px; 
+	  width:860px; 
   	height: 200px; 
   	text-align: center; 
   	border-radius: 15px;  
-  	margin-left: -155px;
+  	margin-left: -175px;
   	margin-top: 25px; 
 }
 
 .collection{
-	width:500px; 
+	  width:500px; 
   	height: 65px; 
   	text-align: center; 
   	background-color: white; 
   	border-radius:5px;  
-  	margin-left: 450px;
+  	margin-left: 400px;
   	margin-top: 25px; 
 }
 
@@ -99,18 +99,7 @@ input[type="search"]{
   border-radius: 6px; 
   border: none; 
   background-color: #607d8b; 
-  margin-left: 330px;  
-
-}
-
-.botao-sup1{
-  width: 100px;
-  cursor: pointer;  
-  border-radius: 6px; 
-  border: none; 
-  background-color: #607d8b; 
-  margin-left: 720px;
-  margin-top:-68px;  
+  margin-left: 450px;  
 
 }
 
@@ -135,7 +124,7 @@ input[type="text"]{
   border: none;
   background-color: #607d8b;
   margin-bottom: 20px;
-  margin-left: 150px;
+  margin-left: 50px;
 }
 
 .btn-login2{
@@ -159,7 +148,7 @@ input[type="text"]{
       
  #map {
   height: 400px;
-  width: 50%;
-  margin-left:310px;
+  width: 100%;
+  margin-top: 5px; 
 }
        

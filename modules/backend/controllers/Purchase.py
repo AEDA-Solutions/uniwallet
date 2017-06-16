@@ -5,10 +5,22 @@ class Purchase(std.Controller):
 	def create(self):
 		consumer_id = self.model(name = 'Session').get_user()['id']
 		total_price = 0
+		i = 0
+		products = []
+		quantity = []
 		for item in self.get_request_parameters()["products"]:
 			if not self.model('Product').check_product_available(item["id"], item["quantity"]):
 				return "Quantidade Indisponivel"
 			total_price = total_price + self.model('Product').get_price(item["id"], item["quantity"])
+			
+			products.append(item["id"])
+			quantity.append(item["quantity"])
+			
+			
+
+
+
+
 
 		company_id = self.get_input('company_id')
 
@@ -18,6 +30,13 @@ class Purchase(std.Controller):
 		transaction_id = self.model(name = 'Transaction', data = {'wallet_from': wallet_from, 'wallet_to': wallet_to, 'value': total_price, 'operation': 'purchase'}).perform()
 		if transaction_id is not None:
 			self.model(data = {'transaction_id': transaction_id, 'consumer_id': consumer_id, 'company_id': company_id}).save().close()
+			purchase_id = self.model().find(conditions = [('transaction_id', '=', transaction_id)]).fetchone()['id']
+			
+			for i in range(len(products)):
+				#Salva na tabela "Purchase_Product" os produtos e quantidades
+ 					self.model(name = 'Purchase_Product', data = {'purchase_id': purchase_id, 'product_id': products[i], 'quantity': quantity[i]}).save().close()
+ 					i += 1
+ 				
 			return "Purchase completed"
 		else:
 			return "Purchase not authorized"

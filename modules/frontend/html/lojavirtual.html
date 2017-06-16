@@ -12,6 +12,7 @@
 		<link rel="stylesheet" type="text/css" href="{static}assets/css/lojavirtual.css">
 </head> 
 
+<<<<<<< HEAD
 <header class="navbar">  
   <nav class="black"> 
       <!--Colocar todo o conteúdo do painel da nav-bar--> 
@@ -45,8 +46,34 @@
             <i class="material-icons left ">phone</i>
             <span> Fale Conosco</span>
             </a></li>
+=======
+<header class="navbar-fixed">
+  <nav class="blue-grey darken-1">
+       <div class="navbar-wrapper">
 
+       <ul id="nav-mobile" class="right hide-on-med-and-down">
+      </ul>
+       <!-- Logo -->
+        <a href="inicial" class="brand-logo"><img src="{static}assets/images/uwtrans1.png" class="left mini-logo"></img></a>
+        <div class="nav-wrapper">
+        <form>
+        <div class="input-field">
+          <input id="search" type="search" placeholder = "O que está procurando?" required>
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+        </form>
+        </div>
+  </nav>
+</header>
 
+<body>
+
+>>>>>>> 11f01dc00907f1add9a335036e778176d3f7198a
+
+<div class="row">
+
+<<<<<<< HEAD
             <li><a id="logout" class="margin-login" href ="#">
             <i class="material-icons left ">input</i>
             <span> Sair</span>
@@ -57,167 +84,177 @@
       </div> 
     </nav>  
 </header> 
-
-<body>
-
-<div class="row">
-
-    <div class="col s3">
-
-    <div class="row">
-	<div class="botao-sup">
-			<div class="col s6"><input type="submit" name="submit" value="Saldo" class="btn-conFace"></div>
-	</div>
-	</div>
+=======
+      <div class="col s12 m4 l3"> 
+       
+      <div class="row">
+        <div class="botao-sup">
+           <div class="col s6"><input type="submit" name="submit" value="Saldo" class="btn-conFace"></div>
+        </div>
+    </div>
         
       <div class="input-field col s12" id="category">
-    		<select id="categoria">
-      			<option value="" disabled selected>Categoria</option>
-    		</select>
-  		</div>
+        <select id="categoria">
+            <option value="" disabled selected>Categoria</option>
+        </select>
+      </div>
+>>>>>>> 11f01dc00907f1add9a335036e778176d3f7198a
 
-  		<div class="input-field col s12">
-    		<select>
-      			<option value="" disabled selected></option>
-      			<option value="1">ICC Norte</option>
-      			<option value="2">ICC Sul</option>
-      			<option value="3">Amarelinho BSAN</option>
-    		</select>
-    	<label><br>Localização<br></label>
-  		</div>
+      <div class="input-field col s12">
+        <select>
+            <option value="" disabled selected></option>
+            <option value="1">ICC Norte</option>
+            <option value="2">ICC Sul</option>
+            <option value="3">Amarelinho BSAN</option>
+        </select>
+         <label><br>Localização<br></label>
+      </div>
 
-  		<div class="input-field col s12">
-    		<select id="nome_empresa">
-      			<option value="" disabled selected>Empresa</option>
-    		</select>
+      <div class="input-field col s12">
+        <select id="nome_empresa">
+            <option value="" disabled selected>Empresa</option>
+        </select>
 
-  		</div>
+      </div>
 
-  	
-		
-		<div class="input-field col s12">
-    		<select>
-      			<option value="" disabled selected></option>
-      			<option value="1">R$0,01 - R$5,00</option>
-      			<option value="2">R$5,01 - R$20,00</option>
-      			<option value="3">R$20,01 ou mais</option>
-    		</select>
-    	<label><br>Preço<br></label>
-  		</div>  		
+    <div class="input-field col s12">
+        <select>
+            <option value="" disabled selected></option>
+            <option value="1">R$0,01 - R$5,00</option>
+            <option value="2">R$5,01 - R$20,00</option>
+            <option value="3">R$20,01 ou mais</option>
+        </select>
+      <label><br>Preço<br></label>
+      </div>      
 
     </div>
- 
-  <div class="row" id="margem">
-    
 
+    <div class="col s12 m8 l9"> 
+
+    <ul class="collapsible" data-collapsible="accordion">
+    <li>
+    <div class="collapsible-header"><i class="material-icons">shopping_cart</i>Carrinho de Compras</div>
+    <div class="collapsible-body"><span>
+      <table class="centered">
+        <thead>
+          <tr>
+              <th>Produto</th>
+              <th>Quantidade</th>
+              <th>Total</th>
+              
+          </tr>
+        </thead>
+
+        <tbody>
+          <td>Coxinha</td>
+          <td>
+            <div class="input-field col s4 offset-s4">
+            <select>
+                <option value="" disabled selected>Quantidade</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+          <label>Quantidade</label>
+          </div>
+          </td>
+          <td>U$900,00</td>
+        </tbody>
+        </table>
+        
+    <div class="col s6 offset-s4"><input type="submit" name="submit" value="Finalizar Compra" class="btn-conFace"></div>    
+    </span>
+    </li>
+    </ul>
+
+    <div class="row" id="margem">
+    
 
     <div class="col s3">
       <div class="card small">
-      <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>button</a>
         <div class="card-image">
-          <img src="{static}assets/images/coxinha.jpg">
-          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons"></i></a>
-        
+          <img src="{static}assets/images/coxinha.jpg">        
         </div>
         <div class="card-content">
           <p>Recheio de frango com catupiry</p>
           <p>R$3,00</p>
           <p>Zé da Coxinha - ICC Norte</p>
+          <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
         </div>
       </div>
     </div>
 
-  <div class="col s3">
+    <div class="col s3">
       <div class="card small">
-       <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>button</a>
         <div class="card-image">
           <img src="{static}assets/images/doce.jpg">
-          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons"></i></a>
         </div>
         <div class="card-content">
           <p>Diversos</p>
           <p>R$1,50</p>
           <p>Só Doces - RU</p>
+          <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
         </div>
       </div>
     </div>
 
-  <div class="col s3">
+    <div class="col s3">
       <div class="card small">
-       <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>button</a>
         <div class="card-image">
           <img src="{static}assets/images/marmitas.jpg">
-          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons"></i></a>
         </div>
         <div class="card-content">
           <p>Várias combinações</p>
           <p>R$8,00</p1>
-          <p>Maria da Marmita - FT</p>
+          <p>Maria da Marmita - FT</p>  
+          <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
         </div>
       </div>
     </div>
       
 
-      <div class="col s3">
+    <div class="col s3">
       <div class="card small">
         <div class="card-image">
           <img src="{static}assets/images/coxinha.jpg">
-          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons"></i></a>
         </div>
         <div class="card-content">
           <p>Recheio de frango com catupiry</p>
           <p>R$3,00</p>
           <p>Zé da Coxinha - ICC Norte</p>
+          <button>Comprar</button>
         </div>
       </div>
     </div>
 
-
-
-
-
-
-   </div>
-                 
 </div>
- 
+         
+</div>
 
 
 
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
-
-  <!--Banco de funções de JS criadas pelo back-end -->
-  <script src="{static}assets/js/uniwallet-backend-api.js"></script>
-
-
-<script>
-	
-</script>           
-
-
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+<!--Banco de funções de JS criadas pelo back-end -->
+<script src="{static}assets/js/uniwallet-backend-api.js"></script>
 
 <script type="text/javascript">
   
-
-
 Request.get("product/show_all" , function(all){
     
     
     console.log(all)
     var modelo =  " <div class= \"col s3\" > \
-                      <div class=\"card small\"/> \
+                      <div class=\"card\"/> \
                         <div class=\"card-image\"> \
                           <img src=\"fotinha\"> \
-                          <a class=\"btn-floating halfway-fab waves-effect waves-light red\"><i class=\"material-icons\"></i></a> \
                         </div> \
                         <div class=\"card-content\"> \
                           <p>nome</p>\
                           <p>$ price UniCoins</p> \
                           <p>company</p> \
+                          <button onclick=\"card(productid)\" class=\"waves-effect waves-light blue-grey darken-2 btn\">Comprar</button>\
                         </div> \
                       </div> \
                     </div> \ "
@@ -228,15 +265,30 @@ Request.get("product/show_all" , function(all){
       var nome = all.content[i].name
       var price = all.content[i].price
       var company = all.content[i].company_name
-      
+      var id = all.content[i].id
       var replace = modelo.replace("nome", nome)
       var replace2 = replace.replace("price", price)
       var replace3 = replace2.replace("company", company)
-      var pagina = pagina.concat(replace3)
+      var replace4 = replace3.replace("productid", id)
+      var pagina = pagina.concat(replace4)
       }
 
     document.getElementById("margem").innerHTML = pagina
-      
+    
+    function card(){
+
+
+
+
+
+    }
+
+
+
+
+
+
+
 
     Request.get("category/list", function(l){
       console.log(l)
@@ -263,15 +315,15 @@ Request.get("product/show_all" , function(all){
 
     
   })
-
-
-
-
-
-
-
 </script>
 
+<script>
+    
+    $(document).ready(function(){
+        $('.collapsible').collapsible();
+    });
+
+</script> 
 
 </body>
 
