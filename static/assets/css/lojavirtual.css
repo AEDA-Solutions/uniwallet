@@ -4,8 +4,15 @@ body{
   background- color: #f1f8e9;
 }
 
+<<<<<<< HEAD
+.mini-logo{ 
+  height: 100px;
+  width: 320px; 
+  margin-top: -17px; 
+=======
 .mini-logo{
   width: 250px; 
+>>>>>>> 11f01dc00907f1add9a335036e778176d3f7198a
   margin-right: 15px; 
   margin-left: 40px; 
   margin-top: -5px;
@@ -24,12 +31,37 @@ body{
     
 }
 
+<<<<<<< HEAD
+.barra{
+  width:590px; 
+  height: 50px; 
+  text-align: left;
+  background-color: rgba(50, 60, 50,0.3); 
+  border-radius: 20px; 
+  margin-left: -90px;
+  margin-top: 4px; 
+
+}
+
+input[type="search"]{
+
+    height: 50px; 
+    width: 20px; 
+    font-size: 18px; 
+    border: none; 
+    border-radius: 10px; 
+    margin-bottom: 20px; 
+    margin-top: 10px; 
+    background-color: #fff; 
+    margin-left: 8px; 
+=======
 #search{
   height: 50px
 }
 
 #nav-mobile{
   margin-top:-5px;
+>>>>>>> 11f01dc00907f1add9a335036e778176d3f7198a
 }
 
 .btn-conFace{ 
