@@ -34,54 +34,78 @@
 
 <body>
 
+
 <div class="row">
-  <div class="col s3">
-    <div class="row">
-	      <div class="botao-sup">
-			     <div class="col s6"><input type="submit" name="submit" value="Saldo" class="btn-conFace"></div>
+
+      <div class="col s12 m4 l3"> 
+       
+      <div class="row">
+        <div class="botao-sup">
+           <div class="col s6"><input type="submit" name="submit" value="Saldo" class="btn-conFace"></div>
         </div>
     </div>
         
       <div class="input-field col s12" id="category">
-    		<select id="categoria">
-      			<option value="" disabled selected>Categoria</option>
-    		</select>
-  		</div>
+        <select id="categoria">
+            <option value="" disabled selected>Categoria</option>
+        </select>
+      </div>
 
-  		<div class="input-field col s12">
-    		<select>
-      			<option value="" disabled selected></option>
-      			<option value="1">ICC Norte</option>
-      			<option value="2">ICC Sul</option>
-      			<option value="3">Amarelinho BSAN</option>
-    		</select>
-    	   <label><br>Localização<br></label>
-  		</div>
+      <div class="input-field col s12">
+        <select>
+            <option value="" disabled selected></option>
+            <option value="1">ICC Norte</option>
+            <option value="2">ICC Sul</option>
+            <option value="3">Amarelinho BSAN</option>
+        </select>
+         <label><br>Localização<br></label>
+      </div>
 
-  		<div class="input-field col s12">
-    		<select id="nome_empresa">
-      			<option value="" disabled selected>Empresa</option>
-    		</select>
+      <div class="input-field col s12">
+        <select id="nome_empresa">
+            <option value="" disabled selected>Empresa</option>
+        </select>
 
-  		</div>
+      </div>
 
-  	
-		
-		<div class="input-field col s12">
-    		<select>
-      			<option value="" disabled selected></option>
-      			<option value="1">R$0,01 - R$5,00</option>
-      			<option value="2">R$5,01 - R$20,00</option>
-      			<option value="3">R$20,01 ou mais</option>
-    		</select>
-    	<label><br>Preço<br></label>
-  		</div>  		
+    <div class="input-field col s12">
+        <select>
+            <option value="" disabled selected></option>
+            <option value="1">R$0,01 - R$5,00</option>
+            <option value="2">R$5,01 - R$20,00</option>
+            <option value="3">R$20,01 ou mais</option>
+        </select>
+      <label><br>Preço<br></label>
+      </div>      
 
     </div>
-  
-  <div class="row" id="margem">
-    
 
+    <div class="col s12 m8 l9"> 
+
+    <ul class="collapsible" data-collapsible="accordion">
+    <li>
+    <div class="collapsible-header"><i class="material-icons">shopping_cart</i>Carrinho de Compras</div>
+    <div class="collapsible-body"><span>
+      <table class="centered">
+        <thead>
+          <tr>
+              <th>Produto</th>
+              <th>Total</th>
+              
+          </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+        </table>
+        
+    <div class="col s6 offset-s4"><input type="submit" name="submit" value="Finalizar Compra" class="btn-conFace"></div>    
+    </span>
+    </li>
+    </ul>
+
+    <div class="row" id="margem">
+    
 
     <div class="col s3">
       <div class="card small">
@@ -144,6 +168,8 @@
          
 </div>
 
+
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
@@ -165,7 +191,7 @@ Request.get("product/show_all" , function(all){
                           <p>nome</p>\
                           <p>$ price UniCoins</p> \
                           <p>company</p> \
-                          <button onclick=\"card(productid)\" class=\"waves-effect waves-light btn\">Comprar</button>\
+                          <button onclick=\"card(productid)\" class=\"waves-effect waves-light blue-grey darken-2 btn\">Comprar</button>\
                         </div> \
                       </div> \
                     </div> \ "
@@ -227,6 +253,14 @@ Request.get("product/show_all" , function(all){
     
   })
 </script>
+
+<script>
+    
+    $(document).ready(function(){
+        $('.collapsible').collapsible();
+    });
+
+</script> 
 
 </body>
 
