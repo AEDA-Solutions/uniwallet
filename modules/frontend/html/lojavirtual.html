@@ -86,30 +86,51 @@
     <li>
     <div class="collapsible-header"><i class="material-icons">shopping_cart</i>Carrinho de Compras</div>
     <div class="collapsible-body"><span>
+      
       <table class="centered">
+        
         <thead>
+          
           <tr>
-              <th>Produto</th>
-              <th>Quantidade</th>
-              <th>Total</th>
-              
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Total</th>
           </tr>
+        
         </thead>
 
-        <tbody>
-          <td>Coxinha</td>
-          <td>
-            <div class="input-field col s4 offset-s4">
-            <select>
+        <tbody id="corpo">
+          
+  
+          <tr>
+            <td>Coxinha (Loja do zé)</td>
+            <td>
+              <select class="input-field col s4 offset-s4">
                 <option value="" disabled selected>Quantidade</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
-            </select>
-          <label>Quantidade</label>
-          </div>
-          </td>
-          <td>U$900,00</td>
+              </select></td>
+            <td>$ 300UniCoins</td>
+          
+          </tr>        
+          
+          <tr>
+            <td>coxinha</td>
+            <td>
+              <select class="input-field col s4 offset-s4">
+                <option value="" disabled selected>Quantidade</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select></td>
+            <td>TOTAL</td>
+                  
+                  
+                
+          </tr>
+
+
         </tbody>
         </table>
         
@@ -191,7 +212,37 @@
 <script src="{static}assets/js/uniwallet-backend-api.js"></script>
 
 <script type="text/javascript">
+
+
+
+
   
+
+function card(productid, productprice){
+  
+  var modelo_carrinho = "<tr>\
+                          <td>produto</td>\
+                          <td>\
+                            <select class=\"input-field col s4 offset-s4\">\
+                              <option value=\"\" disabled selected>Quantidade</option>\
+                              <option value=\"1\">1</option>\
+                              <option value=\"2\">2</option>\
+                              <option value=\"3\">3</option>\
+                            </select>\
+                            </td>\
+                          <td>$ price UniCoins</td>\
+                        </tr>\  "
+
+  var gold = modelo_carrinho.replace("produto", productid)
+  var gold2 = gold.replace("price", productprice)
+  $("#corpo").append(gold2);
+  console.log(document.getElementById("corpo"))
+
+
+
+  }
+
+
 Request.get("product/show_all" , function(all){
     
     
@@ -205,7 +256,7 @@ Request.get("product/show_all" , function(all){
                           <p>nome</p>\
                           <p>$ price UniCoins</p> \
                           <p>company</p> \
-                          <button onclick=\"card(productid)\" class=\"waves-effect waves-light blue-grey darken-2 btn\">Comprar</button>\
+                          <button onclick=\"card(productid, productprice)\" class=\"waves-effect waves-light blue-grey darken-2 btn\">Comprar</button>\
                         </div> \
                       </div> \
                     </div> \ "
@@ -221,12 +272,14 @@ Request.get("product/show_all" , function(all){
       var replace2 = replace.replace("price", price)
       var replace3 = replace2.replace("company", company)
       var replace4 = replace3.replace("productid", id)
-      var pagina = pagina.concat(replace4)
+      var replace5 = replace4.replace("productprice", price)
+      var pagina = pagina.concat(replace5)
       }
-
+      console.log(pagina)
     document.getElementById("margem").innerHTML = pagina
     
-    function card(){
+function card(productid){
+
 
 
 
@@ -266,6 +319,9 @@ Request.get("product/show_all" , function(all){
 
     
   })
+
+
+console.log(sessionStorage.getItem())
 </script>
 
 <script>
