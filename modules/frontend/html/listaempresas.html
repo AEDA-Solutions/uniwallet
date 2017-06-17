@@ -13,7 +13,7 @@
 </head> 
 
 <header class="navbar">  
-	<nav class="N/A transparent"> 
+	<nav class="black"> 
 	 			   <!--Colocar todo o conteúdo do painel da nav-bar--> 
         <div class="nav-wrapper container" > 
 
@@ -59,31 +59,35 @@
 
 <body>
 
-<div id="wrapper">
+<div class="row">
+  <div class="small-12 columns"></div>
+    <main class="categories bp-wrap">
+    <h2 class="title-line">Produtos</h2>
+      <div class="content">
+      
 
-<div class="container-fluid">
-
-        <div class="row">
-          <div class="col l6 s12">
-            <div id="maincontent">
-
-              <li>
-            <a href="#" id='b_product' class="botao" ><i class="fa fa-fw fa-soccer-ball-o"></i> <h3>Empresas</h3> </a>
-          </li>
-
-            </div>
-            <br>
-            <div id="mainform">
-              
-            </div>
-            <br>
-          </div>
+        <div class="category">
+          <a class="link" title="Adicionar produto">
+            <img class="add" src="{static}assets/images/create.png">
+              <div class="adicionar">Adicionar produto</div>
+          </a>
         </div>
-      </div>
 
-</div>
-</div>
-</div>
+          <div class="category">
+            <a class="link" title="Editar produto">
+              <img class="add" src="{static}assets/images/edit.png">
+                <div class="adicionar">Editar produto</div>
+            </a>
+          </div>
+
+           <div class="category">
+          <a class="link" title="Deletar produto">
+            <img class="add" src="{static}assets/images/delete.png">
+              <div class="adicionar">Deletar produto</div>
+          </a> 
+      </div>
+    </main>
+  
 </div>
 
 
@@ -146,7 +150,7 @@
     
 <script type="text/javascript">
 
-var targets = {
+/*var targets = {
     
       'b_product': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'product', 'method': 'GET', 'title': 'Produtos'}
     }
