@@ -9,7 +9,7 @@
       <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link rel="stylesheet" type="text/css" href="{static}assets/css/listaempresas.css">
+      <link rel="stylesheet" type="text/css" href="{static}assets/css/produtoempresa.css">
 </head> 
 
 <header class="navbar">  
@@ -62,59 +62,117 @@
 <div class="row">
   <div class="small-12 columns"></div>
     <main class="categories bp-wrap">
-    <h2 class="title-line">Produtos</h2>
+    <h3 class="title-line">Produtos</h3>
       <div class="content">
       
 
         <div class="category">
-          <a class="link" title="Adicionar produto">
-            <img class="add" src="{static}assets/images/create.png">
+          <a class="link" title="Adicionar produto" href="#modal1">
+            <img class="add1" src="{static}assets/images/create.png">
               <div class="adicionar">Adicionar produto</div>
           </a>
         </div>
-
+       
           <div class="category">
-            <a class="link" title="Editar produto">
-              <img class="add" src="{static}assets/images/edit.png">
+            <a class="link" title="Editar produto" href="">
+              <img class="add2" src="{static}assets/images/edit.png">
                 <div class="adicionar">Editar produto</div>
             </a>
           </div>
 
            <div class="category">
-          <a class="link" title="Deletar produto">
-            <img class="add" src="{static}assets/images/delete.png">
-              <div class="adicionar">Deletar produto</div>
+          <a class="link" title="Deletar produto" href="">
+            <img class="add3" src="{static}assets/images/delete.png">
+              <div class="adicionar1">Deletar produto</div>
           </a> 
       </div>
     </main>
   
 </div>
 
+<div class="col s12 m8 l9"> 
+   
+      <table class="centered">
+        
+        <thead>
+          
+          <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Total</th>
+          </tr>
+        
+        </thead>
 
-<footer class="page-footer blue-grey">
-    <div class="container">
-        <div class="row">
-        <div class="col l6 s12">
-            <h5 class="white-text">Saiba Mais</h5>
-            <p class="grey-text text-lighten-4"></p>
-        </div>
-        <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Mais de UniWallet</h5>
-            <ul>
-                <li><a class="grey-text text-lighten-3" href="#!">Dúvidas Frequentes</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Promoções Exclusivas</a></li>
-                
-            </ul>
-        </div>
-        </div>
-        </div>
-        <div class="footer-copyright">
-        <div class="container">
-            © 2017 Copyright
-            <a class="grey-text text-lighten-4 right" href="#!">Equipe UniWallet</a>
-        </div>
-    </div>
-</footer>
+        <tbody id="corpo">
+          
+  
+          <tr>
+            <td>Coxinha</td>
+            <td>30</td>
+            <td>$ 300UniCoins</td>
+          
+          </tr>        
+          
+          <tr>
+            <td>Pão de Queijo</td>
+            <td>40</td>
+            <td>$ 400UniCoins</td>
+                      
+          </tr>
+
+            </tr>        
+          
+          <tr>
+            <td>Sanduíche Natural</td>
+            <td>10</td>
+            <td>$ 100UniCoins</td>
+                      
+          </tr>
+
+        </tbody>
+        </table>
+        
+ <!-- Modal Structure -->
+            <div id="modal1" class="modal indigo lighten-5">
+            <div class="modal-content blue-grey darken-3 white-text">
+                <h4>Cadastro de Produtos</h4>
+                <div id="div_mensagem_retorno"></div>
+                </div>
+
+                <div class = "row">
+            <h6 font-size="1">Insira a imagem do produto abaixo:</h6>
+            <input type="file" accept=".jpg,.png,.jpeg"></input>
+            <div></div>
+
+            <div class="form-input black-text">
+            <input class="input-form" type="text" name="name" placeholder="Nome do Produto">
+            </div>
+
+            <div class="form-input">
+            <input class="input-form" type="text" name="categoria" placeholder="Categoria">
+            </div>
+
+            </div>
+             <div class="form-input">
+            <input class="input-form" type="text" name="description" placeholder="Descrição">
+            </div>
+
+
+            <div class="form-input">
+            <input class="input-form" type="text" name="price" placeholder="Preço">
+            </div>
+
+            <div class="form-input">
+            <input class="input-form" type="text" name="quantity" size=30 minlength=6 maxlength=10 placeholder="Quantidade">
+            </div>
+
+            <div class="form-input">
+            <input class="input-form" type="text" name="company_id" size=30 minlength=6 maxlength=10 placeholder="ID da Companhia">
+            </div>
+
+            <button class="btn-login" id="botao_submit">Cadastrar Produto</button>
+
 
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
 <script src="{static}assets/js/uniwallet-backend-api.js"></script>
@@ -178,6 +236,9 @@
         })
       })
     }
+
+*/
+
 </script>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -185,6 +246,33 @@
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
 
+<!--Cadastrar produto -->
+<script type="text/javascript">
+    //Adiciona um evento no botão de enviar dados
+    Page.listen("botao_submit", function(e){
+      e.preventDefault() //Impede a atualização da página
+      //Pega os dados inseridos nos campos de input
+      data = Page.get_input("input-form")
+      //Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
+
+      Request.send(data, "product/register", "POST", function(response){
+
+        if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
+          Page.redirect("produtoempresa")
+        } else {
+          Page.fill("div_mensagem_retorno", response.content) //Insere a mensagem na div
+        }
+      })
+    }) 
+  </script>
+
+
+  <script> 
+    $(document).ready(function(){
+      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+      $('.modal').modal();
+      });
+  </script>
 
 </body>
 
