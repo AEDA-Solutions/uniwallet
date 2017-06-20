@@ -13,20 +13,24 @@
 </head> 
   
 <header class="navbar-fixed">
-  
-  <ul id="dropdown1" class="dropdown-content">
-        <li><a href="cadastro2">Como Usuário</a></li>
-        <li class="divider"></li>
-        <li><a href="empresario">Como Empresa</a></li>
-    </ul>
 
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="usuario">Configurações</a></li>
+    <li class="divider"></li>
+    <li><a href="#modal1">Financeiro</a></li>
+  </ul>
+  
   <nav class="blue-grey darken-2">
+
        <div class="navbar-wrapper">
        <!-- Logo -->
         <a href="inicial" class="brand-logo"><img src="{static}assets/images/uwtrans1.png" class="left mini-logo"></img></a>
- 
+
         <ul class="right hide-on-med-and-down">
-        <li><a href="sobre">Carrinho<i class="material-icons left">shopping_cart</i></a></li>
+        <li>
+        <a class="dropdown-button" href="#" data-activates="dropdown1">Perfil de Usuario<i class="material-icons left">perm_identity</i></a></li>
+
+        <li><a href="inicial">Sair<i class="material-icons left">input</i></a></li>
         </ul>
 
         <div class="nav-wrapper">
@@ -39,19 +43,106 @@
         </form>
         </div>
         </div>
+
   </nav>
 
 </header>
 
       <div class="row">
-      <div class="col s12 m4 l3"> 
-       
-      <div class="row">
-        <div class="botao-sup">
-           <div class="col s6"><input type="submit" name="submit" value="Saldo" class="btn-conFace"></div>
+      <div class="col s12 m4 l3">
+
+      <!--MODAL DO PERFIL DE USUARIO-->
+      <div id="modal1" class="modal">
+      <div class="modal-content">
+          <h4>Informações Gerais</h4>
+      
+      <!-- INFORMAÇÕES DE EXTRATO E CONVERSOR-->
+      <ul class="collapsible popout" data-collapsible="accordion">
+      <li>
+        <div class="collapsible-header"><i class="material-icons">assessment</i>Extrato</div>
+        <div class="collapsible-body"><span>
+          
+          <table class="centered">
+              <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Categoria</th>
+                    <th>Valor</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>21/04/2017</td>
+                  <td>Refeição</td>
+                  <td>U$300,00</td>
+                </tr>
+                <tr>
+                  <td>22/05/2017</td>
+                  <td>Depósito</td>
+                  <td>U$1000,00</td>
+                  
+                </tr>
+                <tr>
+                  <td>23/07/2017</td>
+                  <td>Papelaria</td>
+                  <td>U$500,00</td>
+                </tr>
+              </tbody>
+        </table>
+
+        </span></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">swap_vert</i>Converter UniCoins</div>
+        <div class="collapsible-body"><span>
+         
+        <div class="container">
+        <div class="form-input">
+        <input class="input-form" type="text" name="fullname" size=30 minlenght=3 maxlength=50 placeholder="Insira seu Investimento">
         </div>
-    </div>
+
+        <div class="form-input">
+        <input class="input-form" type="text" name="price" placeholder="Arrecadado">
+        </div>
+
+        <div class="botao-sup">
+        <div class="col s6"><input type="submit" name="submit" value="Converter" class="btn"></div>
+        </div>
+
+        </div> 
+
+
+        </span></div>
+      </li>
+      </ul>
         
+
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+      </div>
+      </div>
+
+      <div class="row">
+
+      <!-- INFORMAÇÕES DO USUARIO-->
+      <ul class="collection">
+      <li class="collection-item avatar">
+      <i class="material-icons circle">perm_identity</i>
+      <span id="nomeusuario" class="title">Cliente</span>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+      </li>
+      </ul>
+
+      <!-- SALDO -->
+      <div class="botao-sup">
+      <div class="col s6"><input type="submit" name="submit" value="Saldo" class="btn-conFace"></div>
+      </div>
+
+      </div>
+      
+      <!--MENU DE REDIRECIONAMETO-->
       <div class="input-field col s12" id="category">
         <select id="categoria">
             <option value="" disabled selected>Categoria</option>
@@ -68,6 +159,7 @@
          <label><br>Localização<br></label>
       </div>
 
+      <!-- MENU PRINCIPAL-->
       <div class="input-field col s12">
         <select id="nome_empresa">
             <option value="" disabled selected>Empresa</option>
@@ -83,7 +175,7 @@
             <option value="3">R$20,01 ou mais</option>
         </select>
       <label><br>Preço<br></label>
-      </div>      
+      </div>  
 
     </div>
 
@@ -219,11 +311,29 @@
 <script src="{static}assets/js/uniwallet-backend-api.js"></script>
 
 <script type="text/javascript">
-
-
-
-
   
+
+  $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+        
+
+</script>
+
+<script> 
+    $(document).ready(function(){
+      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+      $('.modal').modal();
+      });
+  </script>
+
+  <script>
+    $(function(){
+        $(".button-collapse").sideNav();
+      });
+    </script>
+
+<script type="text/javascript">
 
 function card(productid, productprice){
   
@@ -287,19 +397,7 @@ Request.get("product/show_all" , function(all){
     
 function card(productid){
 
-
-
-
-
-
     }
-
-
-
-
-
-
-
 
     Request.get("category/list", function(l){
       console.log(l)
