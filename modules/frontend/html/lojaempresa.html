@@ -12,49 +12,42 @@
       <link rel="stylesheet" type="text/css" href="{static}assets/css/lojaempresa.css">
 </head> 
 
-<header class="navbar">  
-	<nav class="black"> 
-	 			   <!--Colocar todo o conteúdo do painel da nav-bar--> 
-        <div class="nav-wrapper container" > 
+<header class="navbar-fixed">
 
-          <!--Logo--> 
-	 			  <a href="file:///C:/Users/rmora/Desktop/materialize/web%20pag/index1.html" class="brand-logo"><img src="{static}assets/images/oficial.png" class="circle left mini-logo"></img></a> 
-	 			  <div class="nav-wrapper">
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="usuarioempresa">Configurações</a></li>
+    <li class="divider"></li>
+    <li><a href="#modal1">Financeiro</a></li>
+  </ul>
+  
+  <nav class="blue-grey darken-2">
 
-	 			  <div class="nav-wrapper">
-      				<div class = "barra N/A transparent">
-      				<form>
-        				<div class="input-field">
-          					<input id="search" type="search" required placeholder="O que está procurando?" >
-          					<label class="label-icon" for="search" ><i class="material-icons">search</i></label>
-          					<i class="material-icons">close</i>
-        				</div>
-      				</form>
-      				</div>
-    				</div>
-        
-	 				 <!--Para esconder o conteúdo da direita--> 
-	 				<div class = "informacoes">
-      				<ul id="nav-mobile" class="right hide-on-med-and-down"> 
+       <div class="navbar-wrapper">
+       <!-- Logo -->
+        <a href="inicial" class="brand-logo"><img src="{static}assets/images/uwtrans1.png" class="left mini-logo"></img></a>
 
-                       <li><a href="faleconosco">
-                       <i class="material-icons left ">phone</i>
-                       <span> Fale Conosco</span>
-                       </a></li>
+        <ul class="right hide-on-med-and-down">
+  
+        <li>
+        <a class="dropdown-button" href="#" data-activates="dropdown1">Perfil da Empresa<i class="material-icons left">perm_identity</i></a></li>
 
+        <li><a href="inicial">Sair<i class="material-icons left">input</i></a></li>
+        </ul>
 
-                       <li><a class="margin-login" href ="inicial">
-                       <i class="material-icons left ">input</i>
+        <div class="nav-wrapper">
+        <form>
+        <div class="input-field">
+          <input id="search" type="search" required>
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+        </form>
+        </div>
+        </div>
 
-                       <span> Sair</span>
-                       </a></li>
-                    </ul>
-                    </div>
-                   	</div>
-      				</ul>
-	 			</div> 
-	</nav> 
-</header> 
+  </nav>
+
+</header>
 
 
 <body>
@@ -264,6 +257,22 @@
         }
       })
     }) 
+  </script>
+
+  <script>
+    //Para deslogar da tela
+    document.getElementById("logout").addEventListener("click",function(){
+     Auth.signOut()
+     Page.redirect("inicial") 
+    })
+
+    //Mostrar o nome que está logado
+    Request.send('', 'user/current', 'POST', function(server_response){
+    console.log(server_response)
+    document.getElementById("nomeempresa").innerHTML = server_response.content.name
+    document.getElementById("nomeempresa").
+    })
+
   </script>
 
 
