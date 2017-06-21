@@ -47,7 +47,7 @@ body{
   margin-left: -10px;  
   margin-top: 10px;
 } 
-
+/*
 input[type="text"]{
   height: 45px;
   width: 300px;
@@ -70,7 +70,7 @@ input[type="text"]{
   margin: 0 auto;
   margin-top: 5px;
   margin-bottom: 30px;
-}
+}*/
 
 .btn-floating{
   margin-top:10px;
@@ -78,7 +78,7 @@ input[type="text"]{
 }
 
 .btn{
-  background-color: orange;
+  background-color: #455a64;
   margin-left: 10px;
   margin-top: 25px;
 }
@@ -90,7 +90,7 @@ input[type="text"]{
   color: #fff; 
   border-radius: 6px; 
   border: none; 
-  background-color: orange; 
+  background-color:#455a64; 
   margin-left: 90px;  
   margin-top: 10px;
 }
