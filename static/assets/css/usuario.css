@@ -80,8 +80,8 @@ input[type="search"]{
 .collection{
 	  width:500px; 
   	height: 100px; 
-  	text-align: center; 
-  	background-color: white; 
+  	 
+  	background-color: darkorange; 
   	border-radius:5px;  
   	margin-left: 400px;
   	margin-top: 25px; 
