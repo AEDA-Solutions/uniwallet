@@ -1,5 +1,5 @@
 from framework import Model as std
 
 class Category(std.Model):
-	attributes = ['type']
+	attributes = ['name', 'description']
 	table_name = "Categories"

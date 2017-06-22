@@ -12,8 +12,8 @@
  /*PANIEL DE CADASTRO*/
 body{ 
 
-
-  background-image: url("../images/talk.jpg"); 
+  margin: 0 auto; 
+  background-image: url("../images/talk2.jpg"); 
   max-width: 1080px;   
   width: auto;
   max-height: auto;  
