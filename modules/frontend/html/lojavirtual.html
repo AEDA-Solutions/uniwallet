@@ -197,7 +197,7 @@
           <tr>
             <th>Produto</th>
             <th>Quantidade</th>
-            <th>Total</th>
+            <th>Preço</th>
           </tr>
         
         </thead>
@@ -356,18 +356,19 @@ if (sessionStorage.getItem('carrinho') == null){ /* CONFERE SE JÁ EXISTE CARRIN
 var teste = JSON.parse(sessionStorage.getItem('carrinho'))
 for (var i = teste.length - 1; i >= 0; i--) { /* CARREGA O CARRINHO COM O SESSIONSTORAGE */
 
-    card(teste[i].id , teste[i].price)
+    card(teste[i].nome , teste[i].price, teste[i].quantidade)
 }
 
 
 
-function cart(id, quant, price){
+function cart(id, quant, price, nome){
+  console.log(nome)
   var carrinho = []
   carrinho = JSON.parse(sessionStorage.getItem('carrinho'))
   /* CARREA O SESSIONSTORAGE COMO A VARIAVEL "carrinho" */
 
   console.log(id)
-  var list = {id: id, quantidade: quant, price: price}
+  var list = {id: id, quantidade: quant, price: price, nome: nome}
   console.log(list)
   carrinho.push(list)
   /* CRIA UM DICIONARIO COM OS PARAMETROS E ADICIONA NA ARRAY "carrinho" */
@@ -379,7 +380,7 @@ function cart(id, quant, price){
 
 
   
-  card(id, price)
+  card(nome, price, quant)
   /* EXECUTA A FUNÇAO 'card' PARA ATUALIZAR O CARRINHO */
 
 
@@ -388,24 +389,19 @@ function cart(id, quant, price){
 
 }
   
-function card(productid, productprice){
+function card(productname, productprice, productquantity){
   
   var modelo_carrinho = "<tr>\
                           <td>produto</td>\
-                          <td>\
-                            <select class=\"input-field col s4 offset-s4\">\
-                              <option value=\"\" disabled selected>Quantidade</option>\
-                              <option value=\"1\">1</option>\
-                              <option value=\"2\">2</option>\
-                              <option value=\"3\">3</option>\
-                            </select>\
-                            </td>\
+                          <td>quantidade</td>\
                           <td>$ price UniCoins</td>\
                         </tr>\  "
 
-  var gold = modelo_carrinho.replace("produto", productid)
+  var gold = modelo_carrinho.replace("produto", productname)
   var gold2 = gold.replace("price", productprice)
-  $("#corpo").append(gold2);
+  var gold3 = gold2.replace("quantidade", productquantity)
+
+  $("#corpo").append(gold3);
   console.log(document.getElementById("corpo"))
   /* SUBSTITUI O MODELO COM OS PARAMETROS E CONCATENA COM A ÁREA ESPECIFICA DA PAGINA */
 
@@ -436,7 +432,7 @@ function card(productid, productprice){
 <script type="text/javascript">
 
 
-
+var selectcounter = 0
 
 Request.get("product/show_all" , function(all){ 
   /* RECEBE OS DADOS DA ROTA SELECIONADA E PASSA COMO PARAMETRO PARA A FUNÇAO */
@@ -450,7 +446,13 @@ Request.get("product/show_all" , function(all){
                           <p>nome</p>\
                           <p>$ price UniCoins</p> \
                           <p>company</p> \
-                          <button onclick=\"cart(productid, productquantity, productprice)\" class=\"waves-effect waves-light blue-grey darken-2 btn\">Comprar</button>\
+                          <select class=\"offset-s4\" id=\"selectid\">\
+                              <option value=\"1\">1</option>\
+                              <option value=\"2\">2</option>\
+                              <option value=\"3\">3</option>\
+                              <option value=\"4\">4</option>\
+                          </select>\
+                          <button onclick=\"cart(productid, document.getElementById(\'idvalue\').value, productprice, \'productname\' )\" class=\"waves-effect waves-light blue-grey darken-2 btn\">Comprar</button>\
                         </div> \
                       </div> \
                     </div> \ "
@@ -469,7 +471,12 @@ Request.get("product/show_all" , function(all){
       var replace4 = replace3.replace("productid", id)
       var replace5 = replace4.replace("productprice", price)
       var replace6 = replace5.replace("productquantity", price)
-      var pagina = pagina.concat(replace6)
+      var replace7 = replace6.replace("selectid", selectcounter)
+      var replace8 = replace7.replace("idvalue", selectcounter)
+      var replace9 = replace8.replace("productname", nome)
+      
+      selectcounter = selectcounter + 1
+      var pagina = pagina.concat(replace9)
       }
       
     document.getElementById("margem").innerHTML = pagina
@@ -480,10 +487,8 @@ Request.get("product/show_all" , function(all){
 
 
 
-    
-function filtro(productid){
 
-    }
+    
 
 
     Request.get("category/list", function(l){
@@ -509,8 +514,9 @@ function filtro(productid){
 
    })
 
-    
-  })
+   
+  
+})
 
 
 
