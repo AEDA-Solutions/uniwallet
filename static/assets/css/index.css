@@ -10,7 +10,9 @@
    background-repeat: no-repeat; 
  }
 
- }
+nav{
+  width: 120.5%;
+}
 
 .margin-login{
   margin-right: 30px;
