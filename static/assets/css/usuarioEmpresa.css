@@ -134,6 +134,7 @@ input[type="text"]{
   margin-top: 17px;
   background-color: #fff;
   padding-left: 50px;
+  text-decoration: black;
 
 }
 input[type="file"]{
@@ -149,6 +150,23 @@ input[type="file"]{
   margin-top: 30px;
 
 }
+
+::webkit-input-placeholder{
+  color:black;
+
+}
+
+:-ms-input-placeholder{
+  color: black;
+}
+
+::moz-placeholder{
+  color:black;
+  opacity:1;
+}
+:moz-placeholder{
+  color: black;
+  opacity: 1;
 
 }
 

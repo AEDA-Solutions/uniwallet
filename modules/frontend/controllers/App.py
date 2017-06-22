@@ -35,8 +35,8 @@ class App(std.Controller):
 	def sobre(self):
 		return self.prepare_static(self.get_html("sobre"))
 
-	def listaempresas(self):
-		return self.prepare_static(self.get_html("listaempresas"))
+	def produtoempresa(self):
+		return self.prepare_static(self.get_html("produtoempresa"))
 
 	def listaprodutos(self):
 		return self.prepare_static(self.get_html("listaprodutos"))
@@ -59,4 +59,12 @@ class App(std.Controller):
 	def rafa(self):
 		return self.prepare_static(self.get_html("ajudarafa"))
 
+	def cadastro2(self):
+		return self.prepare_static(self.get_html("cadastro2"))
+
+	def empresario(self):
+		return self.prepare_static(self.get_html("empresario"))
+
+	def lojaempresa(self):
+		return self.prepare_static(self.get_html("lojaempresa"))	
 		

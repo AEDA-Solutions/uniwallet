@@ -86,14 +86,17 @@ function Page(){
 	this.redirect = function(address){
 		$(location).attr('href', address)
 	}
-	this.fill = function(id, content){
-		document.getElementById(id).innerHTML = content
+	this.fill = function(id, content, append = false){
+		if (append)
+			document.getElementById(id).innerHTML += content
+		else
+			document.getElementById(id).innerHTML = content
 	}
 	this.listen = function(id, callback, event_type = "click"){
 		document.getElementById(id).addEventListener(event_type, callback)
 	}
-	this.popup = function(header, body, header){
-		window.alert("hello")
+	this.popup = function(content){
+		window.alert(content)
 	}
 }
 

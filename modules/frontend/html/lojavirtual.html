@@ -3,263 +3,532 @@
 <html lang="pt-br"> 
 
 <head>  
-		<meta charset="utf-8"> 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">     
-		<title> UniWallet </title>  
-		<link rel="stylesheet" href="{static}assets/css/materialize.css"> 
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="{static}assets/css/lojavirtual.css">
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+    <title> Loja </title>  
+    <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{static}assets/css/lojavirtual.css">
 </head> 
-
-<header class="navbar">  
-	<nav class="blue-grey darken-5"> 
-			<!--Colocar todo o conteúdo do painel da nav-bar--> 
-		<div class="nav-wrapper container" > 
-
-			<!--Logo--> 
-			<a href="file:///C:/Users/rmora/Desktop/materialize/web%20pag/index1.html" class="brand-logo"><img src="{static}assets/images/oficial.png" class="circle left mini-logo"></img></a> 
-			<div class="nav-wrapper">
-
-			<div class="nav-wrapper">
-				<div class = "barra N/A transparent">
-				<form>
-					<div class="input-field">
-						<input class="white black-text" id="search" type="search" required placeholder="O que está procurando?" >
-						<label class="label-icon" for="search" ><i class="material-icons">search</i></label>
-						<i class="material-icons">close</i>
-						</div>
-					</form>
-				  </div>
-				</div>
-
-				<!--Para esconder o conteúdo da direita--> 
-			 <div class = "informacoes">
-				<ul id="nav-mobile" class="right hide-on-med-and-down"> 
-
-						<li><a href="informacoesusuario">
-						<i class="material-icons left ">perm_identity</i>
-						<span> Perfil</span>
-						</a></li>
-
-						<li><a href="faleconosco">
-						<i class="material-icons left ">phone</i>
-						<span> Fale Conosco</span>
-						</a></li>
-
-
-						<li><a id="logout" class="margin-login" href ="#">
-						<i class="material-icons left ">input</i>
-						<span> Sair</span>
-                        </a></li>
-                 </ul>
-              </div>
-           </div>
-      </ul>
-    </div> 
-  </nav>  
   
-</header> 
-<body>
+<header class="navbar-fixed">
 
-<div class="row">
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="usuario">Configurações</a></li>
+    <li class="divider"></li>
+    <li><a href="#modal1">Financeiro</a></li>
+  </ul>
+  
+  <nav class="blue-grey darken-2">
 
-    <div class="col s3">
+       <div class="navbar-wrapper">
+       <!-- Logo -->
+        <a href="inicial" class="brand-logo"><img src="{static}assets/images/uwtrans1.png" class="left mini-logo"></img></a>
 
-    <div class="row">
-	<div class="botao-sup">
-			<div class="col s6"><input type="submit" name="submit" value="Saldo" class="btn-conFace"></div>
-	</div>
-	</div>
+        <ul class="right hide-on-med-and-down">
+        <li>
+        <a class="dropdown-button" href="#" data-activates="dropdown1">Perfil de Usuario<i class="material-icons left">perm_identity</i></a></li>
+
+        <li><a href="inicial">Sair<i class="material-icons left">input</i></a></li>
+        </ul>
+
+        <div class="nav-wrapper">
+        <form>
+        <div class="input-field">
+          <input id="search" type="search" required>
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+        </form>
+        </div>
+        </div>
+
+  </nav>
+
+</header>
+
+      <div class="row">
+      <div class="col s12 m4 l3">
+
+      <!--MODAL DO PERFIL DE USUARIO-->
+      <div id="modal1" class="modal">
+      <div class="modal-content">
+          <h4>Informações Gerais</h4>
+      
+      <!-- INFORMAÇÕES DE EXTRATO E CONVERSOR-->
+      <ul class="collapsible popout" data-collapsible="accordion">
+      <li>
+        <div class="collapsible-header"><i class="material-icons">assessment</i>Extrato</div>
+        <div class="collapsible-body"><span>
+          
+          <table class="centered">
+              <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Categoria</th>
+                    <th>Valor</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>21/04/2017</td>
+                  <td>Refeição</td>
+                  <td>U$300,00</td>
+                </tr>
+                <tr>
+                  <td>22/05/2017</td>
+                  <td>Depósito</td>
+                  <td>U$1000,00</td>
+                  
+                </tr>
+                <tr>
+                  <td>23/07/2017</td>
+                  <td>Papelaria</td>
+                  <td>U$500,00</td>
+                </tr>
+              </tbody>
+        </table>
+
+        </span></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">swap_vert</i>Converter UniCoins</div>
+        <div class="collapsible-body"><span>
+         
+        <div class="container">
         
+        <div class="row">
         <div class="input-field col s12">
-    		<select>
-      			<option value="" disabled selected></option>
-      			<option value="1">Alimentos</option>
-      			<option value="2">Papelaria</option>
-      			<option value="3">Outros</option>
-    		</select>
-    	<label><br>Categoria<br</label>
-  		</div>
+          <input placeholder="Quantidade" id="first_name" type="text" class="validate">
+          <label for="first_name">Quantidade</label>
 
-  		<div class="input-field col s12">
-    		<select>
-      			<option value="" disabled selected></option>
-      			<option value="1">ICC Norte</option>
-      			<option value="2">ICC Sul</option>
-      			<option value="3">Amarelinho BSAN</option>
-    		</select>
-    	<label><br>Localização<br></label>
-  		</div>
+        <div class="input-field col s12">
+          <input disabled value="I am not editable" id="disabled" type="text" class="validate">
+          <label for="disabled">Disabled</label>
+        </div>
+        </div>
 
-  		<div class="input-field col s12">
-    		<select>
-      			<option value="" disabled selected></option>
-      			<option value="1">Maria da Marmita</option>
-      			<option value="2">Zé da Coxinha</option>
-      			<option value="3">Caio da Feijoada</option>
-    		</select>
-    	<label><br>Empresa<br></label>
-  		</div>
+        <div class="botao-sup">
+        <div class="col s6"><input type="submit" name="submit" value="Converter" class="btn1"></div>
+        </div>
 
-  		<div class="input-field col s12">
-    		<select>
-      			<option value="" disabled selected></option>
-      			<option value="1">Coxinha</option>
-      			<option value="2">Doce</option>
-      			<option value="3">Marmitas</option>
-    		</select>
-    	<label><br>Produto<br></label>
-  		</div>
-		
-		<div class="input-field col s12">
-    		<select>
-      			<option value="" disabled selected></option>
-      			<option value="1">R$0,01 - R$5,00</option>
-      			<option value="2">R$5,01 - R$20,00</option>
-      			<option value="3">R$20,01 ou mais</option>
-    		</select>
-    	<label><br>Preço<br></label>
-  		</div>  		
+        </div> 
+
+
+        </span></div>
+      </li>
+      </ul>
+        
+
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+      </div>
+      </div>
+
+      <div class="row">
+
+      <!-- INFORMAÇÕES DO USUARIO-->
+      <ul class="collection">
+      <li class="collection-item avatar">
+      <i class="material-icons circle">perm_identity</i>
+      <span id="nomeusuario" class="title">Cliente</span>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+      </li>
+      </ul>
+
+      <!-- SALDO -->
+      <div class="botao-sup">
+      <div class="col s6"><input type="submit" name="submit" value="Saldo" class="btn-conFace"></div>
+      </div>
+
+      </div>
+      
+      <!--MENU DE REDIRECIONAMETO-->
+      <div class="input-field col s12" id="category">
+        <select id="categoria">
+            <option value="" disabled selected>Categoria</option>
+        </select>
+      </div>
+
+      <div class="input-field col s12">
+        <select>
+            <option value="" disabled selected></option>
+            <option value="1">ICC Norte</option>
+            <option value="2">ICC Sul</option>
+            <option value="3">Amarelinho BSAN</option>
+        </select>
+         <label><br>Localização<br></label>
+      </div>
+
+      <!-- MENU PRINCIPAL-->
+      <div class="input-field col s12">
+        <select id="nome_empresa">
+            <option value="" disabled selected>Empresa</option>
+        </select>
+
+      </div>
+
+    <div class="input-field col s12">
+        <select>
+            <option value="" disabled selected></option>
+            <option value="1">R$0,01 - R$5,00</option>
+            <option value="2">R$5,01 - R$20,00</option>
+            <option value="3">R$20,01 ou mais</option>
+        </select>
+      <label><br>Preço<br></label>
+      </div>  
 
     </div>
- 
-  <div class="row" id="margem">
-    
 
+    <div class="col s12 m8 l9"> 
+
+    <ul class="collapsible" data-collapsible="accordion">
+    <li>
+    <div class="collapsible-header"><i class="material-icons">shopping_cart</i>Carrinho de Compras</div>
+    <div class="collapsible-body"><span>
+      
+      <table class="centered">
+        
+        <thead>
+          
+          <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Preço</th>
+          </tr>
+        
+        </thead>
+
+        <tbody id="corpo">
+          
+  
+          <tr>
+            <td>Coxinha (Loja do zé)</td>
+            <td>
+              <select class="input-field col s4 offset-s4">
+                <option value="" disabled selected>Quantidade</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select></td>
+            <td>$ 300UniCoins</td>
+          
+          </tr>        
+          
+          <tr>
+            <td>coxinha</td>
+            <td>
+              <select class="input-field col s4 offset-s4">
+                <option value="" disabled selected>Quantidade</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select></td>
+            <td>TOTAL</td>
+                  
+                  
+                
+          </tr>
+
+
+        </tbody>
+        </table>
+        
+    <div class="col s6 offset-s4"><input type="submit" name="submit" value="Finalizar Compra" class="btn-conFace"></div>    
+    </span>
+    </li>
+    </ul>
+
+    <div class="row" id="margem">
+    
 
     <div class="col s3">
       <div class="card small">
         <div class="card-image">
-          <img src="{static}assets/images/coxinha.jpg">
-          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons"></i></a>
+          <img src="{static}assets/images/coxinha.jpg">        
         </div>
         <div class="card-content">
           <p>Recheio de frango com catupiry</p>
           <p>R$3,00</p>
           <p>Zé da Coxinha - ICC Norte</p>
+          <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
         </div>
       </div>
     </div>
 
-  <div class="col s3">
+    <div class="col s3">
       <div class="card small">
         <div class="card-image">
           <img src="{static}assets/images/doce.jpg">
-          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons"></i></a>
         </div>
         <div class="card-content">
           <p>Diversos</p>
           <p>R$1,50</p>
           <p>Só Doces - RU</p>
+          <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
         </div>
       </div>
     </div>
 
-  <div class="col s3">
+    <div class="col s3">
       <div class="card small">
         <div class="card-image">
           <img src="{static}assets/images/marmitas.jpg">
-          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons"></i></a>
         </div>
         <div class="card-content">
           <p>Várias combinações</p>
           <p>R$8,00</p1>
-          <p>Maria da Marmita - FT</p>
+          <p>Maria da Marmita - FT</p>  
+          <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
         </div>
       </div>
     </div>
       
 
-      <div class="col s3">
+    <div class="col s3">
       <div class="card small">
         <div class="card-image">
           <img src="{static}assets/images/coxinha.jpg">
-          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons"></i></a>
         </div>
         <div class="card-content">
           <p>Recheio de frango com catupiry</p>
           <p>R$3,00</p>
           <p>Zé da Coxinha - ICC Norte</p>
+          <button>Comprar</button>
         </div>
       </div>
     </div>
 
-
-
-
-
-
-   </div>
-                 
 </div>
- 
+         
+</div>
 
 
 
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
-
-  <!--Banco de funções de JS criadas pelo back-end -->
-  <script src="{static}assets/js/uniwallet-backend-api.js"></script>
-
-
-<script>
-$(document).ready(function() {
-    $('select').material_select();
-  });	
-</script>           
-
-
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+<!--Banco de funções de JS criadas pelo back-end -->
+<script src="{static}assets/js/uniwallet-backend-api.js"></script>
 
 <script type="text/javascript">
   
 
+ 
+
+     
+  
+/* 
+
+ for (var i = teste.length - 1; i >= 0; i--) {
+    card(teste[i].id , teste[i].price)
+    console.log(teste[i]) 
+  }
 
 
 
-Request.get("product/show_all" , function(all){
-    
-    
-    console.log(all)
+
+
+var carrinho = []
+ 
+console.log(carrinho)
+sessionStorage.setItem('carrinho', JSON.stringify(carrinho))
+*/
+
+
+/* */
+
+
+
+if (sessionStorage.getItem('carrinho') == null){ /* CONFERE SE JÁ EXISTE CARRINHO NO 'SESSIOSTORAGE' */
+  var carrinho = []
+ 
+  console.log('TA VAZIO')
+  sessionStorage.setItem('carrinho', JSON.stringify(carrinho))
+}
+
+
+
+
+var teste = JSON.parse(sessionStorage.getItem('carrinho'))
+for (var i = teste.length - 1; i >= 0; i--) { /* CARREGA O CARRINHO COM O SESSIONSTORAGE */
+
+    card(teste[i].nome , teste[i].price, teste[i].quantidade)
+}
+
+
+
+function cart(id, quant, price, nome){
+  console.log(nome)
+  var carrinho = []
+  carrinho = JSON.parse(sessionStorage.getItem('carrinho'))
+  /* CARREA O SESSIONSTORAGE COMO A VARIAVEL "carrinho" */
+
+  console.log(id)
+  var list = {id: id, quantidade: quant, price: price, nome: nome}
+  console.log(list)
+  carrinho.push(list)
+  /* CRIA UM DICIONARIO COM OS PARAMETROS E ADICIONA NA ARRAY "carrinho" */
+ 
+
+  sessionStorage.setItem('carrinho', JSON.stringify(carrinho))
+  console.log(sessionStorage.getItem('carrinho'))
+  /* ALTERA O SESSIONSTORAGE COM O NOVO 'carrinho' */
+
+
+  
+  card(nome, price, quant)
+  /* EXECUTA A FUNÇAO 'card' PARA ATUALIZAR O CARRINHO */
+
+
+  /* ULTILIZA A FUNÇAO "JSON.parse()" PARA TRANSFORMAR A INFORMAÇAO EM UM OBJETO DO JAVASCRIPT 
+     E A FUNÇAO "JSON.stringify()" PARA TRANFORMAR UM OBJETO JAVASCRIPT EM UMA STRING */
+
+}
+  
+function card(productname, productprice, productquantity){
+  
+  var modelo_carrinho = "<tr>\
+                          <td>produto</td>\
+                          <td>quantidade</td>\
+                          <td>$ price UniCoins</td>\
+                        </tr>\  "
+
+  var gold = modelo_carrinho.replace("produto", productname)
+  var gold2 = gold.replace("price", productprice)
+  var gold3 = gold2.replace("quantidade", productquantity)
+
+  $("#corpo").append(gold3);
+  console.log(document.getElementById("corpo"))
+  /* SUBSTITUI O MODELO COM OS PARAMETROS E CONCATENA COM A ÁREA ESPECIFICA DA PAGINA */
+
+
+}
+
+
+
+
+
+
+</script>
+
+<script> 
+    $(document).ready(function(){
+      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+      $('.modal').modal();
+      });
+  </script>
+
+
+  <script>
+    $(function(){
+        $(".button-collapse").sideNav();
+      });
+    </script>
+
+<script type="text/javascript">
+
+
+var selectcounter = 0
+
+Request.get("product/show_all" , function(all){ 
+  /* RECEBE OS DADOS DA ROTA SELECIONADA E PASSA COMO PARAMETRO PARA A FUNÇAO */
+
     var modelo =  " <div class= \"col s3\" > \
-                      <div class=\"card small\"/> \
+                      <div class=\"card\"/> \
                         <div class=\"card-image\"> \
                           <img src=\"fotinha\"> \
-                          <a class=\"btn-floating halfway-fab waves-effect waves-light red\"><i class=\"material-icons\"></i></a> \
                         </div> \
                         <div class=\"card-content\"> \
                           <p>nome</p>\
                           <p>$ price UniCoins</p> \
                           <p>company</p> \
+                          <select class=\"offset-s4\" id=\"selectid\">\
+                              <option value=\"1\">1</option>\
+                              <option value=\"2\">2</option>\
+                              <option value=\"3\">3</option>\
+                              <option value=\"4\">4</option>\
+                          </select>\
+                          <button onclick=\"cart(productid, document.getElementById(\'idvalue\').value, productprice, \'productname\' )\" class=\"waves-effect waves-light blue-grey darken-2 btn\">Comprar</button>\
                         </div> \
                       </div> \
                     </div> \ "
-    console.log(modelo)
     
     var pagina = ""
-    for (var i = all.content.length - 1; i >= 0; i--) {
+    for (var i = all.content.length - 1; i >= 0; i--) { 
+      /* PREECHE O MODELO COM AS INFORMAÇOES DE CADA PRODUTO E CONCATENA DENTRO DE "pagina" */
+
       var nome = all.content[i].name
       var price = all.content[i].price
       var company = all.content[i].company_name
-      
+      var id = all.content[i].id
       var replace = modelo.replace("nome", nome)
       var replace2 = replace.replace("price", price)
       var replace3 = replace2.replace("company", company)
-      var pagina = pagina.concat(replace3)
+      var replace4 = replace3.replace("productid", id)
+      var replace5 = replace4.replace("productprice", price)
+      var replace6 = replace5.replace("productquantity", price)
+      var replace7 = replace6.replace("selectid", selectcounter)
+      var replace8 = replace7.replace("idvalue", selectcounter)
+      var replace9 = replace8.replace("productname", nome)
+      
+      selectcounter = selectcounter + 1
+      var pagina = pagina.concat(replace9)
+      }
+      
+    document.getElementById("margem").innerHTML = pagina
+
+    /* ADICIONA A VARIAVEL "pagina" DENTRO DO ELEMENTO */
+
+
+
+
+
+
+    
+
+
+    Request.get("category/list", function(l){
+      console.log(l)
+      var category = document.getElementById("categoria")
+      for (var i = 0; i < l.content.length; i++) {
+        category.innerHTML += HTML_Factory.make_tag('option', l.content[i].type, {"value": l.content[i].id})            
       }
 
-    document.getElementById("margem").innerHTML = pagina
-      
-    
-  })
+      Request.get("company/list", function(l){
+
+        var lojas = document.getElementById("nome_empresa")
+
+        for (var i = 0; i < l.content.length; i++) {
+          lojas.innerHTML += HTML_Factory.make_tag('option', l.content[i].name, {"value": l.content[i].id})            
+        }
+
+        $(document).ready(function() {
+          $('select').material_select();
+        }); 
+
+      })
+
+   })
+
+   
+  
+})
+
 
 
 </script>
 
+<script>
+    
+    $(document).ready(function(){
+        $('.collapsible').collapsible();
+    });
+
+</script> 
 
 </body>
 

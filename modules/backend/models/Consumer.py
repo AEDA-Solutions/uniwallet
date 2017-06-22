@@ -3,4 +3,4 @@ from helpers import dictionary
 
 class Consumer(std.Model):
 	
-	attributes = ['user_id', 'fullname', 'university', 'cpf']
+	attributes = ['user_id', 'fullname', 'university_id', 'cpf']

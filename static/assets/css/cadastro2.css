@@ -1,0 +1,41 @@
+body{ 
+   background-image: url("../images/cadastro.jpg");
+   max-width: 1080px;   /* Máximo da largura da imagem */
+   width: auto;
+   max-height: auto;  /* Máximo da altura da imagem */
+   min-height: auto;      
+   background-size:100%;
+   background-repeat: no-repeat; 
+ }
+
+ .quadrado{
+ 	width: 704px;
+ 	height: 450px;
+ 	background-color: white;
+ 	margin-top: -20px;
+ 	margin-left: 310px;
+ 	border-color: blue;
+ 	border-spacing: 100px;
+ }
+ 
+ .btn-login{
+  padding: 15px 30px;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 6px;
+  border: none;
+  background-color: #37474f;
+  margin-bottom: 20px;
+  margin-top:29px;
+  margin-left: 275px;
+}
+
+.mini-logo{
+  
+  height: 130px;
+  margin-left: 445px; 
+  margin-top:60px; 
+  width: 411px; 
+  margin-top:60px;
+ 
+}

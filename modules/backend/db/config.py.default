@@ -1,8 +1,8 @@
 def config():
 	return {
 	'user': 'root',
-	'password': '30demarco',
+	'password': 'yourSQLpassword',
 	'host': 'localhost',
-	'database': 'Uniwallet',
-	'raise_on_warnings': True,
+	'database': 'uniwallet',
+	'raise_on_warnings': 'true',
 	}

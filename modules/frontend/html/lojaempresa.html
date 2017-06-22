@@ -1,0 +1,396 @@
+<!DOCTYPE html> 
+
+<html lang="pt-br"> 
+ 
+<head>  
+      <meta charset="utf-8"> 
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"> 		 
+      <title> UniWallet </title>  
+      <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="{static}assets/css/lojaempresa.css">
+</head> 
+
+<header class="navbar-fixed">
+
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="usuarioempresa">Configurações</a></li>
+    <li class="divider"></li>
+    <li><a href="">Financeiro</a></li>
+  </ul>
+  
+  <nav class="blue-grey darken-2">
+
+       <div class="navbar-wrapper">
+       <!-- Logo -->
+        <a href="inicial" class="brand-logo"><img src="{static}assets/images/uwtrans1.png" class="left mini-logo"></img></a>
+
+        <ul class="right hide-on-med-and-down">
+  
+        <li>
+        <a class="dropdown-button" href="#" data-activates="dropdown1">Perfil da Empresa<i class="material-icons left">perm_identity</i></a></li>
+
+        <li><a href="inicial">Sair<i class="material-icons left">input</i></a></li>
+        </ul>
+
+        <div class="nav-wrapper">
+        <form>
+        <div class="input-field">
+          <input id="search" type="search" required>
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+        </form>
+        </div>
+        </div>
+
+  </nav>
+
+</header>
+
+
+<body>
+
+<form class="filter" method="get" action="/suche/filter">
+  <div class="section white">
+    <div class="container">
+      <div class="row">
+        <div class="col m3 s12">
+          <h1 class="Produtos-h1">
+            Produtos
+            <span>(100)</span>
+          </h1>
+          <div class="filter-elements">
+            <a class="btn waves-effect waves-light green" href="">Cadastro de produtos</a>
+            <a class="btn waves-effect waves-light blue" href="">Extrato</a>
+            <a class="btn waves-effect waves-light orange" href="">Ranking</a>
+          </div>
+        </div>
+
+          <div class="col s12 m8 l9"> 
+
+            <div class="row-header">
+
+                  <div class="row">
+                    <div class="small-12 columns"></div>
+                      <main class="categories bp-wrap">
+                      
+                        <div class="content">
+                        
+
+                          <div class="category">
+                            <a class="link" title="Adicionar produto" href="#modal1">
+                              <img class="add1" src="{static}assets/images/create.png">
+                                <div class="adicionar">Adicionar produto</div>
+                            </a>
+                          </div>
+                         
+                            <div class="category">
+                              <a class="link" title="Editar produto" href="">
+                                <img class="add2" src="{static}assets/images/edit.png">
+                                  <div class="adicionar">Editar produto</div>
+                              </a>
+                            </div>
+
+                             <div class="category">
+                            <a class="link" title="Deletar produto" href="">
+                              <img class="add3" src="{static}assets/images/delete.png">
+                                <div class="adicionar1">Deletar produto</div>
+                            </a> 
+                        </div>
+                      </main>
+                    
+                    </div> 
+
+                  </div> 
+         
+
+             <table class="centered">
+        
+              <thead>
+          
+                <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Total</th>
+                </tr>
+        
+                </thead>
+
+                <tbody id="corpo">
+                  
+                  <tr>
+                    <td>Coxinha</td>
+                    <td>30</td>
+                    <td>$ 300UniCoins</td>
+                  
+                  </tr>        
+                  
+                  <tr>
+                    <td>Pão de Queijo</td>
+                    <td>40</td>
+                    <td>$ 400UniCoins</td>
+                              
+                  </tr>
+  
+                  <tr>
+                    <td>Sanduíche Natural</td>
+                    <td>10</td>
+                    <td>$ 100UniCoins</td>
+                              
+                  </tr>
+
+                 </tbody>
+              </table>
+           
+         </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+  </form>
+
+<!--
+<div class="row">
+ <div class="small-12 columns"></div>
+    <main class="categories bp-wrap">
+    <h3 class="title-line">Produtos</h3>
+      <div class="content">
+      
+
+        <div class="category">
+          <a class="link" title="Adicionar produto" href="#modal1">
+            <img class="add1" src="{static}assets/images/create.png">
+              <div class="adicionar">Adicionar produto</div>
+          </a>
+        </div>
+       
+          <div class="category">
+            <a class="link" title="Editar produto" href="">
+              <img class="add2" src="{static}assets/images/edit.png">
+                <div class="adicionar">Editar produto</div>
+            </a>
+          </div>
+
+           <div class="category">
+          <a class="link" title="Deletar produto" href="">
+            <img class="add3" src="{static}assets/images/delete.png">
+              <div class="adicionar1">Deletar produto</div>
+          </a> 
+      </div>
+    </main>
+  
+</div>
+
+<div class="col s12 m8 l9"> 
+   
+      <table class="centered">
+        
+        <thead>
+          
+          <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Total</th>
+          </tr>
+        
+        </thead>
+
+        <tbody id="corpo">
+          
+  
+          <tr>
+            <td>Coxinha</td>
+            <td>30</td>
+            <td>$ 300UniCoins</td>
+          
+          </tr>        
+          
+          <tr>
+            <td>Pão de Queijo</td>
+            <td>40</td>
+            <td>$ 400UniCoins</td>
+                      
+          </tr>
+
+            </tr>        
+          
+          <tr>
+            <td>Sanduíche Natural</td>
+            <td>10</td>
+            <td>$ 100UniCoins</td>
+                      
+          </tr>
+
+        </tbody>
+        </table>
+  
+ <!-- Modal Structure -->
+
+            <div id="modal1" class="modal indigo lighten-5">
+            <div class="modal-content blue-grey darken-3 white-text">
+                <h4>Cadastro de Produtos</h4>
+                <div id="div_mensagem_retorno"></div>
+                </div>
+
+                <div class = "row">
+            <h6 font-size="1">Insira a imagem do produto abaixo:</h6>
+            <input type="file" accept=".jpg,.png,.jpeg"></input>
+            <div></div>
+
+            <div class="form-input black-text">
+            <input class="input-form" type="text" name="name" placeholder="Nome do Produto">
+            </div>
+
+            <div class="form-input">
+            <input class="input-form" type="text" name="categoria" placeholder="Categoria">
+            </div>
+
+            </div>
+             <div class="form-input">
+            <input class="input-form" type="text" name="description" placeholder="Descrição">
+            </div>
+
+
+            <div class="form-input">
+            <input class="input-form" type="text" name="price" placeholder="Preço">
+            </div>
+
+            <div class="form-input">
+            <input class="input-form" type="text" name="quantity" size=30 minlength=6 maxlength=10 placeholder="Quantidade">
+            </div>
+
+            <div class="form-input">
+            <input class="input-form" type="text" name="company_id" size=30 minlength=6 maxlength=10 placeholder="ID da Companhia">
+            </div>
+
+            <button class="btn-login" id="botao_submit">Cadastrar Produto</button>
+
+
+<script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+<script src="{static}assets/js/uniwallet-backend-api.js"></script>
+
+  <!-- jQuery -->
+  <script src="{static}assets/admin/js/jquery.js"></script>
+
+  <!-- Morris Charts JavaScript -->
+  <script src="{static}assets/admin/js/plugins/morris/raphael.min.js"></script>
+  <script src="{static}assets/admin/js/plugins/morris/morris.min.js"></script>
+  <script src="{static}assets/admin/js/plugins/morris/morris-data.js"></script>
+
+  <!-- jQuery -->
+  <script src="{static}assets/admin/js/jquery.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+  $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+  });
+  </script>
+
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.14/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.14/js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/select/1.2.2/js/dataTables.select.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.1/js/responsive.bootstrap.min.js"></script>
+
+<script src="{static}assets/js/uniwallet-backend-api.js"></script>
+    
+<script type="text/javascript">
+
+/*var targets = {
+    
+      'b_product': {'parameters': {'limit': 100, 'start': 0}, 'entity': 'product', 'method': 'GET', 'title': 'Produtos'}
+    }
+
+    var botoes = document.getElementsByClassName('botao')
+    for (var i = 0; i < botoes.length; i++) {
+      botoes[i].addEventListener('click', function(event){
+        Page.fill('mainform', '')
+        target = targets[this.id]
+        Request.send(target.parameters, target.entity + '/fetchadmin', target.method, function(response){
+          console.log(response)
+          if (response.code == 200){
+            if (response.content.length > 0){
+              var fields = Object.keys(response.content[0])
+              var table = HTML_Factory.make_table(fields, {}, target.title)
+              Page.fill('maincontent', table)
+              HTML_Factory.make_datatable(fields, target.entity, target.parameters, target.method, [])
+            } else {
+              window.alert("Não há nada aqui por enquanto.")
+            }
+          } else {
+            window.alert(response.content)
+          }
+
+        })
+      })
+    }
+
+*/
+
+</script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+
+<!--Cadastrar produto -->
+<script type="text/javascript">
+    //Adiciona um evento no botão de enviar dados
+    Page.listen("botao_submit", function(e){
+      e.preventDefault() //Impede a atualização da página
+      //Pega os dados inseridos nos campos de input
+      data = Page.get_input("input-form")
+      //Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
+
+      Request.send(data, "product/register", "POST", function(response){
+
+        if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
+          Page.redirect("produtoempresa")
+        } else {
+          Page.fill("div_mensagem_retorno", response.content) //Insere a mensagem na div
+        }
+      })
+    }) 
+  </script>
+
+  <script>
+    //Para deslogar da tela
+    document.getElementById("logout").addEventListener("click",function(){
+     Auth.signOut()
+     Page.redirect("inicial") 
+    })
+
+    //Mostrar o nome que está logado
+    Request.send('', 'user/current', 'POST', function(server_response){
+    console.log(server_response)
+    document.getElementById("nomeempresa").innerHTML = server_response.content.name
+    document.getElementById("nomeempresa").
+    })
+
+  </script>
+
+
+  <script> 
+    $(document).ready(function(){
+      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+      $('.modal').modal();
+      });
+  </script>
+
+</body>
+
+</html>
+
+</body>
+</html> 

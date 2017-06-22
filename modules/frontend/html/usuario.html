@@ -1,108 +1,115 @@
 <!DOCTYPE html> 
-
 <html lang="pt-br"> 
-
 <head>  
 		<meta charset="utf-8"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">     
-		<title> UniWallet </title>  
+		<title> Perfil do Usuário </title>  
 		<link rel="stylesheet" href="{static}assets/css/materialize.css"> 
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="{static}assets/css/usuario.css">
 </head> 
 
-<header class="navbar">  
-	<nav class="N/A transparent"> 
-			<!--Colocar todo o conteúdo do painel da nav-bar--> 
-		<div class="nav-wrapper container" > 
+<header class="navbar-fixed">
+      
+      <!-- Dropdown Structure cadastro de empresa ou usuário -->
+      
 
-			<!--Logo--> 
-			<a href="file:///C:/Users/rmora/Desktop/materialize/web%20pag/index1.html" class="brand-logo"><img src="{static}assets/images/oficial.png" class="circle left mini-logo"></img></a> 
-			<div class="nav-wrapper">
-
-			<div class="nav-wrapper">
-				<div class = "barra N/A transparent">
-				<form>
-					<div class="input-field">
-						<input class="white black-text" id="search" type="search" required placeholder="O que está procurando?" >
-						<label class="label-icon" for="search" ><i class="material-icons">search</i></label>
-						<i class="material-icons">close</i>
-						</div>
-					</form>
-				  </div>
-				</div>
-
-				<!--Para esconder o conteúdo da direita--> 
-			 <div class = "informacoes">
-				<ul id="nav-mobile" class="right hide-on-med-and-down"> 
-
-						<li><a href="informacoesusuario">
-						<i class="material-icons left ">perm_identity</i>
-						<span> Perfil</span>
-						</a></li>
-
-						<li><a href="faleconosco">
-						<i class="material-icons left ">phone</i>
-						<span> Fale Conosco</span>
-						</a></li>
-
-
-						<li><a id="logout" class="margin-login" href ="#">
-						<i class="material-icons left ">input</i>
-						<span> Sair</span>
+      <nav class="N/A transparent">
+      <div class="navbar-wrapper">
+      <!-- Logo -->
+      <a href="inicial" class="brand-logo"><img src="{static}assets/images/uwtrans1.png" class="left mini-logo"></img></a>
+      <a href="#" data-activates="menu-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      <!--Para esconder o conteúdo da direita em telas de tabletes e molibe-->
+      <ul class="right hide-on-med-and-down"> 
+      <!-- Dropdown Trigger -->
+      
+      <li><a href="faleconosco">Fale Conosco<i class="material-icons left">call</i></a></li>
+      <li><a id="logout" class="margin-login" href ="#"><i class="material-icons left ">input</i>
+					<span> Sair</span>
                         </a></li>
-                 </ul>
-              </div>
-           </div>
       </ul>
-    </div> 
-  </nav>  
-  
+              
+  	</nav>  
 </header> 
+
 <body>
 
 	<div class="row">
+
 	<ul class="collection">
+
 	   <li class="collection-item avatar">
-		<i class="material-icons circle">perm_identity</i>
-		<span id="nomeusuario" class="title">Cliente</span>
-		<p> Último Acesso<br></p>
-		<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+	   		
+              <img src="{static}assets/images/usuario.png" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+              <span id="nomeusuario" class="text">Nome do Cliente</span>
+	   		<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+
+	   		  <br><span id="saldo" class="text">Saldo Atual: R$ 30,75 </span><br/>
+
+	   		
+
 	   </li>
+
+         
 	</ul>
 	</div>
-</div>
 
-<div class="row">
-<div class="botao-sup">
-			<div class="col s6"><input type="submit" name="submit" value="Saldo" class="btn-conFace"></div>
-</div>
-</div>
-<div class="botao-sup1">
-			<div class="col s6"><input type="submit" name="submit" value="Espaço do Empreendedor" class="btn-conFace"></div>
-</div>
-</div>
+	
+<!--
+	<div class="row">
+	<div class="botao-sup">
+			<div class="col s6 offset-s3">
+			<input type="submit" name="submit" value="Saldo" class="btn-conFace">
+			</div>
+	</div>
+	</div>
+-->
 
-
-<div class="row">
-  <div class="menuprincipal">
+	<div class="row">
+  	<div class="menuprincipal">
 		<div class="col s8 offset-s2">
 		<div class="arruma">
 		<ul class="collapsible indigo lighten-5" data-collapsible="accordion">
 	<li>
-		<div class="collapsible-header"><i class="material-icons">trending_up</i>Extratos</div>
-		<div class="collapsible-body"><span>
-    
-    <div id ="extrato_bancario">
-      
-    </div>
+		<div class="collapsible-header"><i class="material-icons">trending_up</i>Consulte Seu Extrato</div>
+		<div class="collapsible-body">
+		<span>
+    		<table class="centered">
+			        <thead>
+			          <tr>
+			              <th>Data</th>
+			              <th>Categoria</th>
+			              <th>Valor</th>
+			          </tr>
+			        </thead>
 
-    </span></div>
+			        <tbody>
+			          <tr>
+			            <td>21/04/2017</td>
+			            <td>Refeição</td>
+			            <td>U$300,00</td>
+			          </tr>
+			          <tr>
+			            <td>22/05/2017</td>
+			            <td>Depósito</td>
+			            <td>U$1000,00</td>
+			            
+			          </tr>
+			          <tr>
+			            <td>23/07/2017</td>
+			            <td>Papelaria</td>
+			            <td>U$500,00</td>
+			          </tr>
+			        </tbody>
+			  </table>
+
+    	</span>
+    	</div>
 	</li>
 
 	<li>
-			<div class="collapsible-header"><i class="material-icons">view_list</i>Histórico de Compras</div>
+		<div class="collapsible-header"><i class="material-icons">view_list</i>Histórico de Compras</div>
 			<div class="collapsible-body"><span>
 			<table id ="Histórico">
 			        <thead>
@@ -141,7 +148,7 @@
 			      </table></span></div>
     </li>
 	<li>
-			<div class="collapsible-header"><i class="material-icons">store</i>Loja Virtual</div>
+			<div class="collapsible-header"><i class="material-icons">store</i>Conheça Nossa Loja Virtual</div>
 			<div class="collapsible-body">
 			<span>
 			  <div class="row">
@@ -177,10 +184,15 @@
 			</span></div>
 	</li>
 
-	<li>
+			<li>
 			<div class="collapsible-header"><i class="material-icons">new_releases</i>Compras Pendentes</div>
-			<div class="collapsible-body"><span>Você deixou de retirar o item X na loja tal</span></div> 
-	</li>           
+			<div class="collapsible-body"><span>Voce deixou de retirar o item X na loja tal</span></div> 
+			</li>           
+
+			<li>
+			<div class="collapsible-header"><a href="editausuario"><font color="#e8640c">Altere Sua Senha</font><i class="material-icons"><font color="#e8640c">lock</font></i></div>	
+			</li>           
+
         </ul>
     </div>
    </div>
@@ -253,12 +265,12 @@
 })
 
 //Mostrar o nome que está logado
+    Request.send('', 'user/current', 'POST', function(server_response){
+    console.log(server_response)
+    document.getElementById("nomeusuario").innerHTML = server_response.content.name
+    })
 
-Request.send('', 'user/current', 'POST', function(server_response){
 
-console.log(server_response)
-
-document.getElementById("nomeusuario").innerHTML = server_response.content.name
 </script>
 
  <script>

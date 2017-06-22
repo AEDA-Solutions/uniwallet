@@ -22,6 +22,8 @@ body{
   background-repeat: no-repeat; 
 } 
 
+
+
  h4{ 
 	margin-left: 30px; 
 	margin-right: 400px; 
@@ -44,12 +46,12 @@ h6{
  
 .containerlogin{ 
   width:1000px; 
+  margin-left: 150px; 
   height: 400px; 
   text-align: center;
   background-color: rgba(50, 60, 50,0.3); 
   border-radius: 40px; 
-  margin: 0 auto; 
-  margin-top: 150px; 
+  margin-top: 100px; 
 } 
  
 input[type="text"]{ 
@@ -124,3 +126,23 @@ p{
 	font-weight: 10px;
 	margin-left: 500px;
 }
+
+
+.page-footer{
+  width: 1290px;
+  height: 200px; 
+  text-align: center;
+  background-color: #EE82EE ;
+  margin-top: 10px; 
+}
+
+.footer-copyright{
+  margin-left: 0px;
+
+
+
+
+
+
+
+

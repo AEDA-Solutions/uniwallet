@@ -1,0 +1,114 @@
+<!DOCTYPE html> 
+<html lang="pt-br"> 
+<head> 
+		 <meta charset="utf-8"> 
+		 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		 <title> Cadastro de Usuário </title> 
+		 <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
+		 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+		 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		 <link rel="stylesheet" type="text/css" href="{static}assets/css/cadastro2.css">
+		 <link rel="shortcut icon" href="official.ico" type="image/x-icon" />
+ </head> 
+
+<body>
+
+<a href="inicial" class="brand-logo"><img src="{static}assets/images/uwtrans1.png" class="mini-logo"></img></a>
+
+
+<div class="row">
+	
+	<div class="quadrado">
+
+		<form onsubmit="return false">
+			<div class="input-field col s6 m6">
+					<i class="material-icons prefix">account_circle</i>
+					<input name="fullname" id="icon_prefix" type="text" class="input-form validate">
+					<label for="icon_prefix">Nome Completo</label>
+			</div>
+					
+			<div class="input-field col s6 m6">
+					<i class="material-icons prefix">code</i>
+					<input name="cpf" id="icon_telephone" type="tel" class="input-form validate">
+					<label for="icon_telephone">CPF</label>
+			</div>
+
+			<div class="input-field col s12">
+				<i class="material-icons prefix">verified_user</i>
+					<input name="email" id="email" type="email" class="input-form validate">
+					<label for="email" data-error="wrong" data-success="right">Email</label>
+			</div>
+
+			<div class="input-field col s12">
+				<i class="material-icons prefix">phonelink_lock</i>
+						<input name="password" id="password" type="password" class="input-form validate">
+						<label for="password">Senha</label>
+			</div>
+
+			<div class="input-field col s6 offset-s3">
+				<i class="material-icons prefix">room</i>
+				<select name="university_id" id="university_select" class="input-form">
+						<option value="" disabled selected>Escolha sua Universidade</option>
+				</select>
+				<label>Universidade</label>
+			</div>
+
+			<input class="btn-login" value="Cadastre-se" id="botao_submit" type="submit"></input>
+		</form>
+	</div>
+
+	<script src="{static}assets/js/uniwallet-backend-api.js"></script>
+
+
+	<script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+	<script src="{static}assets/js/materialize.min.js"></script>
+	<script src="{static}assets/js/uniwallet-backend-api.js"></script>
+
+	<script type="text/javascript">
+
+		//Adiciona um evento no botão de enviar dados
+		Page.listen("botao_submit", function(e){
+			//Pega os dados inseridos nos campos de input
+			data = Page.get_input("input-form")
+
+			//Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
+			Request.send(data, "consumer/register", "POST", function(response){
+
+				if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
+					Page.redirect("/app/inicial")
+				} else {
+					Materialize.toast(response.content, 4000)
+				}
+
+			})
+		})
+
+		function render_select(callback){
+			//Faz uma requisição para a rota especificada com o objetivo de renderizar uma tag select
+			Request.send({start:0, limit:1000000}, "university/fetch", "GET", function(response){
+				var options = ""
+				for (var i = 0; i < response.content.length; i++) {//Gera as tags option com os valores obtidos da requisição
+					options += HTML_Factory.make_tag('option', response.content[i].name, {'value': response.content[i].id})
+				}
+				Page.fill("university_select", options, true) //Injeta as tags option concatenadas na iteração anterior
+				callback()
+			})
+		}
+
+	</script>
+
+	<script type="text/javascript">
+
+		$(document).ready(function() {
+			render_select(function(){
+				$('select').material_select()
+			})
+		});
+		 
+	</script>
+
+</script>
+
+ </body>
+
+ </html>

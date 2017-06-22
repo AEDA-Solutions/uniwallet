@@ -20,7 +20,7 @@ CREATE TABLE AccessLevels (
 );
 
 INSERT INTO Users (name, email, password) VALUES
-('Uniwallet team', 'team@team.com', 'uniwallet');
+('Uniwallet', 'team@team.com', '2aa6a66ca99c48666d8dc1eb2280e28be941a607053b3ddadb596b2d49f53532');
 
 INSERT INTO AccessLevels (name, description) VALUES
 ('registered', 'Basic access level for everyone logged by default'),
@@ -53,14 +53,25 @@ CREATE TABLE AuthSession (
 	FOREIGN KEY (user_id) REFERENCES Users(id)
 );
 
+CREATE TABLE Universities (
+	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(32) NOT NULL,
+	abbreviation VARCHAR(32) NOT NULL,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO Universities (name, abbreviation) VALUES
+('Universidade de Brasília', 'UnB'),
+('Universidade de São Paulo', 'USP');
+
 CREATE TABLE Consumers (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	user_id INT(32) UNSIGNED NOT NULL,
 	fullname VARCHAR(128) NOT NULL,
-	university VARCHAR(64) NOT NULL,
+	university_id INT(32) UNSIGNED NOT NULL,
 	cpf VARCHAR(64) NOT NULL,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	FOREIGN KEY (user_id) REFERENCES Users(id)
+	FOREIGN KEY (university_id) REFERENCES Universities(id)
 );
 
 CREATE TABLE Companies (
@@ -72,11 +83,11 @@ CREATE TABLE Companies (
 	FOREIGN KEY (user_id) REFERENCES Users(id)
 );
 
-INSERT INTO Consumers (user_id, fullname, university, cpf) VALUES
-('1', 'Uniwallet team', 'UnB', '68535997725');
+INSERT INTO Consumers (user_id, fullname, university_id, cpf) VALUES
+('1', 'Uniwallet', 1, '68535997725');
 
 INSERT INTO Companies (user_id, name, cnpj) VALUES
-('1', 'Uniwallet team', '68535997725');
+('1', 'Uniwallet', '68535997725');
 
 CREATE TABLE Wallets (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -102,9 +113,7 @@ INSERT INTO Stores (name, company_id) VALUES
 
 CREATE TABLE Categories (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-	company_id INT(32) UNSIGNED NOT NULL,
-	name VARCHAR(128) NOT NULL,
-	description VARCHAR(256) NOT NULL,
+	type VARCHAR(128) NOT NULL,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -120,6 +129,12 @@ CREATE TABLE Products (
 	available BIT(1) DEFAULT 1 NOT NULL,
 	FOREIGN KEY (company_id) REFERENCES Companies(id)
 );
+
+INSERT INTO Products (company_id, name, description, category, price, quantity) VALUES
+('1', 'salada', 'Vegana', 'Refeicao', 300, 10);
+
+INSERT INTO Products (company_id, name, description, category, price, quantity) VALUES
+('1', 'cheese burguer', 'Vegana', 'Refeicao', 500, 8);
 
 CREATE TABLE Product_Category (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -138,8 +153,7 @@ CREATE TABLE Product_Prices (
 	FOREIGN KEY (product_id) REFERENCES Products(id)
 );
 
-INSERT INTO Products (company_id, number, name, price, description, category) VALUES
-('1', '123', 'Pão Gostoso', '75.50', 'Gostoso', 'Alimentos');
+
 
 INSERT INTO Product_Prices (product_id, price) VALUES
 ('1', '65.50');
