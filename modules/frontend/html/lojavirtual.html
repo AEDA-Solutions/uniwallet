@@ -66,7 +66,7 @@
 
       <!-- SALDO -->
       <div class="botao-sup">
-      <div class="col s6"><input type="submit" name="submit" value="Saldo" class="btn-conFace"></div>
+      <div class="col s6"><input type="submit" name="submit" value="Saldo"  class="btn-conFace"></div>
       </div>
       
       <div class="menu">
@@ -449,7 +449,7 @@ Request.get("product/show_all" , function(all){
                               <option value=\"3\">3</option>\
                               <option value=\"4\">4</option>\
                           </select>\
-                          <button onclick=\"cart(productid, document.getElementById(\'idvalue\').value, productprice, \'productname\' )\" class=\"waves-effect waves-light blue-grey darken-2 btn\">Comprar</button>\
+                          <button onclick=\"cart(productid, document.getElementById(\'idvalue\').value, productprice, \'productname\' )\" class=\"waves-effect waves-light  orange darken-4 btn\">Comprar</button>\
                         </div> \
                       </div> \
                     </div> \ "
@@ -516,6 +516,15 @@ Request.get("product/show_all" , function(all){
 })
 
 
+
+</script>
+
+<script>
+  //Mostrar o nome que está logado
+    Request.send('', 'user/current', 'POST', function(server_response){
+    console.log(server_response)
+    document.getElementById("nomeusuario").innerHTML = server_response.content.name
+    })
 
 </script>
 

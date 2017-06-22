@@ -35,7 +35,7 @@ body{
   height: 80px;
   width: 250px; 
   margin-top:-7px; 
-  margin-left: 10px;
+  margin-left: 25px;
 } 
 
 .nav-wrapper{
@@ -70,7 +70,7 @@ body{
   color: #fff; 
   border-radius: 6px; 
   border: none; 
-  background-color: #607d8b; 
+  background-color: #e65100; 
   margin-left: -10px;  
   margin-top: 10px;
 } 
