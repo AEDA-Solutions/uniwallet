@@ -9,58 +9,155 @@
       <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link rel="stylesheet" type="text/css" href="{static}assets/css/produtoempresa.css">
+      <link rel="stylesheet" type="text/css" href="{static}assets/css/lojaempresa.css">
 </head> 
 
-<header class="navbar">  
-	<nav class="black"> 
-	 			   <!--Colocar todo o conteúdo do painel da nav-bar--> 
-        <div class="nav-wrapper container" > 
+<header class="navbar-fixed">
 
-          <!--Logo--> 
-	 			  <a href="file:///C:/Users/rmora/Desktop/materialize/web%20pag/index1.html" class="brand-logo"><img src="{static}assets/images/oficial.png" class="circle left mini-logo"></img></a> 
-	 			  <div class="nav-wrapper">
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="usuarioempresa">Configurações</a></li>
+    <li class="divider"></li>
+    <li><a href="">Financeiro</a></li>
+  </ul>
+  
+  <nav class="blue-grey darken-2">
 
-	 			  <div class="nav-wrapper">
-      				<div class = "barra N/A transparent">
-      				<form>
-        				<div class="input-field">
-          					<input id="search" type="search" required placeholder="O que está procurando?" >
-          					<label class="label-icon" for="search" ><i class="material-icons">search</i></label>
-          					<i class="material-icons">close</i>
-        				</div>
-      				</form>
-      				</div>
-    				</div>
-        
-	 				 <!--Para esconder o conteúdo da direita--> 
-	 				<div class = "informacoes">
-      				<ul id="nav-mobile" class="right hide-on-med-and-down"> 
+       <div class="navbar-wrapper">
+       <!-- Logo -->
+        <a href="inicial" class="brand-logo"><img src="{static}assets/images/uwtrans1.png" class="left mini-logo"></img></a>
 
-                       <li><a href="faleconosco">
-                       <i class="material-icons left ">phone</i>
-                       <span> Fale Conosco</span>
-                       </a></li>
+        <ul class="right hide-on-med-and-down">
+  
+        <li>
+        <a class="dropdown-button" href="#" data-activates="dropdown1">Perfil da Empresa<i class="material-icons left">perm_identity</i></a></li>
 
+        <li><a href="inicial">Sair<i class="material-icons left">input</i></a></li>
+        </ul>
 
-                       <li><a class="margin-login" href ="inicial">
-                       <i class="material-icons left ">input</i>
+        <div class="nav-wrapper">
+        <form>
+        <div class="input-field">
+          <input id="search" type="search" required>
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+        </form>
+        </div>
+        </div>
 
-                       <span> Sair</span>
-                       </a></li>
-                    </ul>
-                    </div>
-                   	</div>
-      				</ul>
-	 			</div> 
-	</nav> 
-</header> 
+  </nav>
+
+</header>
 
 
 <body>
 
+<form class="filter" method="get" action="/suche/filter">
+  <div class="section white">
+    <div class="container">
+      <div class="row">
+        <div class="col m3 s12">
+          <h1 class="Produtos-h1">
+            Produtos
+            <span>(100)</span>
+          </h1>
+          <div class="filter-elements">
+            <a class="btn waves-effect waves-light green" href="">Cadastro de produtos</a>
+            <a class="btn waves-effect waves-light blue" href="">Extrato</a>
+            <a class="btn waves-effect waves-light orange" href="">Ranking</a>
+          </div>
+        </div>
+
+          <div class="col s12 m8 l9"> 
+
+            <div class="row-header">
+
+                  <div class="row">
+                    <div class="small-12 columns"></div>
+                      <main class="categories bp-wrap">
+                      
+                        <div class="content">
+                        
+
+                          <div class="category">
+                            <a class="link" title="Adicionar produto" href="#modal1">
+                              <img class="add1" src="{static}assets/images/create.png">
+                                <div class="adicionar">Adicionar produto</div>
+                            </a>
+                          </div>
+                         
+                            <div class="category">
+                              <a class="link" title="Editar produto" href="">
+                                <img class="add2" src="{static}assets/images/edit.png">
+                                  <div class="adicionar">Editar produto</div>
+                              </a>
+                            </div>
+
+                             <div class="category">
+                            <a class="link" title="Deletar produto" href="">
+                              <img class="add3" src="{static}assets/images/delete.png">
+                                <div class="adicionar1">Deletar produto</div>
+                            </a> 
+                        </div>
+                      </main>
+                    
+                    </div> 
+
+                  </div> 
+         
+
+             <table class="centered">
+        
+              <thead>
+          
+                <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Total</th>
+                </tr>
+        
+                </thead>
+
+                <tbody id="corpo">
+                  
+                  <tr>
+                    <td>Coxinha</td>
+                    <td>30</td>
+                    <td>$ 300UniCoins</td>
+                  
+                  </tr>        
+                  
+                  <tr>
+                    <td>Pão de Queijo</td>
+                    <td>40</td>
+                    <td>$ 400UniCoins</td>
+                              
+                  </tr>
+  
+                  <tr>
+                    <td>Sanduíche Natural</td>
+                    <td>10</td>
+                    <td>$ 100UniCoins</td>
+                              
+                  </tr>
+
+                 </tbody>
+              </table>
+           
+         </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+  </form>
+
+<!--
 <div class="row">
-  <div class="small-12 columns"></div>
+ <div class="small-12 columns"></div>
     <main class="categories bp-wrap">
     <h3 class="title-line">Produtos</h3>
       <div class="content">
@@ -132,8 +229,9 @@
 
         </tbody>
         </table>
-        
+  
  <!-- Modal Structure -->
+
             <div id="modal1" class="modal indigo lighten-5">
             <div class="modal-content blue-grey darken-3 white-text">
                 <h4>Cadastro de Produtos</h4>
@@ -264,6 +362,22 @@
         }
       })
     }) 
+  </script>
+
+  <script>
+    //Para deslogar da tela
+    document.getElementById("logout").addEventListener("click",function(){
+     Auth.signOut()
+     Page.redirect("inicial") 
+    })
+
+    //Mostrar o nome que está logado
+    Request.send('', 'user/current', 'POST', function(server_response){
+    console.log(server_response)
+    document.getElementById("nomeempresa").innerHTML = server_response.content.name
+    document.getElementById("nomeempresa").
+    })
+
   </script>
 
 

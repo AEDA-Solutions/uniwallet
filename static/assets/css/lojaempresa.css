@@ -1,15 +1,56 @@
 body{
 
-  margin: 0 auto; 
-  background-image: url(""); 
-  background-repeat: no-repeat; 
-  background-size: cover; 
-  font-size: 100%;
-  font-family: 'montserrat-light',Arial,sans-serif;
+  margin: 0 auto;  
+  background- color: #f1f8e9;
+}
+
+.mini-logo{ 
+
+  height: 80px;
+  width: 250px; 
+  margin-top:-7px; 
+  margin-left: 10px;
+} 
+
+.nav-wrapper{
+  width: 400px; 
+  height: 0px;
+  font-size: 18px; 
+  border: none; 
+  border-radius: 5px; 
+  margin-bottom: 20px; 
+  background-color: #fff; 
+  margin-left: 310px; 
+  margin-top: 7px;
+    
+}
+.row-header{
+ 
+
 }
 
 #search{
   height: 50px
+}
+
+.right{
+  margin-top: -7px;
+}
+
+#nav-mobile{
+  margin-top:-5px;
+
+}
+.collection{
+  width: 160px;
+  height: 50px;
+  margin-right: 40px;
+  background-color:transparent;
+
+}
+.collection-item.avatar{
+  margin-top: -7px;
+  background-color:transparent; 
 }
 
 .bp-wrap{
@@ -73,13 +114,6 @@ body{
   margin: 1.5em 0 0 0;
 
 }
-.mini-logo{ 
-
-  width: 52px; 
-  margin-top: -1px; 
-  margin-right: 15px; 
-  margin-left: -150px;  
-} 
 
 .title-line{
   margin-left: 20px;
@@ -177,4 +211,73 @@ input[type="file"]{
   margin-bottom: 20px;
   margin-left: 240px;
   margin-top: 30px;
+}
+
+
+
+
+
+
+
+
+.section {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.container {
+    width: 95%;
+}
+.container .row {
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+}
+.row .col.m3 {
+    width: 25%;
+    margin-left: 0;
+}
+.Produtos-h1 {
+    font-size: 1.64rem;
+    line-height: 1.64rem;
+    font-weight: 200;
+    margin: 10px 0 35px;
+    padding: 0;
+}
+.filter-elements {
+    margin-top: 10px;
+}
+.filter-elements .btn {
+    font-size: .9rem;
+    text-transform: none;
+    display: block;
+}
+.waves-effect {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    z-index: 1;
+    will-change: opacity,transform;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+.btn {
+    text-decoration: none;
+    color: #FFF;
+    background-color: #26a69a;
+    text-align: center;
+    letter-spacing: .5px;
+    -webkit-transition: .2s ease-out;
+    -moz-transition: .2s ease-out;
+    -o-transition: .2s ease-out;
+    -ms-transition: .2s ease-out;
+    transition: .2s ease-out;
+    cursor: pointer;
 }

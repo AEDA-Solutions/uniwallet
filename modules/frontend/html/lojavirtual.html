@@ -3,30 +3,34 @@
 <html lang="pt-br"> 
 
 <head>  
-		<meta charset="utf-8"> 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">     
-		<title> Loja </title>  
-		<link rel="stylesheet" href="{static}assets/css/materialize.css"> 
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="{static}assets/css/lojavirtual.css">
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+    <title> Loja </title>  
+    <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{static}assets/css/lojavirtual.css">
 </head> 
   
 <header class="navbar-fixed">
-  
-  <ul id="dropdown1" class="dropdown-content">
-        <li><a href="cadastro2">Como Usuário</a></li>
-        <li class="divider"></li>
-        <li><a href="empresario">Como Empresa</a></li>
-    </ul>
 
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="usuario">Configurações</a></li>
+    <li class="divider"></li>
+    <li><a href="#modal1">Financeiro</a></li>
+  </ul>
+  
   <nav class="blue-grey darken-2">
+
        <div class="navbar-wrapper">
        <!-- Logo -->
         <a href="inicial" class="brand-logo"><img src="{static}assets/images/uwtrans1.png" class="left mini-logo"></img></a>
- 
+
         <ul class="right hide-on-med-and-down">
-        <li><a href="sobre">Carrinho<i class="material-icons left">shopping_cart</i></a></li>
+        <li>
+        <a class="dropdown-button" href="#" data-activates="dropdown1">Perfil de Usuario<i class="material-icons left">perm_identity</i></a></li>
+
+        <li><a href="inicial">Sair<i class="material-icons left">input</i></a></li>
         </ul>
 
         <div class="nav-wrapper">
@@ -39,19 +43,110 @@
         </form>
         </div>
         </div>
+
   </nav>
 
 </header>
 
       <div class="row">
-      <div class="col s12 m4 l3"> 
-       
-      <div class="row">
-        <div class="botao-sup">
-           <div class="col s6"><input type="submit" name="submit" value="Saldo" class="btn-conFace"></div>
-        </div>
-    </div>
+      <div class="col s12 m4 l3">
+
+      <!--MODAL DO PERFIL DE USUARIO-->
+      <div id="modal1" class="modal">
+      <div class="modal-content">
+          <h4>Informações Gerais</h4>
+      
+      <!-- INFORMAÇÕES DE EXTRATO E CONVERSOR-->
+      <ul class="collapsible popout" data-collapsible="accordion">
+      <li>
+        <div class="collapsible-header"><i class="material-icons">assessment</i>Extrato</div>
+        <div class="collapsible-body"><span>
+          
+          <table class="centered">
+              <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Categoria</th>
+                    <th>Valor</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>21/04/2017</td>
+                  <td>Refeição</td>
+                  <td>U$300,00</td>
+                </tr>
+                <tr>
+                  <td>22/05/2017</td>
+                  <td>Depósito</td>
+                  <td>U$1000,00</td>
+                  
+                </tr>
+                <tr>
+                  <td>23/07/2017</td>
+                  <td>Papelaria</td>
+                  <td>U$500,00</td>
+                </tr>
+              </tbody>
+        </table>
+
+        </span></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">swap_vert</i>Converter UniCoins</div>
+        <div class="collapsible-body"><span>
+         
+        <div class="container">
         
+        <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="Quantidade" id="first_name" type="text" class="validate">
+          <label for="first_name">Quantidade</label>
+
+        <div class="input-field col s12">
+          <input disabled value="I am not editable" id="disabled" type="text" class="validate">
+          <label for="disabled">Disabled</label>
+        </div>
+        </div>
+
+        <div class="botao-sup">
+        <div class="col s6"><input type="submit" name="submit" value="Converter" class="btn1"></div>
+        </div>
+
+        </div> 
+
+
+        </span></div>
+      </li>
+      </ul>
+        
+
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+      </div>
+      </div>
+
+      <div class="row">
+
+      <!-- INFORMAÇÕES DO USUARIO-->
+      <ul class="collection">
+      <li class="collection-item avatar">
+      <i class="material-icons circle">perm_identity</i>
+      <span id="nomeusuario" class="title">Cliente</span>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+      </li>
+      </ul>
+
+      <!-- SALDO -->
+      <div class="botao-sup">
+      <div class="col s6"><input type="submit" name="submit" value="Saldo" class="btn-conFace"></div>
+      </div>
+
+      </div>
+      
+      <!--MENU DE REDIRECIONAMETO-->
       <div class="input-field col s12" id="category">
         <select id="categoria">
             <option value="" disabled selected>Categoria</option>
@@ -68,6 +163,7 @@
          <label><br>Localização<br></label>
       </div>
 
+      <!-- MENU PRINCIPAL-->
       <div class="input-field col s12">
         <select id="nome_empresa">
             <option value="" disabled selected>Empresa</option>
@@ -83,7 +179,7 @@
             <option value="3">R$20,01 ou mais</option>
         </select>
       <label><br>Preço<br></label>
-      </div>      
+      </div>  
 
     </div>
 
@@ -101,7 +197,7 @@
           <tr>
             <th>Produto</th>
             <th>Quantidade</th>
-            <th>Total</th>
+            <th>Preço</th>
           </tr>
         
         </thead>
@@ -219,41 +315,128 @@
 <script src="{static}assets/js/uniwallet-backend-api.js"></script>
 
 <script type="text/javascript">
-
-
-
-
   
 
-function card(productid, productprice){
+ 
+
+     
   
-  var modelo_carrinho = "<tr>\
-                          <td>produto</td>\
-                          <td>\
-                            <select class=\"input-field col s4 offset-s4\">\
-                              <option value=\"\" disabled selected>Quantidade</option>\
-                              <option value=\"1\">1</option>\
-                              <option value=\"2\">2</option>\
-                              <option value=\"3\">3</option>\
-                            </select>\
-                            </td>\
-                          <td>$ price UniCoins</td>\
-                        </tr>\  "
+/* 
 
-  var gold = modelo_carrinho.replace("produto", productid)
-  var gold2 = gold.replace("price", productprice)
-  $("#corpo").append(gold2);
-  console.log(document.getElementById("corpo"))
-
-
-
+ for (var i = teste.length - 1; i >= 0; i--) {
+    card(teste[i].id , teste[i].price)
+    console.log(teste[i]) 
   }
 
 
-Request.get("product/show_all" , function(all){
-    
-    
-    console.log(all)
+
+
+
+var carrinho = []
+ 
+console.log(carrinho)
+sessionStorage.setItem('carrinho', JSON.stringify(carrinho))
+*/
+
+
+/* */
+
+
+
+if (sessionStorage.getItem('carrinho') == null){ /* CONFERE SE JÁ EXISTE CARRINHO NO 'SESSIOSTORAGE' */
+  var carrinho = []
+ 
+  console.log('TA VAZIO')
+  sessionStorage.setItem('carrinho', JSON.stringify(carrinho))
+}
+
+
+
+
+var teste = JSON.parse(sessionStorage.getItem('carrinho'))
+for (var i = teste.length - 1; i >= 0; i--) { /* CARREGA O CARRINHO COM O SESSIONSTORAGE */
+
+    card(teste[i].nome , teste[i].price, teste[i].quantidade)
+}
+
+
+
+function cart(id, quant, price, nome){
+  console.log(nome)
+  var carrinho = []
+  carrinho = JSON.parse(sessionStorage.getItem('carrinho'))
+  /* CARREA O SESSIONSTORAGE COMO A VARIAVEL "carrinho" */
+
+  console.log(id)
+  var list = {id: id, quantidade: quant, price: price, nome: nome}
+  console.log(list)
+  carrinho.push(list)
+  /* CRIA UM DICIONARIO COM OS PARAMETROS E ADICIONA NA ARRAY "carrinho" */
+ 
+
+  sessionStorage.setItem('carrinho', JSON.stringify(carrinho))
+  console.log(sessionStorage.getItem('carrinho'))
+  /* ALTERA O SESSIONSTORAGE COM O NOVO 'carrinho' */
+
+
+  
+  card(nome, price, quant)
+  /* EXECUTA A FUNÇAO 'card' PARA ATUALIZAR O CARRINHO */
+
+
+  /* ULTILIZA A FUNÇAO "JSON.parse()" PARA TRANSFORMAR A INFORMAÇAO EM UM OBJETO DO JAVASCRIPT 
+     E A FUNÇAO "JSON.stringify()" PARA TRANFORMAR UM OBJETO JAVASCRIPT EM UMA STRING */
+
+}
+  
+function card(productname, productprice, productquantity){
+  
+  var modelo_carrinho = "<tr>\
+                          <td>produto</td>\
+                          <td>quantidade</td>\
+                          <td>$ price UniCoins</td>\
+                        </tr>\  "
+
+  var gold = modelo_carrinho.replace("produto", productname)
+  var gold2 = gold.replace("price", productprice)
+  var gold3 = gold2.replace("quantidade", productquantity)
+
+  $("#corpo").append(gold3);
+  console.log(document.getElementById("corpo"))
+  /* SUBSTITUI O MODELO COM OS PARAMETROS E CONCATENA COM A ÁREA ESPECIFICA DA PAGINA */
+
+
+}
+
+
+
+
+
+
+</script>
+
+<script> 
+    $(document).ready(function(){
+      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+      $('.modal').modal();
+      });
+  </script>
+
+
+  <script>
+    $(function(){
+        $(".button-collapse").sideNav();
+      });
+    </script>
+
+<script type="text/javascript">
+
+
+var selectcounter = 0
+
+Request.get("product/show_all" , function(all){ 
+  /* RECEBE OS DADOS DA ROTA SELECIONADA E PASSA COMO PARAMETRO PARA A FUNÇAO */
+
     var modelo =  " <div class= \"col s3\" > \
                       <div class=\"card\"/> \
                         <div class=\"card-image\"> \
@@ -263,14 +446,21 @@ Request.get("product/show_all" , function(all){
                           <p>nome</p>\
                           <p>$ price UniCoins</p> \
                           <p>company</p> \
-                          <button onclick=\"card(productid, productprice)\" class=\"waves-effect waves-light blue-grey darken-2 btn\">Comprar</button>\
+                          <select class=\"offset-s4\" id=\"selectid\">\
+                              <option value=\"1\">1</option>\
+                              <option value=\"2\">2</option>\
+                              <option value=\"3\">3</option>\
+                              <option value=\"4\">4</option>\
+                          </select>\
+                          <button onclick=\"cart(productid, document.getElementById(\'idvalue\').value, productprice, \'productname\' )\" class=\"waves-effect waves-light blue-grey darken-2 btn\">Comprar</button>\
                         </div> \
                       </div> \
                     </div> \ "
-    console.log(modelo)
     
     var pagina = ""
-    for (var i = all.content.length - 1; i >= 0; i--) {
+    for (var i = all.content.length - 1; i >= 0; i--) { 
+      /* PREECHE O MODELO COM AS INFORMAÇOES DE CADA PRODUTO E CONCATENA DENTRO DE "pagina" */
+
       var nome = all.content[i].name
       var price = all.content[i].price
       var company = all.content[i].company_name
@@ -280,25 +470,25 @@ Request.get("product/show_all" , function(all){
       var replace3 = replace2.replace("company", company)
       var replace4 = replace3.replace("productid", id)
       var replace5 = replace4.replace("productprice", price)
-      var pagina = pagina.concat(replace5)
+      var replace6 = replace5.replace("productquantity", price)
+      var replace7 = replace6.replace("selectid", selectcounter)
+      var replace8 = replace7.replace("idvalue", selectcounter)
+      var replace9 = replace8.replace("productname", nome)
+      
+      selectcounter = selectcounter + 1
+      var pagina = pagina.concat(replace9)
       }
-      console.log(pagina)
+      
     document.getElementById("margem").innerHTML = pagina
+
+    /* ADICIONA A VARIAVEL "pagina" DENTRO DO ELEMENTO */
+
+
+
+
+
+
     
-function card(productid){
-
-
-
-
-
-
-    }
-
-
-
-
-
-
 
 
     Request.get("category/list", function(l){
@@ -324,11 +514,12 @@ function card(productid){
 
    })
 
-    
-  })
+   
+  
+})
 
 
-console.log(sessionStorage.getItem())
+
 </script>
 
 <script>
