@@ -17,7 +17,7 @@
   <ul id="dropdown1" class="dropdown-content">
     <li><a href="usuarioempresa">Configurações</a></li>
     <li class="divider"></li>
-    <li><a href="#modal1">Financeiro</a></li>
+    <li><a href="">Financeiro</a></li>
   </ul>
   
   <nav class="blue-grey darken-2">
@@ -52,8 +52,112 @@
 
 <body>
 
+<form class="filter" method="get" action="/suche/filter">
+  <div class="section white">
+    <div class="container">
+      <div class="row">
+        <div class="col m3 s12">
+          <h1 class="Produtos-h1">
+            Produtos
+            <span>(100)</span>
+          </h1>
+          <div class="filter-elements">
+            <a class="btn waves-effect waves-light green" href="">Cadastro de produtos</a>
+            <a class="btn waves-effect waves-light blue" href="">Extrato</a>
+            <a class="btn waves-effect waves-light orange" href="">Ranking</a>
+          </div>
+        </div>
+
+          <div class="col s12 m8 l9"> 
+
+            <div class="row-header">
+
+                  <div class="row">
+                    <div class="small-12 columns"></div>
+                      <main class="categories bp-wrap">
+                      
+                        <div class="content">
+                        
+
+                          <div class="category">
+                            <a class="link" title="Adicionar produto" href="#modal1">
+                              <img class="add1" src="{static}assets/images/create.png">
+                                <div class="adicionar">Adicionar produto</div>
+                            </a>
+                          </div>
+                         
+                            <div class="category">
+                              <a class="link" title="Editar produto" href="">
+                                <img class="add2" src="{static}assets/images/edit.png">
+                                  <div class="adicionar">Editar produto</div>
+                              </a>
+                            </div>
+
+                             <div class="category">
+                            <a class="link" title="Deletar produto" href="">
+                              <img class="add3" src="{static}assets/images/delete.png">
+                                <div class="adicionar1">Deletar produto</div>
+                            </a> 
+                        </div>
+                      </main>
+                    
+                    </div> 
+
+                  </div> 
+         
+
+             <table class="centered">
+        
+              <thead>
+          
+                <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Total</th>
+                </tr>
+        
+                </thead>
+
+                <tbody id="corpo">
+                  
+                  <tr>
+                    <td>Coxinha</td>
+                    <td>30</td>
+                    <td>$ 300UniCoins</td>
+                  
+                  </tr>        
+                  
+                  <tr>
+                    <td>Pão de Queijo</td>
+                    <td>40</td>
+                    <td>$ 400UniCoins</td>
+                              
+                  </tr>
+  
+                  <tr>
+                    <td>Sanduíche Natural</td>
+                    <td>10</td>
+                    <td>$ 100UniCoins</td>
+                              
+                  </tr>
+
+                 </tbody>
+              </table>
+           
+         </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+  </form>
+
+<!--
 <div class="row">
-  <div class="small-12 columns"></div>
+ <div class="small-12 columns"></div>
     <main class="categories bp-wrap">
     <h3 class="title-line">Produtos</h3>
       <div class="content">
@@ -125,8 +229,9 @@
 
         </tbody>
         </table>
-        
+  
  <!-- Modal Structure -->
+
             <div id="modal1" class="modal indigo lighten-5">
             <div class="modal-content blue-grey darken-3 white-text">
                 <h4>Cadastro de Produtos</h4>
