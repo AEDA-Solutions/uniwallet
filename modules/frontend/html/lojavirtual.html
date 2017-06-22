@@ -3,13 +3,13 @@
 <html lang="pt-br"> 
 
 <head>  
-		<meta charset="utf-8"> 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">     
-		<title> Loja </title>  
-		<link rel="stylesheet" href="{static}assets/css/materialize.css"> 
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="{static}assets/css/lojavirtual.css">
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+    <title> Loja </title>  
+    <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{static}assets/css/lojavirtual.css">
 </head> 
   
 <header class="navbar-fixed">
@@ -317,28 +317,77 @@
 <script type="text/javascript">
   
 
-  $(document).ready(function(){
-    $('.collapsible').collapsible();
-  });
-        
+ 
 
-</script>
+     
+  
+/* 
 
-<script> 
-    $(document).ready(function(){
-      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-      $('.modal').modal();
-      });
-  </script>
+ for (var i = teste.length - 1; i >= 0; i--) {
+    card(teste[i].id , teste[i].price)
+    console.log(teste[i]) 
+  }
 
-  <script>
-    $(function(){
-        $(".button-collapse").sideNav();
-      });
-    </script>
 
-<script type="text/javascript">
 
+
+
+var carrinho = []
+ 
+console.log(carrinho)
+sessionStorage.setItem('carrinho', JSON.stringify(carrinho))
+*/
+
+
+/* */
+
+
+
+if (sessionStorage.getItem('carrinho') == null){ /* CONFERE SE JÁ EXISTE CARRINHO NO 'SESSIOSTORAGE' */
+  var carrinho = []
+ 
+  console.log('TA VAZIO')
+  sessionStorage.setItem('carrinho', JSON.stringify(carrinho))
+}
+
+
+
+
+var teste = JSON.parse(sessionStorage.getItem('carrinho'))
+for (var i = teste.length - 1; i >= 0; i--) { /* CARREGA O CARRINHO COM O SESSIONSTORAGE */
+
+    card(teste[i].id , teste[i].price)
+}
+
+
+
+function cart(id, quant, price){
+  var carrinho = []
+  carrinho = JSON.parse(sessionStorage.getItem('carrinho'))
+  /* CARREA O SESSIONSTORAGE COMO A VARIAVEL "carrinho" */
+
+  console.log(id)
+  var list = {id: id, quantidade: quant, price: price}
+  console.log(list)
+  carrinho.push(list)
+  /* CRIA UM DICIONARIO COM OS PARAMETROS E ADICIONA NA ARRAY "carrinho" */
+ 
+
+  sessionStorage.setItem('carrinho', JSON.stringify(carrinho))
+  console.log(sessionStorage.getItem('carrinho'))
+  /* ALTERA O SESSIONSTORAGE COM O NOVO 'carrinho' */
+
+
+  
+  card(id, price)
+  /* EXECUTA A FUNÇAO 'card' PARA ATUALIZAR O CARRINHO */
+
+
+  /* ULTILIZA A FUNÇAO "JSON.parse()" PARA TRANSFORMAR A INFORMAÇAO EM UM OBJETO DO JAVASCRIPT 
+     E A FUNÇAO "JSON.stringify()" PARA TRANFORMAR UM OBJETO JAVASCRIPT EM UMA STRING */
+
+}
+  
 function card(productid, productprice){
   
   var modelo_carrinho = "<tr>\
@@ -358,16 +407,40 @@ function card(productid, productprice){
   var gold2 = gold.replace("price", productprice)
   $("#corpo").append(gold2);
   console.log(document.getElementById("corpo"))
+  /* SUBSTITUI O MODELO COM OS PARAMETROS E CONCATENA COM A ÁREA ESPECIFICA DA PAGINA */
+
+
+}
 
 
 
-  }
 
 
-Request.get("product/show_all" , function(all){
-    
-    
-    console.log(all)
+
+</script>
+
+<script> 
+    $(document).ready(function(){
+      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+      $('.modal').modal();
+      });
+  </script>
+
+
+  <script>
+    $(function(){
+        $(".button-collapse").sideNav();
+      });
+    </script>
+
+<script type="text/javascript">
+
+
+
+
+Request.get("product/show_all" , function(all){ 
+  /* RECEBE OS DADOS DA ROTA SELECIONADA E PASSA COMO PARAMETRO PARA A FUNÇAO */
+
     var modelo =  " <div class= \"col s3\" > \
                       <div class=\"card\"/> \
                         <div class=\"card-image\"> \
@@ -377,14 +450,15 @@ Request.get("product/show_all" , function(all){
                           <p>nome</p>\
                           <p>$ price UniCoins</p> \
                           <p>company</p> \
-                          <button onclick=\"card(productid, productprice)\" class=\"waves-effect waves-light blue-grey darken-2 btn\">Comprar</button>\
+                          <button onclick=\"cart(productid, productquantity, productprice)\" class=\"waves-effect waves-light blue-grey darken-2 btn\">Comprar</button>\
                         </div> \
                       </div> \
                     </div> \ "
-    console.log(modelo)
     
     var pagina = ""
-    for (var i = all.content.length - 1; i >= 0; i--) {
+    for (var i = all.content.length - 1; i >= 0; i--) { 
+      /* PREECHE O MODELO COM AS INFORMAÇOES DE CADA PRODUTO E CONCATENA DENTRO DE "pagina" */
+
       var nome = all.content[i].name
       var price = all.content[i].price
       var company = all.content[i].company_name
@@ -394,14 +468,23 @@ Request.get("product/show_all" , function(all){
       var replace3 = replace2.replace("company", company)
       var replace4 = replace3.replace("productid", id)
       var replace5 = replace4.replace("productprice", price)
-      var pagina = pagina.concat(replace5)
+      var replace6 = replace5.replace("productquantity", price)
+      var pagina = pagina.concat(replace6)
       }
-      console.log(pagina)
+      
     document.getElementById("margem").innerHTML = pagina
+
+    /* ADICIONA A VARIAVEL "pagina" DENTRO DO ELEMENTO */
+
+
+
+
+
     
-function card(productid){
+function filtro(productid){
 
     }
+
 
     Request.get("category/list", function(l){
       console.log(l)
@@ -430,7 +513,7 @@ function card(productid){
   })
 
 
-console.log(sessionStorage.getItem())
+
 </script>
 
 <script>
