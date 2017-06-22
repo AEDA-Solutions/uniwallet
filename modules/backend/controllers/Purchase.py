@@ -8,38 +8,47 @@ class Purchase(std.Controller):
 		i = 0
 		products = []
 		quantity = []
+		products_by_company = {}
+		values_to_transfer = {}
+
 		for item in self.get_request_parameters()["products"]:
-			if not self.model('Product').check_product_available(item["id"], item["quantity"]):
-				return "Quantidade Indisponivel"
-			total_price = total_price + self.model('Product').get_price(item["id"], item["quantity"])
+			company_id = self.model('Product').load(item["id"]).company_id 
+			if company_id in products_by_company:
+				products_by_company[company_id].append(item)
+			else:
+				products_by_company[company_id] = [item]
+
+		for company_id, products in products_by_company.items():
+			values_to_transfer[company_id] = 0
+
+			for product in products:
+				if not self.model('Product').check_product_available(product["id"], product["quantity"]):
+					return "Quantidade Indisponivel"
 			
-			products.append(item["id"])
-			quantity.append(item["quantity"])
-			
-			
+				values_to_transfer[company_id] += self.model('Product').get_price(product["id"], product["quantity"])
+				total_price += values_to_transfer[company_id]
 
 
-
-
-
-		company_id = self.get_input('company_id')
 
 		wallet_from = self.model('Wallet').find(conditions = [('user_id', '=', self.model('Consumer').load(consumer_id).user_id)]).fetchone()['id']
-		wallet_to = self.model('Wallet').find(conditions = [('user_id', '=', self.model('Company').load(company_id).user_id)]).fetchone()['id']
 
-		transaction_id = self.model(name = 'Transaction', data = {'wallet_from': wallet_from, 'wallet_to': wallet_to, 'value': total_price, 'operation': 'purchase'}).perform()
-		if transaction_id is not None:
-			self.model(data = {'transaction_id': transaction_id, 'consumer_id': consumer_id, 'company_id': company_id}).save().close()
-			purchase_id = self.model().find(conditions = [('transaction_id', '=', transaction_id)]).fetchone()['id']
-			
-			for i in range(len(products)):
-				#Salva na tabela "Purchase_Product" os produtos e quantidades
- 					self.model(name = 'Purchase_Product', data = {'purchase_id': purchase_id, 'product_id': products[i], 'quantity': quantity[i]}).save().close()
- 					i += 1
- 				
-			return "Purchase completed"
+		if self.model('Wallet').load(wallet_from).check(total_price):
+
+			for company_id, value in values_to_transfer.items():
+				wallet_to = self.model('Wallet').find(conditions = [('user_id', '=', self.model('Company').load(company_id).user_id)]).fetchone()['id']
+
+				transaction_id = self.model(name = 'Transaction', data = {'wallet_from': wallet_from, 'wallet_to': wallet_to, 'value': total_price, 'operation': 'purchase'}).perform()
+				if transaction_id is not None:
+
+					purchase_id = self.model(data = {'transaction_id': transaction_id, 'consumer_id': consumer_id, 'company_id': company_id}).save().last_id()
+
+					for product in products_by_company[company_id]:
+						self.model(name = 'Purchase_Product', data = {'purchase_id': purchase_id, 'product_id': product["id"], 'quantity': product["quantity"]}).save().close()
+				else:
+					return "That's odd, the transaction had to be interrupted. There's no money"
 		else:
-			return "Purchase not authorized"
+			return "Purchase not authorized";
+			
 
 	def showall(self):
 		lista = []
