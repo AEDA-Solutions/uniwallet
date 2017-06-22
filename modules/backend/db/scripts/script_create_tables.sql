@@ -100,20 +100,13 @@ CREATE TABLE Wallets (
 INSERT INTO Wallets (user_id, balance) VALUES
 ('1', '1000');
 
-CREATE TABLE Stores (
-	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-	name VARCHAR(128) NOT NULL,
-	company_id INT(32) UNSIGNED NOT NULL,
-	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	FOREIGN KEY (company_id) REFERENCES Companies(id)
-);
-
 INSERT INTO Stores (name, company_id) VALUES
 ('Uni_store', '1');
 
 CREATE TABLE Categories (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-	type VARCHAR(128) NOT NULL,
+	name VARCHAR(128) NOT NULL,
+	description VARCHAR(128) NOT NULL,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -153,20 +146,8 @@ CREATE TABLE Product_Prices (
 	FOREIGN KEY (product_id) REFERENCES Products(id)
 );
 
-
-
 INSERT INTO Product_Prices (product_id, price) VALUES
 ('1', '65.50');
-
-CREATE TABLE Product_Store (
-	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-	product_id INT(32) UNSIGNED NOT NULL,
-	store_id INT(32) UNSIGNED NOT NULL,
-	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	FOREIGN KEY (product_id) REFERENCES Products(id),
-	FOREIGN KEY (store_id) REFERENCES Stores(id),
-	UNIQUE (product_id, store_id)
-);
 
 CREATE TABLE Transactions (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
