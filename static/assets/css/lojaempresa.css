@@ -28,6 +28,9 @@ body{
  
 
 }
+.espaco{
+  list-style: none;
+}
 
 #search{
   height: 50px

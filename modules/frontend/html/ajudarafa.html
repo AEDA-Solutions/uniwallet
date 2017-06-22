@@ -3,52 +3,82 @@
 <head>
 	<title>Ajuda seu merda</title>
 </head>
+<!-- Bootstrap Core CSS -->
+	<link href="{static}assets/admin/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="{static}assets/admin/css/sb-admin.css" rel="stylesheet">
+
+	<!-- Morris Charts CSS -->
+	<link href="{static}assets/admin/css/plugins/morris123.css" rel="stylesheet">
+
+	<!-- Custom Fonts -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf" rel="stylesheet" type="text/css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff" rel="stylesheet" type="text/css">
+
+	<link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet">
+	<link href="https://cdn.datatables.net/select/1.2.2/css/select.dataTables.min.css" rel="stylesheet">
+	<link href="https://cdn.datatables.net/buttons/1.3.1/css/buttons.dataTables.min.css" rel="stylesheet">
+
+	<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet">
 <body>
-<select id="LISTA">
-	<option>a</option>
-	<option>b</option>
-	<option>c</option>
-	<option>d</option>
-	<option>e</option>
-</select>
+	<div class="bw">
+		<div class="di">
+			<div class="em brh">
+				<nav class="bro">
+					<ul class="nav qq nav-stacked xx">
+					 <li class="ayx">Menu</li>
+					 <li class="qp">
+						<a class="qn active" href="">Cadastro de Produtos</a>
+					</li>
+					<li class="qp">
+						<a  class="qn " href="">Extrato</a>
+					</li>
+					<li class="qn">
+						<a class="qn" href="">Ranking</a>
+					</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
 
-<div id="porra">
-	gfdsgfdsgfd
-	gfdsgfdsgd
-	gfdsgfd
-</div>
+<!-- jQuery -->
+	<script src="{static}assets/admin/js/jquery.js"></script>
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="{static}assets/js/uniwallet-backend-api.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="{static}assets/admin/js/bootstrap.min.js"></script>
 
-<script type="text/javascript">
-	/*(var lista = ["rafael", "tássila", "danidani", "lenzi"]
-	 var a = document.getElementById('LISTA')
-	 var modelo = "<option>{{conteudoaki}}</option>"
+	<!-- Morris Charts JavaScript -->
+	<script src="{static}assets/admin/js/plugins/morris/raphael.min.js"></script>
+	<script src="{static}assets/admin/js/plugins/morris/morris.min.js"></script>
+	<script src="{static}assets/admin/js/plugins/morris/morris-data.js"></script>
 
-	 var stringzona = ""
-	 for (var i = 0; i < lista.length; i++) {
-	 	stringzona = stringzona + modelo.replace("{{conteudoaki}}", lista[i])   
-	 }
+	<!-- jQuery -->
+	<script src="{static}assets/admin/js/jquery.js"></script>
 
-	 console.log(stringzona)
+	<!-- Bootstrap Core JavaScript -->
+	<script src="{static}assets/admin/js/bootstrap.min.js"></script>
 
-	 a.innerHTML = stringzona
+	<!-- Menu Toggle Script -->
+	<script>
+	$("#menu-toggle").click(function(e) {
+		e.preventDefault();
+		$("#wrapper").toggleClass("toggled");
+	});
+	</script>
 
-	 // = "<option>rafael</option><option>tássila</option>"*/
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.14/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.14/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/select/1.2.2/js/dataTables.select.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.1/js/responsive.bootstrap.min.js"></script>
 
-	 Request.get("product/pega", function(f){
+	<script src="{static}assets/js/uniwallet-backend-api.js"></script>
 
-	 	console.log(f)
-	 	var lojas = document.getElementById("LISTA")
-	 	var modelo = "<option>conteudoaki</option>"
-	 	lojas.innerHTML=""
-	 	for (var i = 0; i < f.content.length; i++) {
-	 		lojas.innerHTML = lojas.innerHTML + modelo.replace("conteudoaki", f.content[i].price) 
-	 		
-	 	}
 
-	 })
-</script>
 </body>
 </html>
