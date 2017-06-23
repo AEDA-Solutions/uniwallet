@@ -4,5 +4,5 @@ def config():
 	'password': 'yourSQLpassword',
 	'host': 'localhost',
 	'database': 'uniwallet',
-	'raise_on_warnings': 'true',
+	'raise_on_warnings': True,
 	}
