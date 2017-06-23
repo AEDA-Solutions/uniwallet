@@ -23,7 +23,7 @@ class Purchase(std.Controller):
 
 			for product in products:
 				if not self.model('Product').check_product_available(product["id"], product["quantity"]):
-					return "Quantidade Indisponivel"
+					return "Quantidade {} do Produto {} Indisponivel".format(product["id"], product["quantity"])
 			
 				values_to_transfer[company_id] += self.model('Product').get_price(product["id"], product["quantity"])
 				total_price += values_to_transfer[company_id]
@@ -44,10 +44,12 @@ class Purchase(std.Controller):
 
 					for product in products_by_company[company_id]:
 						self.model(name = 'Purchase_Product', data = {'purchase_id': purchase_id, 'product_id': product["id"], 'quantity': product["quantity"]}).save().close()
+					return "Compra Completa!"
+				
 				else:
 					return "That's odd, the transaction had to be interrupted. There's no money"
 		else:
-			return "Purchase not authorized";
+			return "Purchase not authorized. Não há saldo suficiente";
 			
 
 	def showall(self):
