@@ -160,7 +160,8 @@
         </tbody>
         </table>
         
-    <div class="col s6 offset-s4"><input type="submit" name="submit" value="Finalizar Compra" class="btn-conFace" onclick="finish_purchase()"></div>    
+    <div class="col s6 offset-s4"><input type="submit" name="submit" value="Finalizar Compra" class="btn-conFace" onclick="finish_purchase()">
+    <button onclick="reset_cart()">Limpar Carrinho</button></div>    
     </span>
     </li>
     </ul>
@@ -314,48 +315,33 @@
 <script type="text/javascript">
   
 
+ /* */
+check_cart()
+
+load_card()
+
+
+
+function check_cart(){
+  if (sessionStorage.getItem('carrinho') == null){ /* CONFERE SE JÁ EXISTE CARRINHO NO 'SESSIOSTORAGE' */
+    var carrinho = []
  
-
-     
-  
-/* 
-
- for (var i = teste.length - 1; i >= 0; i--) {
-    card(teste[i].id , teste[i].price)
-    console.log(teste[i]) 
+    console.log('TA VAZIO')
+    sessionStorage.setItem('carrinho', JSON.stringify(carrinho))
   }
-
-
-
-
-
-var carrinho = []
- 
-console.log(carrinho)
-sessionStorage.setItem('carrinho', JSON.stringify(carrinho))
-*/
-
-
-/* */
-
-
-
-if (sessionStorage.getItem('carrinho') == null){ /* CONFERE SE JÁ EXISTE CARRINHO NO 'SESSIOSTORAGE' */
-  var carrinho = []
- 
-  console.log('TA VAZIO')
-  sessionStorage.setItem('carrinho', JSON.stringify(carrinho))
 }
 
 
 
+function load_card(){
+  document.getElementById("corpo").innerHTML = " "
+  var datas = JSON.parse(sessionStorage.getItem('carrinho'))
+  for (var i = datas.length - 1; i >= 0; i--) { /* CARREGA O CARRINHO COM O SESSIONSTORAGE */
 
-var datas = JSON.parse(sessionStorage.getItem('carrinho'))
-for (var i = datas.length - 1; i >= 0; i--) { /* CARREGA O CARRINHO COM O SESSIONSTORAGE */
+    card(datas[i].nome , datas[i].price, datas[i].quantidade, i)
 
-    card(datas[i].nome , datas[i].price, datas[i].quantidade)
+  }
 }
-
 
 
 function cart(id, quant, price, nome){
@@ -375,10 +361,8 @@ function cart(id, quant, price, nome){
   console.log(sessionStorage.getItem('carrinho'))
   /* ALTERA O SESSIONSTORAGE COM O NOVO 'carrinho' */
 
-
-  
-  card(nome, price, quant)
-  /* EXECUTA A FUNÇAO 'card' PARA ATUALIZAR O CARRINHO */
+  load_card()
+ 
 
 
   /* ULTILIZA A FUNÇAO "JSON.parse()" PARA TRANSFORMAR A INFORMAÇAO EM UM OBJETO DO JAVASCRIPT 
@@ -386,19 +370,21 @@ function cart(id, quant, price, nome){
 
 }
   
-function card(productname, productprice, productquantity){
+function card(productname, productprice, productquantity, cardid){
   
   var modelo_carrinho = "<tr>\
                           <td>produto</td>\
                           <td>quantidade</td>\
                           <td>$ price UniCoins</td>\
+                          <td> <button onclick=\"remove_item(ids)\">Remover</button> </td>\
                         </tr>\  "
 
   var gold = modelo_carrinho.replace("produto", productname)
   var gold2 = gold.replace("price", productprice)
   var gold3 = gold2.replace("quantidade", productquantity)
+  var gold4 = gold3.replace("ids", cardid)
 
-  $("#corpo").append(gold3);
+  $("#corpo").append(gold4);
   console.log(document.getElementById("corpo"))
   /* SUBSTITUI O MODELO COM OS PARAMETROS E CONCATENA COM A ÁREA ESPECIFICA DA PAGINA */
 
@@ -431,6 +417,22 @@ function finish_purchase(){
 
 }
 
+function reset_cart(){
+  sessionStorage.removeItem("carrinho")
+  check_cart()
+  load_card()
+}
+
+function remove_item(id){
+
+  var datas = JSON.parse(sessionStorage.getItem('carrinho'))
+  datas.splice(id, 1)  
+  sessionStorage.setItem('carrinho', JSON.stringify(datas))
+
+  load_card()  
+
+
+}
 
 
 
