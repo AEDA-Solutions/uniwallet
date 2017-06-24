@@ -17,7 +17,8 @@ class Wallet(std.Controller):
 			.fetch(fields_mask = mask))
 
 	def balance(self):
-		balance = self.model().find([("user_id", "=", 1)]).fetchone()["balance"]
+		user_id = self.model(name = 'Session').get_user()['id']
+		balance = self.model().find([("user_id", "=", user_id)]).fetchone()["balance"]
 		return balance
 
 	def user(self):

@@ -66,7 +66,7 @@
 
       <!-- SALDO -->
       <div class="botao-sup">
-      <div class="col s6"><input type="submit" name="submit" value="Saldo"  class="btn-conFace"></div>
+      <div class="col s6"><input id="saldo" type="submit" name="submit" value=""  class="btn-conFace"></div>
       </div>
       
       <div class="menu">
@@ -313,7 +313,7 @@
 <script src="{static}assets/js/uniwallet-backend-api.js"></script>
 
 <script type="text/javascript">
-  
+
 
  /* */
 check_cart()
@@ -454,8 +454,10 @@ function remove_item(id){
 
 <script type="text/javascript">
 
+balance()
 
-var selectcounter = 0
+var selectcounter = 0 /* Necessario para gerar id no catalogo */
+
 
 Request.get("product/show_all" , function(all){ 
   /* RECEBE OS DADOS DA ROTA SELECIONADA E PASSA COMO PARAMETRO PARA A FUNÇAO */
@@ -541,7 +543,14 @@ Request.get("product/show_all" , function(all){
   
 })
 
-
+function balance(){
+  Request.get("wallet/balance",function(balance){
+    console.log(balance.content)
+    document.getElementById('saldo').value = "Saldo: " + "$" + balance.content
+  })
+  
+    
+}
 
 </script>
 
