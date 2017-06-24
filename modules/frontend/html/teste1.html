@@ -1,0 +1,76 @@
+<!DOCTYPE html> 
+
+<html lang="pt-br"> 
+
+<head>  
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+    <title> Loja </title>  
+    <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{static}assets/css/teste1.css">
+</head> 
+
+<body>
+	
+	<ul id="tabs-swipe-demo" class="tabs">
+    <li class="tab col s4"><a href="#test-swipe-1">Cadastrar Produtos</a></li>
+    <li class="tab col s4"><a class="active" href="#test-swipe-2">Remover Produtos</a></li>
+    <li class="tab col s4"><a href="#test-swipe-3">Editar Produtos</a></li>
+    <li class="tab col s4"><a href="#test-swipe-3">Visualizar Produtos</a></li>
+  </ul>
+  <div id="test-swipe-1" class="col s12">
+  	
+  	<div class = "row">
+            <h6 font-size="1">Insira a imagem do produto abaixo:</h6>
+            <input type="file" accept=".jpg,.png,.jpeg"></input>
+            <div></div>
+
+            <div class="form-input black-text">
+            <input class="input-form" type="text" name="name" placeholder="Nome do Produto">
+            </div>
+
+            <div class="form-input">
+            <input class="input-form" type="text" name="categoria" placeholder="Categoria">
+            </div>
+
+            </div>
+             <div class="form-input">
+            <input class="input-form" type="text" name="description" placeholder="Descrição">
+            </div>
+
+
+            <div class="form-input">
+            <input class="input-form" type="text" name="price" placeholder="Preço">
+            </div>
+
+            <div class="form-input">
+            <input class="input-form" type="text" name="quantity" size=30 minlength=6 maxlength=10 placeholder="Quantidade">
+            </div>
+
+            <div class="form-input">
+            <input class="input-form" type="text" name="company_id" size=30 minlength=6 maxlength=10 placeholder="ID da Companhia">
+            </div>
+
+            <button class="btn-login" id="botao_submit">Cadastrar Produto</button>
+
+  </div>
+  <div id="test-swipe-2" class="col s12">Test 2</div>
+  <div id="test-swipe-3" class="col s12">Test 3</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+<!--Banco de funções de JS criadas pelo back-end -->
+<script src="{static}assets/js/uniwallet-backend-api.js"></script>
+
+<script type="text/javascript">
+	 $(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
+</script>
+
+</body>
+
+</html>
