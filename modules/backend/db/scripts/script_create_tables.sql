@@ -115,7 +115,6 @@ CREATE TABLE Products (
 	company_id INT(32) UNSIGNED NOT NULL,
 	name VARCHAR(128) NOT NULL,
 	description VARCHAR(256) NOT NULL,
-	category VARCHAR(128) NOT NULL,
 	price DOUBLE UNSIGNED NOT NULL,
 	quantity INT(32) NOT NULL,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -123,11 +122,11 @@ CREATE TABLE Products (
 	FOREIGN KEY (company_id) REFERENCES Companies(id)
 );
 
-INSERT INTO Products (company_id, name, description, category, price, quantity) VALUES
-('1', 'salada', 'Vegana', 'Refeicao', 300, 10);
+INSERT INTO Products (company_id, name, description, price, quantity) VALUES
+('1', 'salada', 'Refeicao', 300, 10);
 
-INSERT INTO Products (company_id, name, description, category, price, quantity) VALUES
-('1', 'cheese burguer', 'Vegana', 'Refeicao', 500, 8);
+INSERT INTO Products (company_id, name, description, price, quantity) VALUES
+('1', 'cheese burguer', 'Refeicao', 500, 8);
 
 CREATE TABLE Product_Category (
 	id INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,

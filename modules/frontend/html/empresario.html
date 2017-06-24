@@ -23,13 +23,13 @@
 		<form onsubmit="return false">
 			<div class="input-field col s6 m6">
 					<i class="material-icons prefix">account_circle</i>
-					<input name="fullname" id="icon_prefix" type="text" class=" input-form validate">
+					<input name="name" id="icon_prefix" type="text" class=" input-form validate">
 					<label for="icon_prefix">Nome Completo</label>
 			</div>
 					
 			<div class="input-field col s6 m6">
 					<i class="material-icons prefix">code</i>
-					<input name="cpf" id="icon_telephone" type="tel" class=" input-form validate">
+					<input name="cnpj" id="icon_telephone" type="tel" class=" input-form validate">
 					<label for="icon_telephone">CPF/CNPJ</label>
 			</div>
 
@@ -66,7 +66,7 @@
 			data = Page.get_input("input-form")
 
 			//Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
-			Request.send(data, "consumer/register", "POST", function(response){
+			Request.send(data, "company/register", "POST", function(response){
 
 				if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
 					Page.redirect("/app/inicial")
@@ -77,29 +77,11 @@
 			})
 		})
 
-		function render_select(callback){
-			//Faz uma requisição para a rota especificada com o objetivo de renderizar uma tag select
-			Request.send({start:0, limit:1000000}, "university/fetch", "GET", function(response){
-				var options = ""
-				for (var i = 0; i < response.content.length; i++) {//Gera as tags option com os valores obtidos da requisição
-					options += HTML_Factory.make_tag('option', response.content[i].name, {'value': response.content[i].id})
-				}
-				Page.fill("university_select", options, true) //Injeta as tags option concatenadas na iteração anterior
-				callback()
-			})
-		}
+		
 
 	</script>
 
-	<script type="text/javascript">
-
-		$(document).ready(function() {
-			render_select(function(){
-				$('select').material_select()
-			})
-		});
-		 
-	</script>
+	
 
 </script>
 
