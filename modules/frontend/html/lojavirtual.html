@@ -27,10 +27,12 @@
         <a href="inicial" class="brand-logo"><img src="{static}assets/images/uwtrans1.png" class="left mini-logo"></img></a>
 
         <ul class="right hide-on-med-and-down">
+        <li><a href="#modalcar">Carrinho<i class="material-icons left">shopping_cart</i></a></li>
         <li>
         <a class="dropdown-button" href="#" data-activates="dropdown1">Perfil de Usuario<i class="material-icons left">perm_identity</i></a></li>
 
         <li><a href="inicial">Sair<i class="material-icons left">input</i></a></li>
+
         </ul>
 
         <div class="nav-wrapper">
@@ -43,6 +45,7 @@
         </form>
         </div>
         </div>
+
 
   </nav>
 
@@ -161,7 +164,7 @@
         </table>
         
     <div class="col s6 offset-s4"><input type="submit" name="submit" value="Finalizar Compra" class="btn-conFace" onclick="finish_purchase()">
-    <button onclick="reset_cart()">Limpar Carrinho</button></div>    
+    <button class = "btn-conFace" onclick="reset_cart()">Limpar Carrinho</button></div>    
     </span>
     </li>
     </ul>
@@ -305,6 +308,34 @@
         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
       </div>
       </div>
+
+<!-- MODAL PARA O CARRINHO-->
+<div id="modalcar" class="modal">
+      <div class="modal-content">
+          <h4>Carrinho de Compras</h4>
+      
+      <!-- INFORMAÇÕES DE EXTRATO E CONVERSOR-->
+      <ul class="collapsible popout" data-collapsible="accordion">
+      
+      <li>
+        <div class="collapsible-header"><i class="material-icons">shop</i>Carrinho</div>
+        <div class="collapsible-body">
+
+        <span>
+
+        <!-- É AQUI QUE DEVE TER O NOVO CARRINHO-->
+         
+        </span>
+      </li>
+      
+      </ul>
+        
+
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+      </div>
+</div>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <!-- Compiled and minified JavaScript -->
