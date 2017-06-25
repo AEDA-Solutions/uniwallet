@@ -1,50 +1,27 @@
+ body{ 
+   background-image: url("../images/fale.jpg");
+   max-width: 1080px;   /* Máximo da largura da imagem */
+   width: auto;
+   max-height: auto;  /* Máximo da altura da imagem */
+   min-height: auto;      
+   background-size:100%;
+   background-repeat: no-repeat; 
+ }
 
-.margin-login{
-  margin-right: 30px;
+nav{
+  width: 120.1%;
+  background-color: black;
+
 }
 
 .mini-logo{
   width: 250px; 
   margin-right: 15px; 
   margin-left: 40px; 
-} 
-
- /*PANIEL DE CADASTRO*/
-body{ 
-
-  margin: 0 auto; 
-  background-image: url("../images/talk2.jpg"); 
-  max-width: 1080px;   
-  width: auto;
-  max-height: auto;  
-  min-height: auto;      
-  background-size:100%;
-  background-repeat: no-repeat; 
-} 
+}
 
 
-
- h4{ 
-	margin-left: 30px; 
-	margin-right: 400px; 
-	font-weight: 400px; 
-	color: white;
-	font-family: sans-serif; 
-	margin-top: 40px; 
-	width: 500px;
-} 
-
-h6{ 
-	margin-left: 15px; 
-	margin-right: 400px; 
-	font-weight: 500px; 
-	color: white; 
-	font-family: sans-serif; 
-	margin-top: 90px; 
-	width: 500px;
-} 
- 
-.containerlogin{ 
+.container{ 
   width:1000px; 
   margin-left: 150px; 
   height: 400px; 
@@ -52,8 +29,18 @@ h6{
   background-color: rgba(50, 60, 50,0.3); 
   border-radius: 40px; 
   margin-top: 100px; 
-} 
- 
+}
+
+.floating-box{
+  text-align: center;
+  display: inline;
+  float: left;
+  width: 150px;
+  height: 200px;
+  margin: 20px;
+  margin-top: 45px;
+}
+
 input[type="text"]{ 
   height: 45px; 
   width: 300px; 
@@ -76,20 +63,10 @@ textarea{
   margin-top: 10px; 
   background-color: #fff; 
   margin-left: 350px; 
-} 
-
-.floating-box{
-	text-align: center;
-	display: inline;
-	float: left;
-	width: 150px;
-	height: 200px;
-	margin: 20px;
-	margin-top: 45px;
 }
- 
-.btn-continuar{ 
-  width: 300px;
+
+.btn-enviar{ 
+  width: 350px;
   padding: 15px 30px; 
   cursor: pointer; 
   color: #fff; 
@@ -99,50 +76,45 @@ textarea{
   margin-left: 350px;  
 } 
 
-.btn-conFace{ 
-  width: 300px;
-  padding: 15px 30px; 
-  cursor: pointer; 
-  color: #fff; 
-  border-radius: 6px; 
-  border: none; 
-  background-color: #303f9f; 
-  margin-left: 350px; 
-
+ h4{ 
+  margin-left: 30px; 
+  margin-right: 400px; 
+  font-weight: 400px; 
+  color: black;
+  font-family: sans-serif; 
+  margin-top: 15px; 
+  width: 500px;
 } 
-.center{
-	text-align: center;
+
+h6{ 
+  margin-top: 150px;
+  margin-left: 15px; 
+  margin-right: 400px; 
+  font-weight: 500px; 
+  color: white; 
+  font-family: arial; 
+  width: 500px;
 }
 
-b{ 
-  color: black; 
-  font-size: 10px; 
-  font-weight: 10px; 
-  margin-left: 500px; 
-} 
-p{
-	color: white;
-	font-size: 20px;
-	font-weight: 10px;
-	margin-left: 500px;
-}
-
-
-.page-footer{
-  width: 1290px;
-  height: 200px; 
+p{ 
+  color: black;
+  font-size: 20px;
+  font-weight: 100px;
+  margin-left: 10px;
   text-align: center;
-  background-color: #EE82EE ;
-  margin-top: 10px; 
 }
 
-.footer-copyright{
+  
+footer{
+  width: 1290px;
+  height: 200px;
   margin-left: 0px;
+  margin-top: 45px;
 
-
-
-
-
-
-
+}
+.footerzinho{
+  margin-top: 100px;
+  height: 100px;
+  text-decoration-color: white;
+  }
 

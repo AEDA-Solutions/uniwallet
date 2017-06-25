@@ -2,150 +2,74 @@
 <html lang="pt-br"> 
 <head> 
      <meta charset="utf-8"> 
-     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-     <title> Sobre Uniwallet </title> 
-
-     <!--verificar os css e as imagens para referenciar-->
-
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title> UniWallet </title> 
      <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
-     <link rel="stylesheet" type="text/css" href="{static}assets/css/sobre.css">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" href="{static}assets/css/sobre.css">
      <link rel="shortcut icon" href="official.ico" type="image/x-icon" />
  </head> 
 
  <body> 
+  
 
-        <header class="navbar-fixed">  
-            <nav class="blue-grey darken-3">
+                <!-- Dropdown Structure cadastro de empresa ou usuário -->
+                <ul id="dropdown1" class="dropdown-content">
+                  <li><a href="cadastro">Como Usuário</a></li>
+                  <li class="divider"></li>
+                  <li><a href="cadastroempresa">Como Empresa</a></li>
+                </ul>
+
+                <nav >
                   <div class="navbar-wrapper">
 
                   <!-- Logo -->
                     <a href="inicial" class="brand-logo"><img src="{static}assets/images/uwtrans1.png" class="left mini-logo"></img></a>
                     <a href="#" data-activates="menu-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 
-                <!--Para esconder o conteúdo da direita em telas de tabletes e molibe-->
+                <!--Para esconder o conteúdo da direita em telas de tabletes e mobile-->
                     <ul class="right hide-on-med-and-down"> 
-                <!-- Dropdown Trigger -->
 
-                        <li><a class="dropdown-button" href="#" data-activates="dropdown2">Cadastre-se<i class="material-icons left">group</i></a></li>
+                <!-- Dropdown Trigger -->
+                        <li><a href="sobre">Sobre<i class="material-icons left">live_help</i></a></li>
+                        <li><a href="faleconosco">Fale Conosco<i class="material-icons left">call</i></a></li>
+
+                        <li><a class="dropdown-button" href="#" data-activates="dropdown1">Cadastre-se<i class="material-icons left">group</i></a></li>
                        
-                        <li><a class="dropdown-button margin-login" href="#" data-activates="dropdown1">Login<i class="material-icons left">lock_open</i></a></li>
+                        <li><a href="login">Login<i class="material-icons left">lock_open</i></a></li>
+
                     </ul>
 
-                    <!--Botões para o sanduíche-->
-                     <ul class="side-nav" id="menu-mobile">
 
-                        <li><a href="sobre">Sobre<i class="material-icons left">user</i></a></li>
-                                
+                    <!--Botões para o sanduíche-->
+                     <ul class="side-nav" class="button" id="menu-mobile">                      
                   
                         <li><a href="#">CADASTRE-SE<i class="material-icons left">group</i></a></li>
-                                <li><a href="cadastro">Como Usuário</a></li>
-                                <li><a href="empresa">Como Empresa</a></li>
-                               <li class="divider"></li>
+                                <li><a type="submit" name="submit" class="button" onClick="Nova()" href="#">Como Usuário</a></li>
+                                <li><a class="button" href="cadastroempresa">Como Empresa</a></li>
+                                <li class="divider"></li> 
 
-                        <li><a href="#">Login<i class="material-icons left">lock_open</i></a></li>
-                                <li><a href="#">Usuário</a></li>
-                                <li><a href="#">Empresa</a></li>
+                        <li><a class="button" href="#">Sobre<i class="material-icons left">live_help</i></a></li>
+                                <li class="divider"></li>
+
+                        <li><a class="button" href="#">Login<i class="material-icons left">lock_open</i></a></li>
+                                <li class="divider"></li>
+
+                        <li><a class="button" href="#">Fale Conosco<i class="material-icons left">chat</i></a></li>
+                                
                      </ul> 
                   </div>
                 </nav>
          </header>
- 
-        </header> 
 
-<div class="parallax-container">
 
-      <div class="parallax"><img src="{static}assets/images/sobre1.jpg"></div>
-
-      <h5 align="middle" class="flow-text segundo-h5"><b>Veja como UniWallet pode mudar sua vida. E para melhor!</b></h5> 
-
-</div>
-
-<div class="col s12 m7">
-    <div class="card horizontal">
-      <div class="card-image">
-        <img src="{static}assets/images/ecommerce-mamweb4.jpg">
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-          <p><font size="6">Com o UniWallet, as suas compras ficam mais ágeis. Basta um clique.
-              Sem filas nem estresse, ao alcance da sua mão!</font></p>
-        </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
-        </div>
-      </div>
-    </div>
-</div>
-
-<div class="col s12 m7">
-    <div class="card horizontal">
-      <div class="card-image">
-        <img src="{static}assets/images/sobre.jpg">
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-          <p><font size="6">Fácil de usar, o UniWallet utiliza os métodos mais recentes de segurança em redes, protegendo seus dados. Sem preocupações! E para você empresário, existe um gestor financeiro, para melhor organização, e rentabilidade!</font></p>
-        </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
-        </div>
-      </div>
-    </div>
-</div>
-
-<div class="col s12 m7">
-    <div class="card horizontal">
-      <div class="card-image">
-        <img src="{static}assets/images/Background5.png">
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-          <p><font size="6">Usuários UniWallet recebem promoções exclusivas e créditos extras para usarem da melhor maneira.
-              Tudo online, sem complicações!</font></p>
-        </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
-        </div>
-      </div>
-    </div>
-</div>
-
-<footer class="page-footer blue-grey darken-3">
-    <div class="container">
-        <div class="row">
-        <div class="col l6 s12">
-            <h5 class="white-text">Saiba Mais</h5>
-            <p class="grey-text text-lighten-4"></p>
-        </div>
-        <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Mais de UniWallet</h5>
-            <ul>
-              <li><a class="grey-text text-lighten-3" href="#!">Dúvidas Frequentes</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Promoções Exclusivas</a></li>
-                <!--  <li><a class="grey-text text-lighten-3" href="TeladeCadastro.html">Cadastre-se</a></li> -->
-            </ul>
-        </div>
-        </div>
-        </div>
-        <div class="footer-copyright">
-        <div class="container">
-            © 2017 Copyright
-            <a class="grey-text text-lighten-4 right" href="#!">Equipe UniWallet</a>
-        </div>
-    </div>
-</footer>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
 
-<script>
-  $(document).ready(function(){
-      $('.parallax').parallax();
-    });
-</script>
+
 
 
 </body>

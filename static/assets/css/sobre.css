@@ -1,12 +1,23 @@
-body{
-  background-color: #f5f5f5;
-}
+ body{ 
+   background-image: url("../images/");
+   max-width: 1080px;   /* Máximo da largura da imagem */
+   width: auto;
+   max-height: auto;  /* Máximo da altura da imagem */
+   min-height: auto;      
+   background-size:100%;
+   background-repeat: no-repeat; 
+ }
 
+nav{
+  width: 120.1%;
+  background-color: black;
+}
 .mini-logo{
   width: 250px; 
   margin-right: 15px; 
   margin-left: 40px; 
-} 
+}
+
 
 .tags{
   width:860px; 
