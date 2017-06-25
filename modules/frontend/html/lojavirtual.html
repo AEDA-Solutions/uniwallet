@@ -406,7 +406,7 @@ function finish_purchase(){
   var objeto = {products: products}
   console.log(JSON.stringify(objeto))
   Request.send(objeto, "purchase/create", "POST", function(response){
-    if(alert(JSON.stringify(response))){}
+    if(alert(JSON.stringify(response.content))){}
     
     else {   
       window.location.reload() 

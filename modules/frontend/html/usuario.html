@@ -45,7 +45,7 @@
               <span id="nomeusuario" class="text">Nome do Cliente</span>
 	   		<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
 
-	   		  <br><span id="saldo" class="text">Saldo Atual: R$ 30,75 </span><br/>
+	   		  <br id="saldonovo"><span class="text" id="MostraSaldo" >Saldo Atual: R$ 30,75 </span><br/>
 
 	   		
 
@@ -117,7 +117,7 @@
 			              <th>Data</th>
 			              <th>Loja</th>
 			              <th>Produto</th>
-			              <th>Preço</th>
+			              <th>Total</th>
 			              <th>Código de Venda</th>
 			          </tr>
 			        </thead>
@@ -270,6 +270,23 @@
     document.getElementById("nomeusuario").innerHTML = server_response.content.name
     })
 
+    balance()
+	
+	function balance(){
+  		Request.get("wallet/balance",function(balance){
+    
+   			var modelo = "Saldo Atual: R$ dinheirinho UniCoins " 
+    		var fill = modelo.replace("dinheirinho", balance.content)
+    		document.getElementById("MostraSaldo").innerHTML = fill
+    		console.log(fill)
+	})
+}
+
+
+
+
+
+
 
 </script>
 
@@ -324,10 +341,14 @@ function Nova()
 }
 </script>
 
-<script type="text/javascript">
-	
+<script>
+
+
+
+
+
 Request.get("consumer/extrato" , function(extrato){
-		
+		console.log(extrato)
 		
 		var modelo = 	"<tr>\
 			            <td>created_at</td>\
@@ -345,11 +366,11 @@ Request.get("consumer/extrato" , function(extrato){
 
 			var coin = " UniCoins" 
 			var val = val.concat(coin)
-			
-			var gold = modelo.replace("created_at", at)
+		
+			var gold = modelo.replace("created_at", reorder_date(at))
 			var gold2 = gold.replace("wallet_to", to)
 			var gold3 = gold2.replace("value", val)
-			var all = all.concat(gold3)
+			var all = gold3 + all
 			}
 
 		document.getElementById("body").innerHTML = all
@@ -357,6 +378,11 @@ Request.get("consumer/extrato" , function(extrato){
 		
 	})
 
+function reorder_date(at){
+	var hora = "Horario: " + at.slice(11,16)
+	var data = at.slice(8,10) + " - " + at.slice(5,7) + " - " + at.slice(0,4) + " \ "
+	return data + hora
+}
 
 </script>
 </body>

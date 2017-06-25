@@ -23,6 +23,7 @@ class Purchase(std.Controller):
 
 			for product in products:
 				if not self.model('Product').check_product_available(product["id"], product["quantity"]):
+					self.response.code = 'Unauthorized'
 					return "Quantidade {} do Produto {} Indisponivel".format(product["id"], product["quantity"])
 			
 				values_to_transfer[company_id] += self.model('Product').get_price(product["id"], product["quantity"])
@@ -47,8 +48,10 @@ class Purchase(std.Controller):
 					return "Compra Completa!"
 				
 				else:
+					self.response.code = 'Unauthorized'
 					return "That's odd, the transaction had to be interrupted. There's no money"
 		else:
+			self.response.code = 'Unauthorized'
 			return "Purchase not authorized. Não há saldo suficiente";
 			
 
