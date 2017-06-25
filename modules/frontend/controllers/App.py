@@ -63,5 +63,9 @@ class App(std.Controller):
 		return self.prepare_static(self.get_html("empresario"))
 
 	def lojaempresa(self):
-		return self.prepare_static(self.get_html("lojaempresa"))	
+		return self.prepare_static(self.get_html("lojaempresa"))
+
+	def teste1(self):
+		return self.prepare_static(self.get_html("teste1"))
+
 		
