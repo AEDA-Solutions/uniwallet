@@ -324,6 +324,51 @@
         <span>
 
         <!-- É AQUI QUE DEVE TER O NOVO CARRINHO-->
+        <table class="centered">
+        
+        <thead>
+          
+          <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Preço</th>
+          </tr>
+        
+        </thead>
+
+        <tbody id="corpo">
+          
+          <tr>
+            <td>Coxinha (Loja do zé)</td>
+            <td>
+              <select class="input-field col s4 offset-s4">
+                <option value="" disabled selected>Quantidade</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select></td>
+            <td>$ 300UniCoins</td>
+          
+          </tr>        
+          
+          <tr>
+            <td>coxinha</td>
+            <td>
+              <select class="input-field col s4 offset-s4">
+                <option value="" disabled selected>Quantidade</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select></td>
+            <td>TOTAL</td>
+                       
+          </tr>
+
+        </tbody>
+        </table>
+
+         <div class="col s6 offset-s4"><input type="submit" name="submit" value="Finalizar Compra" class="btn-conFace" onclick="finish_purchase()">
+    <button class = "btn-conFace" onclick="reset_cart()">Limpar Carrinho</button></div> 
          
         </span>
       </li>
