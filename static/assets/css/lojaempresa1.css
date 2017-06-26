@@ -1,0 +1,155 @@
+body{
+
+  margin: 0 auto;  
+  background- color: #f1f8e9;
+}
+
+.mini-logo{ 
+
+  height: 80px;
+  width: 250px; 
+  margin-top:-7px; 
+  margin-left: 25px;
+} 
+
+.nav-wrapper{
+  width: 400px; 
+  height: 0px;
+  font-size: 18px; 
+  border: none; 
+  border-radius: 5px; 
+  margin-bottom: 20px; 
+  background-color: #fff; 
+  margin-left: 310px; 
+  margin-top: 7px;
+    
+}
+#search{
+  height: 50px
+}
+
+ /* Style the tab */
+div.tab {
+    float: left;
+    border: 13px solid #455a64;
+    background-color: #fcfcfc;
+    width: 23%;
+    height: 597px;
+}
+
+/* Style the buttons inside the tab */
+div.tab button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+div.tab button.active {
+    background-color: #ef6c00;
+}
+
+/* Style the tab content */
+.tabcontent {
+    float: left;
+    padding: 0px 12px;
+    border: 1px solid #ccc;
+    width: 77%;
+    border-left: none;
+    height: auto;
+} 
+
+.link{
+
+  box-shadow: 0 4px 4px #f0f0f0;
+  border-radius: .5em;
+  background-clip: padding-box;
+  transition: all .2s linear;
+  text-align: center;
+  border: 3px solid #ef6c00;
+  display: block;
+  width: 77%;
+  height: 5.5em;
+  position: relative;
+  text-decoration: none;
+  color: #333;
+  padding-top: 0em;
+  padding-right: 1.5em;
+  margin: 0.5em 0 0 0;
+
+
+}
+.category{
+  display: inline;
+  float: right;
+  width: 10.333%;
+  margin:0.233%;
+
+}
+.add1{
+    height: 48px;
+    width: 60px;
+    margin-left: 6px;
+}
+.add2{
+    height: 48px;
+    width: 53px;
+    margin-left: 8px;
+    margin-top: -2px;
+}
+.add3{
+    height: 30px;
+    width: 37px;
+    margin-left: 15px;
+    margin-top: 8px;
+}
+.adicionar{
+  margin-right:-23px;
+  color: black;
+  font-size: 12px;
+  margin-top: -14px;
+}
+
+.adicionar1{
+  margin-right:-25px;
+  margin-top: -7px;
+  color: black;
+  font-size: 13px;
+}
+.image_produto{
+    height: 67px;
+    width: 95px;
+    margin-left: 5px;
+    margin-top: 0px;
+}
+.deletar{
+    background-image: url("../images/delete.png");
+    background-size: 34px 27px;
+    background-color: white;
+    height: 31px;
+    width: 38px;
+    margin-left: -17px;
+    margin-top: 0px;
+}
+.collapsible-header {
+    display: contents;
+    cursor: pointer;
+    min-height: 3rem;
+    line-height: 3rem;
+    padding: 0 1rem;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+

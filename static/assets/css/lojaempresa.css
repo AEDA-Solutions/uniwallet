@@ -28,9 +28,6 @@ body{
  
 
 }
-.espaco{
-  list-style: none;
-}
 
 #search{
   height: 50px
@@ -233,7 +230,15 @@ input[type="file"]{
 
 
 
-
+ .quadrado{
+  width: 704px;
+  height: 450px;
+  background-color: white;
+  margin-top: -20px;
+  margin-left: 310px;
+  border-color: blue;
+  border-spacing: 100px;
+ }  
 
 
 

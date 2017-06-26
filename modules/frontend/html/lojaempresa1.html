@@ -1,0 +1,448 @@
+<!DOCTYPE html> 
+
+<html lang="pt-br"> 
+ 
+<head>  
+      <meta charset="utf-8"> 
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"> 		 
+      <title> Loja Empresa</title>  
+      <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="{static}assets/css/lojaempresa1.css">
+</head> 
+
+<header class="navbar-fixed">
+
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="usuarioempresa">Configurações</a></li>
+    <li class="divider"></li>
+    <li><a href="">Financeiro</a></li>
+  </ul>
+  
+  <nav class="blue-grey darken-2">
+
+       <div class="navbar-wrapper">
+       <!-- Logo -->
+        <a href="inicial" class="brand-logo"><img src="{static}assets/images/uwtrans1.png" class="left mini-logo"></img></a>
+
+        <ul class="right hide-on-med-and-down">
+  
+        <li>
+        <a class="dropdown-button" href="#" data-activates="dropdown1">Perfil da Empresa<i class="material-icons left">perm_identity</i></a></li>
+
+        <li><a href="inicial">Sair<i class="material-icons left">input</i></a></li>
+        </ul>
+
+        <div class="nav-wrapper">
+        <form>
+        <div class="input-field">
+          <input id="search" type="search" required>
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+        </form>
+        </div>
+        </div>
+
+  </nav>
+  </header>
+
+  <body>
+      <div class="tab">
+          <button class="tablinks" onclick="openCity(event, 'Cadastro_de_Produtos')" >Cadastro de Produtos</button>
+          <button class="tablinks" onclick="openCity(event, 'Extrato')">Extrato</button>
+          <button class="tablinks" onclick="openCity(event, 'Ranking_de_Produtos')">Ranking de Produtos</button>
+      </div>
+
+  <div id="Cadastro_de_Produtos" class="tabcontent">
+          
+            <div class="row">
+                    <div class="small-12 columns"></div>
+                      <main class="categories bp-wrap">
+                      
+                        <div class="content">
+                        
+
+                          <div class="category">
+                            <a class="link" title="Adicionar produto" href="#modal1">
+                              <img class="add1" src="{static}assets/images/create.png">
+                              <div class="adicionar">Adicionar produto</div>
+                            </a>
+                          </div>
+
+                         </div>
+
+                      </main>
+                    
+            </div> 
+
+          <div class="tabela">
+
+             <table class="centered">
+        
+              <thead>
+          
+                <tr>
+                <td></td>
+                <th>Imagem</th>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Valor Unt</th>
+                </tr>
+        
+              </thead>
+
+                <tbody id="corpo">
+                  
+                  <tr>
+                    <td><button type="button" class="deletar"></button></td>
+                    <td><img class="image_produto" src="{static}assets/images/coxinha.jpg"></td>
+                    <td>Coxinha</td>
+                    <td>30</td>
+                    <td>$ 3.50 UniCoins</td>
+                    <td><ul class="collapsible indigo lighten-5" data-collapsible="accordion">
+                        <li>
+                          <div class="collapsible-header">Editar</div>
+                          <div class="collapsible-body">
+                          <span>
+                              <table class="centered">
+                                    <thead>
+                                      <tr>
+                                          <th>Imagem</th>
+                                          <th>Nome</th>
+                                          <th>Valor</th>
+                                          <th>Quantidade</th>
+                                      </tr>
+                                    </thead>
+
+                                    <tbody>
+                                      <tr>
+                                        <td> <form action="#">
+                                                <div class="file-field input-field">
+                                                  <div class="btn">
+                                                    <span>Imagem</span>
+                                                    <input type="file" accept=".jpg,.png,.jpeg">
+                                                  </div>
+                                                  <div class="file-path-wrapper">
+                                                    <input class="file-path validate" type="text" placeholder="Imagem do Produto">
+                                                  </div>
+                                                </div>
+                                              </form></td>
+                                        <td><input type="text" name="Produto"></td>
+                                        <td><input type="text" name="Valor"></td>
+                                        <td><input type="text" name="Quantidade"></td>
+                                      </tr>
+                                    </tbody>
+                              </table>
+
+                            </span>
+                            </div>
+                        </li>
+                      </div>
+                      </td>
+                  
+                  </tr>        
+                  
+                  <tr>
+                    <td><button type="button" class="deletar"></button></td>
+                    <td><img class="image_produto" src="{static}assets/images/pao-de-queijo.jpg"></td>
+                    <td>Pão de Queijo</td>
+                    <td>40</td>
+                    <td>$ 2.00 UniCoins</td>
+                    <td><ul class="collapsible indigo lighten-5" data-collapsible="accordion">
+                        <li>
+                          <div class="collapsible-header">Editar</div>
+                          <div class="collapsible-body">
+                          <span>
+                              <table class="centered">
+                                    <thead>
+                                      <tr>
+                                          <th>Imagem</th>
+                                          <th>Nome</th>
+                                          <th>Valor</th>
+                                          <th>Quantidade</th>
+                                      </tr>
+                                    </thead>
+
+                                    <tbody>
+                                      <tr>
+                                        <td> <form action="#">
+                                                <div class="file-field input-field">
+                                                  <div class="btn">
+                                                    <span>Imagem</span>
+                                                    <input type="file" accept=".jpg,.png,.jpeg">
+                                                  </div>
+                                                  <div class="file-path-wrapper">
+                                                    <input class="file-path validate" type="text" placeholder="Imagem do Produto">
+                                                  </div>
+                                                </div>
+                                              </form></td>
+                                        <td><input type="text" name="Produto"></td>
+                                        <td><input type="text" name="Valor"></td>
+                                        <td><input type="text" name="Quantidade"></td>
+                                      </tr>
+                                    </tbody>
+                              </table>
+
+                            </span>
+                            </div>
+                        </li>
+                      </div>
+                      </td>
+
+                  </tr>
+  
+                  <tr>
+                    <td><button type="button" class="deletar"></button></td>
+                    <td><img class="image_produto" src="{static}assets/images/marmitas.jpg"></td>
+                    <td>Marmita</td>
+                    <td>10</td>
+                    <td>$ 10.00 UniCoins</td>
+                    <td><ul class="collapsible indigo lighten-5" data-collapsible="accordion">
+                        <li>
+                          <div class="collapsible-header">Editar</div>
+                          <div class="collapsible-body">
+                          <span>
+                              <table class="centered">
+                                    <thead>
+                                      <tr>
+                                          <th>Imagem</th>
+                                          <th>Nome</th>
+                                          <th>Valor</th>
+                                          <th>Quantidade</th>
+                                      </tr>
+                                    </thead>
+
+                                    <tbody>
+                                      <tr>
+                                        <td> <form action="#">
+                                                <div class="file-field input-field">
+                                                  <div class="btn">
+                                                    <span>Imagem</span>
+                                                    <input type="file" accept=".jpg,.png,.jpeg">
+                                                  </div>
+                                                  <div class="file-path-wrapper">
+                                                    <input class="file-path validate" type="text" placeholder="Imagem do Produto">
+                                                  </div>
+                                                </div>
+                                              </form></td>
+                                        <td><input type="text" name="Produto"></td>
+                                        <td><input type="text" name="Valor"></td>
+                                        <td><input type="text" name="Quantidade"></td>
+                                      </tr>
+                                    </tbody>
+                              </table>
+
+                            </span>
+                            </div>
+                        </li>
+                      </div>
+                      </td>
+                              
+                  </tr>
+
+                 </tbody>
+              </table>
+  </div>
+
+      <div id="Extrato" class="tabcontent">
+
+          <div class="col s12 m8 l9"> 
+   
+          <table class="centered">
+            
+            <thead>
+              
+              <tr>
+                <th>Produtos</th>
+                <th>Quantidade</th>
+                <th>Total</th>
+              </tr>
+            
+            </thead>
+
+            <tbody id="corpo">
+              
+      
+              <tr>
+                <td>Coxinha</td>
+                <td>30</td>
+                <td>$ 300UniCoins</td>
+              </tr>        
+              
+              <tr>
+                <td>Pão de Queijo</td>
+                <td>40</td>
+                <td>$ 400UniCoins</td>
+              </tr>
+
+              <tr>
+                <td>Sanduíche Natural</td>
+                <td>10</td>
+                <td>$ 100UniCoins</td>        
+              </tr>
+
+            </tbody>
+          </table>
+
+      </div>
+
+      <div id="Ranking_de_Produtos" class="tabcontent">
+         
+      </div> 
+
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Cadastro de Produto</h4>
+      
+      <form action="#">
+        <div class="file-field input-field">
+          <div class="btn">
+              <span>Imagem</span>
+              <input type="file" accept=".jpg,.png,.jpeg">
+          </div>
+          <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" placeholder="Imagem do Produto">
+          </div>
+        </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="nomeproduto" type="email" class="validate">
+          <label for="password">Nome Produto</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email">
+          <label for="email">Descrição</label>
+        </div>
+      </div>
+
+      <div class="row">
+          <select>
+            <option value="" disabled selected>Categoria</option>
+            <option value="1">Salgados</option>
+            <option value="2">Papelaria</option>
+            <option value="3">Outros</option>
+          </select>
+         
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email">
+          <label for="email">Valor</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email">
+          <label for="email">Quantidade</label>
+        </div>
+      </div>
+   
+    </form>
+  </div>
+
+      </form>
+
+    <div class="modal-footer">
+      <a href="#!" id="produtoempresa" class="modal-action modal-close waves-effect waves-green btn-flat ">Cadastrar</a>
+    </div>
+  </div>      
+
+  </body>
+
+
+
+
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+
+  <!--Banco de funções de JS criadas pelo back-end -->
+  <script src="{static}assets/js/uniwallet-backend-api.js"></script>
+
+
+<!--Cadastrar produto -->
+<script type="text/javascript">
+    //Adiciona um evento no botão de enviar dados
+    Page.listen("botao_submit", function(e){
+      e.preventDefault() //Impede a atualização da página
+      //Pega os dados inseridos nos campos de input
+      data = Page.get_input("input-form")
+      //Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
+
+      Request.send(data, "product/register", "POST", function(response){
+
+        if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
+          Page.redirect("produtoempresa")
+        } else {
+          Page.fill("div_mensagem_retorno", response.content) //Insere a mensagem na div
+        }
+      })
+    }) 
+  </script>
+
+  <script>
+    //Para deslogar da tela
+    document.getElementById("logout").addEventListener("click",function(){
+     Auth.signOut()
+     Page.redirect("inicial") 
+    })
+  </script>
+
+
+  <script> 
+    $(document).ready(function(){
+      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+      $('.modal').modal();
+      });
+  </script>
+
+<!--Uso do Select-->
+  <script type="text/javascript">
+      $(document).ready(function() {
+    $('select').material_select();
+  });
+        
+  </script>
+<!-- Uso do botao editar para mostrar opçoes-->
+  <script>
+    $(document).ready(function(){
+        $('.collapsible').collapsible();
+    });
+  </script>
+<!--Menu lateral feito por transição de conteudos-->
+<script>
+function openCity(evt, cityName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the link that opened the tab
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+    } 
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+
+</script>

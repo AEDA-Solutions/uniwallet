@@ -242,48 +242,71 @@
 
         </tbody>
         </table>
-  
- <!-- Modal Structure -->
-
-            <div id="modal1" class="modal indigo lighten-5">
-            <div class="modal-content blue-grey darken-3 white-text">
-                <h4>Cadastro de Produtos</h4>
-                <div id="div_mensagem_retorno"></div>
-                </div>
-
-            <div class = "row">
-            <h6 font-size="1">Insira a imagem do produto abaixo:</h6>
-            <input type="file" accept=".jpg,.png,.jpeg"></input>
-            <div></div>
-
-            <div class="form-input black-text">
-            <input class="input-form" type="text" name="name" placeholder="Nome do Produto">
-            </div>
-
-            <div class="form-input">
-            <input class="input-form" type="text" name="categoria" placeholder="Categoria">
-            </div>
-
-            </div>
-             <div class="form-input">
-            <input class="input-form" type="text" name="description" placeholder="Descrição">
-            </div>
+  -->
 
 
-            <div class="form-input">
-            <input class="input-form" type="text" name="price" placeholder="Preço">
-            </div>
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Cadastro de Produto</h4>
+      
+      <form action="#">
+        <div class="file-field input-field">
+          <div class="btn">
+              <span>Imagem</span>
+              <input type="file" accept=".jpg,.png,.jpeg">
+          </div>
+          <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" placeholder="Imagem do Produto">
+          </div>
+        </div>
 
-            <div class="form-input">
-            <input class="input-form" type="text" name="quantity" size=30 minlength=6 maxlength=10 placeholder="Quantidade">
-            </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="nomeproduto" type="email" class="validate">
+          <label for="password">Nome Produto</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email">
+          <label for="email">Descrição</label>
+        </div>
+      </div>
 
-            <div class="form-input">
-            <input class="input-form" type="text" name="company_id" size=30 minlength=6 maxlength=10 placeholder="ID da Companhia">
-            </div>
+      <div class="row">
+          <select>
+            <option value="" disabled selected>Categoria</option>
+            <option value="1">Salgados</option>
+            <option value="2">Papelaria</option>
+            <option value="3">Outros</option>
+          </select>
+         
+      </div>
 
-            <button class="btn-login" id="botao_submit">Cadastrar Produto</button>SS
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email">
+          <label for="email">Valor</label>
+        </div>
+      </div>
 
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email">
+          <label for="email">Quantidade</label>
+        </div>
+      </div>
+   
+    </form>
+  </div>
+
+      </form>
+
+    <div class="modal-footer">
+      <a href="#!" id="produtoempresa" class="modal-action modal-close waves-effect waves-green btn-flat ">Cadastrar</a>
+    </div>
+  </div>      
 
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
 <script src="{static}assets/js/uniwallet-backend-api.js"></script>
@@ -393,12 +416,30 @@
 
   </script>
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+<!--Banco de funções de JS criadas pelo back-end -->
+<script src="{static}assets/js/uniwallet-backend-api.js"></script>
+
+<script type="text/javascript">
+   $(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
+</script>
 
   <script> 
     $(document).ready(function(){
       // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
       $('.modal').modal();
       });
+  </script>
+
+  <script type="text/javascript">
+      $(document).ready(function() {
+    $('select').material_select();
+  });
+        
   </script>
 
 </body>
