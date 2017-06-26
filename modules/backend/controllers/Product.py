@@ -21,9 +21,13 @@ class Product(std.Controller):
 		return (self.model().find(join=[('Company', 'company_id')], start_from = self.get_input('start'), limit = self.get_input('limit'))
 			.fetch(fields_mask = mask))
 
-	def pega(self):
-		return (self.model().find()
-			.fetch())
+	def categoryfilter(self):
+		filtercategory = []
+		product_filter = self.model().find().fetch()
+		for product in product_filter:
+			filtercategory.append({'Product':product,'Category':self.model(name = 'Product').find([('category','=',product['category'])]).fetch()})
+		return filtercategory
+
 
 	def show_all(self):
 		#user_id = self.model(name = 'Session').get_user()['id']
