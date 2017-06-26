@@ -6,10 +6,10 @@ class App(std.Controller):
 		return html.replace("{static}", "http://localhost:8008/")
 
 	def cadastro(self):
-		return self.prepare_static(self.get_html("cadastro"))
+		return self.prepare_static(self.get_html("cadastro2"))
 
 	def cadastroempresa(self):
-		return self.prepare_static(self.get_html("cadastroEmpresa"))
+		return self.prepare_static(self.get_html("empresario"))
 
 	def inicial(self):
 		return self.prepare_static(self.get_html("index"))
@@ -44,29 +44,18 @@ class App(std.Controller):
 	def perfiledit(self):
 		return self.prepare_static(self.get_html("perfiledit"))
 
-	def teste(self):
-		return self.prepare_static(self.get_html("Teste"))
-
-	def tteste(self):
-		return self.prepare_static(self.get_html("tteste"))
-
 	def loja(self):
 		return self.prepare_static(self.get_html("lojavirtual"))
 
 	def rafa(self):
 		return self.prepare_static(self.get_html("ajudarafa"))
 
-	def cadastro2(self):
-		return self.prepare_static(self.get_html("cadastro2"))
-
-	def empresario(self):
-		return self.prepare_static(self.get_html("empresario"))
-
 	def lojaempresa(self):
 		return self.prepare_static(self.get_html("lojaempresa"))
 
 	def teste1(self):
 		return self.prepare_static(self.get_html("teste1"))
+	
 	def lojaempresa1(self):
 		return self.prepare_static(self.get_html("lojaempresa1"))
 		
