@@ -50,20 +50,18 @@
 
   <body>
       <div class="tab">
-          <button class="tablinks" onclick="openCity(event, 'Cadastro_de_Produtos')" >Cadastro de Produtos</button>
+          <button class="tablinks" onclick="openCity(event, 'Cadastro')" id="defaultOpen">Cadastro de Produtos</button>
           <button class="tablinks" onclick="openCity(event, 'Extrato')">Extrato</button>
-          <button class="tablinks" onclick="openCity(event, 'Ranking_de_Produtos')">Ranking de Produtos</button>
+          <button class="tablinks" onclick="openCity(event, 'Ranking')">Ranking de Produtos</button>
       </div>
 
-  <div id="Cadastro_de_Produtos" class="tabcontent">
+  <div id="Cadastro" class="tabcontent">
           
             <div class="row">
                     <div class="small-12 columns"></div>
-                      <main class="categories bp-wrap">
                       
                         <div class="content">
                         
-
                           <div class="category">
                             <a class="link" title="Adicionar produto" href="#modal1">
                               <img class="add1" src="{static}assets/images/create.png">
@@ -72,9 +70,7 @@
                           </div>
 
                          </div>
-
-                      </main>
-                    
+      
             </div> 
 
           <div class="tabela">
@@ -288,7 +284,7 @@
 
       </div>
 
-      <div id="Ranking_de_Produtos" class="tabcontent">
+      <div id="Ranking" class="tabcontent">
          
       </div> 
 
@@ -435,7 +431,7 @@ function openCity(evt, cityName) {
     // Get all elements with class="tablinks" and remove the class "active"
     tablinks = document.getElementsByClassName("tablinks");
     for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
+        tablinks[i].className = tablinks[i].className.replace("active"," ");
     }
 
     // Show the current tab, and add an "active" class to the link that opened the tab
