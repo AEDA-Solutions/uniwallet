@@ -6,11 +6,14 @@
    min-height: auto;      
    background-size:100%;
    background-repeat: no-repeat; 
+   font-family: Arial, Verdana, Tahoma, Sans-Serif;
+   font-size: 12px;
  }
 
 nav{
   width: 120.1%;
-  background-color: black;
+  background-color: #455a64;
+
 }
 .mini-logo{
   width: 250px; 
@@ -36,4 +39,29 @@ nav{
   color: white;
   font-family: Courier; 
   margin-top: 450px;     
+}
+ 
+.uniwallet{
+  margin-top: -31px;
+
+  color : black;
+  width:1280px;
+  height: 570px;
+  background-image: url("../images/empresa.jpg");
+  text-align: center;
+}
+.equipe{
+  color : blue;
+  width:1280px;
+  height: 570px;
+  background-image: url("../images/dave.jpg");
+  text-align: center;
+}
+h1{
+  font-size: 85px;
+  font-weight:400px ;
+}
+p{
+  font-size: 31px;
+  font-weight: 100px;
 }
