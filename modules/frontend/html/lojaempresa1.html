@@ -10,6 +10,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="{static}assets/css/lojaempresa1.css">
+      <
 </head> 
 
 <header class="navbar-fixed">
@@ -295,7 +296,7 @@
       </div>
 
       <div id="Ranking" class="tabcontent">
-         
+        <canvas id="myChart"></canvas>
       </div> 
 
 
@@ -367,6 +368,7 @@
 </html>
 
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js" />
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
@@ -452,4 +454,32 @@ function openCity(evt, cityName) {
     document.getElementById("defaultOpen").click();
 
 </script>
+<!-- Grafico de pizza-->
+<script >
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'horizontalBar',
 
+    // The data for our dataset
+    data: {
+        labels: ["Pão de Queijo", "Coxinha", "Marmita", "Caderno", "Sucos", "Refrigerantes", "Doces"],
+        datasets: [{
+            label: "Quantidade de Produtos Vendidos",
+           
+            backgroundColor:'rgb(249, 112, 0)',
+            borderColor: 'rgb(77, 95, 141)',
+            data: [20, 17, 32, 14, 24, 30, 45],
+        }]
+    },
+
+    // Configuration options go here
+    options: {
+       title: {
+            display: true,
+            text: 'Gráfico de Produtos vendidos'
+        }
+
+    }
+});
+</script>
