@@ -7,7 +7,6 @@ class Product(std.Treater):
 					"company_id": 	["required", "exists:id:Company"],
 					"name": 		["required"],
 					"description":	["required"],
-					"category":		["required"],
 					"price":	    ["required"],
 					"quantity": 	["required", "integer"]
 				},
@@ -19,12 +18,11 @@ class Product(std.Treater):
 		return self.rules({
 				"fields": {
 					"id":			["required", "exists:id"],
-					"number": 		["required"],
 					"name": 		["required"],
 					"price":	 	["required"],
 					"company_id":	["required", "exists:id:Company"],
 					"description":	["required"],
-					"category":		["required"],
+					"quantity": 	["required", "integer"]
 				},
 				"method": "post",
 			})

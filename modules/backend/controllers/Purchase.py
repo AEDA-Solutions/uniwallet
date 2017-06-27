@@ -1,8 +1,26 @@
 from . import Controller as std
+from pprint import pprint
+
 
 class Purchase(std.Controller):
 
 	def create(self):
+		products =  self.model().prepare_products(self.get_request_parameters()["products"])
+		if products != None:
+			user_id = self.model(name = 'Session').get_user()['id']
+			wallet_from = self.model('Wallet').find(conditions = [('user_id', '=', user_id)]).fetchone()['id']
+			prices = self.model().get_prices(products)
+			if self.model('Wallet').load(wallet_from).check(self.model().get_sum_prices(prices)):
+				if self.model().perform(products, wallet_from):
+					return "Everything in place"
+				else:
+					return self.forbid("Process interrupted", 'Unauthorized')
+			else:
+				return self.forbid("No funds", 'Unauthorized')
+		else:
+			return self.forbid("Products unavailable", 'Unauthorized')
+
+	"""def create2 (self):
 		consumer_id = self.model(name = 'Session').get_user()['id']
 		total_price = 0
 		i = 0
@@ -52,7 +70,7 @@ class Purchase(std.Controller):
 					return "That's odd, the transaction had to be interrupted. There's no money"
 		else:
 			self.response.code = 'Unauthorized'
-			return "Purchase not authorized. Não há saldo suficiente";
+			return "Purchase not authorized. Não há saldo suficiente";"""
 			
 
 	def showall(self):
