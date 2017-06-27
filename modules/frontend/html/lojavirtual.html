@@ -622,9 +622,9 @@ Request.get("product/show_all" , function(all){
       Request.get("company/list", function(l){
 
         var lojas = document.getElementById("nome_empresa")
-
+        var model = "filtro( this.value )"
         for (var i = 0; i < l.content.length; i++) {
-          lojas.innerHTML += HTML_Factory.make_tag('option', l.content[i].name, {"value": l.content[i].id})            
+          lojas.innerHTML += HTML_Factory.make_tag('option', l.content[i].name, [{"value": l.content[i].id}, {"onclick": filtro( this.value )}])            
         }
 
         $(document).ready(function() {
@@ -647,6 +647,12 @@ function balance(){
   
     
 }
+
+function filtro(e){
+  console.log("porra")
+
+}
+
 
 </script>
 
