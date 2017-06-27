@@ -30,7 +30,15 @@ class Product(std.Controller):
 
 
 	def show_all(self):
+		
 		#user_id = self.model(name = 'Session').get_user()['id']
 		#company = self.model("Company").find([('user_id', '=', 1)]).fetchone("id")["id"]
 		#return self.model("Product").find(conditions = [("company_id", '=', company)], join = [("Company", "company_id")]).fetch()
 		return self.model("Product").find(join = [("Company", "company_id")]).fetch()
+
+	def show_x(self):
+		company = str(self.get_input("company"))
+		#user_id = self.model(name = 'Session').get_user()['id']
+		#company = self.model("Company").find([('user_id', '=', 1)]).fetchone("id")["id"]
+		#return self.model("Product").find(conditions = [("company_id", '=', company)], join = [("Company", "company_id")]).fetch()
+		return self.model("Product").find(conditions = [("company_id", '=', company)], join = [("Company", "company_id")]).fetch()
