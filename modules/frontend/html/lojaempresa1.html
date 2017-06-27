@@ -50,20 +50,18 @@
 
   <body>
       <div class="tab">
-          <button class="tablinks" onclick="openCity(event, 'Cadastro_de_Produtos')" >Cadastro de Produtos</button>
+          <button class="tablinks" onclick="openCity(event, 'Cadastro')" id="defaultOpen">Cadastro de Produtos</button>
           <button class="tablinks" onclick="openCity(event, 'Extrato')">Extrato</button>
-          <button class="tablinks" onclick="openCity(event, 'Ranking_de_Produtos')">Ranking de Produtos</button>
+          <button class="tablinks" onclick="openCity(event, 'Ranking')">Ranking de Produtos</button>
       </div>
 
-  <div id="Cadastro_de_Produtos" class="tabcontent">
+  <div id="Cadastro" class="tabcontent">
           
             <div class="row">
                     <div class="small-12 columns"></div>
-                      <main class="categories bp-wrap">
                       
                         <div class="content">
                         
-
                           <div class="category">
                             <a class="link" title="Adicionar produto" href="#modal1">
                               <img class="add1" src="{static}assets/images/create.png">
@@ -72,192 +70,194 @@
                           </div>
 
                          </div>
-
-                      </main>
-                    
+      
             </div> 
 
-          <div class="tabela">
+  <div class="tabela">
 
-             <table class="centered">
+    <table class="centered">
         
-              <thead>
+      <thead>
           
-                <tr>
-                <td></td>
-                <th>Imagem</th>
-                <th>Produto</th>
-                <th>Quantidade</th>
-                <th>Valor Unt</th>
-                </tr>
+        <tr>
+        <td></td>
+        <th>Imagem</th>
+        <th>Produto</th>
+        <th>Quantidade</th>
+        <th>Valor Unt</th>
+        </tr>
         
-              </thead>
+      </thead>
 
-                <tbody id="corpo">
+      <tbody id="corpo">
                   
-                  <tr>
-                    <td><button type="button" class="deletar"></button></td>
-                    <td><img class="image_produto" src="{static}assets/images/coxinha.jpg"></td>
-                    <td>Coxinha</td>
-                    <td>30</td>
-                    <td>$ 3.50 UniCoins</td>
-                    <td><ul class="collapsible indigo lighten-5" data-collapsible="accordion">
-                        <li>
-                          <div class="collapsible-header">Editar</div>
-                          <div class="collapsible-body">
-                          <span>
-                              <table class="centered">
-                                    <thead>
-                                      <tr>
-                                          <th>Imagem</th>
-                                          <th>Nome</th>
-                                          <th>Valor</th>
-                                          <th>Quantidade</th>
-                                      </tr>
-                                    </thead>
+        <tr>
+        <td><button type="button" class="deletar"></button></td>
+        <td><img class="image_produto" src="{static}assets/images/coxinha.jpg"></td>
+        <td>Coxinha</td>
+        <td>30</td>
+        <td>$ 3.50 UniCoins</td>
+        <td><ul class="collapsible indigo lighten-5" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header">Editar</div>
+            <div class="collapsible-body">
+              <span>
+                <table class="centered">
+                  <thead>
+                    <tr>
+                    <th>Imagem</th>
+                    <th>Nome</th>
+                    <th>Valor</th>
+                    <th>Quantidade</th>
+                    </tr>
+                  </thead>
 
-                                    <tbody>
-                                      <tr>
-                                        <td> <form action="#">
-                                                <div class="file-field input-field">
-                                                  <div class="btn">
-                                                    <span>File</span>
-                                                    <input type="file" accept=".jpg,.png,.jpeg">
-                                                  </div>
-                                                  <div class="file-path-wrapper">
-                                                    <input class="file-path validate" type="text" placeholder="Imagem do Produto">
-                                                  </div>
-                                                </div>
-                                              </form></td>
-                                        <td><input type="text" name="Produto"></td>
-                                        <td><input type="text" name="Valor"></td>
-                                        <td><input type="text" name="Quantidade"></td>
-                                      </tr>
-                                    </tbody>
-                              </table>
-
-                            </span>
-                            </div>
-                        </li>
-                      </div>
+                  <tbody>
+                    <tr>
+                      <td> 
+                        <form action="#">
+                        <div class="file-field input-field">
+                        <div class="btn">
+                        <span>File</span>
+                        <input type="file" accept=".jpg,.png,.jpeg">
+                        </div>
+                        <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Imagem do Produto">
+                        </div>
+                        </div>
+                        </form>
                       </td>
-                  
-                  </tr>        
-                  
-                  <tr>
-                    <td><button type="button" class="deletar"></button></td>
-                    <td><img class="image_produto" src="{static}assets/images/pao-de-queijo.jpg"></td>
-                    <td>Pão de Queijo</td>
-                    <td>40</td>
-                    <td>$ 2.00 UniCoins</td>
-                    <td><ul class="collapsible indigo lighten-5" data-collapsible="accordion">
-                        <li>
-                          <div class="collapsible-header">Editar</div>
-                          <div class="collapsible-body">
-                          <span>
-                              <table class="centered">
-                                    <thead>
-                                      <tr>
-                                          <th>Imagem</th>
-                                          <th>Nome</th>
-                                          <th>Valor</th>
-                                          <th>Quantidade</th>
-                                      </tr>
-                                    </thead>
+                        <td><input type="text" name="Produto"></td>
+                        <td><input type="text" name="Valor"></td>
+                        <td><input type="text" name="Quantidade"></td>
+                    </tr>
+                  </tbody>
+                </table>
 
-                                    <tbody>
-                                      <tr>
-                                        <td> <form action="#">
-                                                <div class="file-field input-field">
-                                                  <div class="btn">
-                                                    <span>File</span>
-                                                    <input type="file" accept=".jpg,.png,.jpeg">
-                                                  </div>
-                                                  <div class="file-path-wrapper">
-                                                    <input class="file-path validate" type="text" placeholder="Imagem do Produto">
-                                                  </div>
-                                                </div>
-                                              </form></td>
-                                        <td><input type="text" name="Produto"></td>
-                                        <td><input type="text" name="Valor"></td>
-                                        <td><input type="text" name="Quantidade"></td>
-                                      </tr>
-                                    </tbody>
-                              </table>
-
-                            </span>
-                            </div>
-                        </li>
-                      </div>
-                      </td>
-
-                  </tr>
+              </span>
+            </div>
+          </li>
   
-                  <tr>
-                    <td><button type="button" class="deletar"></button></td>
-                    <td><img class="image_produto" src="{static}assets/images/marmitas.jpg"></td>
-                    <td>Marmita</td>
-                    <td>10</td>
-                    <td>$ 10.00 UniCoins</td>
-                    <td><ul class="collapsible indigo lighten-5" data-collapsible="accordion">
-                        <li>
-                          <div class="collapsible-header">Editar</div>
-                          <div class="collapsible-body">
-                          <span>
-                              <table class="centered">
-                                    <thead>
-                                      <tr>
-                                          <th>Imagem</th>
-                                          <th>Nome</th>
-                                          <th>Valor</th>
-                                          <th>Quantidade</th>
-                                      </tr>
-                                    </thead>
+                        
+                  
+        <tr>
+        <td><button type="button" class="deletar"></button></td>
+        <td><img class="image_produto" src="{static}assets/images/pao-de-queijo.jpg"></td>
+        <td>Pão de Queijo</td>
+        <td>40</td>
+        <td>$ 2.00 UniCoins</td>
+        <td><ul class="collapsible indigo lighten-5" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header">Editar</div>
+            <div class="collapsible-body">
+              <span>
+                <table class="centered">
+                  <thead>
+                    <tr>
+                    <th>Imagem</th>
+                    <th>Nome</th>
+                    <th>Valor</th>
+                    <th>Quantidade</th>
+                    </tr>
+                  </thead>
 
-                                    <tbody>
-                                      <tr>
-                                        <td> <form action="#">
-                                                <div class="file-field input-field">
-                                                  <div class="btn">
-                                                    <span>File</span>
-                                                    <input type="file" accept=".jpg,.png,.jpeg">
-                                                  </div>
-                                                  <div class="file-path-wrapper">
-                                                    <input class="file-path validate" type="text" placeholder="Imagem do Produto">
-                                                  </div>
-                                                </div>
-                                              </form></td>
-                                        <td><input type="text" name="Produto"></td>
-                                        <td><input type="text" name="Valor"></td>
-                                        <td><input type="text" name="Quantidade"></td>
-                                      </tr>
-                                    </tbody>
-                              </table>
-
-                            </span>
-                            </div>
-                        </li>
-                      </div>
+                  <tbody>
+                    <tr>
+                      <td> 
+                        <form action="#">
+                        <div class="file-field input-field">
+                        <div class="btn">
+                        <span>File</span>
+                        <input type="file" accept=".jpg,.png,.jpeg">
+                        </div>
+                        <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Imagem do Produto">
+                        </div>
+                        </div>
+                        </form>
                       </td>
-                              
-                  </tr>
-   
-                 </tbody>
-              </table>
-  </div>
+                      <td><input type="text" name="Produto"></td>
+                      <td><input type="text" name="Valor"></td>
+                      <td><input type="text" name="Quantidade"></td>
+                    </tr>
+                  </tbody>
+                </table>
 
+              </span>
+            </div>
+          </li>
+                     
+
+                  
+  
+        <tr>
+        <td><button type="button" class="deletar"></button></td>
+        <td><img class="image_produto" src="{static}assets/images/marmitas.jpg"></td>
+        <td>Marmita</td>
+        <td>10</td>
+        <td>$ 10.00 UniCoins</td>
+        <td><ul class="collapsible indigo lighten-5" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header">Editar</div>
+            <div class="collapsible-body">
+              <span>
+                <table class="centered">
+                  <thead>
+                    <tr>
+                    <th>Imagem</th>
+                    <th>Nome</th>
+                    <th>Valor</th>
+                    <th>Quantidade</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td> 
+                        <form action="#">
+                        <div class="file-field input-field">
+                        <div class="btn">
+                        <span>File</span>
+                        <input type="file" accept=".jpg,.png,.jpeg">
+                        </div>
+                        <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Imagem do Produto">
+                        </div>
+                        </div>
+                        </form>
+                      </td>
+                      <td><input type="text" name="Produto"></td>
+                      <td><input type="text" name="Valor"></td>
+                      <td><input type="text" name="Quantidade"></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </span>
+            </div>
+          </li>
+               
+   
+      </tbody>
+
+    </table>
+
+  </div>
+</div>
       <div id="Extrato" class="tabcontent">
 
           <div class="col s12 m8 l9"> 
    
-          <table class="centered">
+          <table class="centered highlight">
             
             <thead>
               
               <tr>
-                <th>Produtos</th>
-                <th>Quantidade</th>
-                <th>Total</th>
+                <th>Dia</th>
+                <th>Categoria</th>
+                <th>Produto</th>
+                <th>Preço</th>
+                <th>Em conta</th>
               </tr>
             
             </thead>
@@ -266,29 +266,35 @@
               
       
               <tr>
-                <td>Coxinha</td>
-                <td>30</td>
+                <td>07/06/2017</td>
+                <td>Refeição</td>
+                <td>Marmita</td>
                 <td>$ 300UniCoins</td>
+                <td>$150.000UniCoins</td>
               </tr>        
               
               <tr>
-                <td>Pão de Queijo</td>
-                <td>40</td>
-                <td>$ 400UniCoins</td>
+                <td>07/06/2017</td>
+                <td>Refeição</td>
+                <td>Marmita</td>
+                <td>$ 300UniCoins</td>
+                <td>$150.000UniCoins</td>
               </tr>
 
               <tr>
-                <td>Sanduíche Natural</td>
-                <td>10</td>
-                <td>$ 100UniCoins</td>        
+                <td>07/06/2017</td>
+                <td>Refeição</td>
+                <td>Marmita</td>
+                <td>$ 300UniCoins</td> 
+                <td>$150.000UniCoins</td>    
               </tr>
 
             </tbody>
           </table>
-
+          </div>
       </div>
 
-      <div id="Ranking_de_Produtos" class="tabcontent">
+      <div id="Ranking" class="tabcontent">
          
       </div> 
 
@@ -358,7 +364,7 @@
 
   </body>
 
-
+</html>
 
 
 
@@ -435,7 +441,7 @@ function openCity(evt, cityName) {
     // Get all elements with class="tablinks" and remove the class "active"
     tablinks = document.getElementsByClassName("tablinks");
     for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
+        tablinks[i].className = tablinks[i].className.replace("active"," ");
     }
 
     // Show the current tab, and add an "active" class to the link that opened the tab
@@ -446,3 +452,4 @@ function openCity(evt, cityName) {
     document.getElementById("defaultOpen").click();
 
 </script>
+
