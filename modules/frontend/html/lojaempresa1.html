@@ -82,7 +82,6 @@
           
         <tr>
         <td></td>
-        <th>Imagem</th>
         <th>Produto</th>
         <th>Quantidade</th>
         <th>Valor Unt</th>
@@ -90,7 +89,7 @@
         
       </thead>
 
-      <tbody id="corpo">
+      <tbody id="Lista">
                   
         <tr>
         <td><button type="button" class="deletar"></button></td>
@@ -102,43 +101,10 @@
           <li>
             <div class="collapsible-header">Editar</div>
             <div class="collapsible-body">
-              <span>
-                <table class="centered">
-                  <thead>
-                    <tr>
-                    <th>Imagem</th>
-                    <th>Nome</th>
-                    <th>Valor</th>
-                    <th>Quantidade</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <td> 
-                        <form action="#">
-                        <div class="file-field input-field">
-                        <div class="btn">
-                        <span>File</span>
-                        <input type="file" accept=".jpg,.png,.jpeg">
-                        </div>
-                        <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Imagem do Produto">
-                        </div>
-                        </div>
-                        </form>
-                      </td>
-                        <td><input type="text" name="Produto"></td>
-                        <td><input type="text" name="Valor"></td>
-                        <td><input type="text" name="Quantidade"></td>
-                    </tr>
-                  </tbody>
-                </table>
-
-              </span>
+              
             </div>
           </li>
-  
+        </tr>
                         
                   
         <tr>
@@ -151,40 +117,7 @@
           <li>
             <div class="collapsible-header">Editar</div>
             <div class="collapsible-body">
-              <span>
-                <table class="centered">
-                  <thead>
-                    <tr>
-                    <th>Imagem</th>
-                    <th>Nome</th>
-                    <th>Valor</th>
-                    <th>Quantidade</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <td> 
-                        <form action="#">
-                        <div class="file-field input-field">
-                        <div class="btn">
-                        <span>File</span>
-                        <input type="file" accept=".jpg,.png,.jpeg">
-                        </div>
-                        <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Imagem do Produto">
-                        </div>
-                        </div>
-                        </form>
-                      </td>
-                      <td><input type="text" name="Produto"></td>
-                      <td><input type="text" name="Valor"></td>
-                      <td><input type="text" name="Quantidade"></td>
-                    </tr>
-                  </tbody>
-                </table>
-
-              </span>
+              
             </div>
           </li>
                      
@@ -201,40 +134,7 @@
           <li>
             <div class="collapsible-header">Editar</div>
             <div class="collapsible-body">
-              <span>
-                <table class="centered">
-                  <thead>
-                    <tr>
-                    <th>Imagem</th>
-                    <th>Nome</th>
-                    <th>Valor</th>
-                    <th>Quantidade</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <td> 
-                        <form action="#">
-                        <div class="file-field input-field">
-                        <div class="btn">
-                        <span>File</span>
-                        <input type="file" accept=".jpg,.png,.jpeg">
-                        </div>
-                        <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Imagem do Produto">
-                        </div>
-                        </div>
-                        </form>
-                      </td>
-                      <td><input type="text" name="Produto"></td>
-                      <td><input type="text" name="Valor"></td>
-                      <td><input type="text" name="Quantidade"></td>
-                    </tr>
-                  </tbody>
-                </table>
-
-              </span>
+              
             </div>
           </li>
                
@@ -292,7 +192,7 @@
 
             </tbody>
           </table>
-          </div>
+          </div> 
       </div>
 
       <div id="Ranking" class="tabcontent">
@@ -302,7 +202,7 @@
 
   <!-- Modal Structure -->
   <div id="modal1" class="modal modal-fixed-footer">
-    <div class="modal-content">
+    <div class="modal-content"> 
       <h4>Cadastro de Produto</h4>
       
       <form action="#">
@@ -367,9 +267,15 @@
 
 </html>
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+<!--Banco de funções de JS criadas pelo back-end -->
+<script src="{static}assets/js/uniwallet-backend-api.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js" />
 
+ 
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
     <!-- jQuery -->
@@ -460,13 +366,25 @@ function openCity(evt, cityName) {
 <!-- Grafico de pizza-->
 <script >
 var ctx = document.getElementById('myChart').getContext('2d');
+
+var produtos = [] 
+
+Request.get("product/show_by_user" , function(all){ 
+  
+    for (var i = all.content.length - 1; i >= 0; i--) { 
+      /* PREECHE O MODELO COM AS INFORMAÇOES DE CADA PRODUTO E CONCATENA DENTRO DE "pagina" */
+
+      produtos.push(all.content[i].name)
+    }
+  })
+
 var chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'horizontalBar',
 
     // The data for our dataset
     data: {
-        labels: ["Pão de Queijo", "Coxinha", "Marmita", "Caderno", "Sucos", "Refrigerantes", "Doces"],
+        labels: produtos ,
         datasets: [{
             label: "Quantidade de Produtos Vendidos",
            
@@ -486,3 +404,49 @@ var chart = new Chart(ctx, {
     }
 });
 </script>
+<!--
+<script type="text/javascript">
+  
+
+  Request.get("product/show_by_user" , function(all){ 
+  /* RECEBE OS DADOS DA ROTA SELECIONADA E PASSA COMO PARAMETRO PARA A FUNÇAO */
+
+    var modelo = "<div> " +
+                      " <tr> " + " <td> " + "<img class=\"image_produto\" src=\"{static}assets/images/coxinha.jpg\" > " + " </td> " +
+
+                      " <td> nome </td> " +
+                      " <td> quantidade </td> " +
+                      " <td>  price UniCoins </td> " +
+                      " <td> <ul class= \"collapsible indigo lighten-5\" data-collapsible= \"accordion\"> " +  
+                        " <li> <div class=\"collapsible-header\" > Editar </div> " +
+                           " <div class=\"collapsible-body\" > </div> " +
+                         " </li> " +
+                       " </td> " +
+                     " </tr> " +
+                    " </div>  "
+    
+    var pagina = ""
+    for (var i = all.content.length - 1; i >= 0; i--) { 
+      /* PREECHE O MODELO COM AS INFORMAÇOES DE CADA PRODUTO E CONCATENA DENTRO DE "pagina" */
+
+      var nome = all.content[i].name
+      var price = all.content[i].price
+      var quantity = all.content[i].quantity
+      var id = all.content[i].id
+      var replace = modelo.replace("nome", nome)
+      var replace2 = replace.replace("price", price)
+      var replace3 = replace2.replace("quantidade", quantity)
+       /*var replace4 = replace3.replace("productid", id) */
+      
+      
+      
+      var pagina = pagina.concat(replace3)
+      }
+      
+    document.getElementById("Lista").innerHTML = pagina
+  })
+
+
+
+</script>
+-->

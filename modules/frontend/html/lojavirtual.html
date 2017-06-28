@@ -573,7 +573,7 @@ Request.get("product/show_all" , function(all){
                               <option value=\"3\">3</option>\
                               <option value=\"4\">4</option>\
                           </select>\
-                          <button onclick=\"cart(productid, document.getElementById(\'idvalue\').value, productprice, \'productname\' )\" class=\"waves-effect waves-light  orange darken-4 btn\">Comprar</button>\
+                          <button onclick=\"cart(productid, document.getElementById(\'idvalue\').value, productprice, \'productname\' ); Materialize.toast(\'Produto adicionado ao carrinho! \', 4000) \" class=\"waves-effect waves-light  orange darken-4 btn\">Comprar</button>\
                         </div> \
                       </div> \
                     </div> \ "
@@ -652,6 +652,20 @@ function filtro(e){
   console.log("porra")
 
 }
+
+function tempAlert(msg,duration){
+  var el = document.createElement("div");
+  el.setAttribute("style","position:absolute;top:40%;left:20%;background-color:white;");
+  el.innerHTML = msg;
+  setTimeout(function(){
+    el.parentNode.removeChild(el);
+    },duration);
+  document.body.appendChild(el);
+}
+
+
+
+
 
 
 </script>
