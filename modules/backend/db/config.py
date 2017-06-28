@@ -1,7 +1,7 @@
 def config():
 	return {
 	'user': 'root',
-	'password': 'aluno2017',
+	'password': '30demarco',
 	'host': 'localhost',
 	'database': 'Uniwallet',
 	'raise_on_warnings': True,
