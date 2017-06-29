@@ -63,6 +63,18 @@ body{
 
 }
 
+.btn-conFace1{ 
+  width: 237px;
+  padding: 13px 30px; 
+  cursor: pointer; 
+  color: #fff; 
+  border-radius: 6px; 
+  border: none; 
+  background-color: #e65100; 
+  margin-left: -33px;  
+  margin-top: 10px;
+} 
+
 .btn-conFace{ 
   width: 291px;
   padding: 15px 30px; 
