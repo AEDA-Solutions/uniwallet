@@ -22,11 +22,7 @@
         <a href="inicial" class="brand-logo"><img src="{static}assets/images/uwtrans1.png" class="left mini-logo"></img></a>
 
         <ul class="right hide-on-med-and-down">
-          
-        <span id="nomeempresa" class="text">Nome da Empresa</span>
-        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-       
-
+  
         <li><a href="usuarioempresa">Perfil da Empresa<i class="material-icons left">perm_identity</i></a></li>
 
         <li><a href="inicial">Sair<i class="material-icons left">input</i></a></li>
@@ -60,7 +56,7 @@
                     <div class="small-12 columns"></div>
                       
                         <div class="content">
-                          <a class="title-loja">Aqui você gerência seus produtos</a>
+                          <a class="title-loja">Aqui você gerencia seus produtos</a>
                           <div class="category">
                             <a class="link" title="Adicionar produto" href="#modal1">
                               <img class="add1" src="{static}assets/images/create.png">
@@ -232,12 +228,7 @@
           <label for="email">Quantidade</label>
         </div>
       </div>
-      
-        <div id= "gambiarra" class="modal-fixed-footer right">
-          <button href="#!" id="botao_submit" onclick="cadastro()" class="modal-action modal-close waves-effect waves-green btn-flat ">Cadastrar</button>
-        </div>
-  
-
+   
     </form>
   </div>
   </div>
@@ -295,14 +286,14 @@
         </div>
       </div>
    
-      <div id= "editargambiarra" class="modal-fixed-footer right">
-        <button href="#!" id="botao_submit" onclick="cadastro()" class="modal-action modal-close waves-effect waves-green btn-flat ">Editar</button>
-      </div>
-
     </form>
   </div>
-</div>
 
+
+
+    <div id= "gambiarra" class="modal-footer">
+      <button href="#!" id="botao_submit" onclick="cadastro()" class="modal-action modal-close waves-effect waves-green btn-flat ">Cadastrar</button>
+    </div>
   </div>      
 
   </body>
@@ -328,23 +319,6 @@
 
   <!--Banco de funções de JS criadas pelo back-end -->
   <script src="{static}assets/js/uniwallet-backend-api.js"></script>
-
-<script type="text/javascript">
-
-//Para deslogar da tela
-    document.getElementById("logout").addEventListener("click",function(){
-     Auth.signOut()
-     Page.redirect("inicial") 
-})
-
-//Mostrar o nome que está logado
-    Request.send('', 'user/current', 'POST', function(server_response){
-    console.log(server_response)
-    document.getElementById("nomeempresa").innerHTML = server_response.content.name
-    })
-
-  </script>
-
 
 
 <!--Cadastrar produto -->
