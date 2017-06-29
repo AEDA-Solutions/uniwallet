@@ -11,7 +11,9 @@ body{
   margin-top:-7px; 
   margin-left: 25px;
 } 
-
+.title{
+  position: inherit;
+}
 .nav-wrapper{
   width: 400px; 
   height: 0px;
@@ -27,14 +29,22 @@ body{
 #search{
   height: 50px
 }
+.title-loja{
+  font-size: 46px;
+  margin-left: 78px;
+  font-family: "arial";
+  font-style: oblique;
+  font-weight: bold;
+  color: #455a64;
+}
 
  /* Style the tab */
 div.tab {
     float: left;
-    border: 13px solid #455a64;
+    border: 15px solid #455a64;
     background-color: #fcfcfc;
-    width: 23%;
-    height: 597px;
+    width: 22%;
+    height: 607px;
 }
 
 /* Style the buttons inside the tab */
@@ -64,9 +74,10 @@ div.tab button.active {
 
 /* Style the tab content */
 .tabcontent {
+    background-color: white;
     float: left;
-    padding: 0px 12px;
-    border: 1px solid #ccc;
+    padding:59px 12px;
+    border: 0px solid #ccc;
     width: 77%;
     border-left: none;
     height: auto;
@@ -154,3 +165,17 @@ div.tab button.active {
     border-bottom: 1px solid #ddd;
 }
 
+.right{
+  margin-top: -7px;
+}
+.btn-conFace{ 
+  width: 291px;
+  padding: 15px 30px; 
+  cursor: pointer; 
+  color: #fff; 
+  border-radius: 6px; 
+  border: none; 
+  background-color: #e65100; 
+  margin-left: -10px;  
+  margin-top: 10px;
+} 

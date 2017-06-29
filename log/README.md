@@ -1,1 +1,1 @@
-# Logs will be created inside this directory
+Logs will be placed here

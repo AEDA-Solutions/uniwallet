@@ -10,7 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="{static}assets/css/usuario.css">
 </head> 
 
-<header class="navbar-fixed">
+<header class="navbar">
       
       <!-- Dropdown Structure cadastro de empresa ou usuário -->
       
@@ -184,13 +184,12 @@
 
 					
  				<div class="form-input">
- 				<input class="input-form" type="text" name="fullname" size=30 minlenght=3 maxlength=50 placeholder="Insira seu Investimento">
+ 				<input class="input-form" type="text" name="fullname" size=30 minlenght=3 maxlength=50 placeholder="Insira seu Investimento" id="Input_money" oninput="converter_money()"> 
  				</div>
- 
 
-				<div align="center"><i class="material-icons"></i><b>Proporção 1Uni = R$ 1,00</b></div>
-					
-				<div align="center"><i class="material-icons"></i><b>Valor<font color="darkgreen"> $10,00 <font color="black">  UniCoins </b></div>
+				<div align="center"><i class="material-icons"></i><b id="Valor_moeda">Proporção 1Uni = R$ 1,00</b></div>
+
+				<div align="center"><i class="material-icons"></i><b id="Resultado">Valor<font color="darkgreen"> $ 0 <font color="black">  UniCoins </b></div>
 				
 
 
@@ -212,8 +211,6 @@
 						
 		
 						-->
-
- 						<div class="col s6"><input type="submit" name="submit" value="Converter" class="btn-login2"></div>
  
  			</span> </div>
 
@@ -226,7 +223,7 @@
 			</li>           
 
 			<li>
-			<div class="collapsible-header"><a href="editausuario"><font color="#e8640c">Altere Sua Senha</font><i class="material-icons"><font color="#e8640c">lock</font></i></div>	
+			<div class="collapsible-header"><a href="editausuario"><font color="#e8640c">Altere seu perfil</font><i class="material-icons"><font color="#e8640c">lock</font></i></div>	
 			</li>           
 
         </ul>
@@ -380,7 +377,7 @@ function Nova()
 
 <script>
 
-
+replace_coin_value()
 
 
 
@@ -421,6 +418,17 @@ function reorder_date(at){
 	return data + hora
 }
 
+function replace_coin_value(){
+	var preço_da_moeda = 1.35
+	document.getElementById("Valor_moeda").innerHTML = "Proporção 1Uni = R$ valor".replace("valor", preço_da_moeda)
+}
+
+function converter_money(){
+ 	var preço_da_moeda = 1.35
+ 	var x = document.getElementById("Input_money").value
+ 	var result = preço_da_moeda * x
+ 	document.getElementById("Resultado").innerHTML = " Valor<font color=\"darkgreen\"> $ aqui <font color=\"black\">  UniCoins ".replace("aqui", result)
+}
 </script>
 </body>
 </html> 

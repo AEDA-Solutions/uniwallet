@@ -11,7 +11,7 @@
      <link rel="shortcut icon" href="official.ico" type="image/x-icon" />
  </head> 
 
- <body> 
+  <body> 
   
 
                 <!-- Dropdown Structure cadastro de empresa ou usuário -->
@@ -21,7 +21,7 @@
                   <li><a href="cadastroempresa">Como Empresa</a></li>
                 </ul>
 
-                <nav >
+                <nav>
                   <div class="navbar-wrapper">
 
                   <!-- Logo -->
@@ -63,6 +63,9 @@
                 </nav>
          </header>
 
+</body>
+</html>
+
 
 
 
@@ -92,20 +95,40 @@
                 <input class="input-form" type="text" name="name" placeholder="Nome">
                 <input class="input-form" type="text" name="email" placeholder="E-mail"> 
                 <textarea class="input-form" name= "content" placeholder="Digite sua Mensagem!"></textarea>
-                <button type="submit" name="submit" class="btn-enviar" id="botao_submit">ENVIAR :)</button>
+                <button type="submit" name="submit" class="btn-enviar" id="botao_submit">ENVIAR</button>
 
         </form> 
 
          </div>
     </div> 
 
+</html>
 
 
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
- 
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+
 <script src="{static}assets/js/uniwallet-backend-api.js"></script>
+
+<!-- Script para o botão sanduíche das telas responsivas-->
+     <script>
+    $(function(){
+        $(".button-collapse").sideNav();
+      });
+    </script>
+
+
+
+<script type="text/javascript">
+function Nova()
+{
+  location.href="cadastro"
+}
+</script>
 
 <script type="text/javascript">
 
@@ -131,7 +154,7 @@
     })
   })
 
-</script>      
+</script>   
 
 </body>
 

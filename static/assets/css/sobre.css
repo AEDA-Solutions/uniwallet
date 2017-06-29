@@ -1,16 +1,27 @@
+ <style>
+@import url('https://fonts.googleapis.com/css?family=Ropa+Sans');
+</style> 
+<style>
+@import url('https://fonts.googleapis.com/css?family=Italianno|Ropa+Sans');
+</style> 
  body{ 
-   background-image: url("../images/");
    max-width: 1080px;   /* Máximo da largura da imagem */
    width: auto;
    max-height: auto;  /* Máximo da altura da imagem */
    min-height: auto;      
    background-size:100%;
-   background-repeat: no-repeat; 
+   background-repeat: no-repeat;
+   font-size: 20px;
+   text-align: center;
  }
 
+
+
 nav{
-  width: 120.1%;
-  background-color: black;
+  width: 100.1%;
+  background-color: #455a64;
+  height: 100px;
+
 }
 .mini-logo{
   width: 250px; 
@@ -34,6 +45,70 @@ nav{
 
   font-weight: 400px; 
   color: white;
-  font-family: Courier; 
+ font-family: 'Marmelad', sans-serif;
   margin-top: 450px;     
+}
+ 
+.uniwallet{
+  font-family: 'Marmelad', sans-serif;
+  margin-top: -31px;
+  color : black;
+  width:1290px;
+  height: 516px;
+ background-color: #FFAF89;
+  background-attachment: fixed;
+  text-align: center;
+}
+
+h1{
+font-family: 'Marmelad', sans-serif;;
+  font-size: 85px;
+  font-weight:400px ;
+}
+p{
+  font-size: 41px;
+  font-weight: 100px;
+}
+
+
+.origem{
+font-family: 'Marmelad', sans-serif;
+  margin-top: -32px;
+  color : black;
+  width:1290px;
+  height: 410px;
+  background-color: :#A7E8DB;
+  background-attachment: fixed;
+  margin-top: 20px;
+}
+
+.proposta{
+font-family: 'Marmelad', sans-serif;
+  margin-top: -33px;
+  color : black;
+  width:1290px;
+  height: 305px;
+  margin-top: 20px;
+  background-color: #92BCFF;
+  text-align: center;
+}
+
+.page-footer {
+  height: 75px;
+  background-color: #455A64;
+}
+
+.footer-copyright{
+  margin-top: 10px;
+}
+
+img{
+  margin-left: 30px;
+}
+
+
+td{
+  height: 200px;
+  width:515px;
+  margin-left: 100px;
 }

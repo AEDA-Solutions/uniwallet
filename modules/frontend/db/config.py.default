@@ -1,0 +1,12 @@
+def config():
+	return {
+	'user': 'root',
+<<<<<<< HEAD:modules/backend/db/config.py
+	'password': 'victor',
+=======
+	'password': 'qwecxz123',
+>>>>>>> 63b380c7dc1b9a708a05aa5a76ff321f9a3817b4:modules/frontend/db/config.py.default
+	'host': 'localhost',
+	'database': 'uniwallet',
+	'raise_on_warnings': True,
+	}

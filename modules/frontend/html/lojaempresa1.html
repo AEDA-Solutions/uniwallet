@@ -5,7 +5,7 @@
 <head>  
       <meta charset="utf-8"> 
       <meta name="viewport" content="width=device-width, initial-scale=1.0"> 		 
-      <title> Loja Empresa</title>  
+      <title > Loja Empresa</title>  
       <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -14,12 +14,6 @@
 </head> 
 
 <header class="navbar-fixed">
-
-  <ul id="dropdown1" class="dropdown-content">
-    <li><a href="usuarioempresa">Configurações</a></li>
-    <li class="divider"></li>
-    <li><a href="">Financeiro</a></li>
-  </ul>
   
   <nav class="blue-grey darken-2">
 
@@ -29,8 +23,7 @@
 
         <ul class="right hide-on-med-and-down">
   
-        <li>
-        <a class="dropdown-button" href="#" data-activates="dropdown1">Perfil da Empresa<i class="material-icons left">perm_identity</i></a></li>
+        <li><a href="usuarioempresa">Perfil da Empresa<i class="material-icons left">perm_identity</i></a></li>
 
         <li><a href="inicial">Sair<i class="material-icons left">input</i></a></li>
         </ul>
@@ -50,7 +43,7 @@
   </header>
 
   <body>
-      <div class="tab">
+      <div  class="tab">
           <button class="tablinks" onclick="openCity(event, 'Cadastro')" id="defaultOpen">Cadastro de Produtos</button>
           <button class="tablinks" onclick="openCity(event, 'Extrato')">Extrato</button>
           <button class="tablinks" onclick="openCity(event, 'Ranking')">Ranking de Produtos</button>
@@ -59,10 +52,11 @@
   <div id="Cadastro" class="tabcontent">
           
             <div class="row">
+          
                     <div class="small-12 columns"></div>
                       
                         <div class="content">
-                        
+                          <a class="title-loja">Aqui você gerencia seus produtos</a>
                           <div class="category">
                             <a class="link" title="Adicionar produto" href="#modal1">
                               <img class="add1" src="{static}assets/images/create.png">
@@ -81,7 +75,8 @@
       <thead>
           
         <tr>
-        <td></td>
+        <th></th>
+         <li class="divider"></li>
         <th>Imagem</th>
         <th>Produto</th>
         <th>Quantidade</th>
@@ -90,154 +85,35 @@
         
       </thead>
 
-      <tbody id="corpo">
+      <tbody id="Lista">
                   
         <tr>
-        <td><button type="button" class="deletar"></button></td>
+        <td><a class="dropdown-button btn" data-activates='dropdown1'><i class="material-icons">build</i></a></td>
         <td><img class="image_produto" src="{static}assets/images/coxinha.jpg"></td>
         <td>Coxinha</td>
         <td>30</td>
         <td>$ 3.50 UniCoins</td>
-        <td><ul class="collapsible indigo lighten-5" data-collapsible="accordion">
-          <li>
-            <div class="collapsible-header">Editar</div>
-            <div class="collapsible-body">
-              <span>
-                <table class="centered">
-                  <thead>
-                    <tr>
-                    <th>Imagem</th>
-                    <th>Nome</th>
-                    <th>Valor</th>
-                    <th>Quantidade</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <td> 
-                        <form action="#">
-                        <div class="file-field input-field">
-                        <div class="btn">
-                        <span>File</span>
-                        <input type="file" accept=".jpg,.png,.jpeg">
-                        </div>
-                        <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Imagem do Produto">
-                        </div>
-                        </div>
-                        </form>
-                      </td>
-                        <td><input type="text" name="Produto"></td>
-                        <td><input type="text" name="Valor"></td>
-                        <td><input type="text" name="Quantidade"></td>
-                    </tr>
-                  </tbody>
-                </table>
-
-              </span>
-            </div>
-          </li>
-  
+        </tr>
                         
-                  
+                
         <tr>
-        <td><button type="button" class="deletar"></button></td>
+        <td><a class="dropdown-button btn" data-activates='dropdown1'><i class="material-icons">build</i></a></td>
         <td><img class="image_produto" src="{static}assets/images/pao-de-queijo.jpg"></td>
         <td>Pão de Queijo</td>
         <td>40</td>
         <td>$ 2.00 UniCoins</td>
-        <td><ul class="collapsible indigo lighten-5" data-collapsible="accordion">
-          <li>
-            <div class="collapsible-header">Editar</div>
-            <div class="collapsible-body">
-              <span>
-                <table class="centered">
-                  <thead>
-                    <tr>
-                    <th>Imagem</th>
-                    <th>Nome</th>
-                    <th>Valor</th>
-                    <th>Quantidade</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <td> 
-                        <form action="#">
-                        <div class="file-field input-field">
-                        <div class="btn">
-                        <span>File</span>
-                        <input type="file" accept=".jpg,.png,.jpeg">
-                        </div>
-                        <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Imagem do Produto">
-                        </div>
-                        </div>
-                        </form>
-                      </td>
-                      <td><input type="text" name="Produto"></td>
-                      <td><input type="text" name="Valor"></td>
-                      <td><input type="text" name="Quantidade"></td>
-                    </tr>
-                  </tbody>
-                </table>
-
-              </span>
-            </div>
-          </li>
+        </tr>
                      
 
                   
   
         <tr>
-        <td><button type="button" class="deletar"></button></td>
+        <td><a class="dropdown-button btn" data-activates='dropdown1'><i class="material-icons">build</i></a></td>
         <td><img class="image_produto" src="{static}assets/images/marmitas.jpg"></td>
         <td>Marmita</td>
         <td>10</td>
         <td>$ 10.00 UniCoins</td>
-        <td><ul class="collapsible indigo lighten-5" data-collapsible="accordion">
-          <li>
-            <div class="collapsible-header">Editar</div>
-            <div class="collapsible-body">
-              <span>
-                <table class="centered">
-                  <thead>
-                    <tr>
-                    <th>Imagem</th>
-                    <th>Nome</th>
-                    <th>Valor</th>
-                    <th>Quantidade</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <td> 
-                        <form action="#">
-                        <div class="file-field input-field">
-                        <div class="btn">
-                        <span>File</span>
-                        <input type="file" accept=".jpg,.png,.jpeg">
-                        </div>
-                        <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Imagem do Produto">
-                        </div>
-                        </div>
-                        </form>
-                      </td>
-                      <td><input type="text" name="Produto"></td>
-                      <td><input type="text" name="Valor"></td>
-                      <td><input type="text" name="Quantidade"></td>
-                    </tr>
-                  </tbody>
-                </table>
-
-              </span>
-            </div>
-          </li>
-               
+        </tr>
    
       </tbody>
 
@@ -258,7 +134,7 @@
                 <th>Categoria</th>
                 <th>Produto</th>
                 <th>Preço</th>
-                <th>Em conta</th>
+                <th>Situação</th>
               </tr>
             
             </thead>
@@ -271,7 +147,7 @@
                 <td>Refeição</td>
                 <td>Marmita</td>
                 <td>$ 300UniCoins</td>
-                <td>$150.000UniCoins</td>
+                <td>Pendente</td>
               </tr>        
               
               <tr>
@@ -279,7 +155,7 @@
                 <td>Refeição</td>
                 <td>Marmita</td>
                 <td>$ 300UniCoins</td>
-                <td>$150.000UniCoins</td>
+                <td>Confirmado</td>
               </tr>
 
               <tr>
@@ -287,12 +163,12 @@
                 <td>Refeição</td>
                 <td>Marmita</td>
                 <td>$ 300UniCoins</td> 
-                <td>$150.000UniCoins</td>    
+                <td>Confirmado</td>    
               </tr>
 
             </tbody>
           </table>
-          </div>
+          </div> 
       </div>
 
       <div id="Ranking" class="tabcontent">
@@ -302,30 +178,30 @@
 
   <!-- Modal Structure -->
   <div id="modal1" class="modal modal-fixed-footer">
-    <div class="modal-content">
+    <div class="modal-content"> 
       <h4>Cadastro de Produto</h4>
       
       <form action="#">
         <div class="file-field input-field">
           <div class="btn">
               <span>Imagem</span>
-              <input type="file" accept=".jpg,.png,.jpeg">
-          </div>
-          <div class="file-path-wrapper">
-              <input class="file-path validate" type="text" placeholder="Imagem do Produto">
+              <input  type="file" accept=".jpg,.png,.jpeg">
           </div>
         </div>
 
       <div class="row">
         <div class="input-field col s12">
-          <input id="nomeproduto" type="email" class="validate">
+          <input name="name" id="nomeproduto" type="email" class="input_cadastro">
           <label for="password">Nome Produto</label>
         </div>
       </div>
+
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email">
+
+          <input name="description" id="email" type="email" class="input_cadastro">
           <label for="email">Descrição</label>
+
         </div>
       </div>
 
@@ -341,14 +217,71 @@
 
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email">
+          <input name="price" id="email" type="email" class="input_cadastro">
           <label for="email">Valor</label>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email">
+          <input name="quantity" id="email" type="email" class="input_cadastro">
+          <label for="email">Quantidade</label>
+        </div>
+      </div>
+   
+    </form>
+  </div>
+  </div>
+
+
+  <!-- Dropdown Structure -->
+  <ul id='dropdown1' class='dropdown-content'>
+    <li><a href="#modal2"><i class="material-icons">mode_edit</i>Editar</a></li>
+    <li class="divider"></li>
+    <li><a href="#!"><i class="material-icons">delete_forever</i>Apagar</a></li>
+  </ul>
+
+
+<!-- Modal Structure para o botão editar-->
+  <div id="modal2" class="modal modal-fixed-footer">
+    <div class="modal-content"> 
+      <h4>Editar Produto</h4>
+      
+      <form action="#">
+        <div class="file-field input-field">
+          <div class="btn">
+              <span>Imagem</span>
+              <input  type="file" accept=".jpg,.png,.jpeg">
+          </div>
+        </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input name="name" id="nomeproduto" type="email" class="input_cadastro">
+          <label for="password">Nome Produto</label>
+        </div>
+      </div>
+
+      <div class="row">
+          <select>
+            <option value="" disabled selected>Categoria</option>
+            <option value="1">Salgados</option>
+            <option value="2">Papelaria</option>
+            <option value="3">Outros</option>
+          </select>
+         
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input name="price" id="email" type="email" class="input_cadastro">
+          <label for="email">Valor</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input name="quantity" id="email" type="email" class="input_cadastro">
           <label for="email">Quantidade</label>
         </div>
       </div>
@@ -356,10 +289,10 @@
     </form>
   </div>
 
-      </form>
 
-    <div class="modal-footer">
-      <a href="#!" id="produtoempresa" class="modal-action modal-close waves-effect waves-green btn-flat ">Cadastrar</a>
+
+    <div id= "gambiarra" class="modal-footer">
+      <button href="#!" id="botao_submit" onclick="cadastro()" class="modal-action modal-close waves-effect waves-green btn-flat ">Cadastrar</button>
     </div>
   </div>      
 
@@ -367,9 +300,15 @@
 
 </html>
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+<!--Banco de funções de JS criadas pelo back-end -->
+<script src="{static}assets/js/uniwallet-backend-api.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js" />
 
+ 
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
     <!-- jQuery -->
@@ -384,22 +323,38 @@
 
 <!--Cadastrar produto -->
 <script type="text/javascript">
-    //Adiciona um evento no botão de enviar dados
-    Page.listen("botao_submit", function(e){
-      e.preventDefault() //Impede a atualização da página
-      //Pega os dados inseridos nos campos de input
-      data = Page.get_input("input-form")
-      //Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
+   
+  
+  
 
+    Request.get("company/company_on", function(response){
+          
+          if (response.code == 200){
+            var str = " <button href=\"#!\" id=\"botao_submit\" onclick=\"cadastro(aqui)\" class=\"modal-action modal-close waves-effect waves-green btn-flat \">Cadastrar</button> "
+            var gold = str.replace("aqui", response.content)
+            document.getElementById("gambiarra").innerHTML = gold
+          }
+          else {alert(response.content)}
+      })
+      
+   
+   
+
+
+   function cadastro(e){
+      data = Page.get_input("input_cadastro")
+      //Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
+      data["company_id"] = e
+      console.log(data)
       Request.send(data, "product/register", "POST", function(response){
 
         if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
-          Page.redirect("produtoempresa")
+          
         } else {
-          Page.fill("div_mensagem_retorno", response.content) //Insere a mensagem na div
+          alert(response.content) //Insere a mensagem na div
         }
       })
-    }) 
+    }
   </script>
 
   <script>
@@ -460,13 +415,25 @@ function openCity(evt, cityName) {
 <!-- Grafico de pizza-->
 <script >
 var ctx = document.getElementById('myChart').getContext('2d');
+
+var produtos = [] 
+
+Request.get("product/show_by_user" , function(all){ 
+  
+    for (var i = all.content.length - 1; i >= 0; i--) { 
+      /* PREECHE O MODELO COM AS INFORMAÇOES DE CADA PRODUTO E CONCATENA DENTRO DE "pagina" */
+
+      produtos.push(all.content[i].name)
+    }
+  })
+
 var chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'horizontalBar',
 
     // The data for our dataset
     data: {
-        labels: ["Pão de Queijo", "Coxinha", "Marmita", "Caderno", "Sucos", "Refrigerantes", "Doces"],
+        labels: produtos ,
         datasets: [{
             label: "Quantidade de Produtos Vendidos",
            
@@ -486,3 +453,65 @@ var chart = new Chart(ctx, {
     }
 });
 </script>
+
+<!--Dropdown de edição de produtos-->
+<script type="text/javascript">
+    $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrainWidth: false, // Does not change width of dropdown to that of the activator
+      hover: true, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: false, // Displays dropdown below the button
+      alignment: 'left', // Displays dropdown with edge aligned to the left of button
+      stopPropagation: false // Stops event propagation
+    }
+  );
+</script>
+
+<!--
+<script type="text/javascript">
+  
+
+  Request.get("product/show_by_user" , function(all){ 
+  /* RECEBE OS DADOS DA ROTA SELECIONADA E PASSA COMO PARAMETRO PARA A FUNÇAO */
+
+    var modelo = "<div> " +
+                      " <tr> " + " <td> " + "<img class=\"image_produto\" src=\"{static}assets/images/coxinha.jpg\" > " + " </td> " +
+
+                      " <td> nome </td> " +
+                      " <td> quantidade </td> " +
+                      " <td>  price UniCoins </td> " +
+                      " <td> <ul class= \"collapsible indigo lighten-5\" data-collapsible= \"accordion\"> " +  
+                        " <li> <div class=\"collapsible-header\" > Editar </div> " +
+                           " <div class=\"collapsible-body\" > </div> " +
+                         " </li> " +
+                       " </td> " +
+                     " </tr> " +
+                    " </div>  "
+    
+    var pagina = ""
+    for (var i = all.content.length - 1; i >= 0; i--) { 
+      /* PREECHE O MODELO COM AS INFORMAÇOES DE CADA PRODUTO E CONCATENA DENTRO DE "pagina" */
+
+      var nome = all.content[i].name
+      var price = all.content[i].price
+      var quantity = all.content[i].quantity
+      var id = all.content[i].id
+      var replace = modelo.replace("nome", nome)
+      var replace2 = replace.replace("price", price)
+      var replace3 = replace2.replace("quantidade", quantity)
+       /*var replace4 = replace3.replace("productid", id) */
+      
+      
+      
+      var pagina = pagina.concat(replace3)
+      }
+      
+    document.getElementById("Lista").innerHTML = pagina
+  })
+
+
+
+</script>
+-->

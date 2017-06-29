@@ -14,3 +14,8 @@ class Product(std.Model):
 		price = self.find([('id', '=', id)]).fetchone()['price']
 		return price * quantity
 
+	def decrement(self, quantity):
+		if (quantity <= self.quantity):
+			self.quantity -= quantity
+			self.save().close()
+

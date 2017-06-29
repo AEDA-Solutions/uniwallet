@@ -53,8 +53,8 @@ class App(std.Controller):
 	def lojaempresa(self):
 		return self.prepare_static(self.get_html("lojaempresa"))
 
-	def teste1(self):
-		return self.prepare_static(self.get_html("teste1"))
+	def teste(self):
+		return self.prepare_static(self.get_html("teste"))
 	
 	def lojaempresa1(self):
 		return self.prepare_static(self.get_html("lojaempresa1"))
