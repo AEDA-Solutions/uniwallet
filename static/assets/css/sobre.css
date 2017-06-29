@@ -7,7 +7,9 @@
    background-size:100%;
    background-repeat: no-repeat; 
    font-family: Arial, Verdana, Tahoma, Sans-Serif;
-   font-size: 12px;
+   font-size: 20px;
+   background-color: blue;
+   text-align: center;
  }
 
 nav{
@@ -43,20 +45,14 @@ nav{
  
 .uniwallet{
   margin-top: -31px;
-
   color : black;
   width:1280px;
   height: 570px;
   background-image: url("../images/empresa.jpg");
+  background-attachment: fixed;
   text-align: center;
 }
-.equipe{
-  color : blue;
-  width:1280px;
-  height: 570px;
-  background-image: url("../images/dave.jpg");
-  text-align: center;
-}
+
 h1{
   font-size: 85px;
   font-weight:400px ;
@@ -64,4 +60,29 @@ h1{
 p{
   font-size: 31px;
   font-weight: 100px;
+}
+
+#equipe{
+  margin-top: -31px;
+  color : black;
+  width:1280px;
+  height: 570px;
+  text-align: center;
+}
+
+#origem{
+  margin-top: -31px;
+  color : black;
+  width:1280px;
+  height: 570px;
+  background-image: url("../images/dave.jpg");
+  text-align: center;
+}
+
+#proposta{
+  margin-top: -31px;
+  color : black;
+  width:1280px;
+  height: 570px;
+  text-align: center;
 }
