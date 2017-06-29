@@ -48,9 +48,9 @@ input[type="text"]{
   border: none; 
   border-radius: 4px; 
   margin-bottom: 17px; 
-  margin-top: 17px; 
+  margin-top: 3px; 
   background-color: #fff; 
-  margin-left: 350px; 
+  margin-left: 389px; 
 } 
 
 textarea{ 
@@ -62,7 +62,7 @@ textarea{
   margin-bottom: 10px; 
   margin-top: 10px; 
   background-color: #fff; 
-  margin-left: 350px; 
+  margin-left: 389px; 
 }
 
 .btn-enviar{ 
@@ -72,8 +72,8 @@ textarea{
   color: #fff; 
   border-radius: 6px; 
   border: none; 
-  background-color: #000000; 
-  margin-left: 350px;  
+  background-color: #455a64; 
+  margin-left: 389px;  
 } 
 
  h4{ 
