@@ -50,6 +50,8 @@ class Purchase(std.Model):
 		for company_id, price in prices.items():
 			wallet_to = self.model('Wallet').find(conditions = [('user_id', '=', self.model('Company').load(company_id).user_id)]).fetchone()['id']
 			transaction_id = self.model(name = 'Transaction', data = {'wallet_from': wallet_from, 'wallet_to': wallet_to, 'value': price, 'operation': 'purchase'}).perform()
+			if not transaction_id:
+				return False
 			purchase_id = self.model(data = {'transaction_id': transaction_id, 'consumer_id': consumer_id, 'company_id': company_id}).save().last_id()
 			for product in products[company_id]:
 				self.model("Product").load(product["id"]).decrement(product["quantity"])
