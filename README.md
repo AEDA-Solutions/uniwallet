@@ -42,24 +42,9 @@ python3 ./main.py
  http://localhost:8000
  ```
 
-## How to configure apache (for debian-based systems)
-The frontend application depends on a separated webserver to provide static content like js, css and image files. 
-To configure the apache server, first install apache:
- * Install apache
- 	- ```sudo apt-get install apache2```
- * Create config file:
- 	- Create the configuration file: ```sudo touch /etc/apache2/sites-available/static_uniwallet.conf```
- 	- Insert this content to the file /etc/apache2/sites-available/static_uniwallet.conf: 
-```
-Listen 8008
-<VirtualHost *:8008>
-	DocumentRoot /var/www/static_uniwallet
-	ErrorLog ${APACHE_LOG_DIR}/error.log
-	CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>
+## How to install (for debian-based systems)
 
-```
- * Enable virtual host
-	- Create a simbolic link to uniwallet/static directory into /var/www/ ```sudo ln -s {insert_custom_path_here}/uniwallet/static /var/www/static_uniwallet```
-	- Active the virtual host: ```sudo a2ensite static_uniwallet.conf```
-	- Restart the server: ```sudo service apache2 restart```
+Just run the script install.sh:
+ ```
+./install.sh 
+ ```
