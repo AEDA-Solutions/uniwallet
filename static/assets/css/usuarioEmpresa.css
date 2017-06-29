@@ -48,6 +48,17 @@ h6{
 
 }
 
+.collection{
+    width:500px; 
+    height: 100px; 
+     
+    background-color: darkorange; 
+    border-radius:5px;  
+    margin-left: 400px;
+    margin-top: 25px; 
+}
+
+
 input[type="search"]{
 
   height: 50px; 
@@ -72,11 +83,11 @@ input[type="search"]{
 }
 
 .arruma{
-  width:860px; 
+    width:612px; 
     height: 200px; 
     text-align: center; 
     border-radius: 15px;  
-    margin-left: -155px;
+    margin-left: -40px;
     margin-top: 25px; 
 }
 
@@ -86,7 +97,7 @@ input[type="search"]{
     text-align: center; 
     background-color: white; 
     border-radius:5px;  
-    margin-left: 450px;
+    margin-left: 413px;
     margin-top: 25px; 
 }
 
@@ -98,7 +109,7 @@ input[type="search"]{
   border-radius: 6px; 
   border: none; 
   background-color: #37474f; 
-  margin-left: 15px;  
+  margin-left: -13px;  
 } 
 
 .botao-sup{
