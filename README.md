@@ -1,56 +1,65 @@
-# Naivechain - a blockchain implementation in 200 lines of code
+# Uniwallet
+A project to get rich.
 
-### Motivation
-All the current implementations of blockchains are tightly coupled with the larger context and problems they (e.g. Bitcoin or Ethereum) are trying to solve. This makes understanding blockchains a necessarily harder task, than it must be. Especially source-code-wisely. This project is an attempt to provide as concise and simple implementation of a blockchain as possible.
+## Requirements
 
- 
-### What is blockchain
-[From Wikipedia](https://en.wikipedia.org/wiki/Blockchain_(database)) : Blockchain is a distributed database that maintains a continuously-growing list of records called blocks secured from tampering and revision.
+ * Python3 and utilities
+ 	- ```sudo apt-get install python3 python-pip python-dev python3-setuptools python3-mysql.connector```
+ 	- ```sudo easy_install3 pip```
+ * Mysql 
+ 	- ```sudo apt-get install mysql-server libmysqlclient-dev```
+ * A browser
 
-### Key concepts of Naivechain
-Check also [this blog post](https://medium.com/@lhartikk/a-blockchain-in-200-lines-of-code-963cc1cc0e54#.dttbm9afr5) for a more detailed overview of the key concepts
-* HTTP interface to control the node
-* Use Websockets to communicate with other nodes (P2P)
-* Super simple "protocols" in P2P communication
-* Data is not persisted in nodes
-* No proof-of-work or proof-of-stake: a block can be added to the blockchain without competition
+## Swagger
+### Swagger dependencies (for making API documentation)
+ * npm
+ 	- ```sudo apt-get npm install```
+ 	- ```sudo npm install npm -g```
+ 	- ```sudo ln -s /usr/bin/nodejs /usr/bin/node```
+ * Node 
+	- ```sudo npm cache clean -f```
+ 	- ```sudo npm install -g n```
+ 	- ```sudo n stable```
+ * Swagger module
+ 	- ```sudo npm install -g swagger```
 
+### Start swagger editor
+There is a browser based editor. Just run:
+ ```
+ cd doc/swagger/
+ swagger project edit
+ ```
+## How to run
 
-![alt tag](naivechain_blockchain.png)
+ * Open the terminal and go into uniwallet root directory.
+ * Then type this:
+ ```
+python3 ./main.py
+ ```
+ * If nothing goes wrong the server will be available through the browser.
+ * Just access the url 
+ ```
+ http://localhost:8000
+ ```
 
-![alt tag](naivechain_components.png)
+## How to configure apache (for debian-based systems)
+The frontend application depends on a separated webserver to provide static content like js, css and image files. 
+To configure the apache server, first install apache:
+ * Install apache
+ 	- ```sudo apt-get install apache2```
+ * Create config file:
+ 	- Create the configuration file: ```sudo touch /etc/apache2/sites-available/static_uniwallet.conf```
+ 	- Insert this content to the file /etc/apache2/sites-available/static_uniwallet.conf: 
+```
+Listen 8008
+<VirtualHost *:8008>
+	DocumentRoot /var/www/static_uniwallet
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
 
-### Quick start
-(set up two connected nodes and mine 1 block)
 ```
-npm install
-HTTP_PORT=3001 P2P_PORT=6001 npm start
-HTTP_PORT=3002 P2P_PORT=6002 PEERS=ws://localhost:6001 npm start
-curl -H "Content-type:application/json" --data '{"data" : "Some data to the first block"}' http://localhost:3001/mineBlock
-```
-
-### Quick start with Docker
-(set up three connected nodes and mine a block)
-###
-```sh
-docker-compose up
-curl -H "Content-type:application/json" --data '{"data" : "Some data to the first block"}' http://localhost:3001/mineBlock
-```
-
-### HTTP API
-##### Get blockchain
-```
-curl http://localhost:3001/blocks
-```
-##### Create block
-```
-curl -H "Content-type:application/json" --data '{"data" : "Some data to the first block"}' http://localhost:3001/mineBlock
-``` 
-##### Add peer
-```
-curl -H "Content-type:application/json" --data '{"peer" : "ws://localhost:6001"}' http://localhost:3001/addPeer
-```
-#### Query connected peers
-```
-curl http://localhost:3001/peers
-```
+ * Enable virtual host
+	- Create a simbolic link to uniwallet/static directory into /var/www/ ```sudo ln -s {insert_custom_path_here}/uniwallet/static /var/www/static_uniwallet```
+	- Active the virtual host: ```sudo a2ensite static_uniwallet.conf```
+	- Restart the server: ```sudo service apache2 restart```
