@@ -45,3 +45,7 @@ class Company(std.Controller):
 	
 	def list(self):
 		return self.model().find().fetch(fields=["name", "id"])
+
+	def company_on(self):
+		#user_id = self.model(name = 'Session').get_user()['id']
+		return self.model("Company").find([('user_id', '=', 1)]).fetchone("id")["id"]
