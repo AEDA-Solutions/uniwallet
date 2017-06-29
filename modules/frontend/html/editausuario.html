@@ -1,11 +1,11 @@
+ 
 
-
-<html>
+<html> 
 
 <head>
          <meta charset="utf-8"> 
          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Senha</title>
+	<title>Editar Perfil</title>
 
 	<!-- Referentes ao nav-bar -->
 	<link rel="stylesheet" href="{static}assets/css/materialize.css"> 
@@ -21,50 +21,54 @@
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
-
+ 
 <body>
 
     <a href="inicial" class="brand-logo"><img src="{static}assets/images/uwtrans1.png" class="mini-logo1"></img></a>
-	
-	<div class="containercadastro">
-		<!-- <img src="{static}assets/images/uwlogo.gif"> -->
-		<form>
-			<div id="div_mensagem_retorno" style="font-size: 30px; color: red">
 
+	<div class="quadrado">
+
+		<form onsubmit="return false">
+			<div class="input-field col s6 m6">
+					<i class="material-icons prefix">account_circle</i>
+					<input name="fullname" id="icon_prefix" type="text" class="input-form validate">
+					<label for="icon_prefix">Nome Completo</label>
 			</div>
 
-
-			<div class="form-input">
-				<input class="input-form" type="password" name="password" size="30" minlength="6"  placeholder="Nova Senha">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">verified_user</i>
+					<input name="email" id="email" type="email" class="input-form validate">
+					<label for="email" data-error="wrong" data-success="right">Email</label>
 			</div>
 
-			<div class="form-input">
-				<input class="input-form" type="password" size="30" minlength="6" placeholder="Confirme sua nova senha">
+			<div class="input-field col s4">
+				<i class="material-icons prefix">phonelink_lock</i>
+						<input name="password" id="password" type="password" class="input-form validate">
+						<label for="password">Senha</label>
 			</div>
-		
-			<!-- FUNÇÃO NÃO ESTÁ FUNCIONANDO CORRETAMENTE, INDICA ERRO MESMO SEM ENVIAR FORMULÁRIO, INDICA ERRO AO CLICAR NA TELA, ALÉM DE ALTERAR OS ICONES
 
-			
-			<div class="form-input"> 
-				<form method="post" action="" onSubmit="return ( verifica() )" name="frmEnvia">
-				   <input class="input-form" type="text" name="email" placeholder="E-mail" onblur="checarEmail();">
-				</form>
+            <div class="input-field col s4">
+				<i class="material-icons prefix">phonelink_lock</i>
+						<input name="password" id="password" type="password" class="input-form validate">
+						<label for="password">Nova Senha</label>
 			</div>
-			-->
 
-
-			<!--<div class="form-input">
-				<input class="input-form" type="text" name="university" placeholder="Universidade">
+			<div class="input-field col s4">
+				<i class="material-icons prefix">phonelink_lock</i>
+						<input name="password" id="password" type="password" class="input-form validate">
+						<label for="password">confirmar nova</label>
 			</div>
-			-->
 
-			<!-- Foi retirado pois ocorreram mudanas nos direcionamentos das telas
-			<br>
-			<a href="empresa">Cadastre-se como empresa</a>
-		</form> -->
+			<div class="input-field col s6 offset-s3">
+				<i class="material-icons prefix">room</i>
+				<select name="university_id" id="university_select" class="input-form">
+						<option value="" disabled selected>Escolha outra Universidade</option>
+				</select>
+				<label>Universidade</label>
+			</div>
 
-
-		<button class="btn-login blue" id="botao_submit">Atualizar</button>
+			<input class="btn-login" value="Salvar dados" id="botao_submit" type="submit"></input>
+		</form>
 	</div>
 
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
@@ -106,6 +110,19 @@
 
 })
 
+  function render_select(callback){
+			//Faz uma requisição para a rota especificada com o objetivo de renderizar uma tag select
+			Request.send({start:0, limit:1000000}, "university/fetch", "GET", function(response){
+				var options = ""
+				for (var i = 0; i < response.content.length; i++) {//Gera as tags option com os valores obtidos da requisição
+					options += HTML_Factory.make_tag('option', response.content[i].name, {'value': response.content[i].id})
+				}
+				Page.fill("university_select", options, true) //Injeta as tags option concatenadas na iteração anterior
+				callback()
+			})
+		}
+
+
 </script>
    <!-- Função para comparar conteúdo dos campos de e-mail.-->
 <script type="text/javascript" language="JavaScript">
@@ -119,8 +136,18 @@ function checkEmail(theForm) {
 		return true;
 	}
 }
-//-->
 </script> 
+	
+	<script type="text/javascript">
+
+	$(document).ready(function() {
+		render_select(function(){
+			$('select').material_select()
+		})
+	});
+	 
+</script>
+
 
 </body>
 

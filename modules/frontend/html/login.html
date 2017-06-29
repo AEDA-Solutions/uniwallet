@@ -39,7 +39,8 @@
 
 <script type="text/javascript">
 	//Adiciona um evento no botão de enviar dados
-	Page.listen("botao_submit", function(e){
+
+	Page.listen("botao_submit" || "keypress", function(e){
 		e.preventDefault() //Impede a atualização da página
 		//Pega os dados inseridos nos campos de input
 		data = Page.get_input("input-form")

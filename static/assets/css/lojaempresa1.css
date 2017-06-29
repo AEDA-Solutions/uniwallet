@@ -11,7 +11,9 @@ body{
   margin-top:-7px; 
   margin-left: 25px;
 } 
-
+.title{
+  position: inherit;
+}
 .nav-wrapper{
   width: 400px; 
   height: 0px;
@@ -39,10 +41,10 @@ body{
  /* Style the tab */
 div.tab {
     float: left;
-    border: 13px solid #455a64;
+    border: 15px solid #455a64;
     background-color: #fcfcfc;
-    width: 23%;
-    height: 597px;
+    width: 22%;
+    height: 607px;
 }
 
 /* Style the buttons inside the tab */
@@ -72,9 +74,10 @@ div.tab button.active {
 
 /* Style the tab content */
 .tabcontent {
+    background-color: white;
     float: left;
-    padding: 0px 12px;
-    border: 1px solid #ccc;
+    padding:59px 12px;
+    border: 0px solid #ccc;
     width: 77%;
     border-left: none;
     height: auto;
