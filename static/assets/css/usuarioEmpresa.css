@@ -97,7 +97,7 @@ input[type="search"]{
    text-align: center; 
    background-color: white; 
    border-radius:5px;  
-   margin-left: 413px;
+   margin-left: 423px;
    margin-top: 25px; 
 }
 
@@ -109,7 +109,7 @@ input[type="search"]{
  border-radius: 6px; 
  border: none; 
  background-color: #37474f; 
- margin-left: -13px;  
+ margin-left: 20px;  
 } 
 
 .botao-sup{
