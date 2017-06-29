@@ -11,13 +11,7 @@ class Purchase(std.Controller):
 			wallet_from = self.model('Wallet').find(conditions = [('user_id', '=', user_id)]).fetchone()['id']
 			prices = self.model().get_prices(products)
 			if self.model('Wallet').load(wallet_from).check(self.model().get_sum_prices(prices)):
-				if self.model().perform(products, wallet_from):
-
-					os.system("HTTP_PORT=3001 P2P_PORT=6001 npm start &")
-					os.system("HTTP_PORT=3002 P2P_PORT=6002 PEERS=ws://localhost:6001 npm start &")
-
-					os.system("curl -H \"Content-type:application/json\" --data '{\"data\" : \"Some data to the first block\"}' http://localhost:3001/mineBlock")
-
+				if self.model().perform(prices, products, user_id):
 					return "Everything in place"
 				else:
 					return self.forbid("Process interrupted", 'Unauthorized')
@@ -25,59 +19,6 @@ class Purchase(std.Controller):
 				return self.forbid("No funds", 'Unauthorized')
 		else:
 			return self.forbid("Products unavailable", 'Unauthorized')
-
-	"""def create2 (self):
-		consumer_id = self.model(name = 'Session').get_user()['id']
-		total_price = 0
-		i = 0
-		products = []
-		quantity = []
-		products_by_company = {}
-		values_to_transfer = {}
-
-		for item in self.get_request_parameters()["products"]:
-			company_id = self.model('Product').load(item["id"]).company_id 
-			if company_id in products_by_company:
-				products_by_company[company_id].append(item)
-			else:
-				products_by_company[company_id] = [item]
-
-		for company_id, products in products_by_company.items():
-			values_to_transfer[company_id] = 0
-
-			for product in products:
-				if not self.model('Product').check_product_available(product["id"], product["quantity"]):
-					self.response.code = 'Unauthorized'
-					return "Quantidade {} do Produto {} Indisponivel".format(product["id"], product["quantity"])
-			
-				values_to_transfer[company_id] += self.model('Product').get_price(product["id"], product["quantity"])
-				total_price += values_to_transfer[company_id]
-
-
-
-		wallet_from = self.model('Wallet').find(conditions = [('user_id', '=', self.model('Consumer').load(consumer_id).user_id)]).fetchone()['id']
-
-		if self.model('Wallet').load(wallet_from).check(total_price):
-
-			for company_id, value in values_to_transfer.items():
-				wallet_to = self.model('Wallet').find(conditions = [('user_id', '=', self.model('Company').load(company_id).user_id)]).fetchone()['id']
-
-				transaction_id = self.model(name = 'Transaction', data = {'wallet_from': wallet_from, 'wallet_to': wallet_to, 'value': total_price, 'operation': 'purchase'}).perform()
-				if transaction_id is not None:
-
-					purchase_id = self.model(data = {'transaction_id': transaction_id, 'consumer_id': consumer_id, 'company_id': company_id}).save().last_id()
-
-					for product in products_by_company[company_id]:
-						self.model(name = 'Purchase_Product', data = {'purchase_id': purchase_id, 'product_id': product["id"], 'quantity': product["quantity"]}).save().close()
-					return "Compra Completa!"
-				
-				else:
-					self.response.code = 'Unauthorized'
-					return "That's odd, the transaction had to be interrupted. There's no money"
-		else:
-			self.response.code = 'Unauthorized'
-			return "Purchase not authorized. Não há saldo suficiente";"""
-			
 
 	def showall(self):
 		lista = []

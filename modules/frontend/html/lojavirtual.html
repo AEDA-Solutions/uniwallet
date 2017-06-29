@@ -1,17 +1,17 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 
-<html lang="pt-br"> 
+<html lang="pt-br">
 
-<head>  
-    <meta charset="utf-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">     
-    <title> Loja </title>  
-    <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Loja </title>
+    <link rel="stylesheet" href="{static}assets/css/materialize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{static}assets/css/lojavirtual.css">
-</head> 
-  
+</head>
+
 <header class="navbar-fixed">
 
   <nav class="blue-grey darken-2">
@@ -23,9 +23,9 @@
         <ul class="right hide-on-med-and-down">
         <li><a href="#modalcar">Carrinho<i class="material-icons left">shopping_cart</i></a></li>
 
-        
+
         <li><a href="usuario">Ver Perfil<i class="material-icons left">perm_identity</i></a></li>
-        
+
         <li><a href="inicial">Sair<i class="material-icons left">input</i></a></li>
 
         </ul>
@@ -52,6 +52,7 @@
       <!--MODAL DO PERFIL DE USUARIO-->
       <div class="row">
 
+
       <div class="container">
       <!-- INFORMAÇÕES DO USUARIO-->
       <ul class="collection">
@@ -68,7 +69,7 @@
       <div class="col s6"><input id="saldo" type="submit" name="submit" value="" style="font-size: 25px" class="btn-conFace"></div>
 
       </div>
-      
+
       <div class="menu">
       <!--MENU DE REDIRECIONAMETO-->
       <div class="input-field col s12" id="category">
@@ -79,12 +80,11 @@
 
       <div class="input-field col s12">
         <select>
-            <option value="" disabled selected></option>
+            <option value="" disabled selected>Localização</option>
             <option value="1">ICC Norte</option>
             <option value="2">ICC Sul</option>
             <option value="3">Amarelinho BSAN</option>
         </select>
-         <label><br>Localização<br></label>
       </div>
 
       <!-- MENU PRINCIPAL-->
@@ -97,42 +97,41 @@
 
     <div class="input-field col s12">
         <select>
-            <option value="" disabled selected></option>
+            <option value="" disabled selected>Preço</option>
             <option value="1">R$0,01 - R$5,00</option>
             <option value="2">R$5,01 - R$20,00</option>
             <option value="3">R$20,01 ou mais</option>
         </select>
-      <label><br>Preço<br></label>
-      </div>  
+      </div>
 
     </div>
     </div>
     </div>
     </div>
 
-      <div class="col s12 m8 l9"> 
-<!-- 
+      <div class="col s12 m8 l9">
+<!--
       <ul class="collapsible" data-collapsible="accordion">
       <li>
         <div class="collapsible-header"><i class="material-icons">shopping_cart</i>Carrinho de Compras</  div>
       <div class="collapsible-body"><span>
-      
+
       <table class="centered">
-        
+
         <thead>
-          
+
           <tr>
             <th>Produto</th>
             <th>Quantidade</th>
             <th>Preço</th>
           </tr>
-        
+
         </thead>
 
         <tbody >
   -->
           <!-- ANTIGO CARRINHO -->
-  <!-- 
+  <!--
           <tr>
             <td>Coxinha (Loja do zé)</td>
             <td>
@@ -143,9 +142,9 @@
                 <option value="3">3</option>
               </select></td>
             <td>$ 300UniCoins</td>
-          
-          </tr>        
-          
+
+          </tr>
+
           <tr>
             <td>coxinha</td>
             <td>
@@ -156,15 +155,15 @@
                 <option value="3">3</option>
               </select></td>
             <td>TOTAL</td>
-                       
+
           </tr>
   -->
   <!--
         </tbody>
         </table>
-      
+
       <div class="col s6 offset-s4"><input type="submit" name="submit" value="Finalizar Compra" class="btn-conFace" onclick="finish_purchase()">
-      <button class = "btn-conFace" onclick="reset_cart()">Limpar Carrinho</button></div>    
+      <button class = "btn-conFace" onclick="reset_cart()">Limpar Carrinho</button></div>
       </span>
       </li>
     </ul>
@@ -173,13 +172,13 @@
 
     <div class="row" id="margem">
     <!-- TABELA DE ITENS -->
-    <!-- 
+    <!--
           ####EXEMPLOS####
 
     <div class="col s3">
       <div class="card small">
         <div class="card-image">
-          <img src="{static}assets/images/coxinha.jpg">        
+          <img src="{static}assets/images/coxinha.jpg">
         </div>
         <div class="card-content">
           <p>Recheio de frango com catupiry</p>
@@ -212,12 +211,12 @@
         <div class="card-content">
           <p>Várias combinações</p>
           <p>R$8,00</p1>
-          <p>Maria da Marmita - FT</p>  
+          <p>Maria da Marmita - FT</p>
           <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
         </div>
       </div>
     </div>
-      
+
 
     <div class="col s3">
       <div class="card small">
@@ -234,93 +233,18 @@
     </div>
     -->
 </div>
-         
+
 </div>
 
-      <div id="modal1" class="modal">
-      <div class="modal-content">
-          <h4>Informações Gerais</h4>
-      
-      <!-- INFORMAÇÕES DE EXTRATO E CONVERSOR-->
-      <ul class="collapsible popout" data-collapsible="accordion">
-      <li>
-        <div class="collapsible-header"><i class="material-icons">assessment</i>Extrato</div>
-        <div class="collapsible-body"><span>
-          
-          <table class="centered">
-              <thead>
-                <tr>
-                    <th>Data</th>
-                    <th>Categoria</th>
-                    <th>Valor</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr>
-                  <td>21/04/2017</td>
-                  <td>Refeição</td>
-                  <td>U$300,00</td>
-                </tr>
-                <tr>
-                  <td>22/05/2017</td>
-                  <td>Depósito</td>
-                  <td>U$1000,00</td>
-                  
-                </tr>
-                <tr>
-                  <td>23/07/2017</td>
-                  <td>Papelaria</td>
-                  <td>U$500,00</td>
-                </tr>
-              </tbody>
-        </table>
-
-        </span></div>
-      </li>
-      <li>
-        <div class="collapsible-header"><i class="material-icons">swap_vert</i>Converter UniCoins</div>
-        <div class="collapsible-body"><span>
-         
-        <div class="cont">
-        
-        <div class="row">
-        <div class="input-field col s12">
-          <input placeholder="Quantidade" id="first_name" type="text" class="validate">
-          <label for="first_name">Quantidade</label>
-
-        <div class="input-field col s12">
-          <input disabled value="I am not editable" id="disabled" type="text" class="validate">
-          <label for="disabled">Disabled</label>
-        </div>
-        </div>
-
-        <div class="botao-sup">
-        <div class="col s6"><input type="submit" name="submit" value="Converter" class="btn1"></div>
-        </div>
-
-        </div> 
-
-
-        </span></div>
-      </li>
-      </ul>
-        
-
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
-      </div>
-      </div>
 
 <!-- MODAL PARA O CARRINHO-->
 <div id="modalcar" class="modal">
       <div class="modal-content">
           <h4>Carrinho de Compras</h4>
-      
+
       <!-- INFORMAÇÕES DE EXTRATO E CONVERSOR-->
       <ul class="collapsible popout" data-collapsible="accordion">
-      
+
       <li>
         <div class="collapsible-header"><i class="material-icons">shop</i>Carrinho</div>
         <div class="collapsible-body">
@@ -329,19 +253,19 @@
 
         <!-- É AQUI QUE DEVE TER O NOVO CARRINHO-->
         <table class="centered">
-        
+
         <thead>
-          
+
           <tr>
             <th>Produto</th>
             <th>Quantidade</th>
             <th>Preço</th>
           </tr>
-        
+
         </thead>
 
         <tbody id="corpo">
-          
+
           <tr>
             <td>Coxinha zoada (Loja do zé)</td>
             <td>
@@ -352,9 +276,9 @@
                 <option value="3">3</option>
               </select></td>
             <td>$ 300UniCoins</td>
-          
-          </tr>        
-          
+
+          </tr>
+
           <tr>
             <td>coxinha</td>
             <td>
@@ -365,20 +289,20 @@
                 <option value="3">3</option>
               </select></td>
             <td>TOTAL</td>
-                       
+
           </tr>
 
         </tbody>
         </table>
 
-         <div class="col s6 offset-s4"><input type="submit" name="submit" value="Finalizar Compra" class="btn-conFace" onclick="finish_purchase()">
-    <button class = "btn-conFace" onclick="reset_cart()">Limpar Carrinho</button></div> 
-         
+         <div class="col s6 offset-s4"><input type="submit" name="submit" value="Finalizar Compra" class="btn-conFace1" onclick="finish_purchase()">
+
+        <button class = "btn-conFace1" onclick="reset_cart()">Limpar Carrinho</button></div>
+
         </span>
       </li>
-      
+
       </ul>
-        
 
       </div>
       <div class="modal-footer">
@@ -405,7 +329,7 @@ load_card()
 function check_cart(){
   if (sessionStorage.getItem('carrinho') == null){ /* CONFERE SE JÁ EXISTE CARRINHO NO 'SESSIOSTORAGE' */
     var carrinho = []
- 
+
     console.log('TA VAZIO')
     sessionStorage.setItem('carrinho', JSON.stringify(carrinho))
   }
@@ -435,23 +359,23 @@ function cart(id, quant, price, nome){
   console.log(list)
   carrinho.push(list)
   /* CRIA UM DICIONARIO COM OS PARAMETROS E ADICIONA NA ARRAY "carrinho" */
- 
+
 
   sessionStorage.setItem('carrinho', JSON.stringify(carrinho))
   console.log(sessionStorage.getItem('carrinho'))
   /* ALTERA O SESSIONSTORAGE COM O NOVO 'carrinho' */
 
   load_card()
- 
 
 
-  /* ULTILIZA A FUNÇAO "JSON.parse()" PARA TRANSFORMAR A INFORMAÇAO EM UM OBJETO DO JAVASCRIPT 
+
+  /* ULTILIZA A FUNÇAO "JSON.parse()" PARA TRANSFORMAR A INFORMAÇAO EM UM OBJETO DO JAVASCRIPT
      E A FUNÇAO "JSON.stringify()" PARA TRANFORMAR UM OBJETO JAVASCRIPT EM UMA STRING */
 
 }
-  
+
 function card(productname, productprice, productquantity, cardid){
-  
+
   var modelo_carrinho = "<tr>\
                           <td>produto</td>\
                           <td>quantidade</td>\
@@ -476,34 +400,34 @@ function card(productname, productprice, productquantity, cardid){
 function finish_purchase(){ /* FINALIZA A COMPRA */
   var products = []
   var teste = JSON.parse(sessionStorage.getItem('carrinho'))
-  
+
   if (teste.length == 0){
     alert("Seu carrinho está vazio")
   }
-  
+
   else{
-    
+
     for (var i = teste.length - 1; i >= 0; i--) { /* CARREGA O CARRINHO COM O SESSIONSTORAGE */
       var list = {id: teste[i].id, quantity: Number(teste[i].quantidade)}
       products.push(list)
     }
-  
+
     var objeto = {products: products}
     console.log(JSON.stringify(objeto))
     var r = confirm("Tem certeza que deseja Finalizar sua Compra?");
       if (r == true) {
         Request.send(objeto, "purchase/create", "POST", function(response){
           if(alert(JSON.stringify(response.content))){}
-    
-          else {   
+
+          else {
             if (response.code == 200) {
-              window.location.reload() 
+              window.location.reload()
               sessionStorage.removeItem("carrinho")
             }
-            
+
             else{}
           }
-  
+
         })
       }
       else {}
@@ -519,10 +443,10 @@ function reset_cart(){
 function remove_item(id){
 
   var datas = JSON.parse(sessionStorage.getItem('carrinho'))
-  datas.splice(id, 1)  
+  datas.splice(id, 1)
   sessionStorage.setItem('carrinho', JSON.stringify(datas))
 
-  load_card()  
+  load_card()
 
 
 }
@@ -531,7 +455,7 @@ function remove_item(id){
 
 </script>
 
-<script> 
+<script>
     $(document).ready(function(){
       // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
       $('.modal').modal();
@@ -552,13 +476,13 @@ balance()
 var selectcounter = 0 /* Necessario para gerar id no catalogo */
 
 
-Request.get("product/show_all" , function(all){ 
+Request.get("product/show_all" , function(all){
   /* RECEBE OS DADOS DA ROTA SELECIONADA E PASSA COMO PARAMETRO PARA A FUNÇAO */
 
     var modelo =  " <div class= \"col s3\" > \
                       <div class=\"card\"/> \
                         <div class=\"card-image\"> \
-                          <img src=\"fotinha\"> \
+                          <img src=\"{static}assets/images/comidas.jpg\"> \
                         </div> \
                         <div class=\"card-content\"> \
                           <p>nome</p>\
@@ -574,9 +498,9 @@ Request.get("product/show_all" , function(all){
                         </div> \
                       </div> \
                     </div> \ "
-    
+
     var pagina = ""
-    for (var i = all.content.length - 1; i >= 0; i--) { 
+    for (var i = all.content.length - 1; i >= 0; i--) {
       /* PREECHE O MODELO COM AS INFORMAÇOES DE CADA PRODUTO E CONCATENA DENTRO DE "pagina" */
 
       var nome = all.content[i].name
@@ -592,11 +516,11 @@ Request.get("product/show_all" , function(all){
       var replace7 = replace6.replace("selectid", selectcounter)
       var replace8 = replace7.replace("idvalue", selectcounter)
       var replace9 = replace8.replace("productname", nome)
-      
+
       selectcounter = selectcounter + 1
       var pagina = pagina.concat(replace9)
       }
-      
+
     document.getElementById("margem").innerHTML = pagina
 
     /* ADICIONA A VARIAVEL "pagina" DENTRO DO ELEMENTO */
@@ -606,14 +530,14 @@ Request.get("product/show_all" , function(all){
 
 
 
-    
+
 
 
     Request.get("category/list", function(l){
       console.log(l)
       var category = document.getElementById("categoria")
       for (var i = 0; i < l.content.length; i++) {
-        category.innerHTML += HTML_Factory.make_tag('option', l.content[i].name, {"value": l.content[i].id})            
+        category.innerHTML += HTML_Factory.make_tag('option', l.content[i].name, {"value": l.content[i].id})
       }
 
       Request.get("company/list", function(l){
@@ -621,19 +545,19 @@ Request.get("product/show_all" , function(all){
         var lojas = document.getElementById("nome_empresa")
         var model = "filtro( this.value )"
         for (var i = 0; i < l.content.length; i++) {
-          lojas.innerHTML += HTML_Factory.make_tag('option', l.content[i].name, [{"value": l.content[i].id}, {"onclick": filtro( this.value )}])            
+          lojas.innerHTML += HTML_Factory.make_tag('option', l.content[i].name, [{"value": l.content[i].id}, {"onclick": filtro( this.value )}])
         }
 
         $(document).ready(function() {
           $('select').material_select();
-        }); 
+        });
 
       })
 
    })
 
-   
-  
+
+
 })
 
 function balance(){
@@ -641,8 +565,8 @@ function balance(){
     console.log(balance.content)
     document.getElementById('saldo').value = "Saldo: " + "$" + balance.content
   })
-  
-    
+
+
 }
 
 function filtro(e){
@@ -668,12 +592,12 @@ function filtro(e){
 </script>
 
 <script>
-    
+
     $(document).ready(function(){
         $('.collapsible').collapsible();
     });
 
-</script> 
+</script>
 
 </body>
 

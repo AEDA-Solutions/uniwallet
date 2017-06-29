@@ -52,10 +52,11 @@
   <div id="Cadastro" class="tabcontent">
           
             <div class="row">
+          
                     <div class="small-12 columns"></div>
                       
                         <div class="content">
-                        
+                          <a class="title-loja">Aqui você gerência seus produtos</a>
                           <div class="category">
                             <a class="link" title="Adicionar produto" href="#modal1">
                               <img class="add1" src="{static}assets/images/create.png">
@@ -74,7 +75,9 @@
       <thead>
           
         <tr>
-        <td></td>
+        <th></th>
+         <li class="divider"></li>
+        <th>Imagem</th>
         <th>Produto</th>
         <th>Quantidade</th>
         <th>Valor Unt</th>
@@ -85,52 +88,32 @@
       <tbody id="Lista">
                   
         <tr>
-        <td><button type="button" class="deletar"></button></td>
+        <td><a class="dropdown-button btn" data-activates='dropdown1'><i class="material-icons">build</i></a></td>
         <td><img class="image_produto" src="{static}assets/images/coxinha.jpg"></td>
         <td>Coxinha</td>
         <td>30</td>
         <td>$ 3.50 UniCoins</td>
-        <td><ul class="collapsible indigo lighten-5" data-collapsible="accordion">
-          <li>
-            <div class="collapsible-header">Editar</div>
-            <div class="collapsible-body">
-              
-            </div>
-          </li>
         </tr>
                         
-                  
+                
         <tr>
-        <td><button type="button" class="deletar"></button></td>
+        <td><a class="dropdown-button btn" data-activates='dropdown1'><i class="material-icons">build</i></a></td>
         <td><img class="image_produto" src="{static}assets/images/pao-de-queijo.jpg"></td>
         <td>Pão de Queijo</td>
         <td>40</td>
         <td>$ 2.00 UniCoins</td>
-        <td><ul class="collapsible indigo lighten-5" data-collapsible="accordion">
-          <li>
-            <div class="collapsible-header">Editar</div>
-            <div class="collapsible-body">
-              
-            </div>
-          </li>
+        </tr>
                      
 
                   
   
         <tr>
-        <td><button type="button" class="deletar"></button></td>
+        <td><a class="dropdown-button btn" data-activates='dropdown1'><i class="material-icons">build</i></a></td>
         <td><img class="image_produto" src="{static}assets/images/marmitas.jpg"></td>
         <td>Marmita</td>
         <td>10</td>
         <td>$ 10.00 UniCoins</td>
-        <td><ul class="collapsible indigo lighten-5" data-collapsible="accordion">
-          <li>
-            <div class="collapsible-header">Editar</div>
-            <div class="collapsible-body">
-              
-            </div>
-          </li>
-               
+        </tr>
    
       </tbody>
 
@@ -245,15 +228,77 @@
           <label for="email">Quantidade</label>
         </div>
       </div>
-   
+      
+        <div id= "gambiarra" class="modal-fixed-footer right">
+          <button href="#!" id="botao_submit" onclick="cadastro()" class="modal-action modal-close waves-effect waves-green btn-flat ">Cadastrar</button>
+        </div>
+  
+
     </form>
   </div>
+  </div>
 
-      </form>
 
-    <div id= "gambiarra" class="modal-footer">
-      <button href="#!" id="botao_submit" onclick="cadastro()" class="modal-action modal-close waves-effect waves-green btn-flat ">Cadastrar</button>
-    </div>
+  <!-- Dropdown Structure -->
+  <ul id='dropdown1' class='dropdown-content'>
+    <li><a href="#modal2"><i class="material-icons">mode_edit</i>Editar</a></li>
+    <li class="divider"></li>
+    <li><a href="#!"><i class="material-icons">delete_forever</i>Apagar</a></li>
+  </ul>
+
+
+<!-- Modal Structure para o botão editar-->
+  <div id="modal2" class="modal modal-fixed-footer">
+    <div class="modal-content"> 
+      <h4>Editar Produto</h4>
+      
+      <form action="#">
+        <div class="file-field input-field">
+          <div class="btn">
+              <span>Imagem</span>
+              <input  type="file" accept=".jpg,.png,.jpeg">
+          </div>
+        </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input name="name" id="nomeproduto" type="email" class="input_cadastro">
+          <label for="password">Nome Produto</label>
+        </div>
+      </div>
+
+      <div class="row">
+          <select>
+            <option value="" disabled selected>Categoria</option>
+            <option value="1">Salgados</option>
+            <option value="2">Papelaria</option>
+            <option value="3">Outros</option>
+          </select>
+         
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input name="price" id="email" type="email" class="input_cadastro">
+          <label for="email">Valor</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input name="quantity" id="email" type="email" class="input_cadastro">
+          <label for="email">Quantidade</label>
+        </div>
+      </div>
+   
+      <div id= "editargambiarra" class="modal-fixed-footer right">
+        <button href="#!" id="botao_submit" onclick="cadastro()" class="modal-action modal-close waves-effect waves-green btn-flat ">Editar</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
   </div>      
 
   </body>
@@ -413,6 +458,22 @@ var chart = new Chart(ctx, {
     }
 });
 </script>
+
+<!--Dropdown de edição de produtos-->
+<script type="text/javascript">
+    $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrainWidth: false, // Does not change width of dropdown to that of the activator
+      hover: true, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: false, // Displays dropdown below the button
+      alignment: 'left', // Displays dropdown with edge aligned to the left of button
+      stopPropagation: false // Stops event propagation
+    }
+  );
+</script>
+
 <!--
 <script type="text/javascript">
   
