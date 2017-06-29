@@ -52,11 +52,11 @@
   <div id="Cadastro" class="tabcontent">
           
             <div class="row">
-      
+          
                     <div class="small-12 columns"></div>
                       
                         <div class="content">
-                        
+                          <a class="title-loja">Aqui você gerência seus produtos</a>
                           <div class="category">
                             <a class="link" title="Adicionar produto" href="#modal1">
                               <img class="add1" src="{static}assets/images/create.png">
@@ -76,8 +76,8 @@
           
         <tr>
         <th></th>
-        <th>Imagem</th>
          <li class="divider"></li>
+        <th>Imagem</th>
         <th>Produto</th>
         <th>Quantidade</th>
         <th>Valor Unt</th>
@@ -114,7 +114,6 @@
         <td>10</td>
         <td>$ 10.00 UniCoins</td>
         </tr>
-            
    
       </tbody>
 
@@ -236,13 +235,60 @@
 
   <!-- Dropdown Structure -->
   <ul id='dropdown1' class='dropdown-content'>
-    <li><a href="#!"><i class="material-icons">mode_edit</i>Editar</a></li>
+    <li><a href="#modal2"><i class="material-icons">mode_edit</i>Editar</a></li>
     <li class="divider"></li>
     <li><a href="#!"><i class="material-icons">delete_forever</i>Apagar</a></li>
   </ul>
 
 
-      </form>
+<!-- Modal Structure para o botão editar-->
+  <div id="modal2" class="modal modal-fixed-footer">
+    <div class="modal-content"> 
+      <h4>Editar Produto</h4>
+      
+      <form action="#">
+        <div class="file-field input-field">
+          <div class="btn">
+              <span>Imagem</span>
+              <input  type="file" accept=".jpg,.png,.jpeg">
+          </div>
+        </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input name="name" id="nomeproduto" type="email" class="input_cadastro">
+          <label for="password">Nome Produto</label>
+        </div>
+      </div>
+
+      <div class="row">
+          <select>
+            <option value="" disabled selected>Categoria</option>
+            <option value="1">Salgados</option>
+            <option value="2">Papelaria</option>
+            <option value="3">Outros</option>
+          </select>
+         
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input name="price" id="email" type="email" class="input_cadastro">
+          <label for="email">Valor</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input name="quantity" id="email" type="email" class="input_cadastro">
+          <label for="email">Quantidade</label>
+        </div>
+      </div>
+   
+    </form>
+  </div>
+
+
 
     <div id= "gambiarra" class="modal-footer">
       <button href="#!" id="botao_submit" onclick="cadastro()" class="modal-action modal-close waves-effect waves-green btn-flat ">Cadastrar</button>
