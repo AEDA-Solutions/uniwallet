@@ -1,14 +1,11 @@
  body{ 
-   background-image: url("../images/");
    max-width: 1080px;   /* Máximo da largura da imagem */
    width: auto;
    max-height: auto;  /* Máximo da altura da imagem */
    min-height: auto;      
    background-size:100%;
-   background-repeat: no-repeat; 
-   font-family: Arial, Verdana, Tahoma, Sans-Serif;
+   background-repeat: no-repeat;
    font-size: 20px;
-   background-color: blue;
    text-align: center;
  }
 
@@ -54,35 +51,38 @@ nav{
 }
 
 h1{
+  font-family: "ff-dax-web-pro",sans-serif;
   font-size: 85px;
   font-weight:400px ;
 }
 p{
-  font-size: 31px;
+  font-size: 41px;
   font-weight: 100px;
 }
 
-#equipe{
-  margin-top: -31px;
+.equipe{
+  margin-top: -30px;
   color : black;
   width:1280px;
   height: 570px;
   text-align: center;
+  background-color: #095BB4;
 }
 
-#origem{
-  margin-top: -31px;
+.origem{
+  margin-top: -32px;
   color : black;
   width:1280px;
   height: 570px;
-  background-image: url("../images/dave.jpg");
-  text-align: center;
+  background-image: url("../images/empresa.jpg");
+  background-attachment: fixed;
 }
 
-#proposta{
-  margin-top: -31px;
+.proposta{
+  margin-top: -33px;
   color : black;
   width:1280px;
   height: 570px;
+  background-color: #009D90;
   text-align: center;
 }
