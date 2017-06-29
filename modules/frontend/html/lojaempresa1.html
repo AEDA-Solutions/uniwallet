@@ -5,7 +5,7 @@
 <head>  
       <meta charset="utf-8"> 
       <meta name="viewport" content="width=device-width, initial-scale=1.0"> 		 
-      <title> Loja Empresa</title>  
+      <title > Loja Empresa</title>  
       <link rel="stylesheet" href="{static}assets/css/materialize.css"> 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -50,7 +50,7 @@
   </header>
 
   <body>
-      <div class="tab">
+      <div  class="tab">
           <button class="tablinks" onclick="openCity(event, 'Cadastro')" id="defaultOpen">Cadastro de Produtos</button>
           <button class="tablinks" onclick="openCity(event, 'Extrato')">Extrato</button>
           <button class="tablinks" onclick="openCity(event, 'Ranking')">Ranking de Produtos</button>
@@ -209,7 +209,7 @@
         <div class="file-field input-field">
           <div class="btn">
               <span>Imagem</span>
-              <input type="file" accept=".jpg,.png,.jpeg">
+              <input  type="file" accept=".jpg,.png,.jpeg">
           </div>
           <div class="file-path-wrapper">
               <input class="file-path validate" type="text" placeholder="Imagem do Produto">
@@ -218,13 +218,13 @@
 
       <div class="row">
         <div class="input-field col s12">
-          <input id="nomeproduto" type="email" class="validate">
+          <input name="name" id="nomeproduto" type="email" class="input_cadastro">
           <label for="password">Nome Produto</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email">
+          <input name="description" id="email" type="email" class="input_cadastro">
           <label for="email">Descrição</label>
         </div>
       </div>
@@ -241,14 +241,14 @@
 
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email">
+          <input name="price" id="email" type="email" class="input_cadastro">
           <label for="email">Valor</label>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email">
+          <input name="quantity" id="email" type="email" class="input_cadastro">
           <label for="email">Quantidade</label>
         </div>
       </div>
@@ -258,8 +258,8 @@
 
       </form>
 
-    <div class="modal-footer">
-      <a href="#!" id="produtoempresa" class="modal-action modal-close waves-effect waves-green btn-flat ">Cadastrar</a>
+    <div id= "gambiarra" class="modal-footer">
+      <button href="#!" id="botao_submit" onclick="cadastro()" class="modal-action modal-close waves-effect waves-green btn-flat ">Cadastrar</button>
     </div>
   </div>      
 
@@ -290,22 +290,38 @@
 
 <!--Cadastrar produto -->
 <script type="text/javascript">
-    //Adiciona um evento no botão de enviar dados
-    Page.listen("botao_submit", function(e){
-      e.preventDefault() //Impede a atualização da página
-      //Pega os dados inseridos nos campos de input
-      data = Page.get_input("input-form")
-      //Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
+   
+  
+  
 
+    Request.get("company/company_on", function(response){
+          
+          if (response.code == 200){
+            var str = " <button href=\"#!\" id=\"botao_submit\" onclick=\"cadastro(aqui)\" class=\"modal-action modal-close waves-effect waves-green btn-flat \">Cadastrar</button> "
+            var gold = str.replace("aqui", response.content)
+            document.getElementById("gambiarra").innerHTML = gold
+          }
+          else {alert(response.content)}
+      })
+      
+   
+   
+
+
+   function cadastro(e){
+      data = Page.get_input("input_cadastro")
+      //Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
+      data["company_id"] = e
+      console.log(data)
       Request.send(data, "product/register", "POST", function(response){
 
         if (response.code == 200){ //Se tudo der certo então há redirecionamento para página inicial
           Page.redirect("produtoempresa")
         } else {
-          Page.fill("div_mensagem_retorno", response.content) //Insere a mensagem na div
+          alert(response.content) //Insere a mensagem na div
         }
       })
-    }) 
+    }
   </script>
 
   <script>
