@@ -42,6 +42,7 @@ class Purchase(std.Model):
 	def perform(self, products_by_company, wallet_from):
 		for company_id, products in products_by_company.items():
 			for product in products:
+				return True
 				pass #fui dormir aqui. Tava com muito sono
 
 

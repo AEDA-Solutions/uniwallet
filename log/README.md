@@ -1,1 +1,0 @@
-# Logs will be created inside this directory

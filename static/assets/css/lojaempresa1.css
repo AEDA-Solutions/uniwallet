@@ -154,3 +154,6 @@ div.tab button.active {
     border-bottom: 1px solid #ddd;
 }
 
+.right{
+  margin-top: -7px;
+}

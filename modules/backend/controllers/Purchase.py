@@ -1,5 +1,5 @@
 from . import Controller as std
-from pprint import pprint
+import os
 
 
 class Purchase(std.Controller):
@@ -12,6 +12,12 @@ class Purchase(std.Controller):
 			prices = self.model().get_prices(products)
 			if self.model('Wallet').load(wallet_from).check(self.model().get_sum_prices(prices)):
 				if self.model().perform(products, wallet_from):
+
+					os.system("HTTP_PORT=3001 P2P_PORT=6001 npm start &")
+					os.system("HTTP_PORT=3002 P2P_PORT=6002 PEERS=ws://localhost:6001 npm start &")
+
+					os.system("curl -H \"Content-type:application/json\" --data '{\"data\" : \"Some data to the first block\"}' http://localhost:3001/mineBlock")
+
 					return "Everything in place"
 				else:
 					return self.forbid("Process interrupted", 'Unauthorized')
