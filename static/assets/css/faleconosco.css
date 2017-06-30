@@ -48,7 +48,7 @@ input[type="text"]{
   border: none; 
   border-radius: 4px; 
   margin-bottom: 17px; 
-  margin-top: 3px; 
+  margin-top: -4px; 
   background-color: #fff; 
   margin-left: 389px; 
 } 
@@ -60,7 +60,7 @@ textarea{
   border: 10px; 
   border-radius: 10px; 
   margin-bottom: 10px; 
-  margin-top: 10px; 
+  margin-top: -4px; 
   background-color: #fff; 
   margin-left: 389px; 
 }
