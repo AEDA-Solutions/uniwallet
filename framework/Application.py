@@ -21,7 +21,7 @@ class Application(Core):
 		if self.request.ok:
 			return self.resolve()
 		else:
-			return Response(code = 'Not Found', body = "Invalid route")
+			return Response(code = 'Not Found', body = 'Invalid route')
 
 	def resolve(self):
 		"""
@@ -47,7 +47,7 @@ class Application(Core):
 		if controller_name:
 			return self.instance_controller(package, controller_name)
 		else:
-			return Response(code = 'Not Found', body = "Controller '{}' from module '{}' not found".format(self.request.controller, self.request.module))
+			return self.controller('General').action('notfound')
 
 	def instance_controller(self, package, controller_name):
 		"""

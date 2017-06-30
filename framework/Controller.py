@@ -18,7 +18,8 @@ class Controller(Core):
 			self.response.body = getattr(self, action_name)()
 			return self.response
 		else:
-			return Response(code = 'Not Found', body = "Action '{}' unavailable".format(action_name))
+			return self.controller('General').action('actionnotfound')
+			#return Response(code = 'Not Found', body = "Action '{}' unavailable".format(action_name))
 
 	def get_html(self, html_file_name):
 		"""
