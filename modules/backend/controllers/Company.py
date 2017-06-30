@@ -49,3 +49,8 @@ class Company(std.Controller):
 	def company_on(self):
 		user_id = self.model(name = 'Session').get_user()['id']
 		return self.model("Company").find([('user_id', '=', user_id)]).fetchone("id")["id"]
+
+	def extrato(self):
+		user_id = self.model(name = 'Session').get_user()['id']
+		wall_id = self.model("Wallet").find([('user_id', '=', user_id)]).fetchone("id")["id"]
+		return self.model("Transaction").find(conditions = [("wallet_to", '=', wall_id)], join = [("Wallet", "wallet_to"), ("User", "Wallets.user_id"), ("Purchase", "id")]).fetch()

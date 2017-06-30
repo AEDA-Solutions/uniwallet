@@ -136,13 +136,13 @@
                 <th>Dia</th>
                 <th>Categoria</th>
                 <th>Produto</th>
-                <th>Preço</th>
+                <th>Total</th>
                 <th>Situação</th>
               </tr>
             
             </thead>
 
-            <tbody id="corpo">
+            <tbody id="extrato">
               
       
               <tr>
@@ -290,12 +290,14 @@
       </div>
    
     </form>
+
+    
   </div>
 
 
 
     <div id= "gambiarra" class="modal-footer">
-      <button href="#!" id="botao_submit" onclick="cadastro()" class="modal-action modal-close waves-effect waves-green btn-flat ">Editar</button>
+      <button href="#!" id="botao_submit" onclick="cadastro()" class="modal-action modal-close waves-effect waves-green btn-flat ">Cadastrar</button>
     </div>
   </div>      
 
@@ -341,7 +343,10 @@
             var gold = str.replace("aqui", response.content)
             document.getElementById("gambiarra").innerHTML = gold
           }
-          else {alert(response.content)}
+          else{
+            alert("Faça o Login como Empresario")
+            window.location.href = "http://localhost:8000/app/usuario"
+        }
       })
       
    
@@ -424,14 +429,17 @@ function openCity(evt, cityName) {
 var ctx = document.getElementById('myChart').getContext('2d');
 
 var produtos = [] 
+var quantidades = []
 
-Request.get("product/show_by_user" , function(all){ 
-  
+Request.get("product/total_vendido" , function(all){ 
+ 
     for (var i = all.content.length - 1; i >= 0; i--) { 
-      /* PREECHE O MODELO COM AS INFORMAÇOES DE CADA PRODUTO E CONCATENA DENTRO DE "pagina" */
+      
 
-      produtos.push(all.content[i].name)
+      produtos.push(all.content[i].nome)
+      quantidades.push(all.content[i].total)
     }
+   
   })
 
 var chart = new Chart(ctx, {
@@ -446,7 +454,7 @@ var chart = new Chart(ctx, {
            
             backgroundColor:'rgb(249, 112, 0)',
             borderColor: 'rgb(77, 95, 141)',
-            data: [20, 17, 32, 14, 24, 30, 45],
+            data: quantidades ,
         }]
     },
 
@@ -479,27 +487,21 @@ var chart = new Chart(ctx, {
 
 
 
-<!--
+
 <script type="text/javascript">
   
 
   Request.get("product/show_by_user" , function(all){ 
   /* RECEBE OS DADOS DA ROTA SELECIONADA E PASSA COMO PARAMETRO PARA A FUNÇAO */
 
-    var modelo = "<div> " +
-                      " <tr> " + " <td> " + "<img class=\"image_produto\" src=\"{static}assets/images/coxinha.jpg\" > " + " </td> " +
-
-                      " <td> nome </td> " +
-                      " <td> quantidade </td> " +
-                      " <td>  price UniCoins </td> " +
-                      " <td> <ul class= \"collapsible indigo lighten-5\" data-collapsible= \"accordion\"> " +  
-                        " <li> <div class=\"collapsible-header\" > Editar </div> " +
-                           " <div class=\"collapsible-body\" > </div> " +
-                         " </li> " +
-                       " </td> " +
-                     " </tr> " +
-                    " </div>  "
-    
+    var modelo = " <tr> \
+        <td><a class=\"dropdown-button btn orange darken-3\" href=\"#modal2\" ><i class=\"material-icons\">mode_edit</i></a></td> \
+        <td><img class=\"image_produto\" src=\"{static}assets/images/pao-de-queijo.jpg\"></td> \
+        <td> nome </td> \
+        <td> quantidade </td> \
+        <td>$ price UniCoins</td> \
+        <td><a onclick=\"deletar_produto(productid)\" class=\"dropdown-button btn red accent-4\"><i class=\"material-icons\">delete_forever</i></a><td> \
+        </tr> \  "
     var pagina = ""
     for (var i = all.content.length - 1; i >= 0; i--) { 
       /* PREECHE O MODELO COM AS INFORMAÇOES DE CADA PRODUTO E CONCATENA DENTRO DE "pagina" */
@@ -511,11 +513,11 @@ var chart = new Chart(ctx, {
       var replace = modelo.replace("nome", nome)
       var replace2 = replace.replace("price", price)
       var replace3 = replace2.replace("quantidade", quantity)
-       /*var replace4 = replace3.replace("productid", id) */
+      var replace4 = replace3.replace("productid", id)
       
       
       
-      var pagina = pagina.concat(replace3)
+      var pagina = pagina.concat(replace4)
       }
       
     document.getElementById("Lista").innerHTML = pagina
@@ -523,5 +525,49 @@ var chart = new Chart(ctx, {
 
 
 
+  function deletar_produto(id){
+    Request.send(id, "product/delete", 'POST', function(response){
+      alert(response)
+    })
+  }
+
+
+
+Request.get("company/extrato" , function(extrato){
+    console.log(extrato)
+    
+    var modelo = " <tr> \
+                <td>created_at</td> \
+                <td>operaçao</td> \
+                <td>Marmita</td> \
+                <td>$ value UniCoins</td> \
+                <td>Pendente</td> \
+              </tr> \  "
+    var all = ""
+    for (var i = extrato.content.length - 1; i >= 0; i--) {
+      var at = extrato.content[i].created_at
+      var op = extrato.content[i].operation
+      var val = extrato.content[i].value
+    
+      var gold = modelo.replace("created_at", reorder_date(at))
+      var gold2 = gold.replace("operaçao", op)
+      var gold3 = gold2.replace("value", val)
+      var all = gold3 + all
+      }
+
+    document.getElementById("extrato").innerHTML = all
+      
+    
+  })
+
+function reorder_date(at){
+  var hora = "Horario: " + at.slice(11,16)
+  var data = at.slice(8,10) + " - " + at.slice(5,7) + " - " + at.slice(0,4) + " \ "
+  return data + hora
+}
+
+
+
+
+
 </script>
--->
