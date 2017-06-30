@@ -1,84 +1,80 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Ajuda seu merda</title>
-</head>
-<!-- Bootstrap Core CSS -->
-	<link href="{static}assets/admin/css/bootstrap.min.css" rel="stylesheet">
+  <head>
+    <title>Geolocation</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      // Note: This example requires that you consent to location sharing when
+      // prompted by your browser. If you see the error "The Geolocation service
+      // failed.", it means you probably did not give permission for the browser to
+      // locate you.
 
-	<!-- Custom CSS -->
-	<link href="{static}assets/admin/css/sb-admin.css" rel="stylesheet">
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -15.764237, lng: -47.870426},
+          zoom: 16
+        });
+        var infoWindow = new google.maps.InfoWindow({map: map});
 
-	<!-- Morris Charts CSS -->
-	<link href="{static}assets/admin/css/plugins/morris123.css" rel="stylesheet">
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
 
-	<!-- Custom Fonts -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf" rel="stylesheet" type="text/css">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff" rel="stylesheet" type="text/css">
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Location found.');
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
 
-	<link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet">
-	<link href="https://cdn.datatables.net/select/1.2.2/css/select.dataTables.min.css" rel="stylesheet">
-	<link href="https://cdn.datatables.net/buttons/1.3.1/css/buttons.dataTables.min.css" rel="stylesheet">
-
-	<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet">
-<body>
-	<div class="bw">
-		<div class="di">
-			<div class="em brh">
-				<nav class="bro">
-					<ul class="nav qq nav-stacked xx">
-					 <li class="ayx">Menu</li>
-					 <li class="qp">
-						<a class="qn active" href="">Cadastro de Produtos</a>
-					</li>
-					<li class="qp">
-						<a  class="qn " href="">Extrato</a>
-					</li>
-					<li class="qn">
-						<a class="qn" href="">Ranking</a>
-					</li>
-					</ul>
-				</nav>
-			</div>
-		</div>
-	</div>
-
-<!-- jQuery -->
-	<script src="{static}assets/admin/js/jquery.js"></script>
-
-	<!-- Bootstrap Core JavaScript -->
-	<script src="{static}assets/admin/js/bootstrap.min.js"></script>
-
-	<!-- Morris Charts JavaScript -->
-	<script src="{static}assets/admin/js/plugins/morris/raphael.min.js"></script>
-	<script src="{static}assets/admin/js/plugins/morris/morris.min.js"></script>
-	<script src="{static}assets/admin/js/plugins/morris/morris-data.js"></script>
-
-	<!-- jQuery -->
-	<script src="{static}assets/admin/js/jquery.js"></script>
-
-	<!-- Bootstrap Core JavaScript -->
-	<script src="{static}assets/admin/js/bootstrap.min.js"></script>
-
-	<!-- Menu Toggle Script -->
-	<script>
-	$("#menu-toggle").click(function(e) {
-		e.preventDefault();
-		$("#wrapper").toggleClass("toggled");
-	});
-	</script>
-
-	<script type="text/javascript" src="https://cdn.datatables.net/1.10.14/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/1.10.14/js/dataTables.bootstrap.min.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.bootstrap.min.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/select/1.2.2/js/dataTables.select.min.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.1/js/responsive.bootstrap.min.js"></script>
-
-	<script src="{static}assets/js/uniwallet-backend-api.js"></script>
-
-
-</body>
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYI1y_6m1-cGgpX2uafPg7VF-LJKAGhnw &callback=initMap">
+    </script>
+  </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+AIzaSyDYI1y_6m1-cGgpX2uafPg7VF-LJKAGhnw 
