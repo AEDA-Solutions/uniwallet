@@ -12,7 +12,7 @@ class Purchase(std.Controller):
 			prices = self.model().get_prices(products)
 			if self.model('Wallet').load(wallet_from).check(self.model().get_sum_prices(prices)):
 				if self.model().perform(prices, products, user_id):
-					return "Everything in place"
+					return "Compra finalizada com sucesso"
 				else:
 					return self.forbid("Process interrupted", 'Unauthorized')
 			else:

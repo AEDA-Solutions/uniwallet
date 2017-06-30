@@ -53,3 +53,19 @@ class Product(std.Controller):
 		company = self.model("Company").find([('user_id', '=', 1)]).fetchone("id")["id"]
 		return self.model("Product").find(conditions = [("company_id", '=', company)], join = [("Company", "company_id")]).fetch()
 
+	def total_vendido(self):
+		user_id = self.model(name = 'Session').get_user()['id']
+		company = self.model("Company").find([('user_id', '=', 1)]).fetchone("id")["id"]
+		products = self.model("Product").find(conditions = [("company_id", '=', company)]).fetch()
+		gold = []
+		for item in products:
+			d = {}
+			d.__setitem__('nome', item['name'])
+			vendas = self.model("Purchase_Product").find(conditions = [("product_id", '=', item['id'] )]).fetch()
+			total = 0 
+			for item in vendas:
+				total = total + item['quantity']
+
+			d.__setitem__('total', total)
+			gold.append(d)
+		return gold	

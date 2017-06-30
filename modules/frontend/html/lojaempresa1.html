@@ -417,14 +417,17 @@ function openCity(evt, cityName) {
 var ctx = document.getElementById('myChart').getContext('2d');
 
 var produtos = [] 
+var quantidades = []
 
-Request.get("product/show_by_user" , function(all){ 
-  
+Request.get("product/total_vendido" , function(all){ 
+ 
     for (var i = all.content.length - 1; i >= 0; i--) { 
-      /* PREECHE O MODELO COM AS INFORMAÇOES DE CADA PRODUTO E CONCATENA DENTRO DE "pagina" */
+      
 
-      produtos.push(all.content[i].name)
+      produtos.push(all.content[i].nome)
+      quantidades.push(all.content[i].total)
     }
+   
   })
 
 var chart = new Chart(ctx, {
@@ -439,7 +442,7 @@ var chart = new Chart(ctx, {
            
             backgroundColor:'rgb(249, 112, 0)',
             borderColor: 'rgb(77, 95, 141)',
-            data: [20, 17, 32, 14, 24, 30, 45],
+            data: quantidades ,
         }]
     },
 
