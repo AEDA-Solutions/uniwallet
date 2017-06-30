@@ -88,31 +88,34 @@
       <tbody id="Lista">
                   
         <tr>
-        <td><a class="dropdown-button btn" data-activates='dropdown1'><i class="material-icons">build</i></a></td>
+        <td><a class="dropdown-button btn orange darken-3" href="#modal2" ><i class="material-icons">mode_edit</i></a></td>
         <td><img class="image_produto" src="{static}assets/images/coxinha.jpg"></td>
         <td>Coxinha</td>
         <td>30</td>
         <td>$ 3.50 UniCoins</td>
+        <td><a class="dropdown-button btn red accent-4"><i class="material-icons">delete_forever</i></a><td>
         </tr>
                         
                 
         <tr>
-        <td><a class="dropdown-button btn" data-activates='dropdown1'><i class="material-icons">build</i></a></td>
+        <td><a class="dropdown-button btn orange darken-3" href="#modal2" ><i class="material-icons">mode_edit</i></a></td>
         <td><img class="image_produto" src="{static}assets/images/pao-de-queijo.jpg"></td>
         <td>Pão de Queijo</td>
         <td>40</td>
         <td>$ 2.00 UniCoins</td>
+        <td><a class="dropdown-button btn red accent-4"><i class="material-icons">delete_forever</i></a><td>
         </tr>
                      
 
                   
   
         <tr>
-        <td><a class="dropdown-button btn" data-activates='dropdown1'><i class="material-icons">build</i></a></td>
+        <td><a class="dropdown-button btn orange darken-3" href="#modal2" ><i class="material-icons">mode_edit</i></a></td>
         <td><img class="image_produto" src="{static}assets/images/marmitas.jpg"></td>
         <td>Marmita</td>
         <td>10</td>
         <td>$ 10.00 UniCoins</td>
+        <td><a class="dropdown-button btn red accent-4"><i class="material-icons">delete_forever</i></a><td>
         </tr>
    
       </tbody>
@@ -234,13 +237,13 @@
   </div>
 
 
-  <!-- Dropdown Structure -->
+  <!-- Dropdown Structure 
   <ul id='dropdown1' class='dropdown-content'>
     <li><a href="#modal2"><i class="material-icons">mode_edit</i>Editar</a></li>
     <li class="divider"></li>
     <li><a href="#!"><i class="material-icons">delete_forever</i>Apagar</a></li>
   </ul>
-
+-->
 
 <!-- Modal Structure para o botão editar-->
   <div id="modal2" class="modal modal-fixed-footer">
@@ -292,7 +295,7 @@
 
 
     <div id= "gambiarra" class="modal-footer">
-      <button href="#!" id="botao_submit" onclick="cadastro()" class="modal-action modal-close waves-effect waves-green btn-flat ">Cadastrar</button>
+      <button href="#!" id="botao_submit" onclick="cadastro()" class="modal-action modal-close waves-effect waves-green btn-flat ">Editar</button>
     </div>
   </div>      
 
@@ -454,7 +457,7 @@ var chart = new Chart(ctx, {
 });
 </script>
 
-<!--Dropdown de edição de produtos-->
+<!--Dropdown de edição de produtos
 <script type="text/javascript">
     $('.dropdown-button').dropdown({
       inDuration: 300,
@@ -468,6 +471,9 @@ var chart = new Chart(ctx, {
     }
   );
 </script>
+-->
+
+
 
 <!--
 <script type="text/javascript">
