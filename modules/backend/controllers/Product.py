@@ -26,8 +26,7 @@ class Product(std.Controller):
 		product_filter = self.model().find().fetch()
 		for product in product_filter:
 			filtercategory.append({'Product':product,'Category':self.model(name = 'Product').find([('category','=',product['category'])]).fetch()})
-		return filtercategory
-
+		return filtercategory 
 
 	def show_all(self):
 		
@@ -73,3 +72,6 @@ class Product(std.Controller):
 	def delete(self):
 		p_id = self.get_input("id")
 		self.model('Product').destroy(conditions = [('id', '=', p_id)])
+
+	def filter(self):
+		pass

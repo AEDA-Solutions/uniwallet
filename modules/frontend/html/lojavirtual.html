@@ -73,30 +73,30 @@
       <div class="menu">
       <!--MENU DE REDIRECIONAMETO-->
       <div class="input-field col s12" id="category">
-        <select id="categoria">
+        <select id="categoria_produto" class="selection">
             <option value="" disabled selected>Categoria</option>
         </select>
       </div>
 
-      <div class="input-field col s12">
-        <select>
+      <!--<div class="input-field col s12">
+        <select idclass="selection">
             <option value="" disabled selected>Localização</option>
             <option value="1">ICC Norte</option>
             <option value="2">ICC Sul</option>
             <option value="3">Amarelinho BSAN</option>
         </select>
-      </div>
+      </div>-->
 
       <!-- MENU PRINCIPAL-->
       <div class="input-field col s12">
-        <select id="nome_empresa">
+        <select id="nome_empresa" class="selection">
             <option value="" disabled selected>Empresa</option>
         </select>
 
       </div>
 
     <div class="input-field col s12">
-        <select>
+        <select id="intervalo_preco" class="selection">
             <option value="" disabled selected>Preço</option>
             <option value="1">R$0,01 - R$5,00</option>
             <option value="2">R$5,01 - R$20,00</option>
@@ -481,10 +481,8 @@ balance()
 var selectcounter = 0 /* Necessario para gerar id no catalogo */
 
 
-Request.get("product/show_all" , function(all){
-  /* RECEBE OS DADOS DA ROTA SELECIONADA E PASSA COMO PARAMETRO PARA A FUNÇAO */
-
-    var modelo =  " <div class= \"col s3\" > \
+function lista_produtos(all){
+  var modelo =  " <div class= \"col s3\" > \
                       <div class=\"card\"/> \
                         <div class=\"card-image\"> \
                           <img src=\"{static}assets/images/comidas.jpg\"> \
@@ -561,6 +559,12 @@ Request.get("product/show_all" , function(all){
 
    })
 
+}
+
+Request.get("product/show_all" , function(all){
+  /* RECEBE OS DADOS DA ROTA SELECIONADA E PASSA COMO PARAMETRO PARA A FUNÇAO */
+
+    lista_produtos(all)
 
 
 })
@@ -574,20 +578,22 @@ function balance(){
 
 }
 
-function filtro(e){
-  console.log("porra")
+function filtro(){
 
 }
 
-
-
-
-
-
+$(document).ready(        
+ function() {       
+  $(".selection").change(function(e){      
+   console.log(e.target.value)
+  
+  })        
+});
 
 </script>
 
-<script>
+<script type="text/javascript">
+
   //Mostrar o nome que está logado
     Request.send('', 'user/current', 'POST', function(server_response){
     console.log(server_response)

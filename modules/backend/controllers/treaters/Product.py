@@ -26,3 +26,12 @@ class Product(std.Treater):
 				},
 				"method": "post",
 			})
+
+	def filter(self):
+		return self.rules({
+				"fields": {
+					"company_id": ["optional", "integer", "exists:id:Company"],
+					"price": ["optional", "integer"],
+					"category": ["optional", "exists:id:Category"]
+				}
+			})
