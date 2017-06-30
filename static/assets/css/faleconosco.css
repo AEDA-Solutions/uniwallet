@@ -81,8 +81,8 @@ textarea{
   margin-right: 400px; 
   font-weight: 400px; 
   color: black;
-  font-family: sans-serif; 
-  margin-top: 15px; 
+  font-family: 'Marmelad', sans-serif;
+  margin-top: 0px; 
   width: 500px;
 } 
 
@@ -92,12 +92,13 @@ h6{
   margin-right: 400px; 
   font-weight: 500px; 
   color: white; 
-  font-family: arial; 
+  font-family: 'Marmelad', sans-serif;
   width: 500px;
 }
 
 p{ 
   color: black;
+  margin-top: -86px;
   font-size: 20px;
   font-weight: 100px;
   margin-left: 10px;
