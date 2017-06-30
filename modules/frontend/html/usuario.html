@@ -25,9 +25,7 @@
       <!-- Dropdown Trigger -->
       
       <li><a href="faleconosco">Fale Conosco<i class="material-icons left">call</i></a></li>
-      <li><a id="logout" class="margin-login" href ="#"><i class="material-icons left ">input</i>
-					<span> Sair</span>
-                        </a></li>
+      <li><a id="logout" class="margin-login" href ="#"><i class="material-icons left ">input</i><span> Sair</span></a></li>
       </ul>
               
   	</nav>  
@@ -262,12 +260,14 @@
 </footer>
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<!--Banco de funções de JS criadas pelo back-end -->
+	<script src="{static}assets/js/uniwallet-backend-api.js"></script>
+	<script type="text/javascript">
+		Auth.manage_accesses(['consumer'])
+	</script>
 
 	<!-- Compiled and minified JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
-
-	<!--Banco de funções de JS criadas pelo back-end -->
-	<script src="{static}assets/js/uniwallet-backend-api.js"></script>
 
 	<script>
 		document.getElementById("botao-continuar").addEventListener("click", function(){

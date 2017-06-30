@@ -26,7 +26,7 @@
 
         <li><a href="usuario">Ver Perfil<i class="material-icons left">perm_identity</i></a></li>
 
-        <li><a href="inicial">Sair<i class="material-icons left">input</i></a></li>
+        <li><a id="logout">Sair<i class="material-icons left">input</i></a></li>
 
         </ul>
 
@@ -318,6 +318,11 @@
 
 <script type="text/javascript">
 
+//Para deslogar da tela
+    document.getElementById("logout").addEventListener("click",function(){
+     Auth.signOut()
+     Page.redirect("inicial") 
+})
 
  /* */
 check_cart()

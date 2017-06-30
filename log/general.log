@@ -92,3 +92,323 @@ Traceback (most recent call last):
   File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
 ImportError: No module named 'modules.backend.db.config'
 
+api/wallet/balance
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/Wallet.py", line 20, in balance
+    user_id = self.model(name = 'Session').get_user()['id']
+TypeError: 'NoneType' object is not subscriptable
+
+api/consumer/extrato
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/Consumer.py", line 35, in extrato
+    user_id = self.model(name = 'Session').get_user()['id']
+TypeError: 'NoneType' object is not subscriptable
+
+api/company/company_on
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/Company.py", line 50, in company_on
+    user_id = self.model(name = 'Session').get_user()['id']
+TypeError: 'NoneType' object is not subscriptable
+
+api/product/show_by_user
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/Product.py", line 52, in show_by_user
+    user_id = self.model(name = 'Session').get_user()['id']
+TypeError: 'NoneType' object is not subscriptable
+
+api/wallet/balance
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/Wallet.py", line 20, in balance
+    user_id = self.model(name = 'Session').get_user()['id']
+TypeError: 'NoneType' object is not subscriptable
+
+api/consumer/extrato
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/Consumer.py", line 35, in extrato
+    user_id = self.model(name = 'Session').get_user()['id']
+TypeError: 'NoneType' object is not subscriptable
+
+api/wallet/balance
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/Wallet.py", line 20, in balance
+    user_id = self.model(name = 'Session').get_user()['id']
+TypeError: 'NoneType' object is not subscriptable
+
+api/consumer/extrato
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/Consumer.py", line 35, in extrato
+    user_id = self.model(name = 'Session').get_user()['id']
+TypeError: 'NoneType' object is not subscriptable
+
+api/wallet/balance
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/Wallet.py", line 20, in balance
+    user_id = self.model(name = 'Session').get_user()['id']
+TypeError: 'NoneType' object is not subscriptable
+
+api/consumer/extrato
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/Consumer.py", line 35, in extrato
+    user_id = self.model(name = 'Session').get_user()['id']
+TypeError: 'NoneType' object is not subscriptable
+
+api/wallet/balance
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/Wallet.py", line 20, in balance
+    user_id = self.model(name = 'Session').get_user()['id']
+TypeError: 'NoneType' object is not subscriptable
+
+api/consumer/extrato
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/Consumer.py", line 35, in extrato
+    user_id = self.model(name = 'Session').get_user()['id']
+TypeError: 'NoneType' object is not subscriptable
+
+api/company/company_on
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/Company.py", line 50, in company_on
+    user_id = self.model(name = 'Session').get_user()['id']
+TypeError: 'NoneType' object is not subscriptable
+
+api/product/show_by_user
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/Product.py", line 52, in show_by_user
+    user_id = self.model(name = 'Session').get_user()['id']
+TypeError: 'NoneType' object is not subscriptable
+
+api/company/company_on
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/Company.py", line 50, in company_on
+    user_id = self.model(name = 'Session').get_user()['id']
+TypeError: 'NoneType' object is not subscriptable
+
+api/product/show_by_user
+Traceback (most recent call last):
+  File "/home/guilherme/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/guilherme/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/guilherme/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/guilherme/repo/uniwallet/modules/backend/controllers/Product.py", line 52, in show_by_user
+    user_id = self.model(name = 'Session').get_user()['id']
+TypeError: 'NoneType' object is not subscriptable
+

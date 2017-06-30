@@ -32,6 +32,25 @@ function Auth(){
 	this.signOut =function(){
 		this.Token.destroy()
 	}
+	this.manage_accesses = function(access){
+		access.push('god')
+		var home_pages = {
+			'god': 'gerenciamento',
+			'company': 'usuarioempresa',
+			'consumer': 'loja',
+			'guest': 'login'
+		}
+		Request.get('user/access_levels', function(response){
+			if (response.content == null){
+				response.content = ['guest']
+			}
+			response.content = response.content.filter(function (e) {return e != 'registered' })
+			var len = response.content.filter(function (e) {return access.indexOf(e) > -1 }).length
+			if (len == 0){
+				Page.redirect(home_pages[response.content[0]])
+			}
+		}, false)
+	}
 	this.Token = new Token()
 }
 
