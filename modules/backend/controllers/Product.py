@@ -69,9 +69,5 @@ class Product(std.Controller):
 			gold.append(d)
 		return gold	
 
-	def delete(self):
-		p_id = self.get_input("id")
-		self.model('Product').destroy(conditions = [('id', '=', p_id)])
-
 	def filter(self):
 		pass

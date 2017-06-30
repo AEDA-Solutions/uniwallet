@@ -155,7 +155,20 @@
   </script>
 
   <script>
+   
+   balance() 
+
+    function balance(){
+      Request.get("wallet/balance",function(balance){
     
+        var modelo = "Saldo Atual: R$ dinheirinho UniCoins " 
+        var fill = modelo.replace("dinheirinho", balance.content)
+        document.getElementById("MostraSaldo").innerHTML = fill
+        console.log(fill)
+  })
+}
+
+
       $(document).ready(function(){
         $('.parallax').parallax();
       });

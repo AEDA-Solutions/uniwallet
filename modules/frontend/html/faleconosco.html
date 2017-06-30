@@ -139,8 +139,6 @@ function Nova()
     //Pega os dados inseridos nos campos de input
     data = Page.get_input("input-form")
 
-    console.log(data)
-
     //Envia dos dados para a rota especificada e executa a função passada como parâmetro logo que a resposta é recebida
     Request.send(data, "support/report", "POST", function(response){
 

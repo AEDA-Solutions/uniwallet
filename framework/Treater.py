@@ -292,5 +292,5 @@ class Treater(std.Controller):
 					}]
 				},
 				"method": "post",
-				"auth": ["god"]
+				"auth": ["registered"]
 			}) 
