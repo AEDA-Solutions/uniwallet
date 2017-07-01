@@ -3,7 +3,7 @@ __pycache__/
 *.py[cod]
 
 config.py
-
+general.log
 .~lock.*
 
 *.py[cod]

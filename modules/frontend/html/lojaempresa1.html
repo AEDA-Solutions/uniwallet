@@ -498,6 +498,13 @@ var chart = new Chart(ctx, {
 
   Request.get("product/show_by_user" , function(all){ 
   /* RECEBE OS DADOS DA ROTA SELECIONADA E PASSA COMO PARAMETRO PARA A FUNÇAO */
+    console.log(all)
+    if (all.content.length === 0){
+      alert("NAO HÁ PRODUTOS")
+      var aviso = " <tr> <td> Voce ainda não possui produtos cadastrados.Por favor adicione um produto </td> </tr> "
+      document.getElementById("Lista").innerHTML = aviso
+    }
+    else {
 
     var modelo = " <tr> \
         <td><a class=\"dropdown-button btn orange darken-3\" href=\"#modal2\" ><i class=\"material-icons\">mode_edit</i></a></td> \
@@ -526,6 +533,7 @@ var chart = new Chart(ctx, {
       }
       
     document.getElementById("Lista").innerHTML = pagina
+  }
   })
 
 
