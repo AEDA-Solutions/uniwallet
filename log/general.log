@@ -596,3 +596,79 @@ Traceback (most recent call last):
     raise errors.get_exception(packet)
 mysql.connector.errors.IntegrityError: 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails (`Uniwallet`.`Product_Prices`, CONSTRAINT `Product_Prices_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `Products` (`id`))
 
+api/company/extrato
+Traceback (most recent call last):
+  File "/home/arthur/rep/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/arthur/rep/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/arthur/rep/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/arthur/rep/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/arthur/rep/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/arthur/rep/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/arthur/rep/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/arthur/rep/uniwallet/modules/backend/controllers/Company.py", line 54, in extrato
+    user_id = self.model(name = 'Session').get_user()['id']
+TypeError: 'NoneType' object is not subscriptable
+
+api/product/total_vendido
+Traceback (most recent call last):
+  File "/home/arthur/rep/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/arthur/rep/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/arthur/rep/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/arthur/rep/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/arthur/rep/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/arthur/rep/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/arthur/rep/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/arthur/rep/uniwallet/modules/backend/controllers/Product.py", line 56, in total_vendido
+    user_id = self.model(name = 'Session').get_user()['id']
+TypeError: 'NoneType' object is not subscriptable
+
+api/product/show_x
+Traceback (most recent call last):
+  File "/home/arthur/rep/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/arthur/rep/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/arthur/rep/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/arthur/rep/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/arthur/rep/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/arthur/rep/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/arthur/rep/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/arthur/rep/uniwallet/modules/backend/controllers/Product.py", line 48, in show_x
+    return self.model("Product").find(conditions = [("company_id", '=', company), ("price", ">=", price), ("price", "<=", to)], join = [("Company", "company_id")]).fetch()
+  File "/home/arthur/rep/uniwallet/framework/Model.py", line 144, in find
+    return self.run_query(query.get())
+  File "/home/arthur/rep/uniwallet/framework/Model.py", line 70, in run_query
+    cursor = self.db.execute(query, data)
+  File "/home/arthur/rep/uniwallet/framework/Database.py", line 40, in execute
+    cursor.execute(sql)
+  File "/usr/lib/python3/dist-packages/mysql/connector/cursor.py", line 507, in execute
+    self._handle_result(self._connection.cmd_query(stmt))
+  File "/usr/lib/python3/dist-packages/mysql/connector/cursor.py", line 421, in _handle_result
+    self._handle_resultset()
+  File "/usr/lib/python3/dist-packages/mysql/connector/cursor.py", line 899, in _handle_resultset
+    self._handle_eof(eof)
+  File "/usr/lib/python3/dist-packages/mysql/connector/cursor.py", line 765, in _handle_eof
+    self._warnings = self._fetch_warnings()
+  File "/usr/lib/python3/dist-packages/mysql/connector/cursor.py", line 752, in _fetch_warnings
+    raise errors.get_mysql_exception(res[0][1], res[0][2])
+mysql.connector.errors.DatabaseError: 1292: Truncated incorrect DOUBLE value: 'None'
+

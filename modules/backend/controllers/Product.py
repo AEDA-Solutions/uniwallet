@@ -36,16 +36,26 @@ class Product(std.Controller):
 		return self.model("Product").find(join = [("Company", "company_id")]).fetch()
 
 	def show_x(self):
-		company = str(self.get_input("company"))
+		company = self.get_input("company")
 		price = self.get_input("price")
 		to = self.get_input("to")
-		if ((price == 0) | (company == '0')):
+		
+
+		if ((price == 0) & (company == 0) & (to == 0)):
+			return self.model("Product").find(join = [("Company", "company_id")]).fetch()
+		elif ((company == 0) & (to != 0)):
+			return 	self.model("Product").find(conditions = [("price", ">=", price), ("price", "<=", to)], join = [("Company", "company_id")]).fetch()
+		elif ((company != 0) & (to != 0)):
+			return self.model("Product").find(conditions = [("company_id", '=', company), ("price", ">=", price), ("price", "<=", to)], join = [("Company", "company_id")]).fetch()
+		elif ((company != 0) & (to == 0)):
 			return self.model("Product").find(conditions = [("company_id", '=', company)], join = [("Company", "company_id")]).fetch()
 		else:
+			return self.model("Product").find(conditions = [("company_id", '=', company)], join = [("Company", "company_id")]).fetch()
+
 		#user_id = self.model(name = 'Session').get_user()['id']
 		#company = self.model("Company").find([('user_id', '=', 1)]).fetchone("id")["id"]
 		#return self.model("Product").find(conditions = [("company_id", '=', company)], join = [("Company", "company_id")]).fetch()
-			return self.model("Product").find(conditions = [("company_id", '=', company), ("price", ">=", price), ("price", "<=", to)], join = [("Company", "company_id")]).fetch()
+			
 
 	def show_by_user(self):
 		user_id = self.model(name = 'Session').get_user()['id']

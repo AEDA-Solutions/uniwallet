@@ -89,18 +89,19 @@
 
       <!-- MENU PRINCIPAL-->
       <div class="input-field col s12">
-        <select id="nome_empresa" class="selection">
-            <option value="" disabled selected>Empresa</option>
+        <select  onchange="filtrar()" id="nome_empresa" class="selection">
+            <option  value="0">Empresa</option>
         </select>
 
       </div>
 
     <div class="input-field col s12">
-        <select id="intervalo_preco" class="selection">
-            <option value="" disabled selected>Preço</option>
-            <option value="1">R$0,01 - R$5,00</option>
-            <option value="2">R$5,01 - R$20,00</option>
-            <option value="3">R$20,01 ou mais</option>
+        <select onchange="filtrar()" id="intervalo_preco" class="selection">
+            <option value='{"price":0, "from":0}'>Preço</option>
+            <option value='{"price":0, "from":5}'>R$0,01 - R$5,00</option>
+            <option value='{"price":5, "from":10}'>R$5,01 - R$10,00</option>
+            <option value='{"price":10, "from":20}'>R$10,00 - R$20,00</option>
+            <option value='{"price":20, "from":1000}'>R$20,00 ou mais</option>
         </select>
       </div>
 
@@ -342,6 +343,35 @@ function check_cart(){
 
 
 
+function filtrar(){
+  
+  var dicionario = JSON.parse(document.getElementById("intervalo_preco").value)
+  var price = dicionario['price']
+  var to = dicionario['from']
+  var company = document.getElementById("nome_empresa").value
+  var data_model = '{"company":x, "price":w, "to":z}'
+  var data = data_model.replace("x", company).replace("w", price).replace("z", to)
+  
+  Request.send(JSON.parse(data), "product/show_x", "POST", function(response){
+    
+    lista_produtos(response)
+
+
+  })
+
+   
+  
+
+
+
+  /*
+  var valor = JSON.parse(value)
+  
+  alert("Teste -" + valor['from']) */
+}
+
+
+
 function load_card(){
   document.getElementById("corpo").innerHTML = " "
   var datas = JSON.parse(sessionStorage.getItem('carrinho'))
@@ -478,29 +508,13 @@ function remove_item(id){
 
 balance()
 
+show_filter()
+
 var selectcounter = 0 /* Necessario para gerar id no catalogo */
 
 
 function lista_produtos(all){
-  var modelo =  " <div class= \"col s3\" > \
-                      <div class=\"card\"/> \
-                        <div class=\"card-image\"> \
-                          <img src=\"{static}assets/images/comidas.jpg\"> \
-                        </div> \
-                        <div class=\"card-content\"> \
-                          <p>nome</p>\
-                          <p>$ price UniCoins</p> \
-                          <p>company</p> \
-                          <select class=\"offset-s4\" id=\"selectid\">\
-                              <option value=\"1\">1</option>\
-                              <option value=\"2\">2</option>\
-                              <option value=\"3\">3</option>\
-                              <option value=\"4\">4</option>\
-                          </select>\
-                          <button onclick=\"cart(productid, document.getElementById(\'idvalue\').value, productprice, \'productname\' ); Materialize.toast(\'Produto adicionado ao carrinho! \', 4000) \" class=\"waves-effect waves-light  orange darken-4 btn\">Comprar</button>\
-                        </div> \
-                      </div> \
-                    </div> \ "
+  
 
     var pagina = ""
     for (var i = all.content.length - 1; i >= 0; i--) {
@@ -510,7 +524,7 @@ function lista_produtos(all){
       var price = all.content[i].price
       var company = all.content[i].company_name
       var id = all.content[i].id
-      var replace = modelo.replace("nome", nome)
+      var replace = modelo_produto.replace("nome", nome)
       var replace2 = replace.replace("price", price)
       var replace3 = replace2.replace("company", company)
       var replace4 = replace3.replace("productid", id)
@@ -528,9 +542,9 @@ function lista_produtos(all){
 
     /* ADICIONA A VARIAVEL "pagina" DENTRO DO ELEMENTO */
 
+}
 
-
-
+function show_filter(){
 
 
 
@@ -548,8 +562,16 @@ function lista_produtos(all){
         var lojas = document.getElementById("nome_empresa")
         var model = "filtro( this.value )"
         for (var i = 0; i < l.content.length; i++) {
-          lojas.innerHTML += HTML_Factory.make_tag('option', l.content[i].name, [{"value": l.content[i].id}, {"onclick": filtro( this.value )}])
+          var modelo_option = "<option value=\"id\"> nome </option>\ "          
+          var replace = modelo_option.replace("id", l.content[i].id)
+          var replace2 = replace.replace("nome", l.content[i].name)
+          $("#nome_empresa").append(replace2);
+
+          
         }
+
+
+
 
         $(document).ready(function() {
           $('select').material_select();
@@ -582,13 +604,29 @@ function filtro(){
 
 }
 
-$(document).ready(        
- function() {       
-  $(".selection").change(function(e){      
-   console.log(e.target.value)
-  
-  })        
-});
+
+
+
+var modelo_produto =  " <div class= \"col s3\" > \
+                      <div class=\"card\"/> \
+                        <div class=\"card-image\"> \
+                          <img src=\"{static}assets/images/comidas.jpg\"> \
+                        </div> \
+                        <div class=\"card-content\"> \
+                          <p>nome</p>\
+                          <p>$ price UniCoins</p> \
+                          <p>company</p> \
+                          <select class=\"offset-s4\" id=\"selectid\">\
+                              <option value=\"1\">1</option>\
+                              <option value=\"2\">2</option>\
+                              <option value=\"3\">3</option>\
+                              <option value=\"4\">4</option>\
+                          </select>\
+                          <button onclick=\"cart(productid, document.getElementById(\'idvalue\').value, productprice, \'productname\' ); Materialize.toast(\'Produto adicionado ao carrinho! \', 4000) \" class=\"waves-effect waves-light  orange darken-4 btn\">Comprar</button>\
+                        </div> \
+                      </div> \
+                    </div> \ "
+
 
 </script>
 
