@@ -7,13 +7,14 @@ body{
 }
 
 .quadrado{
-  width: 704px;
-  height: 460px;
+  width: 710px;
+  height: 540px;
   background-color: white;
   margin-top: -20px;
   margin-left: 310px;
   border-color: blue;
   border-spacing: 100px;
+  border-radius: 10px;
  }
  
  .btn-login{
@@ -23,8 +24,8 @@ body{
   border-radius: 6px;
   border: none;
   background-color: #37474f;
-  margin-bottom: 20px;
-  margin-top:29px;
+  margin-bottom: 50px;
+  margin-top:60px;
   margin-left: 275px;
 }
 
@@ -44,16 +45,6 @@ body{
 
 }
 
-.btn-login{
-  padding: 15px 30px;
-  cursor: pointer;
-  color: #fff;
-  border-radius: 6px;
-  border: none;
-  background-color: #37474f;
-  margin-bottom: 20px;
-  margin-top:29px;
-  margin-left: 275px;
-}
+
 
 

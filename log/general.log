@@ -2346,3 +2346,1832 @@ Traceback (most recent call last):
   File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
 ImportError: No module named 'modules.backend.db.config'
 
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/user/access_levels
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 6, in access_levels
+    current_session = self.model(name = 'Session').get_current()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/wallet/balance
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/Wallet.py", line 20, in balance
+    user_id = self.model(name = 'Session').get_user()['id']
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/user/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/consumer/extrato
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/Consumer.py", line 35, in extrato
+    user_id = self.model(name = 'Session').get_user()['id']
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/User/current
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 13, in current
+    return self.model(name = 'Session').get_user()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/university/fetch
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 60, in fetch
+    return self.model().find(start_from = self.get_input('start'), limit = self.get_input('limit')).fetch(fields_to_ignore = ['password'])
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
+api/user/access_levels
+Traceback (most recent call last):
+  File "/home/joaopaulofb/repo/uniwallet/framework/bootstrap.py", line 19, in bootstrap
+    response = Application(request).run()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 15, in run
+    return self.route()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 22, in route
+    return self.resolve()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 35, in resolve
+    return self.call_controller(general.get_package_from_module("controllers", "modules.{}".format(self.request.module)))
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 48, in call_controller
+    return self.instance_controller(package, controller_name)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Application.py", line 58, in instance_controller
+    return controller.action(self.request.action)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Controller.py", line 18, in action
+    self.response.body = getattr(self, action_name)()
+  File "/home/joaopaulofb/repo/uniwallet/modules/backend/controllers/User.py", line 6, in access_levels
+    current_session = self.model(name = 'Session').get_current()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 91, in model
+    return self.get_class("models", self.__class__.__name__ if name is None else name)(request = self.request, data = data)
+  File "/home/joaopaulofb/repo/uniwallet/framework/Model.py", line 10, in __init__
+    self.db = self.get_db_connection()
+  File "/home/joaopaulofb/repo/uniwallet/framework/Core.py", line 23, in get_db_connection
+    return Database(getattr(importlib.import_module("modules.{}.db.config".format(self.request.module)), "config")())
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'modules.backend.db.config'
+
